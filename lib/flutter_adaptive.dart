@@ -11,6 +11,7 @@ export 'common/adaptive_app.dart';
 export 'common/adaptive_elevated_button.dart';
 export 'common/adaptive_text.dart';
 export 'common/adaptive_text_input.dart';
+export 'common/adaptive_text_button.dart';
 
 export 'themes/adaptive_theme.dart';
 export 'themes/themed_appearance_manager.dart';
