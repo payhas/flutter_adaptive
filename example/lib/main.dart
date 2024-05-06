@@ -79,6 +79,10 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: _incrementCounter,
               child: const Text('click me'),
             ),
+            AdaptiveSwitch(
+              value: true,
+              onChanged: (value) {},
+            ),
             const Text(
               'Select theme:',
             ),
