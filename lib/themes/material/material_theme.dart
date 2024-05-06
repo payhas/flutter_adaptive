@@ -1,12 +1,12 @@
-import '../../base/adaptive_bundle.dart';
-
-import 'widget_builders/material_button_builder.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 class MaterialTheme extends AdaptiveBundle {
   MaterialTheme()
       : super(
           widgetBuilders: {
-            MaterialButtonBuilder(),
+            MaterialAdaptiveAppBuilder(),
+            MaterialTextBuilder(),
+            MaterialElevatedButtonBuilder(),
           },
         );
 }
