@@ -33,6 +33,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var isSwitchOn = true;
+
   void _setThemeMaterial() {
     setState(() {
       ThemedAppearanceManager.setThemeOf(context, 'Material');
@@ -99,13 +101,18 @@ class _MyHomePageState extends State<MyHomePage> {
               widgetName: "AdaptiveTextButton",
               widget: AdaptiveTextButton(() {},
                   child: const Text("Adaptive Text Button"))),
-          ExampleWidget(
-            widgetName: 'AdaptiveSwitch',
-            widget: AdaptiveSwitch(
-              value: true,
-              onChanged: (value) {},
+          Row(children: [
+            const Text("AdaptiveSwitch"),
+            const SizedBox(width: 10.0),
+            AdaptiveSwitch(
+              value: isSwitchOn,
+              onChanged: (value) {
+                setState(() {
+                  isSwitchOn = value;
+                });
+              },
             ),
-          ),
+          ]),
         ],
       ),
       // This trailing comma makes auto-formatting nicer for build methods.
