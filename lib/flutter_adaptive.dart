@@ -13,6 +13,7 @@ export 'common/adaptive_text.dart';
 export 'common/adaptive_text_input.dart';
 export 'common/adaptive_text_button.dart';
 export 'common/adaptive_switch.dart';
+export 'common/adaptive_circular_progress_indicator.dart';
 
 export 'themes/adaptive_theme.dart';
 export 'themes/themed_appearance_manager.dart';

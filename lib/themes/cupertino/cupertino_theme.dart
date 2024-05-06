@@ -1,4 +1,5 @@
 import 'package:flutter_adaptive/flutter_adaptive.dart';
+import 'package:flutter_adaptive/themes/cupertino/widget_builders/cupertino_circular_progress_indicator_builder.dart';
 import 'package:flutter_adaptive/themes/cupertino/widget_builders/cupertino_text_button_builder.dart';
 import 'package:flutter_adaptive/themes/cupertino/widget_builders/cupertino_text_input_builder.dart';
 import 'package:flutter_adaptive/themes/cupertino/widget_builders/cupertino_switch_builder.dart';
@@ -13,6 +14,7 @@ class CupertinoTheme extends AdaptiveBundle {
             CupertinoTextButtonBuilder(),
             CupertinoElevatedButtonBuilder(),
             CupertinoSwitchBuilder(),
+            CupertinoCircularProgressIndicatorBuilder(),
           },
         );
 }
