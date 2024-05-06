@@ -8,6 +8,7 @@ export 'base/adaptive_widget_builder.dart';
 export 'base/adaptive_widget_builder_selector.dart';
 
 export 'common/adaptive_button.dart';
+export 'common/adaptive_switch.dart';
 
 export 'themes/adaptive_theme.dart';
 export 'themes/themed_appearance_manager.dart';
