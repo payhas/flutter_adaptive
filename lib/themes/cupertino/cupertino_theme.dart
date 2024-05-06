@@ -10,6 +10,7 @@ class CupertinoTheme extends AdaptiveBundle {
             CupertinoTextButtonBuilder(),
             CupertinoElevatedButtonBuilder(),
             CupertinoIconButtonBuilder(),
+            CupertinoSliderBuilder(),
           },
         );
 }
