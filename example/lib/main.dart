@@ -36,6 +36,8 @@ class _MyHomePageState extends State<MyHomePage> {
   double _currentSliderValue = 0;
   bool isChecked = false;
 
+  var isSwitchOn = true;
+
   void _setThemeMaterial() {
     setState(() {
       ThemedAppearanceManager.setThemeOf(context, 'Material');
@@ -138,7 +140,19 @@ class _MyHomePageState extends State<MyHomePage> {
                     isChecked = value!;
                   });
                 },
-              ))
+              )),
+          Row(children: [
+            const Text("AdaptiveSwitch"),
+            const SizedBox(width: 10.0),
+            AdaptiveSwitch(
+              value: isSwitchOn,
+              onChanged: (value) {
+                setState(() {
+                  isSwitchOn = value;
+                });
+              },
+            ),
+          ]),
         ],
       ),
       // This trailing comma makes auto-formatting nicer for build methods.
