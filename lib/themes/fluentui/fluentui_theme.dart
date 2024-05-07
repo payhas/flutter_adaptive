@@ -10,6 +10,7 @@ class FluentUITheme extends AdaptiveBundle {
             FluentUITextButtonBuilder(),
             FluentUIElevatedButtonBuilder(),
             FluentUIIconButtonBuilder(),
+            FluentUISliderBuilder(),
           },
         );
 }

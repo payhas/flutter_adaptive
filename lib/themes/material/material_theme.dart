@@ -10,6 +10,7 @@ class MaterialTheme extends AdaptiveBundle {
             MaterialTextButtonBuilder(),
             MaterialElevatedButtonBuilder(),
             MaterialIconButtonBuilder(),
+            MaterialSliderBuilder(),
           },
         );
 }

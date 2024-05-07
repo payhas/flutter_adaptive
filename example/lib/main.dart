@@ -33,6 +33,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  double _currentSliderValue = 0;
+
   void _setThemeMaterial() {
     setState(() {
       ThemedAppearanceManager.setThemeOf(context, 'Material');
@@ -110,7 +112,17 @@ class _MyHomePageState extends State<MyHomePage> {
           ExampleWidget(
               widgetName: "AdaptiveIconButton",
               widget:
-                  AdaptiveIconButton(() {}, icon: const Icon(Icons.add_call)))
+                  AdaptiveIconButton(() {}, icon: const Icon(Icons.add_call))),
+          const SizedBox(height: 10.0),
+          ExampleWidget(
+              widgetName: "AdaptiveSlider",
+              widget: AdaptiveSlider(
+                  value: _currentSliderValue,
+                  onChanged: (double value) {
+                    setState(() {
+                      _currentSliderValue = value;
+                    });
+                  }))
         ],
       ),
       // This trailing comma makes auto-formatting nicer for build methods.
