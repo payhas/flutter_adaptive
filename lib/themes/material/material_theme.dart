@@ -1,5 +1,4 @@
 import 'package:flutter_adaptive/flutter_adaptive.dart';
-import 'package:flutter_adaptive/themes/material/widget_builders/material_switch_builder.dart';
 
 class MaterialTheme extends AdaptiveBundle {
   MaterialTheme()

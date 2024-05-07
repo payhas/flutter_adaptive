@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../base/adaptive_widget_builder.dart';
-import '../../../common/adaptive_switch.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 class MaterialSwitchBuilder extends AdaptiveWidgetBuilder<AdaptiveSwitch> {
   @override
