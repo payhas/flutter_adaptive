@@ -14,6 +14,7 @@ class MaterialTheme extends AdaptiveBundle {
             MaterialCheckboxBuilder(),
             MaterialSwitchBuilder(),
             MaterialCircularProgressIndicatorBuilder(),
+            MaterialLinearProgressIndicatorBuilder(),
           },
         );
 }
