@@ -1,12 +1,12 @@
-import '../../base/adaptive_bundle.dart';
-
-import 'widget_builders/cupertino_button_builder.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 class CupertinoTheme extends AdaptiveBundle {
   CupertinoTheme()
       : super(
           widgetBuilders: {
-            CupertinoButtonBuilder(),
+            CupertinoAdaptiveAppBuilder(),
+            CupertinoTextBuilder(),
+            CupertinoElevatedButtonBuilder(),
           },
         );
 }

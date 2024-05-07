@@ -1,10 +1,4 @@
-import '../base/adaptive_bundle.dart';
-
-import 'themed_appearance_manager.dart';
-import 'themed_widget_builder_selector.dart';
-
-import 'material/material_theme.dart';
-import 'cupertino/cupertino_theme.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 class AdaptiveTheme extends AdaptiveBundle {
   AdaptiveTheme({
@@ -21,6 +15,7 @@ class AdaptiveTheme extends AdaptiveBundle {
           bundles: {
             MaterialTheme(),
             CupertinoTheme(),
+            FluentUITheme(),
           },
         );
 }
