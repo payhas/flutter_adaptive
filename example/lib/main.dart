@@ -105,7 +105,12 @@ class _MyHomePageState extends State<MyHomePage> {
               widget: AdaptiveElevatedButton(
                 () {},
                 child: const Text("Adaptive Elevated Button"),
-              ))
+              )),
+          const SizedBox(height: 10.0),
+          ExampleWidget(
+              widgetName: "AdaptiveIconButton",
+              widget:
+                  AdaptiveIconButton(() {}, icon: const Icon(Icons.add_call)))
         ],
       ),
       // This trailing comma makes auto-formatting nicer for build methods.

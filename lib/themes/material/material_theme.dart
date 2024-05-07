@@ -1,6 +1,4 @@
 import 'package:flutter_adaptive/flutter_adaptive.dart';
-import 'package:flutter_adaptive/themes/material/widget_builders/material_text_button_builder.dart';
-import 'package:flutter_adaptive/themes/material/widget_builders/material_text_input_builder.dart';
 
 class MaterialTheme extends AdaptiveBundle {
   MaterialTheme()
@@ -11,6 +9,7 @@ class MaterialTheme extends AdaptiveBundle {
             MaterialTextInputBuilder(),
             MaterialTextButtonBuilder(),
             MaterialElevatedButtonBuilder(),
+            MaterialIconButtonBuilder(),
           },
         );
 }
