@@ -10,6 +10,7 @@ export 'base/adaptive_widget_builder_selector.dart';
 export 'common/adaptive_app.dart';
 export 'common/adaptive_elevated_button.dart';
 export 'common/adaptive_text.dart';
+export 'common/adaptive_text_input.dart';
 
 export 'themes/adaptive_theme.dart';
 export 'themes/themed_appearance_manager.dart';
