@@ -11,6 +11,7 @@ class MaterialTheme extends AdaptiveBundle {
             MaterialElevatedButtonBuilder(),
             MaterialIconButtonBuilder(),
             MaterialSliderBuilder(),
+            MaterialCheckboxBuilder(),
           },
         );
 }

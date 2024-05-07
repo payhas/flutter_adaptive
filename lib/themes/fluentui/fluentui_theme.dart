@@ -11,6 +11,7 @@ class FluentUITheme extends AdaptiveBundle {
             FluentUIElevatedButtonBuilder(),
             FluentUIIconButtonBuilder(),
             FluentUISliderBuilder(),
+            FluentUICheckboxBuilder(),
           },
         );
 }
