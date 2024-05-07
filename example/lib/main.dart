@@ -153,6 +153,13 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
           ]),
+          Row(children: [
+            Text("AdaptiveCircularProgressIndicator"),
+            SizedBox(width: 10.0),
+            AdaptiveCircularProgressIndicator(
+              value: null,
+            ),
+          ]),
         ],
       ),
       // This trailing comma makes auto-formatting nicer for build methods.

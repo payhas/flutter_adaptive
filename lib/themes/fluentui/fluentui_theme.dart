@@ -13,6 +13,7 @@ class FluentUITheme extends AdaptiveBundle {
             FluentUISliderBuilder(),
             FluentUICheckboxBuilder(),
             FluentUISwitchBuilder(),
+            FluentUICircularProgressIndicatorBuilder(),
           },
         );
 }

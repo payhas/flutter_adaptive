@@ -13,6 +13,7 @@ class CupertinoTheme extends AdaptiveBundle {
             CupertinoSliderBuilder(),
             CupertinoCheckbox(),
             CupertinoSwitchBuilder(),
+            CupertinoCircularProgressIndicatorBuilder(),
           },
         );
 }
