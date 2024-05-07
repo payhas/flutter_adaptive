@@ -34,6 +34,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   double _currentSliderValue = 0;
+  bool isChecked = false;
 
   void _setThemeMaterial() {
     setState(() {
@@ -88,13 +89,17 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           ExampleWidget(
               widgetName: "AdaptiveText",
-              widget: AdaptiveText(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")),
+              widget: Expanded(
+                child: AdaptiveText(
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."),
+              )),
           const SizedBox(height: 10.0),
           ExampleWidget(
               widgetName: "AdaptiveTextInput",
-              widget: AdaptiveTextInput(
-                placeholder: "Placeholder",
+              widget: Expanded(
+                child: AdaptiveTextInput(
+                  placeholder: "Placeholder",
+                ),
               )),
           const SizedBox(height: 10.0),
           ExampleWidget(
@@ -122,7 +127,18 @@ class _MyHomePageState extends State<MyHomePage> {
                     setState(() {
                       _currentSliderValue = value;
                     });
-                  }))
+                  })),
+          const SizedBox(height: 10.0),
+          ExampleWidget(
+              widgetName: "AdaptiveCheckBox",
+              widget: AdaptiveCheckbox(
+                value: isChecked,
+                onChanged: (bool? value) {
+                  setState(() {
+                    isChecked = value!;
+                  });
+                },
+              ))
         ],
       ),
       // This trailing comma makes auto-formatting nicer for build methods.
@@ -142,7 +158,7 @@ class ExampleWidget extends StatelessWidget {
     return Row(children: [
       Text(widgetName),
       const SizedBox(width: 10.0),
-      Expanded(child: widget),
+      widget,
     ]);
   }
 }
