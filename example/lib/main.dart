@@ -37,6 +37,8 @@ class _MyHomePageState extends State<MyHomePage> {
   bool isChecked = false;
   DateTime date = DateTime(2016, 10, 26);
 
+  var isSwitchOn = true;
+
   void _setThemeMaterial() {
     setState(() {
       ThemedAppearanceManager.setThemeOf(context, 'Material');
@@ -139,6 +141,37 @@ class _MyHomePageState extends State<MyHomePage> {
                     isChecked = value!;
                   });
                 },
+              )),
+          Row(children: [
+            const Text("AdaptiveSwitch"),
+            const SizedBox(width: 10.0),
+            AdaptiveSwitch(
+              value: isSwitchOn,
+              onChanged: (value) {
+                setState(() {
+                  isSwitchOn = value;
+                });
+              },
+            ),
+          ]),
+          Row(children: [
+            Text("AdaptiveCircularProgressIndicator"),
+            SizedBox(width: 10.0),
+            AdaptiveCircularProgressIndicator(
+              value: null,
+            ),
+          ]),
+          Row(children: [
+            Text("AdaptiveLinearProgressIndicator"),
+            SizedBox(width: 10.0),
+            SizedBox(
+              height: 10,
+              width: 200,
+              child: AdaptiveLinearProgressIndicator(
+                value: 56,
+              ),
+            ),
+          ]),
               )),
           const SizedBox(height: 10.0),
           ExampleWidget(
