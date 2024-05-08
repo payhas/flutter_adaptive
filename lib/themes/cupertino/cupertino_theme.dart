@@ -16,6 +16,7 @@ class CupertinoTheme extends AdaptiveBundle {
             CupertinoCircularProgressIndicatorBuilder(),
             CupertinoLinearProgressIndicatorBuilder(),
             CupertinoDatePickerBuilder(),
+            CupertinoModalDialogBuilder(),
           },
         );
 }

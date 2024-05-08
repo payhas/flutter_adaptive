@@ -187,6 +187,26 @@ class _MyHomePageState extends State<MyHomePage> {
                   });
                 }),
           ),
+          SizedBox(height: 10),
+          Row(children: [
+            Text("AdaptiveModalDialog"),
+            SizedBox(width: 10.0),
+            AdaptiveElevatedButton(() {
+              showDialog<String>(
+                  context: context,
+                  builder: (context) => AdaptiveModalDialog(
+                        title: const Text("Simple Dialog"),
+                        content: const Text("Adaptive Modal Dialog content"),
+                        actions: [
+                          AdaptiveTextButton(
+                              () => Navigator.pop(context, 'Cancel'),
+                              child: const Text('Cancel')),
+                          AdaptiveTextButton(() => Navigator.pop(context, 'OK'),
+                              child: const Text('OK')),
+                        ],
+                      ));
+            }, child: const Text("Simple Dialog")),
+          ]),
         ],
       ),
       // This trailing comma makes auto-formatting nicer for build methods.
