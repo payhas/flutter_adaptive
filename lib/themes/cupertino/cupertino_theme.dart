@@ -11,7 +11,8 @@ class CupertinoTheme extends AdaptiveBundle {
             CupertinoElevatedButtonBuilder(),
             CupertinoIconButtonBuilder(),
             CupertinoSliderBuilder(),
-            CupertinoCheckbox(),
+            CupertinoCheckboxBuilder(),
+            CupertinoDatePickerBuilder(),
           },
         );
 }
