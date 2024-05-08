@@ -12,10 +12,10 @@ class FluentUITheme extends AdaptiveBundle {
             FluentUIIconButtonBuilder(),
             FluentUISliderBuilder(),
             FluentUICheckboxBuilder(),
-            FluentUIDatePickerBuilder(),
             FluentUISwitchBuilder(),
             FluentUICircularProgressIndicatorBuilder(),
             FluentUILinearProgressIndicatorBuilder(),
+            FluentUIDatePickerBuilder(),
           },
         );
 }

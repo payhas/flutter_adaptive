@@ -12,6 +12,9 @@ class CupertinoTheme extends AdaptiveBundle {
             CupertinoIconButtonBuilder(),
             CupertinoSliderBuilder(),
             CupertinoCheckboxBuilder(),
+            CupertinoSwitchBuilder(),
+            CupertinoCircularProgressIndicatorBuilder(),
+            CupertinoLinearProgressIndicatorBuilder(),
             CupertinoDatePickerBuilder(),
           },
         );

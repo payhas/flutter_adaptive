@@ -142,6 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   });
                 },
               )),
+          const SizedBox(height: 10.0),
           Row(children: [
             const Text("AdaptiveSwitch"),
             const SizedBox(width: 10.0),
@@ -161,6 +162,7 @@ class _MyHomePageState extends State<MyHomePage> {
               value: null,
             ),
           ]),
+          SizedBox(height: 10),
           Row(children: [
             Text("AdaptiveLinearProgressIndicator"),
             SizedBox(width: 10.0),
@@ -172,7 +174,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ]),
-              )),
           const SizedBox(height: 10.0),
           ExampleWidget(
             name: "AdaptiveDatePicker",
