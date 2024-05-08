@@ -16,6 +16,7 @@ class MaterialTheme extends AdaptiveBundle {
             MaterialCircularProgressIndicatorBuilder(),
             MaterialLinearProgressIndicatorBuilder(),
             MaterialDatePickerBuilder(),
+            MaterialModalDialogBuilder(),
           },
         );
 }
