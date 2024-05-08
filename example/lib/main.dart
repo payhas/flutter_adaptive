@@ -35,6 +35,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   double _currentSliderValue = 0;
   bool isChecked = false;
+  DateTime date = DateTime(2016, 10, 26);
 
   var isSwitchOn = true;
 
@@ -90,40 +91,40 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(10.0),
         children: [
           ExampleWidget(
-              widgetName: "AdaptiveText",
-              widget: Expanded(
+              name: "AdaptiveText",
+              child: Expanded(
                 child: AdaptiveText(
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."),
               )),
           const SizedBox(height: 10.0),
           ExampleWidget(
-              widgetName: "AdaptiveTextInput",
-              widget: Expanded(
+              name: "AdaptiveTextInput",
+              child: Expanded(
                 child: AdaptiveTextInput(
                   placeholder: "Placeholder",
                 ),
               )),
           const SizedBox(height: 10.0),
           ExampleWidget(
-              widgetName: "AdaptiveTextButton",
-              widget: AdaptiveTextButton(() {},
+              name: "AdaptiveTextButton",
+              child: AdaptiveTextButton(() {},
                   child: const Text("Adaptive Text Button"))),
           const SizedBox(height: 10.0),
           ExampleWidget(
-              widgetName: "AdaptiveElevatedButton",
-              widget: AdaptiveElevatedButton(
+              name: "AdaptiveElevatedButton",
+              child: AdaptiveElevatedButton(
                 () {},
                 child: const Text("Adaptive Elevated Button"),
               )),
           const SizedBox(height: 10.0),
           ExampleWidget(
-              widgetName: "AdaptiveIconButton",
-              widget:
+              name: "AdaptiveIconButton",
+              child:
                   AdaptiveIconButton(() {}, icon: const Icon(Icons.add_call))),
           const SizedBox(height: 10.0),
           ExampleWidget(
-              widgetName: "AdaptiveSlider",
-              widget: AdaptiveSlider(
+              name: "AdaptiveSlider",
+              child: AdaptiveSlider(
                   value: _currentSliderValue,
                   onChanged: (double value) {
                     setState(() {
@@ -132,8 +133,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   })),
           const SizedBox(height: 10.0),
           ExampleWidget(
-              widgetName: "AdaptiveCheckBox",
-              widget: AdaptiveCheckbox(
+              name: "AdaptiveCheckBox",
+              child: AdaptiveCheckbox(
                 value: isChecked,
                 onChanged: (bool? value) {
                   setState(() {
@@ -141,6 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   });
                 },
               )),
+          const SizedBox(height: 10.0),
           Row(children: [
             const Text("AdaptiveSwitch"),
             const SizedBox(width: 10.0),
@@ -160,6 +162,7 @@ class _MyHomePageState extends State<MyHomePage> {
               value: null,
             ),
           ]),
+          SizedBox(height: 10),
           Row(children: [
             Text("AdaptiveLinearProgressIndicator"),
             SizedBox(width: 10.0),
@@ -171,6 +174,19 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ]),
+          const SizedBox(height: 10.0),
+          ExampleWidget(
+            name: "AdaptiveDatePicker",
+            child: AdaptiveDatePicker(
+                initialDate: date,
+                minDate: DateTime(1900),
+                maxDate: DateTime(2100),
+                onDateTimeChanged: (DateTime newDate) {
+                  setState(() {
+                    date = newDate;
+                  });
+                }),
+          ),
         ],
       ),
       // This trailing comma makes auto-formatting nicer for build methods.
@@ -179,18 +195,17 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class ExampleWidget extends StatelessWidget {
-  const ExampleWidget(
-      {super.key, required this.widgetName, required this.widget});
+  const ExampleWidget({super.key, required this.name, required this.child});
 
-  final String widgetName;
-  final Widget widget;
+  final String name;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
     return Row(children: [
-      Text(widgetName),
+      Text(name),
       const SizedBox(width: 10.0),
-      widget,
+      child,
     ]);
   }
 }
