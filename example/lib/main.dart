@@ -91,14 +91,14 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(10.0),
         children: [
           ExampleWidget(
-              name: "AdaptiveText",
+              name: "Adaptive Text",
               child: Expanded(
                 child: AdaptiveText(
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."),
               )),
           const SizedBox(height: 10.0),
           ExampleWidget(
-              name: "AdaptiveTextInput",
+              name: "Adaptive Text Input",
               child: Expanded(
                 child: AdaptiveTextInput(
                   placeholder: "Placeholder",
@@ -106,24 +106,24 @@ class _MyHomePageState extends State<MyHomePage> {
               )),
           const SizedBox(height: 10.0),
           ExampleWidget(
-              name: "AdaptiveTextButton",
+              name: "Adaptive Text Button",
               child: AdaptiveTextButton(
                   onPressed: () {}, child: const Text("Adaptive Text Button"))),
           const SizedBox(height: 10.0),
           ExampleWidget(
-              name: "AdaptiveElevatedButton",
+              name: "Adaptive Elevated Button",
               child: AdaptiveElevatedButton(
                 onPressed: () {},
-                child: const Text("Adaptive Elevated Button"),
+                child: const Text("Elevated Button"),
               )),
           const SizedBox(height: 10.0),
           ExampleWidget(
-              name: "AdaptiveIconButton",
+              name: "Adaptive Icon Button",
               child: AdaptiveIconButton(
                   onPressed: () {}, icon: const Icon(Icons.add_call))),
           const SizedBox(height: 10.0),
           ExampleWidget(
-              name: "AdaptiveSlider",
+              name: "Adaptive Slider",
               child: AdaptiveSlider(
                   value: _currentSliderValue,
                   onChanged: (double value) {
@@ -133,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   })),
           const SizedBox(height: 10.0),
           ExampleWidget(
-              name: "AdaptiveCheckBox",
+              name: "Adaptive CheckBox",
               child: AdaptiveCheckbox(
                 value: isChecked,
                 onChanged: (bool? value) {
@@ -144,7 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
               )),
           const SizedBox(height: 10.0),
           Row(children: [
-            const Text("AdaptiveSwitch"),
+            const Text("Adaptive Switch"),
             const SizedBox(width: 10.0),
             AdaptiveSwitch(
               value: isSwitchOn,
@@ -155,28 +155,24 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
           ]),
-          Row(children: [
-            Text("AdaptiveCircularProgressIndicator"),
-            SizedBox(width: 10.0),
-            AdaptiveCircularProgressIndicator(
-              value: null,
-            ),
-          ]),
+          ExampleWidget(
+              name: "Adaptive Circular Progress Indicator",
+              child: AdaptiveCircularProgressIndicator(
+                value: null,
+              )),
           SizedBox(height: 10),
-          Row(children: [
-            Text("AdaptiveLinearProgressIndicator"),
-            SizedBox(width: 10.0),
-            SizedBox(
-              height: 10,
-              width: 200,
-              child: AdaptiveLinearProgressIndicator(
-                value: 56,
-              ),
-            ),
-          ]),
+          ExampleWidget(
+              name: "Adaptive Linear Progress Indicator",
+              child: SizedBox(
+                height: 10,
+                width: 200,
+                child: AdaptiveLinearProgressIndicator(
+                  value: 56,
+                ),
+              )),
           const SizedBox(height: 10.0),
           ExampleWidget(
-            name: "AdaptiveDatePicker",
+            name: "Adaptive Date Picker",
             child: AdaptiveDatePicker(
                 initialDate: date,
                 minDate: DateTime(1900),
@@ -187,31 +183,30 @@ class _MyHomePageState extends State<MyHomePage> {
                   });
                 }),
           ),
-          SizedBox(height: 10),
-          Row(children: [
-            Text("AdaptiveModalDialog"),
-            SizedBox(width: 10.0),
-            AdaptiveElevatedButton(
-                onPressed: () {
-                  showDialog<String>(
-                      context: context,
-                      builder: (context) => AdaptiveModalDialog(
-                            title: const Text("Simple Dialog"),
-                            content:
-                                const Text("Adaptive Modal Dialog content"),
-                            actions: [
-                              AdaptiveTextButton(
-                                  onPressed: () =>
-                                      Navigator.pop(context, 'Cancel'),
-                                  child: const Text('Cancel')),
-                              AdaptiveTextButton(
-                                  onPressed: () => Navigator.pop(context, 'OK'),
-                                  child: const Text('OK')),
-                            ],
-                          ));
-                },
-                child: const Text("Simple Dialog")),
-          ]),
+          const SizedBox(height: 10),
+          ExampleWidget(
+              name: "Adaptive Modal Dialog",
+              child: AdaptiveElevatedButton(
+                  onPressed: () {
+                    showDialog<String>(
+                        context: context,
+                        builder: (context) => AdaptiveModalDialog(
+                              title: const Text("Simple Dialog"),
+                              content:
+                                  const Text("Adaptive Modal Dialog content"),
+                              actions: [
+                                AdaptiveTextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(context, 'Cancel'),
+                                    child: const Text('Cancel')),
+                                AdaptiveTextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(context, 'OK'),
+                                    child: const Text('OK')),
+                              ],
+                            ));
+                  },
+                  child: const Text("Simple Dialog"))),
           const SizedBox(height: 10.0),
           ExampleWidget(
               name: "Adaptive Modal Bottom Sheet",
@@ -252,7 +247,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     cancelAction: CancelAction(title: const Text('Cancel')),
                   );
                 },
-                child: const Text('Modal Bottom Sheet'),
+                child: const Text('Bottom Sheet'),
               )),
         ],
       ),
@@ -270,7 +265,7 @@ class ExampleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(children: [
-      Text(name),
+      SizedBox(width: 100.0, child: Text(name)),
       const SizedBox(width: 10.0),
       child,
     ]);
