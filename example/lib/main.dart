@@ -107,20 +107,20 @@ class _MyHomePageState extends State<MyHomePage> {
           const SizedBox(height: 10.0),
           ExampleWidget(
               name: "AdaptiveTextButton",
-              child: AdaptiveTextButton(() {},
-                  child: const Text("Adaptive Text Button"))),
+              child: AdaptiveTextButton(
+                  onPressed: () {}, child: const Text("Adaptive Text Button"))),
           const SizedBox(height: 10.0),
           ExampleWidget(
               name: "AdaptiveElevatedButton",
               child: AdaptiveElevatedButton(
-                () {},
+                onPressed: () {},
                 child: const Text("Adaptive Elevated Button"),
               )),
           const SizedBox(height: 10.0),
           ExampleWidget(
               name: "AdaptiveIconButton",
-              child:
-                  AdaptiveIconButton(() {}, icon: const Icon(Icons.add_call))),
+              child: AdaptiveIconButton(
+                  onPressed: () {}, icon: const Icon(Icons.add_call))),
           const SizedBox(height: 10.0),
           ExampleWidget(
               name: "AdaptiveSlider",
@@ -191,22 +191,69 @@ class _MyHomePageState extends State<MyHomePage> {
           Row(children: [
             Text("AdaptiveModalDialog"),
             SizedBox(width: 10.0),
-            AdaptiveElevatedButton(() {
-              showDialog<String>(
-                  context: context,
-                  builder: (context) => AdaptiveModalDialog(
-                        title: const Text("Simple Dialog"),
-                        content: const Text("Adaptive Modal Dialog content"),
-                        actions: [
-                          AdaptiveTextButton(
-                              () => Navigator.pop(context, 'Cancel'),
-                              child: const Text('Cancel')),
-                          AdaptiveTextButton(() => Navigator.pop(context, 'OK'),
-                              child: const Text('OK')),
-                        ],
-                      ));
-            }, child: const Text("Simple Dialog")),
+            AdaptiveElevatedButton(
+                onPressed: () {
+                  showDialog<String>(
+                      context: context,
+                      builder: (context) => AdaptiveModalDialog(
+                            title: const Text("Simple Dialog"),
+                            content:
+                                const Text("Adaptive Modal Dialog content"),
+                            actions: [
+                              AdaptiveTextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(context, 'Cancel'),
+                                  child: const Text('Cancel')),
+                              AdaptiveTextButton(
+                                  onPressed: () => Navigator.pop(context, 'OK'),
+                                  child: const Text('OK')),
+                            ],
+                          ));
+                },
+                child: const Text("Simple Dialog")),
           ]),
+          const SizedBox(height: 10.0),
+          ExampleWidget(
+              name: "Adaptive Modal Bottom Sheet",
+              child: AdaptiveElevatedButton(
+                onPressed: () {
+                  showAdaptiveModalBottomSheet(
+                    context: context,
+                    title: const Text('This is the title'),
+                    actions: <BottomSheetAction>[
+                      BottomSheetAction(
+                        title: const Text(
+                          'Add',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        onPressed: (_) {},
+                        leading: const Icon(Icons.add, size: 25),
+                      ),
+                      BottomSheetAction(
+                        title: const Text(
+                          'Delete',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.red,
+                          ),
+                        ),
+                        onPressed: (_) {},
+                        leading: const Icon(
+                          Icons.delete,
+                          size: 25,
+                          color: Colors.red,
+                        ),
+                      ),
+                    ],
+                    cancelAction: CancelAction(title: const Text('Cancel')),
+                  );
+                },
+                child: const Text('Modal Bottom Sheet'),
+              )),
         ],
       ),
       // This trailing comma makes auto-formatting nicer for build methods.

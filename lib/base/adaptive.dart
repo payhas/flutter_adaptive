@@ -160,4 +160,8 @@ class AdaptiveState {
   void setAppearance(String name, dynamic value) {
     _parent.setAppearance(name, value);
   }
+
+  Map<String, dynamic> getAppearance(){
+    return _parent.appearance;
+  }
 }
