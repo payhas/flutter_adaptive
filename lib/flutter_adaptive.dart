@@ -20,6 +20,8 @@ export 'common/adaptive_circular_progress_indicator.dart';
 export 'common/adaptive_linear_progress_indicator.dart';
 export 'common/adaptive_date_picker.dart';
 export 'common/adaptive_modal_dialog.dart';
+export 'common/adaptive_context_menu_item.dart';
+export 'common/adaptive_context_menu.dart';
 
 export 'themes/adaptive_theme.dart';
 export 'themes/themed_appearance_manager.dart';
@@ -39,6 +41,8 @@ export 'themes/material/widget_builders/material_circular_progress_indicator_bui
 export 'themes/material/widget_builders/material_linear_progress_indicator_builder.dart';
 export 'themes/material/widget_builders/material_date_picker_builder.dart';
 export 'themes/material/widget_builders/material_modal_dialog_builder.dart';
+export 'themes/material/widget_builders/material_context_menu_item_builder.dart';
+export 'themes/material/widget_builders/material_context_menu_builder.dart';
 
 export 'themes/cupertino/cupertino_theme.dart';
 export 'themes/cupertino/widget_builders/cupertino_adaptive_app_builder.dart';
@@ -54,6 +58,8 @@ export 'themes/cupertino/widget_builders/cupertino_circular_progress_indicator_b
 export 'themes/cupertino/widget_builders/cupertino_linear_progress_indicator_builder.dart';
 export 'themes/cupertino/widget_builders/cupertino_date_picker_builder.dart';
 export 'themes/cupertino/widget_builders/cupertino_modal_dialog_builder.dart';
+export 'themes/cupertino/widget_builders/cupertino_context_menu_item_builder.dart';
+export 'themes/cupertino/widget_builders/cupertino_context_menu_builder.dart';
 
 export 'themes/fluentui/fluentui_theme.dart';
 export 'themes/fluentui/widget_builders/fluentui_adaptive_app_builder.dart';
@@ -69,3 +75,5 @@ export 'themes/fluentui/widget_builders/fluentui_circular_progress_indicator_bui
 export 'themes/fluentui/widget_builders/fluentui_linear_progress_indicator_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_date_picker_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_modal_dialog_builder.dart';
+export 'themes/fluentui/widget_builders/fluentui_context_menu_item_builder.dart';
+export 'themes/fluentui/widget_builders/fluentui_context_menu_builder.dart';
