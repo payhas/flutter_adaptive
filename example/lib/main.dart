@@ -249,6 +249,52 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 child: const Text('Bottom Sheet'),
               )),
+          const SizedBox(height: 10.0),
+          ExampleWidget(
+              name: "AdaptiveContextMenu",
+              child: Row(
+                children: [
+                  AdaptiveContextMenu(
+                    actions: [
+                      AdaptiveContextMenuItem(
+                        child: const Text("Create"),
+                        onPressed: () => displayDialog(context, "Create"),
+                      ),
+                      AdaptiveContextMenuItem(
+                        child: const Text("Read"),
+                        onPressed: () => displayDialog(context, "Read"),
+                      ),
+                      AdaptiveContextMenuItem(
+                        child: const Text("Update"),
+                        onPressed: () => displayDialog(context, "Update"),
+                      ),
+                      AdaptiveContextMenuItem(
+                        child: const Text("Delete"),
+                        onPressed: () => displayDialog(context, "Delete"),
+                      ),
+                    ],
+                    child: const FlutterLogo(size: 200.0),
+                  ),
+                  AdaptiveContextMenu(
+                    actions: [
+                      AdaptiveContextMenuItem(
+                        child: const Text("Copy"),
+                        onPressed: () => displayDialog(context, "Copy"),
+                      ),
+                      AdaptiveContextMenuItem(
+                        child: const Text("Paste"),
+                        onPressed: () => displayDialog(context, "Paste"),
+                      ),
+                    ],
+                    child: Container(
+                      color: Colors.green,
+                      child: const FlutterLogo(
+                        size: 200.0,
+                      ),
+                    ),
+                  ),
+                ],
+              )),
         ],
       ),
       // This trailing comma makes auto-formatting nicer for build methods.
@@ -270,4 +316,13 @@ class ExampleWidget extends StatelessWidget {
       child,
     ]);
   }
+}
+
+void displayDialog(BuildContext context, String message) {
+  showDialog<String>(
+      context: context,
+      builder: (context) => AdaptiveModalDialog(
+            title: const Text("context menu dialog"),
+            content: Text("You clicked context menu item '$message'."),
+          ));
 }
