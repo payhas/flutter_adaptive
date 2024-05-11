@@ -57,6 +57,12 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _setThemeMacosUI() {
+    setState(() {
+      ThemedAppearanceManager.setThemeOf(context, 'MacosUI');
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,6 +88,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: const Text("Fluent UI"),
                       onTap: () {
                         _setThemeFluentUI();
+                      },
+                    ),
+                    PopupMenuItem(
+                      child: const Text("Macos UI"),
+                      onTap: () {
+                        _setThemeMacosUI();
                       },
                     ),
                   ])

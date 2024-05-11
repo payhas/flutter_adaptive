@@ -81,3 +81,14 @@ export 'themes/fluentui/widget_builders/fluentui_modal_dialog_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_modal_bottom_sheet_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_context_menu_item_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_context_menu_builder.dart';
+
+export 'themes/macosui/macosui_theme.dart';
+export 'themes/macosui/widget_builders/macosui_adaptive_app_builder.dart';
+export 'themes/macosui/widget_builders/macosui_text_builder.dart';
+export 'themes/macosui/widget_builders/macosui_text_input_builder.dart';
+export 'themes/macosui/widget_builders/macosui_elevated_button_builder.dart';
+export 'themes/macosui/widget_builders/macosui_icon_button_builder.dart';
+export 'themes/macosui/widget_builders/macosui_checkbox_builder.dart';
+export 'themes/macosui/widget_builders/macosui_switch_builder.dart';
+export 'themes/macosui/widget_builders/macosui_circular_progress_indicator_builder.dart';
+export 'themes/macosui/widget_builders/macosui_linear_progress_indicator_builder.dart';
