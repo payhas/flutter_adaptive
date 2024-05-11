@@ -18,6 +18,8 @@ class FluentUITheme extends AdaptiveBundle {
             FluentUIDatePickerBuilder(),
             FluentUIModalDialogBuilder(),
             FluentUIModalBottomSheetBuilder(),
+            FluentUIContextMenuItemBuilder(),
+            FluentUIContextMenuBuilder(),
           },
         );
 }

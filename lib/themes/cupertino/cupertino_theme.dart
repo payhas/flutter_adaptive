@@ -18,6 +18,8 @@ class CupertinoTheme extends AdaptiveBundle {
             CupertinoDatePickerBuilder(),
             CupertinoModalDialogBuilder(),
             CupertinoModalBottomSheetBuilder(),
+            CupertinoContextMenuItemBuilder(),
+            CupertinoContextMenuBuilder(),
           },
         );
 }
