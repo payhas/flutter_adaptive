@@ -1,23 +1,34 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart';
 
-class FluentUIModalBottomSheetBuilder extends AdaptiveModalBottomSheet {
+class FluentUIModalBottomSheetBuilder
+    extends AdaptiveWidgetBuilder<AdaptiveModalBottomSheet>
+    implements ShowAdaptiveModalBottomSheet {
   @override
-  Future<T?> showModBottomSheet<T>(
-      BuildContext context, List<BottomSheetAction> actions,
-      {CancelAction? cancelAction,
-      Color? bottomSheetColor,
-      double? androidBorderRadius,
-      Widget? title,
-      bool isDismissible = true,
-      bool? useRootNavigator}) {
-    return MaterialModalBottomSheetBuilder().showModBottomSheet(
-        context, actions,
-        cancelAction: cancelAction,
-        bottomSheetColor: bottomSheetColor,
-        androidBorderRadius: androidBorderRadius,
-        title: title,
-        isDismissible: isDismissible,
-        useRootNavigator: useRootNavigator);
+  Widget build(BuildContext context, AdaptiveModalBottomSheet widget) {
+    return const SizedBox.shrink();
+  }
+
+  @override
+  Future<T?> showAdaptiveModalBottomSheet<T>({
+    required BuildContext context,
+    required List<BottomSheetAction> actions,
+    Widget? title,
+    CancelAction? cancelAction,
+    Color? bottomSheetColor,
+    double? androidBorderRadius,
+    bool isDismissible = true,
+    bool? useRootNavigator,
+  }) async {
+    return MaterialModalBottomSheetBuilder().showAdaptiveModalBottomSheet(
+      context: context,
+      actions: actions,
+      title: title,
+      cancelAction: cancelAction,
+      bottomSheetColor: bottomSheetColor,
+      androidBorderRadius: androidBorderRadius,
+      isDismissible: isDismissible,
+      useRootNavigator: useRootNavigator,
+    );
   }
 }

@@ -226,7 +226,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   showAdaptiveModalBottomSheet(
                     context: context,
-                    title: const Text('This is the title'),
                     actions: <BottomSheetAction>[
                       BottomSheetAction(
                         title: const Text(
@@ -256,6 +255,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                     ],
+                    title: const Text('This is the title'),
                     cancelAction: CancelAction(title: const Text('Cancel')),
                   );
                 },
