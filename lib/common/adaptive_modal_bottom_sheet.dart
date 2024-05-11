@@ -1,19 +1,64 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart';
 
-abstract class AdaptiveModalBottomSheet {
-  Future<T?> showModBottomSheet<T>(
-    BuildContext context,
-    List<BottomSheetAction> actions, {
+abstract class ShowAdaptiveModalBottomSheet {
+  Future<T?> showAdaptiveModalBottomSheet<T>({
+    required BuildContext context,
+    required List<BottomSheetAction> actions,
+    Widget? title,
     CancelAction? cancelAction,
     Color? bottomSheetColor,
     double? androidBorderRadius,
-    Widget? title,
     bool isDismissible = true,
     bool? useRootNavigator,
   });
+}
+
+class AdaptiveModalBottomSheet extends AdaptiveWidget
+    implements ShowAdaptiveModalBottomSheet {
+  const AdaptiveModalBottomSheet({
+    super.key,
+  });
+
+  @override
+  Future<T?> showAdaptiveModalBottomSheet<T>(
+      {required BuildContext context,
+      required List<BottomSheetAction> actions,
+      Widget? title,
+      CancelAction? cancelAction,
+      Color? bottomSheetColor,
+      double? androidBorderRadius,
+      bool isDismissible = true,
+      bool? useRootNavigator}) {
+    var builder = Adaptive.of(context)?.getBuilder(name);
+
+    if (builder is ShowAdaptiveModalBottomSheet) {
+      ShowAdaptiveModalBottomSheet sheet =
+          builder as ShowAdaptiveModalBottomSheet;
+
+      return sheet.showAdaptiveModalBottomSheet(
+        context: context,
+        actions: actions,
+        title: title,
+        cancelAction: cancelAction,
+        bottomSheetColor: bottomSheetColor,
+        androidBorderRadius: androidBorderRadius,
+        isDismissible: isDismissible,
+        useRootNavigator: useRootNavigator,
+      );
+    } else {
+      return MaterialModalBottomSheetBuilder().showAdaptiveModalBottomSheet(
+        context: context,
+        actions: actions,
+        title: title,
+        cancelAction: cancelAction,
+        bottomSheetColor: bottomSheetColor,
+        androidBorderRadius: androidBorderRadius,
+        isDismissible: isDismissible,
+        useRootNavigator: useRootNavigator,
+      );
+    }
+  }
 }
 
 class BottomSheetAction {
@@ -42,33 +87,23 @@ class CancelAction {
   });
 }
 
-Map<String, AdaptiveModalBottomSheet> modalBottomSheetBuilders = {
-  "Cupertino": CupertinoModalBottomSheetBuilder(),
-  "Material": MaterialModalBottomSheetBuilder(),
-  "FluentUI": FluentUIModalBottomSheetBuilder(),
-};
-
-Future<T?> showAdaptiveModalBottomSheet<T>({
-  required BuildContext context,
-  Widget? title,
-  required List<BottomSheetAction> actions,
-  CancelAction? cancelAction,
-  Color? bottomSheetColor,
-  double? androidBorderRadius,
-  bool isDismissible = true,
-  bool? useRootNavigator,
-}) async {
-  String currentTheme = Adaptive.of(context)?.getAppearance()["Theme"];
-
-  return modalBottomSheetBuilders[currentTheme]?.showModBottomSheet(
-        context,
-        actions,
-        title: title,
-        cancelAction: cancelAction,
-        bottomSheetColor: bottomSheetColor,
-        androidBorderRadius: androidBorderRadius,
-        isDismissible: isDismissible,
-        useRootNavigator: useRootNavigator,
-      ) ??
-      MaterialModalBottomSheetBuilder().showModBottomSheet(context, actions);
+Future<T?> showAdaptiveModalBottomSheet<T>(
+    {required BuildContext context,
+    required List<BottomSheetAction> actions,
+    Widget? title,
+    CancelAction? cancelAction,
+    Color? bottomSheetColor,
+    double? androidBorderRadius,
+    bool isDismissible = true,
+    bool? useRootNavigator}) {
+  return const AdaptiveModalBottomSheet().showAdaptiveModalBottomSheet(
+    context: context,
+    actions: actions,
+    title: title,
+    cancelAction: cancelAction,
+    bottomSheetColor: bottomSheetColor,
+    androidBorderRadius: androidBorderRadius,
+    isDismissible: isDismissible,
+    useRootNavigator: useRootNavigator,
+  );
 }
