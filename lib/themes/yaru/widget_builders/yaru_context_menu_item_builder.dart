@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart';
 
-class FluentUIContextMenuItemBuilder
+class YaruContextMenuItemBuilder
     extends AdaptiveWidgetBuilder<AdaptiveContextMenuItem> {
   @override
   Widget build(BuildContext context, AdaptiveContextMenuItem widget) {
