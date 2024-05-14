@@ -9,11 +9,8 @@ class AdaptiveTheme extends AdaptiveBundle {
               defaultTheme: defaultTheme,
             ),
           },
-          widgetBuilderSelectors: {
+          builderSelectors: {
             ThemedWidgetBuilderSelector(),
-          },
-          functionInvokerSelectors: {
-            ThemedFunctionInvokerSelector(),
           },
           bundles: {
             MaterialTheme(),

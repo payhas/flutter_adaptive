@@ -1,24 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../base/adaptive_function_invoker.dart';
+import '../../../base/adaptive_function_builder.dart';
 import '../../../common/adaptive_modal_bottom_sheet.dart';
 
-class CupertinoModalBottomSheetInvoker<T>
-    extends AdaptiveFunctionInvoker<AdaptiveModalBottomSheetFunction<T>, T> {
+class CupertinoModalBottomSheetBuilder<T>
+    extends AdaptiveFunctionBuilder<AdaptiveModalBottomSheet<T>, T> {
   @override
-  Future<T?> invoke(
-      BuildContext context, AdaptiveModalBottomSheetFunction<T> function) {
+  Future<T?> build(
+      BuildContext context, AdaptiveModalBottomSheet<T> component) {
     return showCupertinoModalPopup<T>(
       context: context,
-      barrierDismissible: function.isDismissible,
-      useRootNavigator: function.useRootNavigator ?? true,
+      barrierDismissible: component.isDismissible,
+      useRootNavigator: component.useRootNavigator ?? true,
       builder: (BuildContext context) {
         return actionSheet(
           context,
-          function.actions,
-          cancelAction: function.cancelAction,
-          title: function.title,
+          component.actions,
+          cancelAction: component.cancelAction,
+          title: component.title,
         );
       },
     );

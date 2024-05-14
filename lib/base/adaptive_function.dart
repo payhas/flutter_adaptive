@@ -1,24 +1,27 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_adaptive/base/adaptive_function_invoker.dart';
 
 import 'adaptive.dart';
+import 'adaptive_component.dart';
 
-abstract class AdaptiveFunction<T> {
+abstract class AdaptiveFunction<T> implements AdaptiveComponent<Future<T?>> {
+  @override
   String get name => runtimeType.toString();
 
   const AdaptiveFunction();
 
-  Future<T?> invoke(BuildContext context) {
-    var invoker = Adaptive.of(context)?.getInvoker(name);
-    if (invoker != null &&
-        invoker is AdaptiveFunctionInvoker<AdaptiveFunction<T>, T>) {
-      return invoker.invoke(context, this);
+  @override
+  Future<T?> build(BuildContext context) {
+    var builder =
+        Adaptive.of(context)?.getBuilder<AdaptiveFunction<T>, Future<T?>>(name);
+    if (builder != null) {
+      return builder.build(context, this);
     }
 
     if ((T).toString() != (dynamic).toString()) {
-      invoker = Adaptive.of(context)?.getInvoker(getDynamicName(name));
-      if (invoker != null) {
-        return invoker.invoke(context, this).then((x) => x as T?);
+      var dynamicBuilder = Adaptive.of(context)
+          ?.getBuilder<AdaptiveFunction, Future<dynamic>>(getDynamicName(name));
+      if (dynamicBuilder != null) {
+        return dynamicBuilder.build(context, this).then((x) => x as T?);
       }
     }
 

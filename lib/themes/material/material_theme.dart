@@ -3,7 +3,7 @@ import 'package:flutter_adaptive/flutter_adaptive.dart';
 class MaterialTheme extends AdaptiveBundle {
   MaterialTheme()
       : super(
-          widgetBuilders: {
+          builders: {
             MaterialAppBuilder(),
             MaterialTextBuilder(),
             MaterialTextInputBuilder(),
@@ -18,11 +18,9 @@ class MaterialTheme extends AdaptiveBundle {
             MaterialDatePickerBuilder(),
             MaterialModalDialogBuilder(),
             MaterialModalDialogActionBuilder(),
+            MaterialModalBottomSheetBuilder(),
             MaterialContextMenuItemBuilder(),
             MaterialContextMenuBuilder(),
-          },
-          functionInvokers: {
-            MaterialModalBottomSheetInvoker(),
           },
         );
 }

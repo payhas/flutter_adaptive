@@ -3,7 +3,7 @@ import 'package:flutter_adaptive/flutter_adaptive.dart';
 class CupertinoTheme extends AdaptiveBundle {
   CupertinoTheme()
       : super(
-          widgetBuilders: {
+          builders: {
             CupertinoAppBuilder(),
             CupertinoTextBuilder(),
             CupertinoTextInputBuilder(),
@@ -18,11 +18,9 @@ class CupertinoTheme extends AdaptiveBundle {
             CupertinoDatePickerBuilder(),
             CupertinoModalDialogBuilder(),
             CupertinoModalDialogActionBuilder(),
+            CupertinoModalBottomSheetBuilder(),
             CupertinoContextMenuItemBuilder(),
             CupertinoContextMenuBuilder(),
-          },
-          functionInvokers: {
-            CupertinoModalBottomSheetInvoker(),
           },
         );
 }

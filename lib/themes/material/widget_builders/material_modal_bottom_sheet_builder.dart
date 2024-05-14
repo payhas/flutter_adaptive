@@ -1,36 +1,36 @@
 import 'package:flutter/material.dart';
 
-import '../../../base/adaptive_function_invoker.dart';
+import '../../../base/adaptive_function_builder.dart';
 import '../../../common/adaptive_modal_bottom_sheet.dart';
 
-class MaterialModalBottomSheetInvoker<T>
-    extends AdaptiveFunctionInvoker<AdaptiveModalBottomSheetFunction<T>, T> {
+class MaterialModalBottomSheetBuilder<T>
+    extends AdaptiveFunctionBuilder<AdaptiveModalBottomSheet<T>, T> {
   @override
-  Future<T?> invoke(
-      BuildContext context, AdaptiveModalBottomSheetFunction<T> function) {
+  Future<T?> build(
+      BuildContext context, AdaptiveModalBottomSheet<T> component) {
     final BottomSheetThemeData sheetTheme = Theme.of(context).bottomSheetTheme;
     return showModalBottomSheet<T>(
       context: context,
       elevation: 0,
-      isDismissible: function.isDismissible,
-      enableDrag: function.isDismissible,
+      isDismissible: component.isDismissible,
+      enableDrag: component.isDismissible,
       isScrollControlled: true,
-      backgroundColor: function.bottomSheetColor ??
+      backgroundColor: component.bottomSheetColor ??
           sheetTheme.modalBackgroundColor ??
           sheetTheme.backgroundColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(function.androidBorderRadius ?? 30),
-          topRight: Radius.circular(function.androidBorderRadius ?? 30),
+          topLeft: Radius.circular(component.androidBorderRadius ?? 30),
+          topRight: Radius.circular(component.androidBorderRadius ?? 30),
         ),
       ),
-      useRootNavigator: function.useRootNavigator ?? false,
+      useRootNavigator: component.useRootNavigator ?? false,
       builder: (BuildContext context) {
         return actionSheet(
           context,
-          function.actions,
-          cancelAction: function.cancelAction,
-          title: function.title,
+          component.actions,
+          cancelAction: component.cancelAction,
+          title: component.title,
         );
       },
     );
