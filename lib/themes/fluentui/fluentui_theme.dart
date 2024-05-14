@@ -4,7 +4,7 @@ class FluentUITheme extends AdaptiveBundle {
   FluentUITheme()
       : super(
           widgetBuilders: {
-            FluentUIAdaptiveAppBuilder(),
+            FluentUIAppBuilder(),
             FluentUITextBuilder(),
             FluentUITextInputBuilder(),
             FluentUITextButtonBuilder(),
@@ -17,7 +17,6 @@ class FluentUITheme extends AdaptiveBundle {
             FluentUILinearProgressIndicatorBuilder(),
             FluentUIDatePickerBuilder(),
             FluentUIModalDialogBuilder(),
-            FluentUIModalBottomSheetBuilder(),
             FluentUIContextMenuItemBuilder(),
             FluentUIContextMenuBuilder(),
           },

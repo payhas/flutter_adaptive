@@ -4,7 +4,7 @@ class CupertinoTheme extends AdaptiveBundle {
   CupertinoTheme()
       : super(
           widgetBuilders: {
-            CupertinoAdaptiveAppBuilder(),
+            CupertinoAppBuilder(),
             CupertinoTextBuilder(),
             CupertinoTextInputBuilder(),
             CupertinoTextButtonBuilder(),
@@ -17,9 +17,11 @@ class CupertinoTheme extends AdaptiveBundle {
             CupertinoLinearProgressIndicatorBuilder(),
             CupertinoDatePickerBuilder(),
             CupertinoModalDialogBuilder(),
-            CupertinoModalBottomSheetBuilder(),
             CupertinoContextMenuItemBuilder(),
             CupertinoContextMenuBuilder(),
+          },
+          functionInvokers: {
+            CupertinoModalBottomSheetInvoker(),
           },
         );
 }

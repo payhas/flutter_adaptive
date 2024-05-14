@@ -1,21 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_adaptive/flutter_adaptive.dart';
 
-class MaterialModalBottomSheetBuilder
-    extends AdaptiveWidgetBuilder<AdaptiveModalBottomSheet>
-    implements ShowAdaptiveModalBottomSheet {
+import '../../../base/adaptive_function_invoker.dart';
+import '../../../common/adaptive_modal_bottom_sheet.dart';
+
+class MaterialModalBottomSheetInvoker<T>
+    extends AdaptiveFunctionInvoker<AdaptiveModalBottomSheetFunction<T>, T> {
   @override
-  Widget build(BuildContext context, AdaptiveModalBottomSheet widget) {
-    return const SizedBox.shrink();
+  Future<T?> invoke(
+      BuildContext context, AdaptiveModalBottomSheetFunction<T> function) {
+    final BottomSheetThemeData sheetTheme = Theme.of(context).bottomSheetTheme;
+    return showModalBottomSheet<T>(
+      context: context,
+      elevation: 0,
+      isDismissible: function.isDismissible,
+      enableDrag: function.isDismissible,
+      isScrollControlled: true,
+      backgroundColor: function.bottomSheetColor ??
+          sheetTheme.modalBackgroundColor ??
+          sheetTheme.backgroundColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(function.androidBorderRadius ?? 30),
+          topRight: Radius.circular(function.androidBorderRadius ?? 30),
+        ),
+      ),
+      useRootNavigator: function.useRootNavigator ?? false,
+      builder: (BuildContext context) {
+        return actionSheet(
+          context,
+          function.actions,
+          cancelAction: function.cancelAction,
+          title: function.title,
+        );
+      },
+    );
   }
 
-  Widget actionSheet(BuildContext context, List<BottomSheetAction> actions,
-      {CancelAction? cancelAction,
-      Color? bottomSheetColor,
-      double? androidBorderRadius,
-      Widget? title,
-      bool isDismissible = true,
-      bool? useRootNavigator}) {
+  Widget actionSheet(
+    BuildContext context,
+    List<AdaptiveBottomSheetAction> actions, {
+    AdaptiveBottomSheetCancelAction? cancelAction,
+    Widget? title,
+  }) {
     final double screenHeight = MediaQuery.of(context).size.height;
     final defaultTextStyle =
         Theme.of(context).textTheme.titleLarge ?? const TextStyle(fontSize: 20);
@@ -90,46 +116,6 @@ class MaterialModalBottomSheetBuilder
           ),
         ),
       ),
-    );
-  }
-
-  @override
-  Future<T?> showAdaptiveModalBottomSheet<T>({
-    required BuildContext context,
-    required List<BottomSheetAction> actions,
-    Widget? title,
-    CancelAction? cancelAction,
-    Color? bottomSheetColor,
-    double? androidBorderRadius,
-    bool isDismissible = true,
-    bool? useRootNavigator,
-  }) async {
-    final BottomSheetThemeData sheetTheme = Theme.of(context).bottomSheetTheme;
-    return showModalBottomSheet<T>(
-      context: context,
-      elevation: 0,
-      isDismissible: isDismissible,
-      enableDrag: isDismissible,
-      isScrollControlled: true,
-      backgroundColor: bottomSheetColor ??
-          sheetTheme.modalBackgroundColor ??
-          sheetTheme.backgroundColor,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(androidBorderRadius ?? 30),
-          topRight: Radius.circular(androidBorderRadius ?? 30),
-        ),
-      ),
-      useRootNavigator: useRootNavigator ?? false,
-      builder: (BuildContext context) {
-        return actionSheet(context, actions,
-            cancelAction: cancelAction,
-            bottomSheetColor: bottomSheetColor,
-            androidBorderRadius: androidBorderRadius,
-            title: title,
-            isDismissible: isDismissible,
-            useRootNavigator: useRootNavigator);
-      },
     );
   }
 }
