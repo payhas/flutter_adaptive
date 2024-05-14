@@ -12,7 +12,7 @@ Future<T?> showAdaptiveModalBottomSheet<T>({
   Color? bottomSheetColor,
   double? androidBorderRadius,
 }) {
-  return AdaptiveModalBottomSheetFunction<T>(
+  return AdaptiveModalBottomSheet<T>(
     actions: actions,
     title: title,
     cancelAction: cancelAction,
@@ -20,10 +20,10 @@ Future<T?> showAdaptiveModalBottomSheet<T>({
     androidBorderRadius: androidBorderRadius,
     isDismissible: isDismissible,
     useRootNavigator: useRootNavigator,
-  ).invoke(context);
+  ).build(context);
 }
 
-class AdaptiveModalBottomSheetFunction<T> extends AdaptiveFunction<T> {
+class AdaptiveModalBottomSheet<T> extends AdaptiveFunction<T> {
   final Widget title;
   final List<AdaptiveBottomSheetAction> actions;
   final AdaptiveBottomSheetCancelAction? cancelAction;
@@ -32,7 +32,7 @@ class AdaptiveModalBottomSheetFunction<T> extends AdaptiveFunction<T> {
   final Color? bottomSheetColor;
   final double? androidBorderRadius;
 
-  const AdaptiveModalBottomSheetFunction({
+  const AdaptiveModalBottomSheet({
     required this.title,
     required this.actions,
     this.cancelAction,

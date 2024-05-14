@@ -1,28 +1,20 @@
 import 'adaptive_appearance_manager.dart';
 
-import 'adaptive_widget_builder.dart';
-import 'adaptive_widget_builder_selector.dart';
-
-import 'adaptive_function_invoker.dart';
-import 'adaptive_function_invoker_selector.dart';
+import 'adaptive_component_builder.dart';
+import 'adaptive_component_builder_selector.dart';
 
 abstract class AdaptiveBundle {
   AdaptiveBundle({
     this.appearanceManagers,
-    this.widgetBuilders,
-    this.widgetBuilderSelectors,
-    this.functionInvokers,
-    this.functionInvokerSelectors,
+    this.builders,
+    this.builderSelectors,
     this.bundles,
   });
 
   final Set<AdaptiveAppearanceManager>? appearanceManagers;
 
-  final Set<AdaptiveWidgetBuilder>? widgetBuilders;
-  final Set<AdaptiveWidgetBuilderSelector>? widgetBuilderSelectors;
-
-  final Set<AdaptiveFunctionInvoker>? functionInvokers;
-  final Set<AdaptiveFunctionInvokerSelector>? functionInvokerSelectors;
+  final Set<AdaptiveComponentBuilder>? builders;
+  final Set<AdaptiveComponentBuilderSelector>? builderSelectors;
 
   final Set<AdaptiveBundle>? bundles;
 }
