@@ -1,24 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart';
 
-class MaterialModalDialogBuilder
-    extends AdaptiveWidgetBuilder<AdaptiveModalDialog> {
+class MaterialModalDialogBuilder<T>
+    extends AdaptiveFunctionBuilder<AdaptiveModalDialog<T>, T> {
   @override
-  Widget build(BuildContext context, AdaptiveModalDialog widget) {
-    return AlertDialog(
-      title: widget.title,
-      content: widget.content,
-      actions: <Widget>[
-        if (widget.secondaryButton != null)
-          TextButton(
-            onPressed: widget.secondaryButton!.onPressed,
-            child: widget.secondaryButton!.child,
-          ),
-        TextButton(
-          onPressed: widget.primaryButton.onPressed,
-          child: widget.primaryButton.child,
-        ),
-      ],
+  Future<T?> build(BuildContext context, AdaptiveModalDialog component) {
+    return showDialog<T>(
+      context: context,
+      builder: (context) {
+        return materialDialog(
+          context,
+          component.title,
+          component.content,
+          component.primaryButton,
+          component.secondaryButton,
+        );
+      },
     );
   }
+}
+
+Widget materialDialog(
+  BuildContext context,
+  Widget title,
+  Widget content,
+  AdaptiveModalDialogAction primaryButton,
+  AdaptiveModalDialogAction? secondaryButton,
+) {
+  return AlertDialog(
+    title: title,
+    content: content,
+    actions: <Widget>[
+      if (secondaryButton != null)
+        TextButton(
+          onPressed: secondaryButton!.onPressed,
+          child: secondaryButton!.child,
+        ),
+      TextButton(
+        onPressed: primaryButton.onPressed,
+        child: primaryButton.child,
+      ),
+    ],
+  );
 }

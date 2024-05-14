@@ -17,7 +17,6 @@ class MacosUITheme extends AdaptiveBundle {
             MacosUILinearProgressIndicatorBuilder(),
             MacosUIDatePickerBuilder(),
             MacosUIModalDialogBuilder(),
-            MacosUIModalDialogActionBuilder(),
           },
         );
 }

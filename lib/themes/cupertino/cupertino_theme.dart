@@ -17,7 +17,6 @@ class CupertinoTheme extends AdaptiveBundle {
             CupertinoLinearProgressIndicatorBuilder(),
             CupertinoDatePickerBuilder(),
             CupertinoModalDialogBuilder(),
-            CupertinoModalDialogActionBuilder(),
             CupertinoModalBottomSheetBuilder(),
             CupertinoContextMenuItemBuilder(),
             CupertinoContextMenuBuilder(),

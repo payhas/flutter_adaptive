@@ -2,36 +2,57 @@ import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart';
 
-class MacosUIModalDialogBuilder
-    extends AdaptiveWidgetBuilder<AdaptiveModalDialog> {
+class MacosUIModalDialogBuilder<T>
+    extends AdaptiveFunctionBuilder<AdaptiveModalDialog<T>, T> {
   @override
-  Widget build(BuildContext context, AdaptiveModalDialog widget) {
-    return (widget.secondaryButton != null)
-        ? MacosAlertDialog(
-            appIcon: const FlutterLogo(),
-            title: widget.title ?? const Text(""),
-            message: widget.content ?? const Text(""),
-            primaryButton: PushButton(
-              controlSize: ControlSize.large,
-              onPressed: widget.primaryButton.onPressed,
-              child: widget.primaryButton.child,
-            ),
-            secondaryButton: PushButton(
-              controlSize: ControlSize.large,
-              secondary: true,
-              onPressed: widget.secondaryButton!.onPressed,
-              child: widget.secondaryButton!.child,
-            ),
-          )
-        : MacosAlertDialog(
-            appIcon: const FlutterLogo(),
-            title: widget.title ?? const Text(""),
-            message: widget.content ?? const Text(""),
-            primaryButton: PushButton(
-              controlSize: ControlSize.large,
-              onPressed: widget.primaryButton.onPressed,
-              child: widget.primaryButton.child,
-            ),
-          );
+  Future<T?> build(BuildContext context, AdaptiveModalDialog component) {
+    return showMacosAlertDialog<T>(
+      context: context,
+      builder: (context) {
+        return macosuiDialog(
+          context,
+          component.title,
+          component.content,
+          component.primaryButton,
+          component.secondaryButton,
+        );
+      },
+    );
   }
+}
+
+Widget macosuiDialog(
+  BuildContext context,
+  Widget title,
+  Widget content,
+  AdaptiveModalDialogAction primaryButton,
+  AdaptiveModalDialogAction? secondaryButton,
+) {
+  return (secondaryButton != null)
+      ? MacosAlertDialog(
+          appIcon: const FlutterLogo(),
+          title: title ?? const Text(""),
+          message: content ?? const Text(""),
+          primaryButton: PushButton(
+            controlSize: ControlSize.large,
+            onPressed: primaryButton.onPressed,
+            child: primaryButton.child,
+          ),
+          secondaryButton: PushButton(
+            controlSize: ControlSize.large,
+            secondary: true,
+            onPressed: secondaryButton!.onPressed,
+            child: secondaryButton!.child,
+          ),
+        )
+      : MacosAlertDialog(
+          appIcon: const FlutterLogo(),
+          title: title ?? const Text(""),
+          message: content ?? const Text(""),
+          primaryButton: PushButton(
+            controlSize: ControlSize.large,
+            onPressed: primaryButton.onPressed,
+            child: primaryButton.child,
+          ),
+        );
 }

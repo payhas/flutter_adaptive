@@ -200,20 +200,17 @@ class _MyHomePageState extends State<MyHomePage> {
               name: "Adaptive Modal Dialog",
               child: AdaptiveElevatedButton(
                   onPressed: () {
-                    showDialog<String>(
-                        context: context,
-                        builder: (context) => AdaptiveModalDialog(
-                              title: const Text("Simple Dialog"),
-                              content:
-                                  const Text("Adaptive Modal Dialog content"),
-                              primaryButton: AdaptiveModalDialogAction(
-                                  onPressed: () => Navigator.pop(context, 'OK'),
-                                  child: const Text('OK')),
-                              secondaryButton: AdaptiveModalDialogAction(
-                                  onPressed: () =>
-                                      Navigator.pop(context, 'Cancel'),
-                                  child: const Text('Cancel')),
-                            ));
+                    showAdaptiveModalDialog<String>(
+                      context: context,
+                      title: const Text("Simple Dialog"),
+                      content: const Text("Adaptive Modal Dialog content"),
+                      primaryButton: AdaptiveModalDialogAction(
+                          onPressed: () => Navigator.pop(context, 'OK'),
+                          child: const Text('OK')),
+                      secondaryButton: AdaptiveModalDialogAction(
+                          onPressed: () => Navigator.pop(context, 'Cancel'),
+                          child: const Text('Cancel')),
+                    );
                   },
                   child: const Text("Simple Dialog"))),
           const SizedBox(height: 10.0),
@@ -330,13 +327,11 @@ class ExampleWidget extends StatelessWidget {
 }
 
 void displayDialog(BuildContext context, String message) {
-  showDialog<String>(
-      context: context,
-      builder: (context) => AdaptiveModalDialog(
-            title: const Text("context menu dialog"),
-            content: Text("You clicked context menu item '$message'."),
-            primaryButton: AdaptiveModalDialogAction(
-                onPressed: Navigator.of(context).pop,
-                child: const AdaptiveText("OK")),
-          ));
+  showAdaptiveModalDialog<String>(
+    context: context,
+    title: const Text("context menu dialog"),
+    content: Text("You clicked context menu item '$message'."),
+    primaryButton: AdaptiveModalDialogAction(
+        onPressed: Navigator.of(context).pop, child: const AdaptiveText("OK")),
+  );
 }
