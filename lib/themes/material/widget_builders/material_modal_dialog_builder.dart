@@ -33,8 +33,8 @@ Widget materialDialog(
     actions: <Widget>[
       if (secondaryButton != null)
         TextButton(
-          onPressed: secondaryButton!.onPressed,
-          child: secondaryButton!.child,
+          onPressed: secondaryButton.onPressed,
+          child: secondaryButton.child,
         ),
       TextButton(
         onPressed: primaryButton.onPressed,

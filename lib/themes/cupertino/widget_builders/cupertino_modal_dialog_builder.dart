@@ -33,8 +33,8 @@ Widget cupertinoDialog(
     actions: <CupertinoDialogAction>[
       if (secondaryButton != null)
         CupertinoDialogAction(
-          onPressed: secondaryButton!.onPressed,
-          child: secondaryButton!.child,
+          onPressed: secondaryButton.onPressed,
+          child: secondaryButton.child,
         ),
       CupertinoDialogAction(
         isDefaultAction: true,

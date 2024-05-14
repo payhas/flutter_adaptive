@@ -31,8 +31,8 @@ Widget macosuiDialog(
   return (secondaryButton != null)
       ? MacosAlertDialog(
           appIcon: const FlutterLogo(),
-          title: title ?? const Text(""),
-          message: content ?? const Text(""),
+          title: title,
+          message: content,
           primaryButton: PushButton(
             controlSize: ControlSize.large,
             onPressed: primaryButton.onPressed,
@@ -41,14 +41,14 @@ Widget macosuiDialog(
           secondaryButton: PushButton(
             controlSize: ControlSize.large,
             secondary: true,
-            onPressed: secondaryButton!.onPressed,
-            child: secondaryButton!.child,
+            onPressed: secondaryButton.onPressed,
+            child: secondaryButton.child,
           ),
         )
       : MacosAlertDialog(
           appIcon: const FlutterLogo(),
-          title: title ?? const Text(""),
-          message: content ?? const Text(""),
+          title: title,
+          message: content,
           primaryButton: PushButton(
             controlSize: ControlSize.large,
             onPressed: primaryButton.onPressed,

@@ -37,8 +37,8 @@ Widget fluentuiDialog(
       ),
       if (secondaryButton != null)
         Button(
-          onPressed: secondaryButton!.onPressed,
-          child: secondaryButton!.child,
+          onPressed: secondaryButton.onPressed,
+          child: secondaryButton.child,
         ),
     ],
   );
