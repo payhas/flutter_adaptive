@@ -3,7 +3,7 @@ import 'package:flutter_adaptive/flutter_adaptive.dart';
 class MacosUITheme extends AdaptiveBundle {
   MacosUITheme()
       : super(
-          widgetBuilders: {
+          builders: {
             MacosUIAdaptiveAppBuilder(),
             MacosUITextBuilder(),
             MacosUITextInputBuilder(),
