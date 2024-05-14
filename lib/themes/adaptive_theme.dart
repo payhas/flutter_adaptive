@@ -12,6 +12,9 @@ class AdaptiveTheme extends AdaptiveBundle {
           widgetBuilderSelectors: {
             ThemedWidgetBuilderSelector(),
           },
+          functionInvokerSelectors: {
+            ThemedFunctionInvokerSelector(),
+          },
           bundles: {
             MaterialTheme(),
             CupertinoTheme(),

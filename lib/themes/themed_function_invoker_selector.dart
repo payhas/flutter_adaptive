@@ -1,12 +1,12 @@
 import 'themed_appearance_manager.dart';
-import '../base/adaptive_widget_builder.dart';
-import '../base/adaptive_widget_builder_selector.dart';
+import '../base/adaptive_function_invoker.dart';
+import '../base/adaptive_function_invoker_selector.dart';
 
-class ThemedWidgetBuilderSelector extends AdaptiveWidgetBuilderSelector {
+class ThemedFunctionInvokerSelector extends AdaptiveFunctionInvokerSelector {
   @override
-  AdaptiveWidgetBuilder? select(
+  AdaptiveFunctionInvoker? select(
     String componentName,
-    Set<AdaptiveWidgetBuilder>? componentList,
+    Set<AdaptiveFunctionInvoker>? componentList,
     Map<String, dynamic> appearance,
   ) {
     String? theme = appearance[ThemedAppearanceManager.themeAppearanceName];

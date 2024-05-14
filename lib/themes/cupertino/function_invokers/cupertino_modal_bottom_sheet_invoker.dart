@@ -1,22 +1,35 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_adaptive/flutter_adaptive.dart';
 
-class CupertinoModalBottomSheetBuilder
-    extends AdaptiveWidgetBuilder<AdaptiveModalBottomSheet>
-    implements ShowAdaptiveModalBottomSheet {
+import '../../../base/adaptive_function_invoker.dart';
+import '../../../common/adaptive_modal_bottom_sheet.dart';
+
+class CupertinoModalBottomSheetInvoker<T>
+    extends AdaptiveFunctionInvoker<AdaptiveModalBottomSheetFunction<T>, T> {
   @override
-  Widget build(BuildContext context, AdaptiveModalBottomSheet widget) {
-    return const SizedBox.shrink();
+  Future<T?> invoke(
+      BuildContext context, AdaptiveModalBottomSheetFunction<T> function) {
+    return showCupertinoModalPopup<T>(
+      context: context,
+      barrierDismissible: function.isDismissible,
+      useRootNavigator: function.useRootNavigator ?? true,
+      builder: (BuildContext context) {
+        return actionSheet(
+          context,
+          function.actions,
+          cancelAction: function.cancelAction,
+          title: function.title,
+        );
+      },
+    );
   }
 
-  Widget actionSheet(BuildContext context, List<BottomSheetAction> actions,
-      {CancelAction? cancelAction,
-      Color? bottomSheetColor,
-      double? androidBorderRadius,
-      Widget? title,
-      bool isDismissible = true,
-      bool? useRootNavigator}) {
+  Widget actionSheet(
+    BuildContext context,
+    List<AdaptiveBottomSheetAction> actions, {
+    AdaptiveBottomSheetCancelAction? cancelAction,
+    Widget? title,
+  }) {
     final defaultTextStyle =
         Theme.of(context).textTheme.titleLarge ?? const TextStyle(fontSize: 20);
 
@@ -67,33 +80,6 @@ class CupertinoModalBottomSheetBuilder
               ),
             )
           : null,
-    );
-  }
-
-  @override
-  Future<T?> showAdaptiveModalBottomSheet<T>({
-    required BuildContext context,
-    required List<BottomSheetAction> actions,
-    Widget? title,
-    CancelAction? cancelAction,
-    Color? bottomSheetColor,
-    double? androidBorderRadius,
-    bool isDismissible = true,
-    bool? useRootNavigator,
-  }) async {
-    return showCupertinoModalPopup(
-      context: context,
-      barrierDismissible: isDismissible,
-      useRootNavigator: useRootNavigator ?? true,
-      builder: (BuildContext context) {
-        return actionSheet(context, actions,
-            cancelAction: cancelAction,
-            bottomSheetColor: bottomSheetColor,
-            androidBorderRadius: androidBorderRadius,
-            title: title,
-            isDismissible: isDismissible,
-            useRootNavigator: useRootNavigator);
-      },
     );
   }
 }
