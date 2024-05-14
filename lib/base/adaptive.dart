@@ -2,14 +2,10 @@ import 'package:flutter/widgets.dart';
 
 import 'adaptive_bundle.dart';
 import 'adaptive_appearance_manager.dart';
-
-import 'adaptive_widget_manager.dart';
-import 'adaptive_widget_builder.dart';
-import 'adaptive_widget_builder_selector.dart';
-
-import 'adaptive_function_manager.dart';
-import 'adaptive_function_invoker.dart';
-import 'adaptive_function_invoker_selector.dart';
+import 'adaptive_component.dart';
+import 'adaptive_component_builder.dart';
+import 'adaptive_component_builder_selector.dart';
+import 'adaptive_component_builder_manager.dart';
 
 class Adaptive extends StatefulWidget implements AdaptiveBundle {
   const Adaptive({
@@ -17,10 +13,8 @@ class Adaptive extends StatefulWidget implements AdaptiveBundle {
     super.key,
     this.appearance,
     this.appearanceManagers,
-    this.widgetBuilders,
-    this.widgetBuilderSelectors,
-    this.functionInvokers,
-    this.functionInvokerSelectors,
+    this.builders,
+    this.builderSelectors,
     this.bundles,
   });
 
@@ -32,14 +26,9 @@ class Adaptive extends StatefulWidget implements AdaptiveBundle {
   final Set<AdaptiveAppearanceManager>? appearanceManagers;
 
   @override
-  final Set<AdaptiveWidgetBuilder>? widgetBuilders;
+  final Set<AdaptiveComponentBuilder>? builders;
   @override
-  final Set<AdaptiveWidgetBuilderSelector>? widgetBuilderSelectors;
-
-  @override
-  final Set<AdaptiveFunctionInvoker>? functionInvokers;
-  @override
-  final Set<AdaptiveFunctionInvokerSelector>? functionInvokerSelectors;
+  final Set<AdaptiveComponentBuilderSelector>? builderSelectors;
 
   @override
   final Set<AdaptiveBundle>? bundles;
@@ -59,8 +48,8 @@ class _AdaptiveState extends State<Adaptive> {
 
   final Set<AdaptiveAppearanceManager> appearanceManagers = {};
 
-  final AdaptiveWidgetManager widgetManager = AdaptiveWidgetManager();
-  final AdaptiveFunctionManager functionManager = AdaptiveFunctionManager();
+  final AdaptiveComponentBuilderManager componentBuilderManager =
+      AdaptiveComponentBuilderManager();
 
   AdaptiveState get state => AdaptiveState._(this);
 
@@ -72,27 +61,18 @@ class _AdaptiveState extends State<Adaptive> {
 
     _setupBundle(widget);
 
-    widgetManager.setupComponentImplementationSelectors({
-      DefaultWidgetBuilderSelector(),
-    });
-    functionManager.setupComponentImplementationSelectors({
-      DefaultFunctionInvokerSelector(),
+    componentBuilderManager.setupBuilderSelectors({
+      DefaultComponentBuilderSelector(),
     });
 
-    widgetManager.selectComponentImplementations(appearance);
-    functionManager.selectComponentImplementations(appearance);
+    componentBuilderManager.selectBuilder(appearance);
   }
 
   void _setupBundle(AdaptiveBundle bundle) {
     _setupAppearanceManagers(bundle.appearanceManagers);
-    
-    widgetManager.setupComponentImplementations(bundle.widgetBuilders);
-    widgetManager
-        .setupComponentImplementationSelectors(bundle.widgetBuilderSelectors);
 
-    functionManager.setupComponentImplementations(bundle.functionInvokers);
-    functionManager
-        .setupComponentImplementationSelectors(bundle.functionInvokerSelectors);
+    componentBuilderManager.setupBuilders(bundle.builders);
+    componentBuilderManager.setupBuilderSelectors(bundle.builderSelectors);
 
     bundle.bundles?.forEach(_setupBundle);
   }
@@ -119,8 +99,7 @@ class _AdaptiveState extends State<Adaptive> {
   void setAppearance(String name, dynamic value) {
     setState(() {
       appearance.addAll({name: value});
-      widgetManager.selectComponentImplementations(appearance);
-      functionManager.selectComponentImplementations(appearance);
+      componentBuilderManager.selectBuilder(appearance);
     });
   }
 
@@ -135,12 +114,14 @@ class AdaptiveState {
 
   final _AdaptiveState _parent;
 
-  AdaptiveWidgetBuilder? getBuilder(String widgetName) {
-    return _parent.widgetManager.componentImplementationsActive[widgetName];
-  }
+  AdaptiveComponentBuilder<T, R>? getBuilder<T extends AdaptiveComponent<R>, R>(
+      String componentName) {
+    var builder = _parent.componentBuilderManager.buildersActive[componentName];
+    if (builder is AdaptiveComponentBuilder<T, R>) {
+      return builder;
+    }
 
-  AdaptiveFunctionInvoker? getInvoker(String functionName) {
-    return _parent.functionManager.componentImplementationsActive[functionName];
+    return null;
   }
 
   AdaptiveAppearanceManager? getAppearanceManager(String name) {
