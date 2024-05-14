@@ -8,16 +8,18 @@ class CupertinoModalDialogBuilder
     return CupertinoAlertDialog(
       title: widget.title,
       content: widget.content,
-      actions: widget.actions ??
-          <CupertinoDialogAction>[
-            CupertinoDialogAction(
-              isDefaultAction: true,
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text('Ok'),
-            ),
-          ],
+      actions: <CupertinoDialogAction>[
+        if (widget.secondaryButton != null)
+          CupertinoDialogAction(
+            onPressed: widget.secondaryButton!.onPressed,
+            child: widget.secondaryButton!.child,
+          ),
+        CupertinoDialogAction(
+          isDefaultAction: true,
+          onPressed: widget.primaryButton.onPressed,
+          child: widget.primaryButton.child,
+        ),
+      ],
     );
   }
 }

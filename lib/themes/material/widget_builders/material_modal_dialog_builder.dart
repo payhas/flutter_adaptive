@@ -8,13 +8,17 @@ class MaterialModalDialogBuilder
     return AlertDialog(
       title: widget.title,
       content: widget.content,
-      actions: widget.actions ??
-          <Widget>[
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('Ok'),
-            ),
-          ],
+      actions: <Widget>[
+        if (widget.secondaryButton != null)
+          TextButton(
+            onPressed: widget.secondaryButton!.onPressed,
+            child: widget.secondaryButton!.child,
+          ),
+        TextButton(
+          onPressed: widget.primaryButton.onPressed,
+          child: widget.primaryButton.child,
+        ),
+      ],
     );
   }
 }

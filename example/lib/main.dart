@@ -206,16 +206,13 @@ class _MyHomePageState extends State<MyHomePage> {
                               title: const Text("Simple Dialog"),
                               content:
                                   const Text("Adaptive Modal Dialog content"),
-                              actions: [
-                                AdaptiveTextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(context, 'Cancel'),
-                                    child: const Text('Cancel')),
-                                AdaptiveTextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(context, 'OK'),
-                                    child: const Text('OK')),
-                              ],
+                              primaryButton: AdaptiveModalDialogAction(
+                                  onPressed: () => Navigator.pop(context, 'OK'),
+                                  child: const Text('OK')),
+                              secondaryButton: AdaptiveModalDialogAction(
+                                  onPressed: () =>
+                                      Navigator.pop(context, 'Cancel'),
+                                  child: const Text('Cancel')),
                             ));
                   },
                   child: const Text("Simple Dialog"))),
@@ -336,5 +333,8 @@ void displayDialog(BuildContext context, String message) {
       builder: (context) => AdaptiveModalDialog(
             title: const Text("context menu dialog"),
             content: Text("You clicked context menu item '$message'."),
+            primaryButton: AdaptiveModalDialogAction(
+                onPressed: Navigator.of(context).pop,
+                child: const AdaptiveText("OK")),
           ));
 }

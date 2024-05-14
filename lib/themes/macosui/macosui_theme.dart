@@ -7,12 +7,17 @@ class MacosUITheme extends AdaptiveBundle {
             MacosUIAdaptiveAppBuilder(),
             MacosUITextBuilder(),
             MacosUITextInputBuilder(),
+            MacosUITextButtonBuilder(),
             MacosUIElevatedButtonBuilder(),
             MacosUIIconButtonBuilder(),
+            MacosUISliderBuilder(),
             MacosUICheckboxBuilder(),
             MacosUISwitchBuilder(),
             MacosUICircularProgressIndicatorBuilder(),
             MacosUILinearProgressIndicatorBuilder(),
+            MacosUIDatePickerBuilder(),
+            MacosUIModalDialogBuilder(),
+            MacosUIModalDialogActionBuilder(),
           },
         );
 }

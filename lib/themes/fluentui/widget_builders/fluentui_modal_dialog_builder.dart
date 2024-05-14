@@ -8,13 +8,17 @@ class FluentUIModalDialogBuilder
     return ContentDialog(
       title: widget.title,
       content: widget.content,
-      actions: widget.actions ??
-          [
-            FilledButton(
-              child: const Text('Ok'),
-              onPressed: () => Navigator.pop(context),
-            ),
-          ],
+      actions: [
+        FilledButton(
+          onPressed: widget.primaryButton.onPressed,
+          child: widget.primaryButton.child,
+        ),
+        if (widget.secondaryButton != null)
+          Button(
+            onPressed: widget.secondaryButton!.onPressed,
+            child: widget.secondaryButton!.child,
+          ),
+      ],
     );
   }
 }

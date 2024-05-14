@@ -1,17 +1,19 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_adaptive/base/adaptive_widget.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 class AdaptiveModalDialog extends AdaptiveWidget {
   const AdaptiveModalDialog({
     super.key,
     this.title,
     this.content,
-    this.actions,
+    required this.primaryButton,
+    this.secondaryButton,
   });
 
   final Widget? title;
 
   final Widget? content;
 
-  final List<Widget>? actions;
+  final AdaptiveModalDialogAction primaryButton;
+  final AdaptiveModalDialogAction? secondaryButton;
 }
