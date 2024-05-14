@@ -17,8 +17,6 @@ class FluentUITheme extends AdaptiveBundle {
             FluentUILinearProgressIndicatorBuilder(),
             FluentUIDatePickerBuilder(),
             FluentUIModalDialogBuilder(),
-            FluentUIContextMenuItemBuilder(),
-            FluentUIContextMenuBuilder(),
           },
         );
 }

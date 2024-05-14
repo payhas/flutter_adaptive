@@ -16,10 +16,10 @@ class AdaptiveTheme extends AdaptiveBundle {
             ThemedFunctionInvokerSelector(),
           },
           bundles: {
-            MaterialTheme(),
             CupertinoTheme(),
             FluentUITheme(),
             YaruTheme(),
+            MaterialTheme(),
           },
         );
 }

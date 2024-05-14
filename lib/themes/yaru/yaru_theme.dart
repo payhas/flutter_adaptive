@@ -15,11 +15,7 @@ class YaruTheme extends AdaptiveBundle {
             YaruSwitchBuilder(),
             YaruCircularProgressIndicatorBuilder(),
             YaruLinearProgressIndicatorBuilder(),
-            YaruDatePickerBuilder(),
             YaruModalDialogBuilder(),
-            YaruModalBottomSheetBuilder(),
-            YaruContextMenuItemBuilder(),
-            YaruContextMenuBuilder(),
           },
         );
 }
