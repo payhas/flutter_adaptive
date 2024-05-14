@@ -28,9 +28,10 @@ export 'common/adaptive_context_menu.dart';
 export 'themes/adaptive_theme.dart';
 export 'themes/themed_appearance_manager.dart';
 export 'themes/themed_widget_builder_selector.dart';
+export 'themes/themed_function_invoker_selector.dart';
 
 export 'themes/material/material_theme.dart';
-export 'themes/material/widget_builders/material_adaptive_app_builder.dart';
+export 'themes/material/widget_builders/material_app_builder.dart';
 export 'themes/material/widget_builders/material_text_builder.dart';
 export 'themes/material/widget_builders/material_text_input_builder.dart';
 export 'themes/material/widget_builders/material_text_button_builder.dart';
@@ -47,9 +48,10 @@ export 'themes/material/widget_builders/material_modal_dialog_action_builder.dar
 export 'themes/material/widget_builders/material_modal_bottom_sheet_builder.dart';
 export 'themes/material/widget_builders/material_context_menu_item_builder.dart';
 export 'themes/material/widget_builders/material_context_menu_builder.dart';
+export 'themes/material/function_invokers/material_modal_bottom_sheet_invoker.dart';
 
 export 'themes/cupertino/cupertino_theme.dart';
-export 'themes/cupertino/widget_builders/cupertino_adaptive_app_builder.dart';
+export 'themes/cupertino/widget_builders/cupertino_app_builder.dart';
 export 'themes/cupertino/widget_builders/cupertino_text_builder.dart';
 export 'themes/cupertino/widget_builders/cupertino_text_input_builder.dart';
 export 'themes/cupertino/widget_builders/cupertino_text_button_builder.dart';
@@ -66,9 +68,10 @@ export 'themes/cupertino/widget_builders/cupertino_modal_dialog_action_builder.d
 export 'themes/cupertino/widget_builders/cupertino_modal_bottom_sheet_builder.dart';
 export 'themes/cupertino/widget_builders/cupertino_context_menu_item_builder.dart';
 export 'themes/cupertino/widget_builders/cupertino_context_menu_builder.dart';
+export 'themes/cupertino/function_invokers/cupertino_modal_bottom_sheet_invoker.dart';
 
 export 'themes/fluentui/fluentui_theme.dart';
-export 'themes/fluentui/widget_builders/fluentui_adaptive_app_builder.dart';
+export 'themes/fluentui/widget_builders/fluentui_app_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_text_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_text_input_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_text_button_builder.dart';

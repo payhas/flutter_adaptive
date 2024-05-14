@@ -1,34 +1,16 @@
+import 'adaptive_component_implementation_selector.dart';
 import 'adaptive_widget_builder.dart';
+import 'adaptive_widget.dart';
 
-abstract class AdaptiveWidgetBuilderSelector {
-  String get name => runtimeType.toString();
-
-  AdaptiveWidgetBuilder? select(
-    String widgetName,
-    Set<AdaptiveWidgetBuilder>? widgetBuilders,
-    Map<String, dynamic> appearance,
-  );
-
-  @override
-  int get hashCode => name.hashCode;
-
-  @override
-  bool operator ==(Object other) {
-    if (other is AdaptiveWidgetBuilderSelector) {
-      return name == other.name;
-    }
-
-    return false;
-  }
-}
+abstract class AdaptiveWidgetBuilderSelector
+    extends AdaptiveComponentImplementationSelector<AdaptiveWidgetBuilder> {}
 
 class DefaultWidgetBuilderSelector extends AdaptiveWidgetBuilderSelector {
   @override
-  AdaptiveWidgetBuilder? select(
-    String widgetName,
-    Set<AdaptiveWidgetBuilder>? widgetBuilders,
-    Map<String, dynamic> appearance,
-  ) {
-    return widgetBuilders?.lastOrNull;
+  AdaptiveWidgetBuilder<AdaptiveWidget>? select(
+      String componentName,
+      Set<AdaptiveWidgetBuilder<AdaptiveWidget>>? componentList,
+      Map<String, dynamic> appearance) {
+    return componentList?.lastOrNull;
   }
 }

@@ -4,7 +4,7 @@ class MaterialTheme extends AdaptiveBundle {
   MaterialTheme()
       : super(
           widgetBuilders: {
-            MaterialAdaptiveAppBuilder(),
+            MaterialAppBuilder(),
             MaterialTextBuilder(),
             MaterialTextInputBuilder(),
             MaterialTextButtonBuilder(),
@@ -21,6 +21,9 @@ class MaterialTheme extends AdaptiveBundle {
             // MaterialModalBottomSheetBuilder(),
             // MaterialContextMenuItemBuilder(),
             // MaterialContextMenuBuilder(),
+          },
+          functionInvokers: {
+            MaterialModalBottomSheetInvoker(),
           },
         );
 }
