@@ -212,10 +212,11 @@ class _MyHomePageState extends State<MyHomePage> {
               name: "Adaptive Modal Bottom Sheet",
               child: AdaptiveElevatedButton(
                 onPressed: () {
-                  showAdaptiveModalBottomSheet(
+                  showAdaptiveModalBottomSheet<String>(
                     context: context,
-                    actions: <BottomSheetAction>[
-                      BottomSheetAction(
+                    title: const Text('This is the title'),
+                    actions: [
+                      AdaptiveBottomSheetAction(
                         title: const Text(
                           'Add',
                           style: TextStyle(
@@ -223,10 +224,10 @@ class _MyHomePageState extends State<MyHomePage> {
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        onPressed: (_) {},
+                        onPressed: (_) => Navigator.pop(context, 'Add'),
                         leading: const Icon(Icons.add, size: 25),
                       ),
-                      BottomSheetAction(
+                      AdaptiveBottomSheetAction(
                         title: const Text(
                           'Delete',
                           style: TextStyle(
@@ -235,7 +236,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             color: Colors.red,
                           ),
                         ),
-                        onPressed: (_) {},
+                        onPressed: (_) => Navigator.pop(context, 'Delete'),
                         leading: const Icon(
                           Icons.delete,
                           size: 25,
@@ -243,8 +244,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                     ],
-                    title: const Text('This is the title'),
-                    cancelAction: CancelAction(title: const Text('Cancel')),
+                    cancelAction: AdaptiveBottomSheetCancelAction(
+                      title: const Text('Cancel'),
+                    ),
                   );
                 },
                 child: const Text('Bottom Sheet'),

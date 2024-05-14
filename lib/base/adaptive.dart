@@ -1,9 +1,15 @@
 import 'package:flutter/widgets.dart';
 
 import 'adaptive_bundle.dart';
+import 'adaptive_appearance_manager.dart';
+
+import 'adaptive_widget_manager.dart';
 import 'adaptive_widget_builder.dart';
 import 'adaptive_widget_builder_selector.dart';
-import 'adaptive_appearance_manager.dart';
+
+import 'adaptive_function_manager.dart';
+import 'adaptive_function_invoker.dart';
+import 'adaptive_function_invoker_selector.dart';
 
 class Adaptive extends StatefulWidget implements AdaptiveBundle {
   const Adaptive({
@@ -13,6 +19,8 @@ class Adaptive extends StatefulWidget implements AdaptiveBundle {
     this.appearanceManagers,
     this.widgetBuilders,
     this.widgetBuilderSelectors,
+    this.functionInvokers,
+    this.functionInvokerSelectors,
     this.bundles,
   });
 
@@ -25,9 +33,13 @@ class Adaptive extends StatefulWidget implements AdaptiveBundle {
 
   @override
   final Set<AdaptiveWidgetBuilder>? widgetBuilders;
-
   @override
   final Set<AdaptiveWidgetBuilderSelector>? widgetBuilderSelectors;
+
+  @override
+  final Set<AdaptiveFunctionInvoker>? functionInvokers;
+  @override
+  final Set<AdaptiveFunctionInvokerSelector>? functionInvokerSelectors;
 
   @override
   final Set<AdaptiveBundle>? bundles;
@@ -47,11 +59,8 @@ class _AdaptiveState extends State<Adaptive> {
 
   final Set<AdaptiveAppearanceManager> appearanceManagers = {};
 
-  final Map<String, Set<AdaptiveWidgetBuilder>> widgetBuilders = {};
-
-  final Set<AdaptiveWidgetBuilderSelector> widgetBuilderSelectors = {};
-
-  final Map<String, AdaptiveWidgetBuilder> widgetBuildersActive = {};
+  final AdaptiveWidgetManager widgetManager = AdaptiveWidgetManager();
+  final AdaptiveFunctionManager functionManager = AdaptiveFunctionManager();
 
   AdaptiveState get state => AdaptiveState._(this);
 
@@ -62,17 +71,28 @@ class _AdaptiveState extends State<Adaptive> {
     _setupAppearance(widget.appearance);
 
     _setupBundle(widget);
-    _setupWidgetBuilderSelectors({
+
+    widgetManager.setupComponentImplementationSelectors({
       DefaultWidgetBuilderSelector(),
     });
+    functionManager.setupComponentImplementationSelectors({
+      DefaultFunctionInvokerSelector(),
+    });
 
-    _selectWidgetBuilders();
+    widgetManager.selectComponentImplementations(appearance);
+    functionManager.selectComponentImplementations(appearance);
   }
 
   void _setupBundle(AdaptiveBundle bundle) {
     _setupAppearanceManagers(bundle.appearanceManagers);
-    _setupWidgetBuilders(bundle.widgetBuilders);
-    _setupWidgetBuilderSelectors(bundle.widgetBuilderSelectors);
+    
+    widgetManager.setupComponentImplementations(bundle.widgetBuilders);
+    widgetManager
+        .setupComponentImplementationSelectors(bundle.widgetBuilderSelectors);
+
+    functionManager.setupComponentImplementations(bundle.functionInvokers);
+    functionManager
+        .setupComponentImplementationSelectors(bundle.functionInvokerSelectors);
 
     bundle.bundles?.forEach(_setupBundle);
   }
@@ -96,45 +116,11 @@ class _AdaptiveState extends State<Adaptive> {
     });
   }
 
-  _setupWidgetBuilders(Set<AdaptiveWidgetBuilder>? extraWidgetBuilders) {
-    extraWidgetBuilders?.forEach((widgetBuilder) {
-      if (!widgetBuilders.containsKey(widgetBuilder.widgetName)) {
-        widgetBuilders.addAll({widgetBuilder.widgetName: {}});
-      }
-
-      if (!widgetBuilders[widgetBuilder.widgetName]!.contains(widgetBuilder)) {
-        widgetBuilders[widgetBuilder.widgetName]!.add(widgetBuilder);
-      }
-    });
-  }
-
-  _setupWidgetBuilderSelectors(
-      Set<AdaptiveWidgetBuilderSelector>? extraWidgetBuilderSelectors) {
-    if (extraWidgetBuilderSelectors != null) {
-      widgetBuilderSelectors.addAll(extraWidgetBuilderSelectors);
-    }
-  }
-
-  _selectWidgetBuilders() {
-    widgetBuildersActive.clear();
-
-    for (final widgetName in widgetBuilders.keys) {
-      for (var widgetBuilderSelector in widgetBuilderSelectors) {
-        var builder = widgetBuilderSelector.select(
-            widgetName, widgetBuilders[widgetName], appearance);
-
-        if (builder != null) {
-          widgetBuildersActive.addAll({widgetName: builder});
-          break;
-        }
-      }
-    }
-  }
-
   void setAppearance(String name, dynamic value) {
     setState(() {
       appearance.addAll({name: value});
-      _selectWidgetBuilders();
+      widgetManager.selectComponentImplementations(appearance);
+      functionManager.selectComponentImplementations(appearance);
     });
   }
 
@@ -150,7 +136,11 @@ class AdaptiveState {
   final _AdaptiveState _parent;
 
   AdaptiveWidgetBuilder? getBuilder(String widgetName) {
-    return _parent.widgetBuildersActive[widgetName];
+    return _parent.widgetManager.componentImplementationsActive[widgetName];
+  }
+
+  AdaptiveFunctionInvoker? getInvoker(String functionName) {
+    return _parent.functionManager.componentImplementationsActive[functionName];
   }
 
   AdaptiveAppearanceManager? getAppearanceManager(String name) {
@@ -161,7 +151,7 @@ class AdaptiveState {
     _parent.setAppearance(name, value);
   }
 
-  Map<String, dynamic> getAppearance(){
-    return _parent.appearance;
+  dynamic getAppearance(String name) {
+    return _parent.appearance[name];
   }
 }
