@@ -18,9 +18,8 @@ class MaterialTheme extends AdaptiveBundle {
             MaterialDatePickerBuilder(),
             MaterialModalDialogBuilder(),
             MaterialModalDialogActionBuilder(),
-            // MaterialModalBottomSheetBuilder(),
-            // MaterialContextMenuItemBuilder(),
-            // MaterialContextMenuBuilder(),
+            MaterialContextMenuItemBuilder(),
+            MaterialContextMenuBuilder(),
           },
           functionInvokers: {
             MaterialModalBottomSheetInvoker(),
