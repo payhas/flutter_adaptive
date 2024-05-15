@@ -57,6 +57,12 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _setThemeYaru() {
+    setState(() {
+      ThemedAppearanceManager.setThemeOf(context, 'Yaru');
+    });
+  }
+
   void _setThemeMacosUI() {
     setState(() {
       ThemedAppearanceManager.setThemeOf(context, 'MacosUI');
@@ -88,6 +94,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: const Text("Fluent UI"),
                       onTap: () {
                         _setThemeFluentUI();
+                      },
+                    ),
+                    PopupMenuItem(
+                      child: const Text("Yaru"),
+                      onTap: () {
+                        _setThemeYaru();
                       },
                     ),
                     PopupMenuItem(
