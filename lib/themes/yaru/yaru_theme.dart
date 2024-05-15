@@ -3,7 +3,7 @@ import 'package:flutter_adaptive/flutter_adaptive.dart';
 class YaruTheme extends AdaptiveBundle {
   YaruTheme()
       : super(
-          widgetBuilders: {
+          builders: {
             YaruAdaptiveAppBuilder(),
             YaruTextBuilder(),
             YaruTextInputBuilder(),
@@ -16,6 +16,7 @@ class YaruTheme extends AdaptiveBundle {
             YaruCircularProgressIndicatorBuilder(),
             YaruLinearProgressIndicatorBuilder(),
             YaruModalDialogBuilder(),
+            YaruContextMenuBuilder(),
           },
         );
 }

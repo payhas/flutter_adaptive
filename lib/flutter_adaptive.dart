@@ -82,6 +82,8 @@ export 'themes/fluentui/widget_builders/fluentui_circular_progress_indicator_bui
 export 'themes/fluentui/widget_builders/fluentui_linear_progress_indicator_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_date_picker_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_modal_dialog_builder.dart';
+export 'themes/fluentui/widget_builders/fluentui_context_menu_builder.dart';
+export 'themes/fluentui/widget_builders/fluentui_context_menu_item_builder.dart';
 
 export 'themes/yaru/yaru_theme.dart';
 export 'themes/yaru/widget_builders/yaru_adaptive_app_builder.dart';
@@ -96,3 +98,4 @@ export 'themes/yaru/widget_builders/yaru_switch_builder.dart';
 export 'themes/yaru/widget_builders/yaru_circular_progress_indicator.dart';
 export 'themes/yaru/widget_builders/yaru_linear_progress_indicator.dart';
 export 'themes/yaru/widget_builders/yaru_modal_dialog_builder.dart';
+export 'themes/yaru/widget_builders/yaru_context_menu_builder.dart';
