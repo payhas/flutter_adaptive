@@ -114,3 +114,4 @@ export 'themes/macosui/widget_builders/macosui_circular_progress_indicator_build
 export 'themes/macosui/widget_builders/macosui_linear_progress_indicator_builder.dart';
 export 'themes/macosui/widget_builders/macosui_date_picker_builder.dart';
 export 'themes/macosui/widget_builders/macosui_modal_dialog_builder.dart';
+export 'themes/macosui/widget_builders/macosui_context_menu_builder.dart';
