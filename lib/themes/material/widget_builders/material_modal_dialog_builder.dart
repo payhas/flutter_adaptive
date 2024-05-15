@@ -16,6 +16,10 @@ class MaterialModalDialogBuilder<T>
           component.secondaryButton,
         );
       },
+      barrierDismissible: component.barrierDismissible,
+      useRootNavigator: component.useRootNavigator,
+      routeSettings: component.routeSettings,
+      barrierLabel: component.barrierLabel,
     );
   }
 }
