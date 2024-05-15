@@ -13,9 +13,10 @@ class AdaptiveTheme extends AdaptiveBundle {
             ThemedWidgetBuilderSelector(),
           },
           bundles: {
-            MaterialTheme(),
             CupertinoTheme(),
             FluentUITheme(),
+            YaruTheme(),
+            MaterialTheme(),
           },
         );
 }

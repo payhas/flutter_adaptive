@@ -57,6 +57,12 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _setThemeYaru() {
+    setState(() {
+      ThemedAppearanceManager.setThemeOf(context, 'Yaru');
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,6 +88,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: const Text("Fluent UI"),
                       onTap: () {
                         _setThemeFluentUI();
+                      },
+                    ),
+                    PopupMenuItem(
+                      child: const Text("Yaru"),
+                      onTap: () {
+                        _setThemeYaru();
                       },
                     ),
                   ])
