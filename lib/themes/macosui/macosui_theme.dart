@@ -18,6 +18,7 @@ class MacosUITheme extends AdaptiveBundle {
             MacosUIDatePickerBuilder(),
             MacosUIModalDialogBuilder(),
             MacosUIContextMenuBuilder(),
+            MacosUIScaffoldBuilder(),
           },
         );
 }

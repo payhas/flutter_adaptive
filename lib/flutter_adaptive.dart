@@ -111,7 +111,6 @@ export 'themes/yaru/widget_builders/yaru_circular_progress_indicator.dart';
 export 'themes/yaru/widget_builders/yaru_linear_progress_indicator.dart';
 export 'themes/yaru/widget_builders/yaru_modal_dialog_builder.dart';
 export 'themes/yaru/widget_builders/yaru_context_menu_builder.dart';
-export 'themes/yaru/widget_builders/yaru_scaffold_builder.dart';
 
 export 'themes/macosui/macosui_theme.dart';
 export 'themes/macosui/widget_builders/macosui_adaptive_app_builder.dart';
@@ -128,3 +127,4 @@ export 'themes/macosui/widget_builders/macosui_linear_progress_indicator_builder
 export 'themes/macosui/widget_builders/macosui_date_picker_builder.dart';
 export 'themes/macosui/widget_builders/macosui_modal_dialog_builder.dart';
 export 'themes/macosui/widget_builders/macosui_context_menu_builder.dart';
+export 'themes/macosui/widget_builders/macosui_scaffold_builder.dart';

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart';
 import 'package:provider/provider.dart';
@@ -122,6 +121,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 AdaptiveElevatedButton(
                     onPressed: () => _setThemeYaru(),
                     child: AdaptiveText("Yaru")),
+                AdaptiveElevatedButton(
+                    onPressed: () => _setThemeMacosUI(),
+                    child: AdaptiveText("MacosUI")),
               ],
             ),
           ),
@@ -197,12 +199,13 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
           ),
+          const SizedBox(height: 20.0),
           ExampleWidget(
               name: "Adaptive Circular Progress Indicator",
               child: AdaptiveCircularProgressIndicator(
                 value: null,
               )),
-          SizedBox(height: 10),
+          SizedBox(height: 20.0),
           ExampleWidget(
               name: "Adaptive Linear Progress Indicator",
               child: SizedBox(
