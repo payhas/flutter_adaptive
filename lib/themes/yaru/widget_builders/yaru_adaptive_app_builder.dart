@@ -7,10 +7,11 @@ class YaruAdaptiveAppBuilder extends AdaptiveWidgetBuilder<AdaptiveApp> {
   Widget build(BuildContext context, AdaptiveApp widget) {
     return YaruTheme(builder: (context, yaru, child) {
       return MaterialApp(
+        theme: widget.theme?.brightness == Brightness.light
+            ? yaru.theme
+            : yaru.darkTheme,
         home: widget.home,
         debugShowCheckedModeBanner: widget.debugShowCheckedModeBanner,
-        theme: yaru.theme,
-        darkTheme: yaru.darkTheme,
       );
     });
   }

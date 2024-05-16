@@ -17,6 +17,7 @@ class YaruTheme extends AdaptiveBundle {
             YaruLinearProgressIndicatorBuilder(),
             YaruModalDialogBuilder(),
             YaruContextMenuBuilder(),
+            YaruScaffoldBuilder(),
           },
         );
 }

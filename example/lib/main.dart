@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,9 +17,15 @@ class MyApp extends StatelessWidget {
       bundles: {
         AdaptiveTheme(),
       },
-      builder: (context) => AdaptiveApp(
-        home: MyHomePage(title: 'Flutter Adaptive'),
-        debugShowCheckedModeBanner: false,
+      builder: (context) => ChangeNotifierProvider(
+        create: (_) => ThemeNotifier(),
+        child: Consumer<ThemeNotifier>(
+          builder: (context, theme, _) => AdaptiveApp(
+            theme: theme.getTheme(),
+            debugShowCheckedModeBanner: false,
+            home: MyHomePage(title: 'Flutter Adaptive'),
+          ),
+        ),
       ),
     );
   }
@@ -63,45 +71,54 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _setThemeLight(ThemeNotifier theme) {
+    theme.setLightMode();
+  }
+
+  void _setThemeDark(ThemeNotifier theme) {
+    theme.setDarkMode();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-        actions: [
-          PopupMenuButton(
-              itemBuilder: (context) => [
-                    PopupMenuItem(
-                      child: const Text("Material"),
-                      onTap: () {
-                        _setThemeMaterial();
-                      },
-                    ),
-                    PopupMenuItem(
-                      child: const Text("Cupertino"),
-                      onTap: () {
-                        _setThemeCupertino();
-                      },
-                    ),
-                    PopupMenuItem(
-                      child: const Text("Fluent UI"),
-                      onTap: () {
-                        _setThemeFluentUI();
-                      },
-                    ),
-                    PopupMenuItem(
-                      child: const Text("Yaru"),
-                      onTap: () {
-                        _setThemeYaru();
-                      },
-                    ),
-                  ])
-        ],
-      ),
+    return AdaptiveScaffold(
       body: ListView(
         padding: const EdgeInsets.all(10.0),
         children: [
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Wrap(
+              alignment: WrapAlignment.center,
+              spacing: 20.0,
+              runSpacing: 20.0,
+              children: [
+                AdaptiveElevatedButton(
+                    onPressed: () {
+                      var theme = context.read<ThemeNotifier>();
+                      _setThemeLight(theme);
+                    },
+                    child: AdaptiveText("Light")),
+                AdaptiveElevatedButton(
+                    onPressed: () {
+                      var theme = context.read<ThemeNotifier>();
+                      _setThemeDark(theme);
+                    },
+                    child: AdaptiveText("Dark")),
+                AdaptiveElevatedButton(
+                    onPressed: () => _setThemeMaterial(),
+                    child: AdaptiveText("Material")),
+                AdaptiveElevatedButton(
+                    onPressed: () => _setThemeCupertino(),
+                    child: AdaptiveText("Cupertino")),
+                AdaptiveElevatedButton(
+                    onPressed: () => _setThemeFluentUI(),
+                    child: AdaptiveText("FluentUI")),
+                AdaptiveElevatedButton(
+                    onPressed: () => _setThemeYaru(),
+                    child: AdaptiveText("Yaru")),
+              ],
+            ),
+          ),
           ExampleWidget(
               name: "Adaptive Text",
               child: Expanded(
@@ -265,7 +282,7 @@ class _MyHomePageState extends State<MyHomePage> {
               )),
           const SizedBox(height: 10.0),
           ExampleWidget(
-              name: "AdaptiveContextMenu",
+              name: "Adaptive Context Menu",
               child: Row(
                 children: [
                   AdaptiveContextMenu(
@@ -339,4 +356,32 @@ void displayDialog(BuildContext context, String message) {
             title: const Text("context menu dialog"),
             content: Text("You clicked context menu item '$message'."),
           ));
+}
+
+class ThemeNotifier with ChangeNotifier {
+  final lightTheme = const AdaptiveThemeData(
+    brightness: Brightness.light,
+  );
+
+  final darkTheme = const AdaptiveThemeData(
+    brightness: Brightness.dark,
+  );
+
+  late AdaptiveThemeData _themeData;
+
+  AdaptiveThemeData getTheme() => _themeData;
+
+  ThemeNotifier() {
+    _themeData = lightTheme;
+  }
+
+  void setDarkMode() {
+    _themeData = darkTheme;
+    notifyListeners();
+  }
+
+  void setLightMode() {
+    _themeData = lightTheme;
+    notifyListeners();
+  }
 }

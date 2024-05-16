@@ -6,6 +6,7 @@ class FluentUIAppBuilder extends AdaptiveWidgetBuilder<AdaptiveApp> {
   @override
   Widget build(BuildContext context, AdaptiveApp widget) {
     return FluentApp(
+      theme: FluentThemeData(brightness: widget.theme?.brightness),
       home: widget.home,
       debugShowCheckedModeBanner: widget.debugShowCheckedModeBanner,
     );
