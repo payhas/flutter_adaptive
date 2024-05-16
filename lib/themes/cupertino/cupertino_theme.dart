@@ -20,6 +20,7 @@ class CupertinoTheme extends AdaptiveBundle {
             CupertinoModalBottomSheetBuilder(),
             CupertinoContextMenuItemBuilder(),
             CupertinoContextMenuBuilder(),
+            CupertinoScaffoldBuilder(),
           },
           bundles: {
             CupertinoIcons(),

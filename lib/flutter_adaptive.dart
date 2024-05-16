@@ -30,6 +30,8 @@ export 'common/adaptive_modal_bottom_sheet.dart';
 export 'common/adaptive_context_menu_item.dart';
 export 'common/adaptive_context_menu.dart';
 export 'common/adaptive_icons.dart';
+export 'common/adaptive_scaffold.dart';
+export 'common/adaptive_theme_data.dart';
 
 export 'themes/adaptive_theme.dart';
 export 'themes/themed_appearance_manager.dart';
@@ -54,6 +56,7 @@ export 'themes/material/widget_builders/material_modal_bottom_sheet_builder.dart
 export 'themes/material/widget_builders/material_context_menu_item_builder.dart';
 export 'themes/material/widget_builders/material_context_menu_builder.dart';
 export 'themes/material/widget_builders/material_icon_builder.dart';
+export 'themes/material/widget_builders/material_scaffold_builder.dart';
 
 export 'themes/cupertino/cupertino_theme.dart';
 export 'themes/cupertino/cupertino_icons.dart';
@@ -74,6 +77,7 @@ export 'themes/cupertino/widget_builders/cupertino_modal_bottom_sheet_builder.da
 export 'themes/cupertino/widget_builders/cupertino_context_menu_item_builder.dart';
 export 'themes/cupertino/widget_builders/cupertino_context_menu_builder.dart';
 export 'themes/cupertino/widget_builders/cupertino_icon_builder.dart';
+export 'themes/cupertino/widget_builders/cupertino_scaffold_builder.dart';
 
 export 'themes/fluentui/fluentui_theme.dart';
 export 'themes/fluentui/widget_builders/fluentui_app_builder.dart';
@@ -91,6 +95,7 @@ export 'themes/fluentui/widget_builders/fluentui_date_picker_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_modal_dialog_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_context_menu_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_context_menu_item_builder.dart';
+export 'themes/fluentui/widget_builders/fluentui_scaffold_builder.dart';
 
 export 'themes/yaru/yaru_theme.dart';
 export 'themes/yaru/widget_builders/yaru_adaptive_app_builder.dart';
@@ -122,3 +127,4 @@ export 'themes/macosui/widget_builders/macosui_linear_progress_indicator_builder
 export 'themes/macosui/widget_builders/macosui_date_picker_builder.dart';
 export 'themes/macosui/widget_builders/macosui_modal_dialog_builder.dart';
 export 'themes/macosui/widget_builders/macosui_context_menu_builder.dart';
+export 'themes/macosui/widget_builders/macosui_scaffold_builder.dart';

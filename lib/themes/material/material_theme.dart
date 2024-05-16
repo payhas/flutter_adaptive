@@ -20,6 +20,7 @@ class MaterialTheme extends AdaptiveBundle {
             MaterialModalBottomSheetBuilder(),
             MaterialContextMenuItemBuilder(),
             MaterialContextMenuBuilder(),
+            MaterialScaffoldBuilder(),
           },
           bundles: {
             MaterialIcons(),

@@ -1,13 +1,15 @@
-import 'package:flutter/widgets.dart';
-import '../base/adaptive_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 class AdaptiveApp extends AdaptiveWidget {
   const AdaptiveApp({
     super.key,
-    required this.home,
+    this.home,
+    this.theme,
     this.debugShowCheckedModeBanner = true,
   });
 
-  final Widget home;
+  final Widget? home;
+  final AdaptiveThemeData? theme;
   final bool debugShowCheckedModeBanner;
 }
