@@ -115,6 +115,13 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(10.0),
         children: [
           ExampleWidget(
+              name: "Adaptive Icon",
+              child: AdaptiveIcon(
+                AdaptiveIcons.home,
+                color: Colors.green,
+              )),
+          const SizedBox(height: 10.0),
+          ExampleWidget(
               name: "Adaptive Text",
               child: Expanded(
                 child: AdaptiveText(
@@ -144,7 +151,8 @@ class _MyHomePageState extends State<MyHomePage> {
           ExampleWidget(
               name: "Adaptive Icon Button",
               child: AdaptiveIconButton(
-                  onPressed: () {}, icon: const Icon(Icons.add_call))),
+                  onPressed: () {},
+                  icon: const AdaptiveIcon(AdaptiveIcons.add))),
           const SizedBox(height: 10.0),
           ExampleWidget(
               name: "Adaptive Slider",
@@ -167,10 +175,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
               )),
           const SizedBox(height: 10.0),
-          Row(children: [
-            const Text("Adaptive Switch"),
-            const SizedBox(width: 10.0),
-            AdaptiveSwitch(
+          ExampleWidget(
+            name: "Adaptive Switch",
+            child: AdaptiveSwitch(
               value: isSwitchOn,
               onChanged: (value) {
                 setState(() {
@@ -178,7 +185,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 });
               },
             ),
-          ]),
+          ),
           ExampleWidget(
               name: "Adaptive Circular Progress Indicator",
               child: AdaptiveCircularProgressIndicator(
@@ -271,7 +278,7 @@ class _MyHomePageState extends State<MyHomePage> {
               )),
           const SizedBox(height: 10.0),
           ExampleWidget(
-              name: "AdaptiveContextMenu",
+              name: "Adaptive Context Menu",
               child: Row(
                 children: [
                   AdaptiveContextMenu(
@@ -331,7 +338,7 @@ class ExampleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(children: [
-      SizedBox(width: 100.0, child: Text(name)),
+      SizedBox(width: 256.0, child: Text(name)),
       const SizedBox(width: 10.0),
       child,
     ]);
