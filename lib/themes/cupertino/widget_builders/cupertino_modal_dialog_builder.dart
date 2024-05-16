@@ -1,23 +1,50 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart';
 
-class CupertinoModalDialogBuilder
-    extends AdaptiveWidgetBuilder<AdaptiveModalDialog> {
+class CupertinoModalDialogBuilder<T>
+    extends AdaptiveFunctionBuilder<AdaptiveModalDialog<T>, T> {
   @override
-  Widget build(BuildContext context, AdaptiveModalDialog widget) {
-    return CupertinoAlertDialog(
-      title: widget.title,
-      content: widget.content,
-      actions: widget.actions ??
-          <CupertinoDialogAction>[
-            CupertinoDialogAction(
-              isDefaultAction: true,
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text('Ok'),
-            ),
-          ],
+  Future<T?> build(BuildContext context, AdaptiveModalDialog<T> component) {
+    return showCupertinoDialog<T>(
+      context: context,
+      builder: (context) {
+        return cupertinoDialog(
+          context,
+          component.title,
+          component.content,
+          component.primaryButton,
+          component.secondaryButton,
+        );
+      },
+      barrierDismissible: component.barrierDismissible,
+      useRootNavigator: component.useRootNavigator,
+      routeSettings: component.routeSettings,
+      barrierLabel: component.barrierLabel,
     );
   }
+}
+
+Widget cupertinoDialog(
+  BuildContext context,
+  Widget title,
+  Widget content,
+  AdaptiveModalDialogAction primaryButton,
+  AdaptiveModalDialogAction? secondaryButton,
+) {
+  return CupertinoAlertDialog(
+    title: title,
+    content: content,
+    actions: <CupertinoDialogAction>[
+      if (secondaryButton != null)
+        CupertinoDialogAction(
+          onPressed: secondaryButton.onPressed,
+          child: secondaryButton.child,
+        ),
+      CupertinoDialogAction(
+        isDefaultAction: true,
+        onPressed: primaryButton.onPressed,
+        child: primaryButton.child,
+      ),
+    ],
+  );
 }

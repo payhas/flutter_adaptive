@@ -16,6 +16,7 @@ class AdaptiveTheme extends AdaptiveBundle {
             CupertinoTheme(),
             FluentUITheme(),
             YaruTheme(),
+            MacosUITheme(),
             MaterialTheme(),
           },
         );
