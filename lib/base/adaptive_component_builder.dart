@@ -6,6 +6,8 @@ abstract class AdaptiveComponentBuilder<T extends AdaptiveComponent<R>, R> {
   String get name => runtimeType.toString();
   String get componentName => (T).toString();
 
+  const AdaptiveComponentBuilder();
+
   R build(BuildContext context, T component);
 
   @override
