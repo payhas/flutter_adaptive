@@ -10,13 +10,13 @@ abstract class AdaptiveIconBuilder
   @override
   String get componentName => AdaptiveIcon.normalizeIconName(iconName);
 
-  AdaptiveIconBuilder(
+  const AdaptiveIconBuilder(
     this.iconName,
     this.iconData,
   );
 
-  String iconName;
-  IconData iconData;
+  final String iconName;
+  final IconData iconData;
 
   @override
   Icon build(BuildContext context, AdaptiveIcon component) {

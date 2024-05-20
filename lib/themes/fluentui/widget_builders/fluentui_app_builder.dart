@@ -4,11 +4,11 @@ import 'package:flutter_adaptive/common/adaptive_app.dart';
 
 class FluentUIAppBuilder extends AdaptiveWidgetBuilder<AdaptiveApp> {
   @override
-  Widget build(BuildContext context, AdaptiveApp widget) {
+  Widget build(BuildContext context, AdaptiveApp component) {
     return FluentApp(
-      theme: FluentThemeData(brightness: widget.theme?.brightness),
-      home: widget.home,
-      debugShowCheckedModeBanner: widget.debugShowCheckedModeBanner,
+      theme: component.theme?.build(context),
+      home: component.home,
+      debugShowCheckedModeBanner: component.debugShowCheckedModeBanner,
     );
   }
 }

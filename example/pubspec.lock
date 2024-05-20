@@ -185,7 +185,7 @@ packages:
     description:
       name: intl
       sha256: d6f56758b7d3014a48af9701c085700aac781a92a87a62b1333b46d8879661cf
-      url: "https://mirrors.tuna.tsinghua.edu.cn/dart-pub/"
+      url: "https://pub.dev"
     source: hosted
     version: "0.19.0"
   leak_tracker:
@@ -193,7 +193,7 @@ packages:
     description:
       name: leak_tracker
       sha256: "7f0df31977cb2c0b88585095d168e689669a2cc9b97c309665e3386f3e9d341a"
-      url: "https://mirrors.tuna.tsinghua.edu.cn/dart-pub/"
+      url: "https://pub.dev"
     source: hosted
     version: "10.0.4"
   leak_tracker_flutter_testing:
@@ -201,7 +201,7 @@ packages:
     description:
       name: leak_tracker_flutter_testing
       sha256: "06e98f569d004c1315b991ded39924b21af84cf14cc94791b8aea337d25b57f8"
-      url: "https://mirrors.tuna.tsinghua.edu.cn/dart-pub/"
+      url: "https://pub.dev"
     source: hosted
     version: "3.0.3"
   leak_tracker_testing:
@@ -209,7 +209,7 @@ packages:
     description:
       name: leak_tracker_testing
       sha256: "6ba465d5d76e67ddf503e1161d1f4a6bc42306f9d66ca1e8f079a47290fb06d3"
-      url: "https://mirrors.tuna.tsinghua.edu.cn/dart-pub/"
+      url: "https://pub.dev"
     source: hosted
     version: "3.0.1"
   lints:
@@ -265,7 +265,7 @@ packages:
     description:
       name: meta
       sha256: "7687075e408b093f36e6bbf6c91878cc0d4cd10f409506f7bc996f68220b9136"
-      url: "https://mirrors.tuna.tsinghua.edu.cn/dart-pub/"
+      url: "https://pub.dev"
     source: hosted
     version: "1.12.0"
   nested:
@@ -398,7 +398,7 @@ packages:
     description:
       name: test_api
       sha256: "9955ae474176f7ac8ee4e989dadfb411a58c30415bcfb648fa04b2b8a03afa7f"
-      url: "https://mirrors.tuna.tsinghua.edu.cn/dart-pub/"
+      url: "https://pub.dev"
     source: hosted
     version: "0.7.0"
   typed_data:
@@ -422,7 +422,7 @@ packages:
     description:
       name: vm_service
       sha256: "3923c89304b715fb1eb6423f017651664a03bf5f4b29983627c4da791f74a4ec"
-      url: "https://mirrors.tuna.tsinghua.edu.cn/dart-pub/"
+      url: "https://pub.dev"
     source: hosted
     version: "14.2.1"
   window_manager:

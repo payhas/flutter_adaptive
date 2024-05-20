@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'adaptive.dart';
 import 'adaptive_component.dart';
 
-class AdaptiveIcon extends StatelessWidget implements AdaptiveComponent<Icon> {
+class AdaptiveIcon extends StatelessWidget with AdaptiveComponent<Icon> {
   @override
   String get name => normalizeIconName(iconName);
 
