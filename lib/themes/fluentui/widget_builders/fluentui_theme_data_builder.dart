@@ -3,8 +3,8 @@ import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 class FluentUIThemeDataBuilder extends AdaptiveThemeDataBuilder {
   @override
-  build(BuildContext context, AdaptiveThemeData component) {
-    FluentThemeData(
+  FluentThemeData? build(BuildContext context, AdaptiveThemeData component) {
+    return FluentThemeData(
       brightness: component.brightness,
     );
   }

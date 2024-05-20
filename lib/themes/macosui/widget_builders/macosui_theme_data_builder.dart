@@ -4,8 +4,8 @@ import 'package:macos_ui/macos_ui.dart';
 
 class MacosUIThemeDataBuilder extends AdaptiveThemeDataBuilder {
   @override
-  build(BuildContext context, AdaptiveThemeData component) {
-    MacosThemeData(
+  MacosThemeData? build(BuildContext context, AdaptiveThemeData component) {
+    return MacosThemeData(
       brightness: component.brightness,
     );
   }

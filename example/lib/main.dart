@@ -298,19 +298,19 @@ class _MyHomePageState extends State<MyHomePage> {
                   AdaptiveContextMenu(
                     actions: [
                       AdaptiveContextMenuItem(
-                        child: const Text("Create"),
+                        text: "Create",
                         onPressed: () => displayDialog(context, "Create"),
                       ),
                       AdaptiveContextMenuItem(
-                        child: const Text("Read"),
+                        text: "Read",
                         onPressed: () => displayDialog(context, "Read"),
                       ),
                       AdaptiveContextMenuItem(
-                        child: const Text("Update"),
+                        text: "Update",
                         onPressed: () => displayDialog(context, "Update"),
                       ),
                       AdaptiveContextMenuItem(
-                        child: const Text("Delete"),
+                        text: "Delete",
                         onPressed: () => displayDialog(context, "Delete"),
                       ),
                     ],
@@ -319,11 +319,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   AdaptiveContextMenu(
                     actions: [
                       AdaptiveContextMenuItem(
-                        child: const Text("Copy"),
+                        text: "Copy",
                         onPressed: () => displayDialog(context, "Copy"),
                       ),
                       AdaptiveContextMenuItem(
-                        child: const Text("Paste"),
+                        text: "Paste",
                         onPressed: () => displayDialog(context, "Paste"),
                       ),
                     ],
