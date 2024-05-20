@@ -19,6 +19,7 @@ class FluentUITheme extends AdaptiveBundle {
             FluentUIModalDialogBuilder(),
             FluentUIContextMenuBuilder(),
             FluentUIScaffoldBuilder(),
+            FluentUIThemeDataBuilder(),
           },
         );
 }

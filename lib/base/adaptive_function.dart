@@ -3,10 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'adaptive.dart';
 import 'adaptive_component.dart';
 
-abstract class AdaptiveFunction<T> implements AdaptiveComponent<Future<T?>> {
-  @override
-  String get name => runtimeType.toString();
-
+abstract class AdaptiveFunction<T> with AdaptiveComponent<Future<T?>> {
   const AdaptiveFunction();
 
   @override
