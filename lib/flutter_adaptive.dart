@@ -83,6 +83,7 @@ export 'themes/cupertino/widget_builders/cupertino_scaffold_builder.dart';
 export 'themes/cupertino/widget_builders/cupertino_theme_data_builder.dart';
 
 export 'themes/fluentui/fluentui_theme.dart';
+export 'themes/fluentui/fluentui_icons.dart';
 export 'themes/fluentui/widget_builders/fluentui_app_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_text_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_text_input_builder.dart';
@@ -98,10 +99,12 @@ export 'themes/fluentui/widget_builders/fluentui_date_picker_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_modal_dialog_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_context_menu_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_context_menu_item_builder.dart';
+export 'themes/fluentui/widget_builders/fluentui_icon_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_scaffold_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_theme_data_builder.dart';
 
 export 'themes/yaru/yaru_theme.dart';
+export 'themes/yaru/yaru_icons.dart';
 export 'themes/yaru/widget_builders/yaru_app_builder.dart';
 export 'themes/yaru/widget_builders/yaru_text_builder.dart';
 export 'themes/yaru/widget_builders/yaru_text_input_builder.dart';
@@ -115,6 +118,7 @@ export 'themes/yaru/widget_builders/yaru_circular_progress_indicator.dart';
 export 'themes/yaru/widget_builders/yaru_linear_progress_indicator.dart';
 export 'themes/yaru/widget_builders/yaru_modal_dialog_builder.dart';
 export 'themes/yaru/widget_builders/yaru_context_menu_builder.dart';
+export 'themes/yaru/widget_builders/yaru_icon_builder.dart';
 export 'themes/yaru/widget_builders/yaru_theme_data_builder.dart';
 
 export 'themes/macosui/macosui_theme.dart';

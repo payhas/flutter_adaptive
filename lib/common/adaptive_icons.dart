@@ -1,6 +1,4 @@
 class AdaptiveIcons {
-  // static const String home = 'home';
-  // static const String add = 'add';
   static const String abc = 'abc';
   static const String abc_sharp = 'abc_sharp';
   static const String abc_rounded = 'abc_rounded';
