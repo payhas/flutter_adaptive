@@ -4,10 +4,10 @@ import 'package:flutter_adaptive/flutter_adaptive.dart';
 class CupertinoContextMenuItemBuilder
     extends AdaptiveWidgetBuilder<AdaptiveContextMenuItem> {
   @override
-  Widget build(BuildContext context, AdaptiveContextMenuItem widget) {
+  Widget build(BuildContext context, AdaptiveContextMenuItem component) {
     return CupertinoContextMenuAction(
-      onPressed: widget.onPressed,
-      child: widget.child,
+      onPressed: component.onPressed,
+      child: Text(component.text),
     );
   }
 }
