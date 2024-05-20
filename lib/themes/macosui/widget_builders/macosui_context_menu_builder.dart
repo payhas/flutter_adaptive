@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_adaptive/flutter_adaptive.dart';
-
-typedef MacosUIDesktopContextMenuBuilder = Widget Function(
-    BuildContext context, Offset offset);
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart' hide CupertinoTheme;
 
 class MacosUIContextMenuBuilder
     extends AdaptiveWidgetBuilder<AdaptiveContextMenu> {
@@ -10,34 +9,29 @@ class MacosUIContextMenuBuilder
   Widget build(BuildContext context, AdaptiveContextMenu component) {
     return _ContextMenuRegion(
       contextMenuBuilder: (BuildContext context, Offset offset) {
-        return DesktopTextSelectionToolbar(anchor: offset, children: [
-          for (int i = 0; i < component.actions.length; i++) ...[
-            SizedBox(
-              width: double.infinity,
-              child: Padding(
-                padding: const EdgeInsets.all(2.5),
-                child: TextButton(
-                  onPressed: () {
-                    ContextMenuController.removeAny();
-                    component.actions[i].onPressed?.call();
-                  },
-                  child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10.0),
-                        child: component.actions[i].child,
-                      )),
-                ),
+        return TapRegion(
+          onTapOutside: (tap) {
+            if (kIsWeb) {
+              BrowserContextMenu.enableContextMenu();
+            }
+            ContextMenuController.removeAny();
+          },
+          child:
+              CupertinoDesktopTextSelectionToolbar(anchor: offset, children: [
+            for (int i = 0; i < component.actions.length; i++) ...[
+              CupertinoDesktopTextSelectionToolbarButton.text(
+                onPressed: () {
+                  ContextMenuController.removeAny();
+                  if (kIsWeb) {
+                    BrowserContextMenu.enableContextMenu();
+                  }
+                  component.actions[i].onPressed?.call();
+                },
+                text: component.actions[i].text,
               ),
-            ),
-            if (i + 1 < component.actions.length)
-              const Divider(
-                indent: 15.0,
-                endIndent: 15.0,
-                color: Color.fromARGB(255, 235, 235, 235),
-              ),
-          ]
-        ]);
+            ]
+          ]),
+        );
       },
       child: component.child,
     );
@@ -50,7 +44,7 @@ class _ContextMenuRegion extends StatefulWidget {
     required this.contextMenuBuilder,
   });
 
-  final MacosUIDesktopContextMenuBuilder contextMenuBuilder;
+  final ContextMenuBuilder contextMenuBuilder;
 
   final Widget child;
 
@@ -73,6 +67,9 @@ class _ContextMenuRegionState extends State<_ContextMenuRegion> {
   }
 
   void _show(Offset position) {
+    if (kIsWeb) {
+      BrowserContextMenu.disableContextMenu();
+    }
     _contextMenuController.show(
       context: context,
       contextMenuBuilder: (BuildContext context) {
@@ -82,6 +79,9 @@ class _ContextMenuRegionState extends State<_ContextMenuRegion> {
   }
 
   void _hide() {
+    if (kIsWeb) {
+      BrowserContextMenu.enableContextMenu();
+    }
     _contextMenuController.remove();
   }
 

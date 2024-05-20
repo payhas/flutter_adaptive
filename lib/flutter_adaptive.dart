@@ -94,7 +94,6 @@ export 'themes/fluentui/widget_builders/fluentui_linear_progress_indicator_build
 export 'themes/fluentui/widget_builders/fluentui_date_picker_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_modal_dialog_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_context_menu_builder.dart';
-export 'themes/fluentui/widget_builders/fluentui_context_menu_item_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_scaffold_builder.dart';
 
 export 'themes/yaru/yaru_theme.dart';

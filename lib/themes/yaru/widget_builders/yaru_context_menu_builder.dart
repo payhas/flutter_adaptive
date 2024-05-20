@@ -1,8 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart';
-
-typedef ContextMenuBuilder = Widget Function(
-    BuildContext context, Offset offset);
 
 class YaruContextMenuBuilder
     extends AdaptiveWidgetBuilder<AdaptiveContextMenu> {
@@ -10,37 +9,47 @@ class YaruContextMenuBuilder
   Widget build(BuildContext context, AdaptiveContextMenu component) {
     return _ContextMenuRegion(
       contextMenuBuilder: (BuildContext context, Offset offset) {
-        return DesktopTextSelectionToolbar(anchor: offset, children: [
-          for (int i = 0; i < component.actions.length; i++) ...[
-            SizedBox(
-              width: double.infinity,
-              child: Padding(
-                padding: const EdgeInsets.all(2.5),
-                child: FilledButton(
-                  style: FilledButton.styleFrom(
-                    backgroundColor: Colors.white,
+        return TapRegion(
+          onTapOutside: (tap) {
+            if (kIsWeb) {
+              BrowserContextMenu.enableContextMenu();
+            }
+            ContextMenuController.removeAny();
+          },
+          child: DesktopTextSelectionToolbar(anchor: offset, children: [
+            for (int i = 0; i < component.actions.length; i++) ...[
+              SizedBox(
+                width: double.infinity,
+                child: Padding(
+                  padding: const EdgeInsets.all(2.5),
+                  child: FilledButton(
+                    style: FilledButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                    ),
+                    onPressed: () {
+                      ContextMenuController.removeAny();
+                      if (kIsWeb) {
+                        BrowserContextMenu.enableContextMenu();
+                      }
+                      component.actions[i].onPressed?.call();
+                    },
+                    child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 10.0),
+                          child: Text(component.actions[i].text),
+                        )),
                   ),
-                  onPressed: () {
-                    ContextMenuController.removeAny();
-                    component.actions[i].onPressed?.call();
-                  },
-                  child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10.0),
-                        child: component.actions[i].child,
-                      )),
                 ),
               ),
-            ),
-            if (i + 1 < component.actions.length)
-              const Divider(
-                indent: 15.0,
-                endIndent: 15.0,
-                color: Color.fromARGB(255, 235, 235, 235),
-              ),
-          ]
-        ]);
+              if (i + 1 < component.actions.length)
+                const Divider(
+                  indent: 15.0,
+                  endIndent: 15.0,
+                ),
+            ]
+          ]),
+        );
       },
       child: component.child,
     );
@@ -76,6 +85,9 @@ class _ContextMenuRegionState extends State<_ContextMenuRegion> {
   }
 
   void _show(Offset position) {
+    if (kIsWeb) {
+      BrowserContextMenu.disableContextMenu();
+    }
     _contextMenuController.show(
       context: context,
       contextMenuBuilder: (BuildContext context) {
@@ -85,6 +97,9 @@ class _ContextMenuRegionState extends State<_ContextMenuRegion> {
   }
 
   void _hide() {
+    if (kIsWeb) {
+      BrowserContextMenu.enableContextMenu();
+    }
     _contextMenuController.remove();
   }
 
