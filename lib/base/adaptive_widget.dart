@@ -4,10 +4,7 @@ import 'adaptive.dart';
 import 'adaptive_component.dart';
 
 abstract class AdaptiveWidget extends StatelessWidget
-    implements AdaptiveComponent<Widget> {
-  @override
-  String get name => runtimeType.toString();
-
+    with AdaptiveComponent<Widget> {
   const AdaptiveWidget({
     super.key,
   });

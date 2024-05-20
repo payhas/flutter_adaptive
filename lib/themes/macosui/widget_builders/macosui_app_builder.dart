@@ -5,11 +5,11 @@ import 'package:flutter_adaptive/common/adaptive_app.dart';
 
 class MacosUIAdaptiveAppBuilder extends AdaptiveWidgetBuilder<AdaptiveApp> {
   @override
-  Widget build(BuildContext context, AdaptiveApp widget) {
+  Widget build(BuildContext context, AdaptiveApp component) {
     return MacosApp(
-      theme: MacosThemeData(brightness: widget.theme?.brightness),
-      home: widget.home,
-      debugShowCheckedModeBanner: widget.debugShowCheckedModeBanner,
+      theme: component.theme?.build(context),
+      home: component.home,
+      debugShowCheckedModeBanner: component.debugShowCheckedModeBanner,
     );
   }
 }
