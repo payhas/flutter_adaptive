@@ -173,6 +173,206 @@ class CupertinoIcons extends AdaptiveBundle {
                 AdaptiveIcons.zoom_in, ios.CupertinoIcons.zoom_in),
             CupertinoIconBuilder(
                 AdaptiveIcons.zoom_out, ios.CupertinoIcons.zoom_out),
+
+            // from flutter_platform_widgets
+            CupertinoIconBuilder(AdaptiveIcons.account_circle_outlined,
+                ios.CupertinoIcons.person_crop_circle),
+            CupertinoIconBuilder(AdaptiveIcons.account_circle,
+                ios.CupertinoIcons.person_crop_circle_fill),
+            CupertinoIconBuilder(
+                AdaptiveIcons.add_circle, ios.CupertinoIcons.add_circled),
+            CupertinoIconBuilder(AdaptiveIcons.add_circle_outline,
+                ios.CupertinoIcons.add_circled),
+            CupertinoIconBuilder(
+                AdaptiveIcons.add_circle, ios.CupertinoIcons.add_circled_solid),
+            CupertinoIconBuilder(
+                AdaptiveIcons.arrow_back, ios.CupertinoIcons.back),
+            CupertinoIconBuilder(AdaptiveIcons.battery_charging_full,
+                ios.CupertinoIcons.battery_charging),
+            CupertinoIconBuilder(
+                AdaptiveIcons.battery_alert, ios.CupertinoIcons.battery_empty),
+            CupertinoIconBuilder(
+                AdaptiveIcons.bookmark_border, ios.CupertinoIcons.bookmark),
+            CupertinoIconBuilder(
+                AdaptiveIcons.bookmark, ios.CupertinoIcons.bookmark_solid),
+            CupertinoIconBuilder(
+                AdaptiveIcons.brightness_low, ios.CupertinoIcons.brightness),
+            CupertinoIconBuilder(AdaptiveIcons.brightness_high,
+                ios.CupertinoIcons.brightness_solid),
+            CupertinoIconBuilder(
+                AdaptiveIcons.directions_bus, ios.CupertinoIcons.bus),
+            CupertinoIconBuilder(
+                AdaptiveIcons.directions_car, ios.CupertinoIcons.car),
+            CupertinoIconBuilder(AdaptiveIcons.check_box_outline_blank_rounded,
+                ios.CupertinoIcons.square),
+            CupertinoIconBuilder(AdaptiveIcons.indeterminate_check_box_outlined,
+                ios.CupertinoIcons.minus_square),
+            CupertinoIconBuilder(AdaptiveIcons.check_box_outlined,
+                ios.CupertinoIcons.checkmark_square),
+            CupertinoIconBuilder(
+                AdaptiveIcons.check, ios.CupertinoIcons.check_mark),
+            CupertinoIconBuilder(AdaptiveIcons.check_circle,
+                ios.CupertinoIcons.check_mark_circled),
+            CupertinoIconBuilder(AdaptiveIcons.check_circle_outline,
+                ios.CupertinoIcons.check_mark_circled),
+            CupertinoIconBuilder(AdaptiveIcons.check_circle,
+                ios.CupertinoIcons.check_mark_circled_solid),
+            CupertinoIconBuilder(
+                AdaptiveIcons.clear, ios.CupertinoIcons.clear_thick),
+            CupertinoIconBuilder(
+                AdaptiveIcons.cancel, ios.CupertinoIcons.clear_thick_circled),
+            CupertinoIconBuilder(
+                AdaptiveIcons.watch_later, ios.CupertinoIcons.clock_solid),
+            CupertinoIconBuilder(
+                AdaptiveIcons.cloud_outlined, ios.CupertinoIcons.cloud),
+            CupertinoIconBuilder(
+                AdaptiveIcons.cloud, ios.CupertinoIcons.cloud_fill),
+            CupertinoIconBuilder(AdaptiveIcons.cloud_download_outlined,
+                ios.CupertinoIcons.cloud_download),
+            CupertinoIconBuilder(AdaptiveIcons.cloud_download,
+                ios.CupertinoIcons.cloud_download_fill),
+            CupertinoIconBuilder(AdaptiveIcons.cloud_upload_outlined,
+                ios.CupertinoIcons.cloud_upload),
+            CupertinoIconBuilder(AdaptiveIcons.cloud_upload,
+                ios.CupertinoIcons.cloud_upload_fill),
+            CupertinoIconBuilder(AdaptiveIcons.collections,
+                ios.CupertinoIcons.collections_solid),
+            CupertinoIconBuilder(AdaptiveIcons.chat_bubble,
+                ios.CupertinoIcons.conversation_bubble),
+            CupertinoIconBuilder(AdaptiveIcons.chat_bubble_outline,
+                ios.CupertinoIcons.conversation_bubble),
+            CupertinoIconBuilder(AdaptiveIcons.dehaze, ios.CupertinoIcons.bars),
+            CupertinoIconBuilder(
+                AdaptiveIcons.delete, ios.CupertinoIcons.delete_solid),
+            CupertinoIconBuilder(
+                AdaptiveIcons.delete_outline, ios.CupertinoIcons.delete),
+            CupertinoIconBuilder(
+                AdaptiveIcons.arrow_downward, ios.CupertinoIcons.down_arrow),
+            CupertinoIconBuilder(AdaptiveIcons.edit, ios.CupertinoIcons.pencil),
+            CupertinoIconBuilder(
+                AdaptiveIcons.more_horiz, ios.CupertinoIcons.ellipsis),
+            CupertinoIconBuilder(AdaptiveIcons.error,
+                ios.CupertinoIcons.exclamationmark_circle_fill),
+            CupertinoIconBuilder(AdaptiveIcons.visibility_off_outlined,
+                ios.CupertinoIcons.eye_slash),
+            CupertinoIconBuilder(AdaptiveIcons.visibility_off,
+                ios.CupertinoIcons.eye_slash_fill),
+            CupertinoIconBuilder(
+                AdaptiveIcons.visibility, ios.CupertinoIcons.eye_solid),
+            CupertinoIconBuilder(
+                AdaptiveIcons.favorite, ios.CupertinoIcons.heart_solid),
+            CupertinoIconBuilder(
+                AdaptiveIcons.favorite_border, ios.CupertinoIcons.heart),
+            CupertinoIconBuilder(
+                AdaptiveIcons.folder, ios.CupertinoIcons.folder_solid),
+            CupertinoIconBuilder(
+                AdaptiveIcons.arrow_forward, ios.CupertinoIcons.forward),
+            CupertinoIconBuilder(
+                AdaptiveIcons.gamepad, ios.CupertinoIcons.game_controller),
+            CupertinoIconBuilder(
+                AdaptiveIcons.games, ios.CupertinoIcons.game_controller_solid),
+            CupertinoIconBuilder(
+                AdaptiveIcons.settings, ios.CupertinoIcons.gear_solid),
+            CupertinoIconBuilder(
+                AdaptiveIcons.group, ios.CupertinoIcons.group_solid),
+            CupertinoIconBuilder(
+                AdaptiveIcons.favorite, ios.CupertinoIcons.heart_solid),
+            CupertinoIconBuilder(
+                AdaptiveIcons.help, ios.CupertinoIcons.question_circle_fill),
+            CupertinoIconBuilder(
+                AdaptiveIcons.help_outline, ios.CupertinoIcons.question_circle),
+            CupertinoIconBuilder(
+                AdaptiveIcons.chevron_left, ios.CupertinoIcons.left_chevron),
+            CupertinoIconBuilder(
+                AdaptiveIcons.location_on, ios.CupertinoIcons.location),
+            CupertinoIconBuilder(
+                AdaptiveIcons.location_on, ios.CupertinoIcons.location_solid),
+            CupertinoIconBuilder(
+                AdaptiveIcons.mail, ios.CupertinoIcons.mail_solid),
+            CupertinoIconBuilder(
+                AdaptiveIcons.mail_outline, ios.CupertinoIcons.mail),
+            CupertinoIconBuilder(
+                AdaptiveIcons.mic_none, ios.CupertinoIcons.mic),
+            CupertinoIconBuilder(
+                AdaptiveIcons.mic, ios.CupertinoIcons.mic_solid),
+            CupertinoIconBuilder(
+                AdaptiveIcons.lock, ios.CupertinoIcons.padlock),
+            CupertinoIconBuilder(
+                AdaptiveIcons.lock_outline, ios.CupertinoIcons.padlock),
+            CupertinoIconBuilder(
+                AdaptiveIcons.lock, ios.CupertinoIcons.padlock_solid),
+            CupertinoIconBuilder(
+                AdaptiveIcons.pets, ios.CupertinoIcons.paw_solid),
+            CupertinoIconBuilder(AdaptiveIcons.edit, ios.CupertinoIcons.pen),
+            CupertinoIconBuilder(
+                AdaptiveIcons.person_add, ios.CupertinoIcons.person_add_solid),
+            CupertinoIconBuilder(
+                AdaptiveIcons.person_outline, ios.CupertinoIcons.person),
+            CupertinoIconBuilder(
+                AdaptiveIcons.person, ios.CupertinoIcons.person_solid),
+            CupertinoIconBuilder(
+                AdaptiveIcons.phone, ios.CupertinoIcons.phone_solid),
+            CupertinoIconBuilder(AdaptiveIcons.photo_camera,
+                ios.CupertinoIcons.photo_camera_solid),
+            CupertinoIconBuilder(AdaptiveIcons.photo_library_outlined,
+                ios.CupertinoIcons.photo_on_rectangle),
+            CupertinoIconBuilder(AdaptiveIcons.photo_library,
+                ios.CupertinoIcons.photo_fill_on_rectangle_fill),
+            CupertinoIconBuilder(
+                AdaptiveIcons.play_arrow, ios.CupertinoIcons.play_arrow_solid),
+            CupertinoIconBuilder(AdaptiveIcons.play_circle_outline,
+                ios.CupertinoIcons.play_circle),
+            CupertinoIconBuilder(
+                AdaptiveIcons.play_circle, ios.CupertinoIcons.play_circle_fill),
+            CupertinoIconBuilder(
+                AdaptiveIcons.refresh, ios.CupertinoIcons.refresh_bold),
+            CupertinoIconBuilder(
+                AdaptiveIcons.remove, ios.CupertinoIcons.minus),
+            CupertinoIconBuilder(
+                AdaptiveIcons.remove_circle, ios.CupertinoIcons.minus_circle),
+            CupertinoIconBuilder(AdaptiveIcons.remove_circle_outline,
+                ios.CupertinoIcons.minus_circle),
+            CupertinoIconBuilder(AdaptiveIcons.remove_circle,
+                ios.CupertinoIcons.minus_circle_fill),
+            CupertinoIconBuilder(
+                AdaptiveIcons.chevron_right, ios.CupertinoIcons.right_chevron),
+            CupertinoIconBuilder(
+                AdaptiveIcons.settings, ios.CupertinoIcons.settings_solid),
+            CupertinoIconBuilder(
+                AdaptiveIcons.share, ios.CupertinoIcons.share_solid),
+            CupertinoIconBuilder(
+                AdaptiveIcons.stars, ios.CupertinoIcons.star_circle_fill),
+            CupertinoIconBuilder(AdaptiveIcons.switch_camera,
+                ios.CupertinoIcons.switch_camera_solid),
+            CupertinoIconBuilder(AdaptiveIcons.label, ios.CupertinoIcons.tag),
+            CupertinoIconBuilder(
+                AdaptiveIcons.label_outline, ios.CupertinoIcons.tag),
+            CupertinoIconBuilder(
+                AdaptiveIcons.label, ios.CupertinoIcons.tag_solid),
+            CupertinoIconBuilder(AdaptiveIcons.thumb_down,
+                ios.CupertinoIcons.hand_thumbsdown_fill),
+            CupertinoIconBuilder(AdaptiveIcons.thumb_down_outlined,
+                ios.CupertinoIcons.hand_thumbsdown),
+            CupertinoIconBuilder(
+                AdaptiveIcons.thumb_up, ios.CupertinoIcons.hand_thumbsup_fill),
+            CupertinoIconBuilder(AdaptiveIcons.thumb_up_outlined,
+                ios.CupertinoIcons.hand_thumbsup),
+            CupertinoIconBuilder(
+                AdaptiveIcons.schedule, ios.CupertinoIcons.time),
+            CupertinoIconBuilder(
+                AdaptiveIcons.watch_later, ios.CupertinoIcons.time_solid),
+            CupertinoIconBuilder(
+                AdaptiveIcons.tram, ios.CupertinoIcons.train_style_one),
+            CupertinoIconBuilder(
+                AdaptiveIcons.arrow_upward, ios.CupertinoIcons.up_arrow),
+            CupertinoIconBuilder(
+                AdaptiveIcons.videocam, ios.CupertinoIcons.video_camera),
+            CupertinoIconBuilder(
+                AdaptiveIcons.videocam, ios.CupertinoIcons.video_camera_solid),
+            CupertinoIconBuilder(
+                AdaptiveIcons.wifi_off, ios.CupertinoIcons.wifi_slash),
+            CupertinoIconBuilder(AdaptiveIcons.exit_to_app,
+                ios.CupertinoIcons.square_arrow_right),
           },
         );
 }
