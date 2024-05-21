@@ -20,6 +20,7 @@ class MacosUITheme extends AdaptiveBundle {
             MacosUIContextMenuBuilder(),
             MacosUIScaffoldBuilder(),
             MacosUIThemeDataBuilder(),
+            MacosUIAppBarBuilder(),
           },
         );
 }

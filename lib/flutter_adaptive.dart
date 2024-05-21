@@ -14,6 +14,8 @@ export 'base/adaptive_icon.dart';
 export 'base/adaptive_icon_builder.dart';
 export 'base/adaptive_theme_data.dart';
 export 'base/adaptive_theme_data_builder.dart';
+export 'base/adaptive_app_bar.dart';
+export 'base/adaptive_app_bar_builder.dart';
 
 export 'common/adaptive_app.dart';
 export 'common/adaptive_text.dart';
@@ -59,6 +61,7 @@ export 'themes/material/widget_builders/material_context_menu_builder.dart';
 export 'themes/material/widget_builders/material_icon_builder.dart';
 export 'themes/material/widget_builders/material_scaffold_builder.dart';
 export 'themes/material/widget_builders/material_theme_data_builder.dart';
+export 'themes/material/widget_builders/material_app_bar_builder.dart';
 
 export 'themes/cupertino/cupertino_theme.dart';
 export 'themes/cupertino/cupertino_icons.dart';
@@ -81,6 +84,7 @@ export 'themes/cupertino/widget_builders/cupertino_context_menu_builder.dart';
 export 'themes/cupertino/widget_builders/cupertino_icon_builder.dart';
 export 'themes/cupertino/widget_builders/cupertino_scaffold_builder.dart';
 export 'themes/cupertino/widget_builders/cupertino_theme_data_builder.dart';
+export 'themes/cupertino/widget_builders/cupertino_app_bar_builder.dart';
 
 export 'themes/fluentui/fluentui_theme.dart';
 export 'themes/fluentui/widget_builders/fluentui_app_builder.dart';
@@ -99,6 +103,7 @@ export 'themes/fluentui/widget_builders/fluentui_modal_dialog_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_context_menu_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_scaffold_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_theme_data_builder.dart';
+export 'themes/fluentui/widget_builders/fluentui_app_bar_builder.dart';
 
 export 'themes/yaru/yaru_theme.dart';
 export 'themes/yaru/widget_builders/yaru_app_builder.dart';
@@ -133,3 +138,4 @@ export 'themes/macosui/widget_builders/macosui_modal_dialog_builder.dart';
 export 'themes/macosui/widget_builders/macosui_context_menu_builder.dart';
 export 'themes/macosui/widget_builders/macosui_scaffold_builder.dart';
 export 'themes/macosui/widget_builders/macosui_theme_data_builder.dart';
+export 'themes/macosui/widget_builders/macosui_app_bar_builder.dart';

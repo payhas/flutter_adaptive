@@ -4,6 +4,7 @@ import 'package:flutter_adaptive/flutter_adaptive.dart';
 class MaterialScaffoldBuilder extends AdaptiveWidgetBuilder<AdaptiveScaffold> {
   @override
   Widget build(BuildContext context, AdaptiveScaffold component) {
-    return Scaffold(body: component.body);
+    return Scaffold(
+        appBar: component.appBar?.build(context), body: component.body);
   }
 }
