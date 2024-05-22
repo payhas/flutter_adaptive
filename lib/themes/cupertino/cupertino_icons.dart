@@ -11,7 +11,8 @@ class CupertinoIcons extends AdaptiveBundle {
                 AdaptiveIcons.bookmark, ios.CupertinoIcons.bookmark),
             CupertinoIconBuilder(AdaptiveIcons.info, ios.CupertinoIcons.info),
             CupertinoIconBuilder(AdaptiveIcons.reply, ios.CupertinoIcons.reply),
-            CupertinoIconBuilder(AdaptiveIcons.flag, ios.CupertinoIcons.flag),
+            CupertinoIconBuilder(
+                AdaptiveIcons.flag, ios.CupertinoIcons.flag_fill),
             CupertinoIconBuilder(
                 AdaptiveIcons.search, ios.CupertinoIcons.search),
             CupertinoIconBuilder(
@@ -37,7 +38,7 @@ class CupertinoIcons extends AdaptiveBundle {
             CupertinoIconBuilder(
                 AdaptiveIcons.collections, ios.CupertinoIcons.collections),
             CupertinoIconBuilder(
-                AdaptiveIcons.folder, ios.CupertinoIcons.folder),
+                AdaptiveIcons.folder, ios.CupertinoIcons.folder_fill),
             CupertinoIconBuilder(
                 AdaptiveIcons.folder_open, ios.CupertinoIcons.folder_open),
             CupertinoIconBuilder(
@@ -108,7 +109,7 @@ class CupertinoIcons extends AdaptiveBundle {
             CupertinoIconBuilder(
                 AdaptiveIcons.headphones, ios.CupertinoIcons.headphones),
             CupertinoIconBuilder(
-                AdaptiveIcons.hexagon, ios.CupertinoIcons.hexagon),
+                AdaptiveIcons.hexagon, ios.CupertinoIcons.hexagon_fill),
             CupertinoIconBuilder(AdaptiveIcons.house, ios.CupertinoIcons.house),
             CupertinoIconBuilder(
                 AdaptiveIcons.keyboard, ios.CupertinoIcons.keyboard),
@@ -173,8 +174,48 @@ class CupertinoIcons extends AdaptiveBundle {
                 AdaptiveIcons.zoom_in, ios.CupertinoIcons.zoom_in),
             CupertinoIconBuilder(
                 AdaptiveIcons.zoom_out, ios.CupertinoIcons.zoom_out),
-
-            // from flutter_platform_widgets
+            CupertinoIconBuilder(
+                AdaptiveIcons.archive, ios.CupertinoIcons.archivebox_fill),
+            CupertinoIconBuilder(
+                AdaptiveIcons.brush, ios.CupertinoIcons.paintbrush_fill),
+            CupertinoIconBuilder(
+                AdaptiveIcons.calendar_month, ios.CupertinoIcons.calendar),
+            CupertinoIconBuilder(
+                AdaptiveIcons.bar_chart, ios.CupertinoIcons.chart_bar_alt_fill),
+            CupertinoIconBuilder(
+                AdaptiveIcons.airplanemode_active, ios.CupertinoIcons.airplane),
+            CupertinoIconBuilder(AdaptiveIcons.flip_camera_ios,
+                ios.CupertinoIcons.camera_rotate_fill),
+            CupertinoIconBuilder(AdaptiveIcons.flip_camera_ios_outlined,
+                ios.CupertinoIcons.camera_rotate),
+            CupertinoIconBuilder(
+                AdaptiveIcons.shopping_bag_outlined, ios.CupertinoIcons.bag),
+            CupertinoIconBuilder(
+                AdaptiveIcons.shopping_bag, ios.CupertinoIcons.bag_fill),
+            CupertinoIconBuilder(AdaptiveIcons.barcode_reader,
+                ios.CupertinoIcons.barcode_viewfinder),
+            CupertinoIconBuilder(
+                AdaptiveIcons.king_bed, ios.CupertinoIcons.bed_double_fill),
+            CupertinoIconBuilder(
+                AdaptiveIcons.king_bed_outlined, ios.CupertinoIcons.bed_double),
+            CupertinoIconBuilder(
+                AdaptiveIcons.currency_bitcoin, ios.CupertinoIcons.bitcoin),
+            CupertinoIconBuilder(
+                AdaptiveIcons.camera_alt, ios.CupertinoIcons.camera_fill),
+            CupertinoIconBuilder(
+                AdaptiveIcons.camera_alt_outlined, ios.CupertinoIcons.camera),
+            CupertinoIconBuilder(AdaptiveIcons.compass_calibration_outlined,
+                ios.CupertinoIcons.compass),
+            CupertinoIconBuilder(AdaptiveIcons.compass_calibration,
+                ios.CupertinoIcons.compass_fill),
+            CupertinoIconBuilder(
+                AdaptiveIcons.flag_outlined, ios.CupertinoIcons.flag),
+            CupertinoIconBuilder(
+                AdaptiveIcons.folder_outlined, ios.CupertinoIcons.folder),
+            CupertinoIconBuilder(
+                AdaptiveIcons.functions, ios.CupertinoIcons.function),
+            CupertinoIconBuilder(
+                AdaptiveIcons.grid_3x3, ios.CupertinoIcons.grid),
             CupertinoIconBuilder(AdaptiveIcons.account_circle_outlined,
                 ios.CupertinoIcons.person_crop_circle),
             CupertinoIconBuilder(AdaptiveIcons.account_circle,
@@ -373,6 +414,38 @@ class CupertinoIcons extends AdaptiveBundle {
                 AdaptiveIcons.wifi_off, ios.CupertinoIcons.wifi_slash),
             CupertinoIconBuilder(AdaptiveIcons.exit_to_app,
                 ios.CupertinoIcons.square_arrow_right),
+            CupertinoIconBuilder(
+                AdaptiveIcons.headset, ios.CupertinoIcons.headphones),
+            CupertinoIconBuilder(AdaptiveIcons.heart_broken_outlined,
+                ios.CupertinoIcons.heart_slash),
+            CupertinoIconBuilder(
+                AdaptiveIcons.hexagon_outlined, ios.CupertinoIcons.hexagon),
+            CupertinoIconBuilder(AdaptiveIcons.heart_broken,
+                ios.CupertinoIcons.heart_slash_fill),
+            CupertinoIconBuilder(AdaptiveIcons.hourglass_bottom,
+                ios.CupertinoIcons.hourglass_bottomhalf_fill),
+            CupertinoIconBuilder(
+                AdaptiveIcons.house, ios.CupertinoIcons.house_fill),
+            CupertinoIconBuilder(
+                AdaptiveIcons.house_outlined, ios.CupertinoIcons.house),
+            CupertinoIconBuilder(
+                AdaptiveIcons.list, ios.CupertinoIcons.list_bullet),
+            CupertinoIconBuilder(
+                AdaptiveIcons.location_on, ios.CupertinoIcons.location_fill),
+            CupertinoIconBuilder(AdaptiveIcons.location_off,
+                ios.CupertinoIcons.location_slash_fill),
+            CupertinoIconBuilder(AdaptiveIcons.monetization_on,
+                ios.CupertinoIcons.money_dollar_circle_fill),
+            CupertinoIconBuilder(AdaptiveIcons.monetization_on_outlined,
+                ios.CupertinoIcons.money_dollar_circle),
+            CupertinoIconBuilder(
+                AdaptiveIcons.euro, ios.CupertinoIcons.money_euro),
+            CupertinoIconBuilder(
+                AdaptiveIcons.currency_pound, ios.CupertinoIcons.money_pound),
+            CupertinoIconBuilder(
+                AdaptiveIcons.currency_ruble, ios.CupertinoIcons.money_rubl),
+            CupertinoIconBuilder(
+                AdaptiveIcons.currency_yen, ios.CupertinoIcons.money_yen),
           },
         );
 }

@@ -122,6 +122,13 @@ class YaruIcons extends AdaptiveBundle {
             YaruIconBuilder(AdaptiveIcons.extension, yaru.YaruIcons.extension),
             YaruIconBuilder(AdaptiveIcons.search, yaru.YaruIcons.search),
             YaruIconBuilder(AdaptiveIcons.settings, yaru.YaruIcons.settings),
+            YaruIconBuilder(
+                AdaptiveIcons.calendar_month, yaru.YaruIcons.calendar),
+            YaruIconBuilder(
+                AdaptiveIcons.chat_bubble, yaru.YaruIcons.chat_bubble_filled),
+            YaruIconBuilder(AdaptiveIcons.check, yaru.YaruIcons.checkmark),
+            YaruIconBuilder(AdaptiveIcons.clear, yaru.YaruIcons.edit_clear),
+            YaruIconBuilder(AdaptiveIcons.person, yaru.YaruIcons.user_filled),
           },
         );
 }

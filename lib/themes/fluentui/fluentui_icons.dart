@@ -187,6 +187,17 @@ class FluentUIIcons extends AdaptiveBundle {
             FluentUIIconBuilder(AdaptiveIcons.usb, FluentIcons.usb),
             FluentUIIconBuilder(AdaptiveIcons.view_list, FluentIcons.view_list),
             FluentUIIconBuilder(AdaptiveIcons.warning, FluentIcons.warning),
+            FluentUIIconBuilder(AdaptiveIcons.archive, FluentIcons.archive),
+            FluentUIIconBuilder(
+                AdaptiveIcons.calendar_month, FluentIcons.calendar),
+            FluentUIIconBuilder(
+                AdaptiveIcons.bar_chart, FluentIcons.bar_chart4),
+            FluentUIIconBuilder(
+                AdaptiveIcons.chat_bubble, FluentIcons.chat_solid),
+            FluentUIIconBuilder(AdaptiveIcons.check, FluentIcons.check_mark),
+            FluentUIIconBuilder(AdaptiveIcons.clear, FluentIcons.clear),
+            FluentUIIconBuilder(AdaptiveIcons.cloud, FluentIcons.cloud),
+            FluentUIIconBuilder(AdaptiveIcons.person, FluentIcons.contact),
           },
         );
 }
