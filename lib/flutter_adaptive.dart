@@ -10,14 +10,10 @@ export 'base/adaptive_widget.dart';
 export 'base/adaptive_widget_builder.dart';
 export 'base/adaptive_function.dart';
 export 'base/adaptive_function_builder.dart';
-export 'base/adaptive_icon.dart';
-export 'base/adaptive_icon_builder.dart';
-export 'base/adaptive_theme_data.dart';
-export 'base/adaptive_theme_data_builder.dart';
-export 'base/adaptive_app_bar.dart';
-export 'base/adaptive_app_bar_builder.dart';
 
 export 'common/adaptive_app.dart';
+export 'common/adaptive_theme_data.dart';
+export 'common/adaptive_app_bar.dart';
 export 'common/adaptive_text.dart';
 export 'common/adaptive_text_input.dart';
 export 'common/adaptive_text_button.dart';
@@ -33,8 +29,11 @@ export 'common/adaptive_modal_dialog.dart';
 export 'common/adaptive_modal_bottom_sheet.dart';
 export 'common/adaptive_context_menu_item.dart';
 export 'common/adaptive_context_menu.dart';
-export 'common/adaptive_icons.dart';
 export 'common/adaptive_scaffold.dart';
+
+export 'icons/adaptive_icons.dart';
+export 'icons/adaptive_icon.dart';
+export 'icons/adaptive_icon_builder.dart';
 
 export 'themes/adaptive_theme.dart';
 export 'themes/themed_appearance_manager.dart';

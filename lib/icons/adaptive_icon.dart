@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'adaptive.dart';
-import 'adaptive_component.dart';
+import '../base/adaptive.dart';
+import '../base/adaptive_component.dart';
 
 class AdaptiveIcon extends StatelessWidget with AdaptiveComponent<Icon> {
   @override
@@ -38,7 +38,7 @@ class AdaptiveIcon extends StatelessWidget with AdaptiveComponent<Icon> {
 
   @override
   Icon build(BuildContext context) {
-    var builder = Adaptive.of(context)?.getBuilder<AdaptiveIcon, Icon>(name);
+    var builder = Adaptive.of(context)?.getBuilder<AdaptiveIcon, Icon>(this);
     return builder?.build(context, this) ??
         const Icon(Icons.report_gmailerrorred);
   }

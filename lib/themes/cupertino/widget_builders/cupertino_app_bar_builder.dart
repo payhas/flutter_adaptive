@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart';
 
-class CupertinoAppBarBuilder extends AdaptiveAppBarBuilder {
+class CupertinoAppBarBuilder extends AdaptiveWidgetBuilder<AdaptiveAppBar> {
   @override
-  CupertinoNavigationBar? build(
+  CupertinoNavigationBar build(
       BuildContext context, AdaptiveAppBar component) {
     return CupertinoNavigationBar(middle: component.title);
   }

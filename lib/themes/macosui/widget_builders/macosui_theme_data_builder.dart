@@ -2,7 +2,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart';
 import 'package:macos_ui/macos_ui.dart';
 
-class MacosUIThemeDataBuilder extends AdaptiveThemeDataBuilder {
+class MacosUIThemeDataBuilder
+    extends AdaptiveComponentBuilder<AdaptiveThemeData, dynamic> {
   @override
   MacosThemeData? build(BuildContext context, AdaptiveThemeData component) {
     return MacosThemeData(
