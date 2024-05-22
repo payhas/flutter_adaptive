@@ -115,7 +115,13 @@ class AdaptiveState {
   final _AdaptiveState _parent;
 
   AdaptiveComponentBuilder<T, R>? getBuilder<T extends AdaptiveComponent<R>, R>(
-      String componentName) {
+      T component) {
+    return getBuilderByName(component.name);
+  }
+
+  AdaptiveComponentBuilder<T, R>?
+      getBuilderByName<T extends AdaptiveComponent<R>, R>(
+          String componentName) {
     var builder = _parent.componentBuilderManager.buildersActive[componentName];
     if (builder is AdaptiveComponentBuilder<T, R>) {
       return builder;

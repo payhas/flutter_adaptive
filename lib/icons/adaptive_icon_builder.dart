@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import 'adaptive_component_builder.dart';
+import '../base/adaptive_component_builder.dart';
 import 'adaptive_icon.dart';
 
 abstract class AdaptiveIconBuilder

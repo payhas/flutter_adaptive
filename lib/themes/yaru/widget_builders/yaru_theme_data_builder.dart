@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart' hide YaruTheme;
 import 'package:yaru/theme.dart';
 
-class YaruThemeDataBuilder extends AdaptiveThemeDataBuilder {
+class YaruThemeDataBuilder
+    extends AdaptiveComponentBuilder<AdaptiveThemeData, dynamic> {
   static YaruThemeData? yaruThemeData;
 
   @override

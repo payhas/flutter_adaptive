@@ -87,9 +87,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return AdaptiveScaffold(
-      appBar: AdaptiveAppBar(title: AdaptiveText("App Bar")),
+      appBar: AdaptiveAppBar(title: AdaptiveText("Flutter Adaptive")),
       body: ListView(
-        padding: const EdgeInsets.all(10.0),
         children: [
           Padding(
             padding: const EdgeInsets.all(20.0),
@@ -150,6 +149,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               )),
           const SizedBox(height: 10.0),
+          // ExampleWidget(
+          //     name: "Adaptive App Bar",
+          //     child: AdaptiveAppBar(title: const Text("App Bar Title"))),
+          // const SizedBox(height: 10.0),
           ExampleWidget(
               name: "Adaptive Text Button",
               child: AdaptiveTextButton(

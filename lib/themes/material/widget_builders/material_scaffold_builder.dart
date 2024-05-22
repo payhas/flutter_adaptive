@@ -5,6 +5,8 @@ class MaterialScaffoldBuilder extends AdaptiveWidgetBuilder<AdaptiveScaffold> {
   @override
   Widget build(BuildContext context, AdaptiveScaffold component) {
     return Scaffold(
-        appBar: component.appBar?.build(context), body: component.body);
+      appBar: component.appBar?.build(context) as dynamic,
+      body: component.body,
+    );
   }
 }
