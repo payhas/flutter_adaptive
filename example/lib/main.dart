@@ -87,6 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return AdaptiveScaffold(
+      appBar: AdaptiveAppBar(title: AdaptiveText("App Bar")),
       body: ListView(
         padding: const EdgeInsets.all(10.0),
         children: [

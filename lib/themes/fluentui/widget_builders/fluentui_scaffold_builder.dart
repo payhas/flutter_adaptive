@@ -4,6 +4,7 @@ import 'package:flutter_adaptive/flutter_adaptive.dart';
 class FluentUIScaffoldBuilder extends AdaptiveWidgetBuilder<AdaptiveScaffold> {
   @override
   Widget build(BuildContext context, AdaptiveScaffold component) {
-    return NavigationView(content: component.body);
+    return NavigationView(
+        appBar: component.appBar?.build(context), content: component.body);
   }
 }
