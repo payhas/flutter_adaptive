@@ -152,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // ExampleWidget(
           //     name: "Adaptive App Bar",
           //     child: AdaptiveAppBar(title: const Text("App Bar Title"))),
-          const SizedBox(height: 10.0),
+          // const SizedBox(height: 10.0),
           ExampleWidget(
               name: "Adaptive Text Button",
               child: AdaptiveTextButton(
