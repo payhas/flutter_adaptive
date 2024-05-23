@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../base/adaptive_function_builder.dart';
-import '../../../common/adaptive_modal_bottom_sheet.dart';
+import '../../../components/adaptive_modal_bottom_sheet.dart';
 
 class CupertinoModalBottomSheetBuilder<T>
     extends AdaptiveFunctionBuilder<AdaptiveModalBottomSheet<T>, T> {

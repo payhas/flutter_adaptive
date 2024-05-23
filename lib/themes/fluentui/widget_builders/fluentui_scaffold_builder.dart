@@ -5,6 +5,14 @@ class FluentUIScaffoldBuilder extends AdaptiveWidgetBuilder<AdaptiveScaffold> {
   @override
   Widget build(BuildContext context, AdaptiveScaffold component) {
     return NavigationView(
-        appBar: component.appBar?.build(context), content: component.body);
+      appBar: mapAppBar(component.appBar),
+      content: component.body,
+    );
+  }
+
+  mapAppBar(AdaptiveAppBar? appBar) {
+    return NavigationAppBar(
+      title: appBar?.title,
+    );
   }
 }

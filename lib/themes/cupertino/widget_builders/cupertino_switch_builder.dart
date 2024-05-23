@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 import '../../../base/adaptive_widget_builder.dart';
-import '../../../common/adaptive_switch.dart';
+import '../../../components/adaptive_switch.dart';
 
 class CupertinoSwitchBuilder extends AdaptiveWidgetBuilder<AdaptiveSwitch> {
   @override

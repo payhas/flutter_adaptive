@@ -6,6 +6,8 @@ class MacosUIScaffoldBuilder extends AdaptiveWidgetBuilder<AdaptiveScaffold> {
   @override
   Widget build(BuildContext context, AdaptiveScaffold component) {
     return MacosWindow(
-        titleBar: component.appBar?.build(context), child: component.body);
+      titleBar: component.appBar?.build(context) as dynamic,
+      child: component.body,
+    );
   }
 }
