@@ -6,6 +6,20 @@ class CupertinoScaffoldBuilder extends AdaptiveWidgetBuilder<AdaptiveScaffold> {
   Widget build(BuildContext context, AdaptiveScaffold component) {
     return CupertinoPageScaffold(
         navigationBar: component.appBar?.build(context),
-        child: component.body ?? const SizedBox.shrink());
+        child: Stack(children: [
+          if (component.body != null) component.body!,
+          if (component.navigationBar != null) ...[
+            Positioned(
+                left: 0.0,
+                right: 0.0,
+                bottom: 100.0,
+                child: SizedBox(height: 100.0)),
+            Positioned(
+                left: 0.0,
+                right: 0.0,
+                bottom: 0.0,
+                child: component.navigationBar!)
+          ]
+        ]));
   }
 }

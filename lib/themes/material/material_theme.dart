@@ -23,6 +23,7 @@ class MaterialTheme extends AdaptiveBundle {
             MaterialScaffoldBuilder(),
             MaterialThemeDataBuilder(),
             MaterialAppBarBuilder(),
+            MaterialNavigationBarBuilder(),
           },
           bundles: {
             MaterialIcons(),

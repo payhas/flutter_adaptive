@@ -5,6 +5,9 @@ class CupertinoAppBarBuilder extends AdaptiveAppBarBuilder {
   @override
   CupertinoNavigationBar? build(
       BuildContext context, AdaptiveAppBar component) {
-    return CupertinoNavigationBar(middle: component.title);
+    return CupertinoNavigationBar(
+      middle: component.title,
+      backgroundColor: CupertinoColors.systemGrey.withOpacity(0.5),
+    );
   }
 }

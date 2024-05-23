@@ -46,6 +46,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   var isSwitchOn = true;
 
+  int currentPageIndex = 0;
+
   void _setThemeMaterial() {
     setState(() {
       ThemedAppearanceManager.setThemeOf(context, 'Material');
@@ -88,8 +90,23 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return AdaptiveScaffold(
       appBar: AdaptiveAppBar(title: AdaptiveText("App Bar")),
+      navigationBar: AdaptiveNavigationBar(items: [
+        AdaptiveNavigationBarItem(
+          icon: AdaptiveIcon(
+            AdaptiveIcons.home,
+            color: Colors.green,
+          ),
+          label: 'Home',
+        ),
+        AdaptiveNavigationBarItem(
+          icon: AdaptiveIcon(
+            AdaptiveIcons.add,
+            color: Colors.green,
+          ),
+          label: 'Add',
+        ),
+      ]),
       body: ListView(
-        padding: const EdgeInsets.all(10.0),
         children: [
           Padding(
             padding: const EdgeInsets.all(20.0),
@@ -353,6 +370,7 @@ class ExampleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(children: [
+      const SizedBox(width: 10.0),
       SizedBox(width: 256.0, child: Text(name)),
       const SizedBox(width: 10.0),
       child,
