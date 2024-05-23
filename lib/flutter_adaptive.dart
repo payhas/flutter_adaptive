@@ -125,6 +125,7 @@ export 'themes/yaru/widget_builders/yaru_icon_builder.dart';
 export 'themes/yaru/widget_builders/yaru_theme_data_builder.dart';
 
 export 'themes/macosui/macosui_theme.dart';
+export 'themes/macosui/macosui_icons.dart';
 export 'themes/macosui/widget_builders/macosui_app_builder.dart';
 export 'themes/macosui/widget_builders/macosui_text_builder.dart';
 export 'themes/macosui/widget_builders/macosui_text_input_builder.dart';
