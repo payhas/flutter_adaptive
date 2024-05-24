@@ -30,6 +30,7 @@ export 'components/adaptive_modal_bottom_sheet.dart';
 export 'components/adaptive_context_menu_item.dart';
 export 'components/adaptive_context_menu.dart';
 export 'components/adaptive_scaffold.dart';
+export 'components/adaptive_navigation_bar.dart';
 
 export 'icons/adaptive_icons.dart';
 export 'icons/adaptive_icon.dart';
@@ -61,6 +62,7 @@ export 'themes/material/widget_builders/material_icon_builder.dart';
 export 'themes/material/widget_builders/material_scaffold_builder.dart';
 export 'themes/material/widget_builders/material_theme_data_builder.dart';
 export 'themes/material/widget_builders/material_app_bar_builder.dart';
+export 'themes/material/widget_builders/material_navigation_bar_builder.dart';
 
 export 'themes/cupertino/cupertino_theme.dart';
 export 'themes/cupertino/cupertino_icons.dart';
@@ -84,6 +86,7 @@ export 'themes/cupertino/widget_builders/cupertino_icon_builder.dart';
 export 'themes/cupertino/widget_builders/cupertino_scaffold_builder.dart';
 export 'themes/cupertino/widget_builders/cupertino_theme_data_builder.dart';
 export 'themes/cupertino/widget_builders/cupertino_app_bar_builder.dart';
+export 'themes/cupertino/widget_builders/cupertino_navigation_bar_builder.dart';
 
 export 'themes/fluentui/fluentui_theme.dart';
 export 'themes/fluentui/fluentui_icons.dart';
