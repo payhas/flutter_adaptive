@@ -46,8 +46,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   var isSwitchOn = true;
 
-  int currentPageIndex = 0;
-
   void _setThemeMaterial() {
     setState(() {
       ThemedAppearanceManager.setThemeOf(context, 'Material');
@@ -90,23 +88,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return AdaptiveScaffold(
       appBar: AdaptiveAppBar(title: AdaptiveText("Flutter Adaptive")),
-      appBar: AdaptiveAppBar(title: AdaptiveText("App Bar")),
-      navigationBar: AdaptiveNavigationBar(items: [
-        AdaptiveNavigationBarItem(
-          icon: AdaptiveIcon(
-            AdaptiveIcons.home,
-            color: Colors.green,
-          ),
-          label: 'Home',
-        ),
-        AdaptiveNavigationBarItem(
-          icon: AdaptiveIcon(
-            AdaptiveIcons.add,
-            color: Colors.green,
-          ),
-          label: 'Add',
-        ),
-      ]),
       body: ListView(
         children: [
           Padding(
@@ -168,6 +149,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               )),
           const SizedBox(height: 10.0),
+          // ExampleWidget(
+          //     name: "Adaptive App Bar",
+          //     child: AdaptiveAppBar(title: const Text("App Bar Title"))),
+          // const SizedBox(height: 10.0),
           ExampleWidget(
               name: "Adaptive Text Button",
               child: AdaptiveTextButton(
@@ -371,7 +356,6 @@ class ExampleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(children: [
-      const SizedBox(width: 10.0),
       SizedBox(width: 256.0, child: Text(name)),
       const SizedBox(width: 10.0),
       child,

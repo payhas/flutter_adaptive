@@ -30,6 +30,7 @@ export 'components/adaptive_modal_bottom_sheet.dart';
 export 'components/adaptive_context_menu_item.dart';
 export 'components/adaptive_context_menu.dart';
 export 'components/adaptive_scaffold.dart';
+export 'components/adaptive_navigation_bar.dart';
 
 export 'icons/adaptive_icons.dart';
 export 'icons/adaptive_icon.dart';
