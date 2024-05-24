@@ -4,6 +4,8 @@ import '../base/adaptive.dart';
 import '../base/adaptive_component.dart';
 
 class AdaptiveIcon extends StatelessWidget with AdaptiveComponent<Icon> {
+  static String namePrefix = 'icon_';
+
   @override
   String get name => normalizeIconName(iconName);
 
@@ -44,6 +46,6 @@ class AdaptiveIcon extends StatelessWidget with AdaptiveComponent<Icon> {
   }
 
   static String normalizeIconName(String iconName) {
-    return 'icon_$iconName';
+    return '$namePrefix$iconName';
   }
 }
