@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart';
 import 'package:provider/provider.dart';
+import 'package:yaru/widgets.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +23,25 @@ class MyApp extends StatelessWidget {
           builder: (context, theme, _) => AdaptiveApp(
             theme: theme.getTheme(),
             debugShowCheckedModeBanner: false,
-            home: MyHomePage(title: 'Flutter Adaptive'),
+            home: AdaptiveNavigation(destinations: <AdaptiveDestination>[
+              AdaptiveDestination(
+                icon: AdaptiveIcon(
+                  AdaptiveIcons.home,
+                ),
+                label: 'Home',
+                page: MyHomePage(title: "Home Page"),
+              ),
+              AdaptiveDestination(
+                icon: AdaptiveIcon(AdaptiveIcons.chat),
+                label: 'Chat',
+                page: Center(child: Text('Chat Page')),
+              ),
+              AdaptiveDestination(
+                icon: AdaptiveIcon(AdaptiveIcons.music_note),
+                label: 'Music',
+                page: Center(child: Text('Music Page')),
+              ),
+            ]),
           ),
         ),
       ),
@@ -67,6 +86,8 @@ class _MyHomePageState extends State<MyHomePage> {
   void _setThemeYaru() {
     setState(() {
       ThemedAppearanceManager.setThemeOf(context, 'Yaru');
+
+      YaruWindowTitleBar.ensureInitialized();
     });
   }
 
@@ -86,263 +107,245 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return AdaptiveScaffold(
-      appBar: AdaptiveAppBar(title: AdaptiveText("Flutter Adaptive")),
-      body: ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Wrap(
-              alignment: WrapAlignment.center,
-              spacing: 20.0,
-              runSpacing: 20.0,
-              children: [
-                AdaptiveElevatedButton(
-                    onPressed: () {
-                      var theme = context.read<ThemeNotifier>();
-                      _setThemeLight(theme);
-                    },
-                    child: AdaptiveText("Light")),
-                AdaptiveElevatedButton(
-                    onPressed: () {
-                      var theme = context.read<ThemeNotifier>();
-                      _setThemeDark(theme);
-                    },
-                    child: AdaptiveText("Dark")),
-                AdaptiveElevatedButton(
-                    onPressed: () => _setThemeMaterial(),
-                    child: AdaptiveText("Material")),
-                AdaptiveElevatedButton(
-                    onPressed: () => _setThemeCupertino(),
-                    child: AdaptiveText("Cupertino")),
-                AdaptiveElevatedButton(
-                    onPressed: () => _setThemeFluentUI(),
-                    child: AdaptiveText("FluentUI")),
-                AdaptiveElevatedButton(
-                    onPressed: () => _setThemeYaru(),
-                    child: AdaptiveText("Yaru")),
-                AdaptiveElevatedButton(
-                    onPressed: () => _setThemeMacosUI(),
-                    child: AdaptiveText("MacosUI")),
-              ],
-            ),
+    return ListView(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Wrap(
+            alignment: WrapAlignment.center,
+            spacing: 20.0,
+            runSpacing: 20.0,
+            children: [
+              AdaptiveElevatedButton(
+                  onPressed: () {
+                    var theme = context.read<ThemeNotifier>();
+                    _setThemeLight(theme);
+                  },
+                  child: AdaptiveText("Light")),
+              AdaptiveElevatedButton(
+                  onPressed: () {
+                    var theme = context.read<ThemeNotifier>();
+                    _setThemeDark(theme);
+                  },
+                  child: AdaptiveText("Dark")),
+              AdaptiveElevatedButton(
+                  onPressed: () => _setThemeMaterial(),
+                  child: AdaptiveText("Material")),
+              AdaptiveElevatedButton(
+                  onPressed: () => _setThemeCupertino(),
+                  child: AdaptiveText("Cupertino")),
+              AdaptiveElevatedButton(
+                  onPressed: () => _setThemeFluentUI(),
+                  child: AdaptiveText("FluentUI")),
+              AdaptiveElevatedButton(
+                  onPressed: () => _setThemeYaru(),
+                  child: AdaptiveText("Yaru")),
+              AdaptiveElevatedButton(
+                  onPressed: () => _setThemeMacosUI(),
+                  child: AdaptiveText("MacosUI")),
+            ],
           ),
-          ExampleWidget(
-              name: "Adaptive Icon",
-              child: AdaptiveIcon(
-                AdaptiveIcons.home,
-                color: Colors.green,
-              )),
-          const SizedBox(height: 10.0),
-          ExampleWidget(
-              name: "Adaptive Text",
-              child: Expanded(
-                child: AdaptiveText(
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."),
-              )),
-          const SizedBox(height: 10.0),
-          ExampleWidget(
-              name: "Adaptive Text Input",
-              child: Expanded(
-                child: AdaptiveTextInput(
-                  placeholder: "Placeholder",
-                ),
-              )),
-          const SizedBox(height: 10.0),
-          // ExampleWidget(
-          //     name: "Adaptive App Bar",
-          //     child: AdaptiveAppBar(title: const Text("App Bar Title"))),
-          // const SizedBox(height: 10.0),
-          ExampleWidget(
-              name: "Adaptive Text Button",
-              child: AdaptiveTextButton(
-                  onPressed: () {}, child: const Text("Adaptive Text Button"))),
-          const SizedBox(height: 10.0),
-          ExampleWidget(
-              name: "Adaptive Elevated Button",
-              child: AdaptiveElevatedButton(
-                onPressed: () {},
-                child: const Text("Elevated Button"),
-              )),
-          const SizedBox(height: 10.0),
-          ExampleWidget(
-              name: "Adaptive Icon Button",
-              child: AdaptiveIconButton(
-                  onPressed: () {},
-                  icon: const AdaptiveIcon(AdaptiveIcons.add))),
-          const SizedBox(height: 10.0),
-          ExampleWidget(
-              name: "Adaptive Slider",
-              child: AdaptiveSlider(
-                  value: _currentSliderValue,
-                  onChanged: (double value) {
-                    setState(() {
-                      _currentSliderValue = value;
-                    });
-                  })),
-          const SizedBox(height: 10.0),
-          ExampleWidget(
-              name: "Adaptive CheckBox",
-              child: AdaptiveCheckbox(
-                value: isChecked,
-                onChanged: (bool? value) {
+        ),
+        ExampleWidget(
+            name: "Adaptive Icon",
+            child: AdaptiveIcon(
+              AdaptiveIcons.home,
+              color: Colors.green,
+            )),
+        const SizedBox(height: 10.0),
+        ExampleWidget(
+            name: "Adaptive Text",
+            child: Expanded(
+              child: AdaptiveText(
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."),
+            )),
+        const SizedBox(height: 10.0),
+        ExampleWidget(
+            name: "Adaptive Text Input",
+            child: Expanded(
+              child: AdaptiveTextInput(
+                placeholder: "Placeholder",
+              ),
+            )),
+        const SizedBox(height: 10.0),
+        // ExampleWidget(
+        //     name: "Adaptive App Bar",
+        //     child: AdaptiveAppBar(title: const Text("App Bar Title"))),
+        // const SizedBox(height: 10.0),
+        ExampleWidget(
+            name: "Adaptive Text Button",
+            child: AdaptiveTextButton(
+                onPressed: () {}, child: const Text("Adaptive Text Button"))),
+        const SizedBox(height: 10.0),
+        ExampleWidget(
+            name: "Adaptive Elevated Button",
+            child: AdaptiveElevatedButton(
+              onPressed: () {},
+              child: const Text("Elevated Button"),
+            )),
+        const SizedBox(height: 10.0),
+        ExampleWidget(
+            name: "Adaptive Icon Button",
+            child: AdaptiveIconButton(
+                onPressed: () {}, icon: const AdaptiveIcon(AdaptiveIcons.add))),
+        const SizedBox(height: 10.0),
+        ExampleWidget(
+            name: "Adaptive Slider",
+            child: AdaptiveSlider(
+                value: _currentSliderValue,
+                onChanged: (double value) {
                   setState(() {
-                    isChecked = value!;
+                    _currentSliderValue = value;
                   });
-                },
-              )),
-          const SizedBox(height: 10.0),
-          ExampleWidget(
-            name: "Adaptive Switch",
-            child: AdaptiveSwitch(
-              value: isSwitchOn,
-              onChanged: (value) {
+                })),
+        const SizedBox(height: 10.0),
+        ExampleWidget(
+            name: "Adaptive CheckBox",
+            child: AdaptiveCheckbox(
+              value: isChecked,
+              onChanged: (bool? value) {
                 setState(() {
-                  isSwitchOn = value;
+                  isChecked = value!;
                 });
               },
-            ),
+            )),
+        const SizedBox(height: 10.0),
+        ExampleWidget(
+          name: "Adaptive Switch",
+          child: AdaptiveSwitch(
+            value: isSwitchOn,
+            onChanged: (value) {
+              setState(() {
+                isSwitchOn = value;
+              });
+            },
           ),
-          const SizedBox(height: 20.0),
-          ExampleWidget(
-              name: "Adaptive Circular Progress Indicator",
-              child: AdaptiveCircularProgressIndicator(
-                value: null,
-              )),
-          SizedBox(height: 20.0),
-          ExampleWidget(
-              name: "Adaptive Linear Progress Indicator",
-              child: SizedBox(
-                height: 10,
-                width: 200,
-                child: AdaptiveLinearProgressIndicator(
-                  value: 56,
-                ),
-              )),
-          const SizedBox(height: 10.0),
-          ExampleWidget(
-            name: "Adaptive Date Picker",
-            child: AdaptiveDatePicker(
-                initialDate: date,
-                minDate: DateTime(1900),
-                maxDate: DateTime(2100),
-                onDateTimeChanged: (DateTime newDate) {
-                  setState(() {
-                    date = newDate;
-                  });
-                }),
-          ),
-          const SizedBox(height: 10),
-          ExampleWidget(
-              name: "Adaptive Modal Dialog",
-              child: AdaptiveElevatedButton(
-                  onPressed: () {
-                    showAdaptiveModalDialog<String>(
-                      context: context,
-                      title: const Text("Simple Dialog"),
-                      content: const Text("Adaptive Modal Dialog content"),
-                      primaryButton: AdaptiveModalDialogAction(
-                          onPressed: () => Navigator.pop(context, 'OK'),
-                          child: const Text('OK')),
-                      secondaryButton: AdaptiveModalDialogAction(
-                          onPressed: () => Navigator.pop(context, 'Cancel'),
-                          child: const Text('Cancel')),
-                    );
-                  },
-                  child: const Text("Simple Dialog"))),
-          const SizedBox(height: 10.0),
-          ExampleWidget(
-              name: "Adaptive Modal Bottom Sheet",
-              child: AdaptiveElevatedButton(
+        ),
+        const SizedBox(height: 20.0),
+        ExampleWidget(
+            name: "Adaptive Circular Progress Indicator",
+            child: AdaptiveCircularProgressIndicator(
+              value: null,
+            )),
+        SizedBox(height: 20.0),
+        ExampleWidget(
+            name: "Adaptive Linear Progress Indicator",
+            child: SizedBox(
+              height: 10,
+              width: 200,
+              child: AdaptiveLinearProgressIndicator(
+                value: 56,
+              ),
+            )),
+        const SizedBox(height: 10.0),
+        ExampleWidget(
+          name: "Adaptive Date Picker",
+          child: AdaptiveDatePicker(
+              initialDate: date,
+              minDate: DateTime(1900),
+              maxDate: DateTime(2100),
+              onDateTimeChanged: (DateTime newDate) {
+                setState(() {
+                  date = newDate;
+                });
+              }),
+        ),
+        const SizedBox(height: 10),
+        ExampleWidget(
+            name: "Adaptive Modal Dialog",
+            child: AdaptiveElevatedButton(
                 onPressed: () {
-                  showAdaptiveModalBottomSheet<String>(
+                  showAdaptiveModalDialog<String>(
                     context: context,
-                    title: const Text('This is the title'),
-                    actions: [
-                      AdaptiveBottomSheetAction(
-                        title: const Text(
-                          'Add',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
-                          ),
+                    title: const Text("Simple Dialog"),
+                    content: const Text("Adaptive Modal Dialog content"),
+                    primaryButton: AdaptiveModalDialogAction(
+                        onPressed: () => Navigator.pop(context, 'OK'),
+                        child: const Text('OK')),
+                    secondaryButton: AdaptiveModalDialogAction(
+                        onPressed: () => Navigator.pop(context, 'Cancel'),
+                        child: const Text('Cancel')),
+                  );
+                },
+                child: const Text("Simple Dialog"))),
+        const SizedBox(height: 10.0),
+        ExampleWidget(
+            name: "Adaptive Modal Bottom Sheet",
+            child: AdaptiveElevatedButton(
+              onPressed: () {
+                showAdaptiveModalBottomSheet<String>(
+                  context: context,
+                  title: const Text('This is the title'),
+                  actions: [
+                    AdaptiveBottomSheetAction(
+                      title: const Text(
+                        'Add',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
                         ),
-                        onPressed: (_) => Navigator.pop(context, 'Add'),
-                        leading: const Icon(Icons.add, size: 25),
                       ),
-                      AdaptiveBottomSheetAction(
-                        title: const Text(
-                          'Delete',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.red,
-                          ),
-                        ),
-                        onPressed: (_) => Navigator.pop(context, 'Delete'),
-                        leading: const Icon(
-                          Icons.delete,
-                          size: 25,
+                      onPressed: (_) => Navigator.pop(context, 'Add'),
+                      leading: const Icon(Icons.add, size: 25),
+                    ),
+                    AdaptiveBottomSheetAction(
+                      title: const Text(
+                        'Delete',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
                           color: Colors.red,
                         ),
                       ),
-                    ],
-                    cancelAction: AdaptiveBottomSheetCancelAction(
-                      title: const Text('Cancel'),
-                    ),
-                  );
-                },
-                child: const Text('Bottom Sheet'),
-              )),
-          const SizedBox(height: 10.0),
-          ExampleWidget(
-              name: "Adaptive Context Menu",
-              child: Row(
-                children: [
-                  AdaptiveContextMenu(
-                    actions: [
-                      AdaptiveContextMenuItem(
-                        text: "Create",
-                        onPressed: () => displayDialog(context, "Create"),
-                      ),
-                      AdaptiveContextMenuItem(
-                        text: "Read",
-                        onPressed: () => displayDialog(context, "Read"),
-                      ),
-                      AdaptiveContextMenuItem(
-                        text: "Update",
-                        onPressed: () => displayDialog(context, "Update"),
-                      ),
-                      AdaptiveContextMenuItem(
-                        text: "Delete",
-                        onPressed: () => displayDialog(context, "Delete"),
-                      ),
-                    ],
-                    child: const FlutterLogo(size: 200.0),
-                  ),
-                  AdaptiveContextMenu(
-                    actions: [
-                      AdaptiveContextMenuItem(
-                        text: "Copy",
-                        onPressed: () => displayDialog(context, "Copy"),
-                      ),
-                      AdaptiveContextMenuItem(
-                        text: "Paste",
-                        onPressed: () => displayDialog(context, "Paste"),
-                      ),
-                    ],
-                    child: Container(
-                      color: Colors.green,
-                      child: const FlutterLogo(
-                        size: 200.0,
+                      onPressed: (_) => Navigator.pop(context, 'Delete'),
+                      leading: const Icon(
+                        Icons.delete,
+                        size: 25,
+                        color: Colors.red,
                       ),
                     ),
+                  ],
+                  cancelAction: AdaptiveBottomSheetCancelAction(
+                    title: const Text('Cancel'),
                   ),
-                ],
-              )),
-        ],
-      ),
-      // This trailing comma makes auto-formatting nicer for build methods.
+                );
+              },
+              child: const Text('Bottom Sheet'),
+            )),
+        const SizedBox(height: 10.0),
+        ExampleWidget(
+            name: "Adaptive Context Menu",
+            child: Row(
+              children: [
+                AdaptiveContextMenu(
+                  actions: [
+                    AdaptiveContextMenuItem(
+                      text: "Create",
+                      onPressed: () => displayDialog(context, "Create"),
+                    ),
+                    AdaptiveContextMenuItem(
+                      text: "Read",
+                      onPressed: () => displayDialog(context, "Read"),
+                    ),
+                    AdaptiveContextMenuItem(
+                      text: "Update",
+                      onPressed: () => displayDialog(context, "Update"),
+                    ),
+                    AdaptiveContextMenuItem(
+                      text: "Delete",
+                      onPressed: () => displayDialog(context, "Delete"),
+                    ),
+                  ],
+                  child: Container(
+                    color: Colors.green,
+                    child: const FlutterLogo(
+                      size: 200.0,
+                    ),
+                  ),
+                ),
+              ],
+            )),
+      ],
     );
   }
 }
@@ -355,11 +358,14 @@ class ExampleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(children: [
-      SizedBox(width: 256.0, child: Text(name)),
-      const SizedBox(width: 10.0),
-      child,
-    ]);
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      child: Row(children: [
+        SizedBox(width: 256.0, child: Text(name)),
+        const SizedBox(width: 10.0),
+        child,
+      ]),
+    );
   }
 }
 

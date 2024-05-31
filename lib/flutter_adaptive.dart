@@ -11,6 +11,12 @@ export 'base/adaptive_widget_builder.dart';
 export 'base/adaptive_function.dart';
 export 'base/adaptive_function_builder.dart';
 
+export 'layouts/fluentui_navigation_builder.dart';
+export 'layouts/macosui_navigation_builder.dart';
+export 'layouts/cupertino_navigation_builder.dart';
+export 'layouts/yaru_navigation_builder.dart';
+export 'layouts/material_navigation_builder.dart';
+
 export 'components/adaptive_app.dart';
 export 'components/adaptive_theme_data.dart';
 export 'components/adaptive_app_bar.dart';
@@ -31,6 +37,7 @@ export 'components/adaptive_context_menu_item.dart';
 export 'components/adaptive_context_menu.dart';
 export 'components/adaptive_scaffold.dart';
 export 'components/adaptive_navigation_bar.dart';
+export 'components/adaptive_navigation.dart';
 
 export 'icons/adaptive_icons.dart';
 export 'icons/adaptive_icon.dart';

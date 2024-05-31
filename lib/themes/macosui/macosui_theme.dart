@@ -21,6 +21,7 @@ class MacosUITheme extends AdaptiveBundle {
             MacosUIScaffoldBuilder(),
             MacosUIThemeDataBuilder(),
             MacosUIAppBarBuilder(),
+            MacosUINavigationBuilder(),
           },
           bundles: {
           MacosUIIcons(),
