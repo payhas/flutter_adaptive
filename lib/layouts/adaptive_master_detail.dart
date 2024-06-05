@@ -15,7 +15,7 @@ typedef MasterTileBuilder = Widget Function(
 class AdaptiveMasterDetail extends AdaptiveWidget {
   const AdaptiveMasterDetail({
     super.key,
-    required this.masterItems,
+    this.masterItems,
     this.length,
     required this.tileBuilder,
     required this.pageBuilder,

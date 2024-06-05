@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:fluent_ui/fluent_ui.dart' hide PageController;
-import 'package:flutter/material.dart' show MaterialPage;
+import 'package:flutter/material.dart' show MaterialPage, Material;
 
 import 'master_detail_page.dart';
 import 'master_detail_theme.dart';
@@ -134,12 +134,10 @@ class _PortraitLayoutState extends State<PortraitLayout> {
                   ),
                   bottomBar: widget.bottomBar == null
                       ? null
-                      : widget
-                          .bottomBar /*Material(
+                      : Material(
                           color: theme.sideBarColor,
                           child: widget.bottomBar,
-                        )*/
-                  ,
+                        ),
                 ),
               ),
             ),

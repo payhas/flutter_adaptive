@@ -41,6 +41,11 @@ class MyApp extends StatelessWidget {
                 label: 'Music',
                 page: Center(child: Text('Music Page')),
               ),
+              AdaptiveDestination(
+                icon: AdaptiveIcon(AdaptiveIcons.album),
+                label: 'Master-Detail',
+                page: MasterDetailPage(),
+              ),
             ]),
           ),
         ),
@@ -404,5 +409,21 @@ class ThemeNotifier with ChangeNotifier {
   void setLightMode() {
     _themeData = lightTheme;
     notifyListeners();
+  }
+}
+
+class MasterDetailPage extends StatelessWidget {
+  const MasterDetailPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AdaptiveMasterDetail(
+      tileBuilder: (context, index, selected, availableWidth) {
+        return const Placeholder();
+      },
+      pageBuilder: (context, index) {
+        return const Placeholder();
+      },
+    );
   }
 }

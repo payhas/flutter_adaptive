@@ -1,7 +1,9 @@
 import 'dart:math';
 
 import 'package:fluent_ui/fluent_ui.dart' hide PageController;
-import 'package:flutter/material.dart' hide PageController;
+import 'package:flutter/material.dart'
+    hide PageController
+    show MaterialPage, Material;
 
 import 'master_list_view.dart';
 import 'paned_view_layout_delegate.dart';
@@ -140,7 +142,7 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
   }
 
   Widget _buildPage(BuildContext context) {
-    final theme = MasterDetailTheme.of(context);
+    // final theme = MasterDetailTheme.of(context);
 
     return FluentTheme(
       data: FluentTheme.of(
@@ -148,26 +150,27 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
         pageTransitionsTheme: theme.landscapeTransitions,
       )*/
       ,
-      child: ScaffoldMessenger(
-        child: Navigator(
-          key: widget.navigatorKey,
-          initialRoute: widget.initialRoute,
-          onGenerateRoute: widget.onGenerateRoute,
-          onUnknownRoute: widget.onUnknownRoute,
-          pages: [
-            MaterialPage(
-              key: ValueKey(_selectedIndex),
-              child: Builder(
-                builder: (context) => widget.controller.length > _selectedIndex
-                    ? widget.pageBuilder(context, _selectedIndex)
-                    : widget.pageBuilder(context, 0),
-              ),
+      child: /*ScaffoldMessenger(
+        child:*/
+          Navigator(
+        key: widget.navigatorKey,
+        initialRoute: widget.initialRoute,
+        onGenerateRoute: widget.onGenerateRoute,
+        onUnknownRoute: widget.onUnknownRoute,
+        pages: [
+          MaterialPage(
+            key: ValueKey(_selectedIndex),
+            child: Builder(
+              builder: (context) => widget.controller.length > _selectedIndex
+                  ? widget.pageBuilder(context, _selectedIndex)
+                  : widget.pageBuilder(context, 0),
             ),
-          ],
-          onPopPage: (route, result) => route.didPop(result),
-          observers: [...widget.navigatorObservers, HeroController()],
-        ),
+          ),
+        ],
+        onPopPage: (route, result) => route.didPop(result),
+        observers: [...widget.navigatorObservers, HeroController()],
       ),
+      // ),
     );
   }
 }
