@@ -35,6 +35,8 @@ export 'icons/adaptive_icons.dart';
 export 'icons/adaptive_icon.dart';
 export 'icons/adaptive_icon_builder.dart';
 
+export 'layouts/adaptive_master_detail.dart';
+
 export 'themes/adaptive_theme.dart';
 export 'themes/themed_appearance_manager.dart';
 export 'themes/themed_component_builder_selector.dart';
