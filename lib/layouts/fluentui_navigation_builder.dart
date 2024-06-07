@@ -5,14 +5,14 @@ class FluentUINavigationBuilder
     extends AdaptiveWidgetBuilder<AdaptiveNavigation> {
   @override
   Widget build(BuildContext context, AdaptiveNavigation component) {
-    return FluentNavigation(destinations: component.destinations);
+    return FluentNavigation(groupDestinations: component.groupDestinations);
   }
 }
 
 class FluentNavigation extends StatefulWidget {
-  const FluentNavigation({super.key, required this.destinations});
+  const FluentNavigation({super.key, required this.groupDestinations});
 
-  final List<AdaptiveDestination> destinations;
+  final List<AdaptiveGroupDestination> groupDestinations;
 
   @override
   FluentNavigationState createState() => FluentNavigationState();
@@ -29,6 +29,9 @@ class FluentNavigationState extends State<FluentNavigation> {
 
   @override
   Widget build(BuildContext context) {
+    var destinations =
+        widget.groupDestinations.expand((group) => group.destinations).toList();
+
     return NavigationView(
       appBar: const NavigationAppBar(
         title: Text("Adaptive Navigation Example"),
@@ -38,11 +41,11 @@ class FluentNavigationState extends State<FluentNavigation> {
         onChanged: _onItemTapped,
         displayMode: PaneDisplayMode.auto,
         items: [
-          for (int i = 0; i < widget.destinations.length; i++) ...[
+          for (int i = 0; i < destinations.length; i++) ...[
             PaneItem(
-              icon: widget.destinations[i].icon,
-              title: Text(widget.destinations[i].label),
-              body: widget.destinations[i].page,
+              icon: destinations[i].icon,
+              title: Text(destinations[i].label),
+              body: destinations[i].page,
             )
           ]
         ],

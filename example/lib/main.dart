@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart';
 import 'package:provider/provider.dart';
-import 'package:yaru/widgets.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,25 +22,121 @@ class MyApp extends StatelessWidget {
           builder: (context, theme, _) => AdaptiveApp(
             theme: theme.getTheme(),
             debugShowCheckedModeBanner: false,
-            home: AdaptiveNavigation(destinations: <AdaptiveDestination>[
-              AdaptiveDestination(
-                icon: AdaptiveIcon(
-                  AdaptiveIcons.home,
-                ),
-                label: 'Home',
-                page: MyHomePage(title: "Home Page"),
-              ),
-              AdaptiveDestination(
-                icon: AdaptiveIcon(AdaptiveIcons.chat),
-                label: 'Chat',
-                page: Center(child: Text('Chat Page')),
-              ),
-              AdaptiveDestination(
-                icon: AdaptiveIcon(AdaptiveIcons.music_note),
-                label: 'Music',
-                page: Center(child: Text('Music Page')),
-              ),
-            ]),
+            home: AdaptiveNavigation(
+                groupDestinations: const <AdaptiveGroupDestination>[
+                  AdaptiveGroupDestination(
+                      name: "Files",
+                      destinations: <AdaptiveDestination>[
+                        AdaptiveDestination(
+                          icon: AdaptiveIcon(
+                            AdaptiveIcons.home,
+                          ),
+                          label: 'Home',
+                          page: MyHomePage(title: "Home Page"),
+                          showOnBottomAppBar: true,
+                          showOnNavigationRail: true,
+                        ),
+                        AdaptiveDestination(
+                          icon: AdaptiveIcon(AdaptiveIcons.chat),
+                          label: 'Chat',
+                          page: Center(child: Text('Chat Page')),
+                          showOnBottomAppBar: true,
+                          showOnNavigationRail: true,
+                        ),
+                        AdaptiveDestination(
+                          icon: AdaptiveIcon(AdaptiveIcons.music_note),
+                          label: 'Music',
+                          page: Center(child: Text('Music Page')),
+                          showOnBottomAppBar: true,
+                          showOnNavigationRail: true,
+                        ),
+                      ]),
+                  AdaptiveGroupDestination(
+                      name: "Settings",
+                      destinations: <AdaptiveDestination>[
+                        AdaptiveDestination(
+                          icon: AdaptiveIcon(
+                            AdaptiveIcons.edit,
+                          ),
+                          label: 'Edit',
+                          page: Center(child: Text('Edit Page')),
+                          showOnNavigationRail: true,
+                        ),
+                        AdaptiveDestination(
+                          icon: AdaptiveIcon(AdaptiveIcons.cake),
+                          label: 'Cake',
+                          page: Center(child: Text('Cake Page')),
+                        ),
+                        AdaptiveDestination(
+                          icon: AdaptiveIcon(AdaptiveIcons.book),
+                          label: 'Book',
+                          page: Center(child: Text('Book Page')),
+                          showOnNavigationRail: true,
+                        ),
+                        AdaptiveDestination(
+                          icon: AdaptiveIcon(AdaptiveIcons.camera),
+                          label: 'Camera',
+                          page: Center(child: Text('Camera Page')),
+                        ),
+                        AdaptiveDestination(
+                          icon: AdaptiveIcon(AdaptiveIcons.badge),
+                          label: 'Badge',
+                          page: Center(child: Text('Badge Page')),
+                        ),
+                      ]),
+                  AdaptiveGroupDestination(
+                      name: "Library",
+                      destinations: <AdaptiveDestination>[
+                        AdaptiveDestination(
+                          icon: AdaptiveIcon(
+                            AdaptiveIcons.album,
+                          ),
+                          label: 'Album',
+                          page: Center(child: Text('Album Page')),
+                          showOnBottomAppBar: true,
+                          showOnNavigationRail: true,
+                        ),
+                        AdaptiveDestination(
+                          icon: AdaptiveIcon(AdaptiveIcons.bluetooth),
+                          label: 'Bluetooth',
+                          page: Center(child: Text('Bluetooth Page')),
+                          showOnNavigationRail: true,
+                        ),
+                        AdaptiveDestination(
+                          icon: AdaptiveIcon(AdaptiveIcons.coffee),
+                          label: 'Coffee',
+                          page: Center(child: Text('Coffee Page')),
+                          showOnBottomAppBar: true,
+                          showOnNavigationRail: true,
+                        ),
+                        AdaptiveDestination(
+                          icon: AdaptiveIcon(AdaptiveIcons.airplanemode_active),
+                          label: 'Airplane',
+                          page: Center(child: Text('Airplane Page')),
+                        ),
+                      ]),
+                  AdaptiveGroupDestination(
+                      name: "Search",
+                      destinations: <AdaptiveDestination>[
+                        AdaptiveDestination(
+                          icon: AdaptiveIcon(
+                            AdaptiveIcons.cloud,
+                          ),
+                          label: 'Cloud',
+                          page: Center(child: Text('Cloud Page')),
+                        ),
+                        AdaptiveDestination(
+                          icon: AdaptiveIcon(AdaptiveIcons.diamond),
+                          label: 'Diamond',
+                          page: Center(child: Text('Diamond Page')),
+                        ),
+                        AdaptiveDestination(
+                          icon: AdaptiveIcon(AdaptiveIcons.alarm),
+                          label: 'Alarm',
+                          page: Center(child: Text('Alarm Page')),
+                        ),
+                      ]),
+                ]),
           ),
         ),
       ),
@@ -77,7 +172,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void _setThemeFluentUI() {
+  void _setThemeFluentUI() async {
     setState(() {
       ThemedAppearanceManager.setThemeOf(context, 'FluentUI');
     });
@@ -86,8 +181,6 @@ class _MyHomePageState extends State<MyHomePage> {
   void _setThemeYaru() {
     setState(() {
       ThemedAppearanceManager.setThemeOf(context, 'Yaru');
-
-      YaruWindowTitleBar.ensureInitialized();
     });
   }
 

@@ -5,25 +5,25 @@ class MaterialNavigationBuilder
     extends AdaptiveWidgetBuilder<AdaptiveNavigation> {
   @override
   Widget build(BuildContext context, AdaptiveNavigation component) {
-    return ResponsiveNavigation(destinations: component.destinations);
+    return ResponsiveNavigation(groupDestinations: component.groupDestinations);
   }
 }
 
 class ResponsiveNavigation extends StatelessWidget {
-  const ResponsiveNavigation({super.key, required this.destinations});
+  const ResponsiveNavigation({super.key, required this.groupDestinations});
 
-  final List<AdaptiveDestination> destinations;
+  final List<AdaptiveGroupDestination> groupDestinations;
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth < FormFactor.tablet) {
-          return NavigationBarMenu(destinations: destinations);
+          return NavigationBarMenu(groupDestinations: groupDestinations);
         } else if (constraints.maxWidth < FormFactor.desktop) {
-          return NavigationRailMenu(destinations: destinations);
+          return NavigationRailMenu(groupDestinations: groupDestinations);
         } else {
-          return NavigationDrawerMenu(destinations: destinations);
+          return NavigationDrawerMenu(groupDestinations: groupDestinations);
         }
       },
     );
@@ -31,9 +31,9 @@ class ResponsiveNavigation extends StatelessWidget {
 }
 
 class NavigationBarMenu extends StatefulWidget {
-  const NavigationBarMenu({super.key, required this.destinations});
+  const NavigationBarMenu({super.key, required this.groupDestinations});
 
-  final List<AdaptiveDestination> destinations;
+  final List<AdaptiveGroupDestination> groupDestinations;
 
   @override
   NavigationBarMenuState createState() => NavigationBarMenuState();
@@ -41,6 +41,17 @@ class NavigationBarMenu extends StatefulWidget {
 
 class NavigationBarMenuState extends State<NavigationBarMenu> {
   int _selectedIndex = 0;
+
+  List<AdaptiveDestination> _bottomAppBarDestinations = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _bottomAppBarDestinations = widget.groupDestinations
+        .expand((group) => group.destinations)
+        .where((destination) => destination.showOnBottomAppBar == true)
+        .toList();
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -51,11 +62,11 @@ class NavigationBarMenuState extends State<NavigationBarMenu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: widget.destinations[_selectedIndex].page,
+      body: _bottomAppBarDestinations[_selectedIndex].page,
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedIndex,
         onDestinationSelected: _onItemTapped,
-        destinations: widget.destinations
+        destinations: _bottomAppBarDestinations
             .map((destination) => NavigationDestination(
                   icon: destination.icon,
                   label: destination.label,
@@ -67,9 +78,9 @@ class NavigationBarMenuState extends State<NavigationBarMenu> {
 }
 
 class NavigationRailMenu extends StatefulWidget {
-  const NavigationRailMenu({super.key, required this.destinations});
+  const NavigationRailMenu({super.key, required this.groupDestinations});
 
-  final List<AdaptiveDestination> destinations;
+  final List<AdaptiveGroupDestination> groupDestinations;
 
   @override
   NavigationRailMenuState createState() => NavigationRailMenuState();
@@ -77,6 +88,18 @@ class NavigationRailMenu extends StatefulWidget {
 
 class NavigationRailMenuState extends State<NavigationRailMenu> {
   int _selectedIndex = 0;
+
+  List<AdaptiveDestination> _railDestinations = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    _railDestinations = widget.groupDestinations
+        .expand((group) => group.destinations)
+        .where((destination) => destination.showOnNavigationRail == true)
+        .toList();
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -90,10 +113,11 @@ class NavigationRailMenuState extends State<NavigationRailMenu> {
       body: Row(
         children: [
           NavigationRail(
+            groupAlignment: 0,
             selectedIndex: _selectedIndex,
             onDestinationSelected: _onItemTapped,
-            labelType: NavigationRailLabelType.selected,
-            destinations: widget.destinations
+            labelType: NavigationRailLabelType.all,
+            destinations: _railDestinations
                 .map((destination) => NavigationRailDestination(
                       icon: destination.icon,
                       label: Text(destination.label),
@@ -102,7 +126,7 @@ class NavigationRailMenuState extends State<NavigationRailMenu> {
           ),
           const VerticalDivider(thickness: 1, width: 1),
           Expanded(
-            child: widget.destinations[_selectedIndex].page,
+            child: _railDestinations[_selectedIndex].page,
           ),
         ],
       ),
@@ -111,9 +135,9 @@ class NavigationRailMenuState extends State<NavigationRailMenu> {
 }
 
 class NavigationDrawerMenu extends StatefulWidget {
-  const NavigationDrawerMenu({super.key, required this.destinations});
+  const NavigationDrawerMenu({super.key, required this.groupDestinations});
 
-  final List<AdaptiveDestination> destinations;
+  final List<AdaptiveGroupDestination> groupDestinations;
 
   @override
   NavigationDrawerMenuState createState() => NavigationDrawerMenuState();
@@ -133,23 +157,41 @@ class NavigationDrawerMenuState extends State<NavigationDrawerMenu> {
     return Scaffold(
       body: Row(
         children: [
-          Drawer(
-            child: ListView(
-              padding: EdgeInsets.zero,
-              children: widget.destinations.map((dest) {
-                int idx = widget.destinations.indexOf(dest);
-                return ListTile(
-                  leading: dest.icon,
-                  title: Text(dest.label),
-                  selected: _selectedIndex == idx,
-                  onTap: () => _onItemTapped(idx),
-                );
-              }).toList(),
-            ),
+          NavigationDrawer(
+            onDestinationSelected: _onItemTapped,
+            selectedIndex: _selectedIndex,
+            children: <Widget>[
+              for (int i = 0; i < widget.groupDestinations.length; i++) ...[
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(28, 16, 16, 10),
+                  child: Text(
+                    widget.groupDestinations[i].name,
+                    style: Theme.of(context).textTheme.titleSmall,
+                  ),
+                ),
+                ...widget.groupDestinations[i].destinations.map((dest) {
+                  return NavigationDrawerDestination(
+                      icon: dest.icon, label: Text(dest.label));
+                }),
+                if (i < widget.groupDestinations.length - 1)
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 28),
+                    child: Divider(),
+                  ),
+                if (i == widget.groupDestinations.length - 1)
+                  const SizedBox(
+                    height: 16,
+                  )
+              ],
+            ],
           ),
           Expanded(
-            child: widget.destinations[_selectedIndex].page,
-          ),
+              child: widget.groupDestinations
+                  .expand((group) => group.destinations)
+                  .toList()[_selectedIndex]
+                  .page
+              //widget.groupDestinations[0].destinations[_selectedIndex].page
+              ),
         ],
       ),
     );

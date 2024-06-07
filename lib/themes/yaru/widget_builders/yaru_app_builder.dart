@@ -5,6 +5,7 @@ import 'package:yaru/yaru.dart';
 class YaruAdaptiveAppBuilder extends AdaptiveWidgetBuilder<AdaptiveApp> {
   @override
   Widget build(BuildContext context, AdaptiveApp component) {
+    YaruWindowTitleBar.ensureInitialized();
     return YaruTheme(
       builder: (context, yaru, child) {
         YaruThemeDataBuilder.yaruThemeData = yaru;
