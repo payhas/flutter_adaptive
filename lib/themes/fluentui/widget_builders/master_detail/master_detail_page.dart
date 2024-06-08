@@ -1,10 +1,10 @@
 import 'package:fluent_ui/fluent_ui.dart' hide PageController;
 
 import 'landscape_layout.dart';
-import 'master_detail_theme.dart';
 import 'portrait_layout.dart';
 import 'paned_view_layout_delegate.dart';
 import 'master_detail_page_controller.dart';
+import 'constants.dart';
 
 const _kDefaultPaneWidth = 280.0;
 
@@ -17,8 +17,8 @@ typedef MasterTileBuilder = Widget Function(
 
 typedef AppBarBuilder = PreferredSizeWidget? Function(BuildContext context);
 
-class MasterDetailPage extends StatefulWidget {
-  const MasterDetailPage({
+class FluentUIMasterDetailPage extends StatefulWidget {
+  const FluentUIMasterDetailPage({
     super.key,
     this.length,
     required this.tileBuilder,
@@ -99,7 +99,7 @@ class MasterDetailPage extends StatefulWidget {
   final ValueChanged<int?>? onSelected;
 
   /// An optional controller that can be used to navigate to a specific index.
-  final PageController? controller;
+  final FluentUIPageController? controller;
 
   /// A key to use when building the [Navigator] widget.
   final GlobalKey<NavigatorState>? navigatorKey;
@@ -143,15 +143,15 @@ class MasterDetailPage extends StatefulWidget {
   }
 
   @override
-  State<MasterDetailPage> createState() => _MasterDetailPageState();
+  State<FluentUIMasterDetailPage> createState() => _MasterDetailPageState();
 }
 
-class _MasterDetailPageState extends State<MasterDetailPage> {
-  late PageController _controller;
+class _MasterDetailPageState extends State<FluentUIMasterDetailPage> {
+  late FluentUIPageController _controller;
   late final GlobalKey<NavigatorState> _navigatorKey;
 
   void _updateController() => _controller = widget.controller ??
-      PageController(
+      FluentUIPageController(
         length: widget.length ?? widget.controller!.length,
         initialIndex: widget.initialIndex ?? -1,
       );
@@ -170,7 +170,7 @@ class _MasterDetailPageState extends State<MasterDetailPage> {
   }
 
   @override
-  void didUpdateWidget(covariant MasterDetailPage oldWidget) {
+  void didUpdateWidget(covariant FluentUIMasterDetailPage oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.controller != oldWidget.controller ||
         widget.length != oldWidget.length ||
@@ -181,9 +181,10 @@ class _MasterDetailPageState extends State<MasterDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = widget.breakpoint ??
-        MasterDetailTheme.of(context).breakpoint ??
-        MasterDetailThemeData.fallback(context).breakpoint!;
+    final breakpoint = widget.breakpoint ?? kMasterDetailBreakpoint
+        /*MasterDetailTheme.of(context).breakpoint ??
+        MasterDetailThemeData.fallback(context).breakpoint!*/
+        ;
     return widget.length == 0 || widget.controller?.length == 0
         ? widget.emptyBuilder?.call(context) ?? const SizedBox.shrink()
         : _MasterDetailLayoutBuilder(

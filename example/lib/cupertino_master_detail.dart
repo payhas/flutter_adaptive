@@ -10,19 +10,18 @@ class MyApp extends StatelessWidget {
       title: 'Master-Detail example',
       theme: const CupertinoThemeData(
         primaryColor: CupertinoColors.activeBlue,
-        // activeColor: Colors.blue,
+        brightness: Brightness.light,
       ),
-      home: MasterDetailPage(
+      home: CupertinoMasterDetailPage(
         length: 8,
         appBar: const CupertinoNavigationBar(
           middle: Text('Master'),
-          // leading: Icon(CupertinoIcons.back),
         ),
-        tileBuilder: (context, index, selected, ___) => MasterTile(
+        tileBuilder: (context, index, selected, ___) => CupertinoMasterTile(
           leading: const Icon(CupertinoIcons.add),
           title: Text('Master $index'),
         ),
-        pageBuilder: (context, index) => DetailPage(
+        pageBuilder: (context, index) => CupertinoDetailPage(
           appBar: CupertinoNavigationBar(
             middle: Text('Detail $index'),
           ),

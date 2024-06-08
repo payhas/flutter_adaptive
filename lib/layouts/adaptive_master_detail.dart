@@ -15,7 +15,6 @@ typedef MasterTileBuilder = Widget Function(
 class AdaptiveMasterDetail extends AdaptiveWidget {
   const AdaptiveMasterDetail({
     super.key,
-    this.masterItems,
     this.length,
     required this.tileBuilder,
     required this.pageBuilder,
@@ -37,8 +36,6 @@ class AdaptiveMasterDetail extends AdaptiveWidget {
     this.onGenerateRoute,
     this.onUnknownRoute,
   });
-
-  final List<Widget>? masterItems;
 
   /// The total number of pages.
   final int? length;
@@ -96,7 +93,7 @@ class AdaptiveMasterDetail extends AdaptiveWidget {
   final ValueChanged<int?>? onSelected;
 
   /// An optional controller that can be used to navigate to a specific index.
-  final MasterDetailPageController? controller;
+  final AdaptiveMasterDetailPageController? controller;
 
   /// A key to use when building the [Navigator] widget.
   final GlobalKey<NavigatorState>? navigatorKey;
@@ -126,8 +123,9 @@ class AdaptiveMasterDetail extends AdaptiveWidget {
   final RouteFactory? onUnknownRoute;
 }
 
-class MasterDetailPageController extends ChangeNotifier {
-  MasterDetailPageController({required this.length, this.initialIndex = -1})
+class AdaptiveMasterDetailPageController extends ChangeNotifier {
+  AdaptiveMasterDetailPageController(
+      {required this.length, this.initialIndex = -1})
       : _index = initialIndex,
         _previousIndex = initialIndex;
   final int length;

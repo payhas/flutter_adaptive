@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
-class PageController extends ChangeNotifier {
-  PageController({required this.length, this.initialIndex = -1})
+class MacosUIPageController extends ChangeNotifier {
+  MacosUIPageController({required this.length, this.initialIndex = -1})
       : _index = initialIndex,
         _previousIndex = initialIndex;
   final int length;

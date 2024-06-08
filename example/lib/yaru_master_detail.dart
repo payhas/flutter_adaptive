@@ -10,13 +10,12 @@ class MyApp extends StatelessWidget {
       title: 'Master-Detail example',
       theme: ThemeData(
         primaryColor: Colors.blue,
-        // activeColor: Colors.blue,
+        brightness: Brightness.light,
       ),
       home: YaruMasterDetailPage(
         length: 8,
         appBar: AppBar(
           title: const Text('Master'),
-          // leading: Icon(CupertinoIcons.back),
         ),
         tileBuilder: (context, index, selected, ___) => YaruMasterTile(
           leading: const Icon(Icons.menu),

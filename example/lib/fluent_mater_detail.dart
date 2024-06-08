@@ -8,20 +8,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return FluentApp(
       title: 'Master-Detail example',
-      theme: FluentThemeData(
-        // primaryColor: CupertinoColors.activeBlue,
-        activeColor: Colors.blue,
-      ),
-      home: MasterDetailPage(
+      theme: FluentThemeData.dark(),
+      home: FluentUIMasterDetailPage(
         length: 8,
         appBar: const PageHeader(
           title: Text('Master'),
         ),
-        tileBuilder: (context, index, selected, ___) => MasterTile(
+        tileBuilder: (context, index, selected, ___) => FluentUIMasterTile(
           leading: const Icon(FluentIcons.context_menu),
           title: Text('Master $index'),
         ),
-        pageBuilder: (context, index) => DetailPage(
+        pageBuilder: (context, index) => FluentUIDetailPage(
           appBar: PageHeader(
             title: Text('Detail $index'),
           ),

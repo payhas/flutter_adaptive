@@ -10,8 +10,6 @@ import 'paned_view_layout_delegate.dart';
 import 'paned_view.dart';
 import 'master_detail_page_controller.dart';
 import 'master_detail_page.dart';
-import 'master_detail_theme.dart';
-import 'title_bar_theme.dart';
 
 const kYaruTitleBarHeight = 46.0;
 
@@ -43,7 +41,7 @@ class LandscapeLayout extends StatefulWidget {
   final PanedViewLayoutDelegate paneLayoutDelegate;
   final Widget? appBar;
   final Widget? bottomBar;
-  final PageController controller;
+  final FluentUIPageController controller;
 
   @override
   State<LandscapeLayout> createState() => _LandscapeLayoutState();
@@ -91,33 +89,39 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = MasterDetailTheme.of(context);
+    final theme = FluentTheme /*MasterDetailTheme*/ .of(context);
     return PanedView(
       pane: _buildLeftPane(theme),
       page: _buildPage(context),
       layoutDelegate: widget.paneLayoutDelegate,
-      includeSeparator: theme.includeSeparator ?? true,
+      includeSeparator: /*theme.includeSeparator ??*/ true,
       onPaneSizeChange: (size) => _paneWidth = size,
     );
   }
 
-  Widget _buildLeftPane(MasterDetailThemeData theme) {
+  Widget _buildLeftPane(FluentThemeData /*MasterDetailThemeData*/ theme) {
     return Builder(
       builder: (context) {
-        return TitleBarTheme(
+        return /*TitleBarTheme(
           data: const TitleBarThemeData(
             style: TitleBarStyle.undecorated,
           ),
-          child: Column(
-            children: [
-              if (widget.appBar != null)
-                SizedBox(
-                  height: kYaruTitleBarHeight,
+          child:*/
+            Column(
+          children: [
+            if (widget.appBar != null)
+              Container(
+                color: FluentTheme.of(context).scaffoldBackgroundColor,
+                child: SizedBox(
+                  // height: kYaruTitleBarHeight,
                   child: widget.appBar!,
                 ),
-              Expanded(
+              ),
+            Expanded(
+              child: FluentTheme(
+                data: FluentTheme.of(context),
                 child: Container(
-                  color: theme.sideBarColor,
+                  // color: theme.sideBarColor,
                   child: MasterListView(
                     length: widget.controller.length,
                     selectedIndex: _selectedIndex,
@@ -129,13 +133,14 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
                   ),
                 ),
               ),
-              if (widget.bottomBar != null)
-                Material(
-                  color: theme.sideBarColor,
-                  child: widget.bottomBar,
-                ),
-            ],
-          ),
+            ),
+            if (widget.bottomBar != null)
+              Material(
+                // color: theme.sideBarColor,
+                child: widget.bottomBar,
+              ),
+          ],
+          // ),
         );
       },
     );

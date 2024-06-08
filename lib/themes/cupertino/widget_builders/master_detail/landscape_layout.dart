@@ -7,8 +7,6 @@ import 'paned_view_layout_delegate.dart';
 import 'paned_view.dart';
 import 'master_detail_page_controller.dart';
 import 'master_detail_page.dart';
-import 'master_detail_theme.dart';
-import 'title_bar_theme.dart';
 
 const kYaruTitleBarHeight = 46.0;
 
@@ -40,7 +38,7 @@ class LandscapeLayout extends StatefulWidget {
   final PanedViewLayoutDelegate paneLayoutDelegate;
   final Widget? appBar;
   final Widget? bottomBar;
-  final PageController controller;
+  final CupertinoPageController controller;
 
   @override
   State<LandscapeLayout> createState() => _LandscapeLayoutState();
@@ -88,48 +86,50 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = MasterDetailTheme.of(context);
+    final theme = CupertinoTheme /*MasterDetailTheme*/ .of(context);
     return PanedView(
       pane: _buildLeftPane(theme),
       page: _buildPage(context),
       layoutDelegate: widget.paneLayoutDelegate,
-      includeSeparator: theme.includeSeparator ?? true,
+      includeSeparator: /*theme.includeSeparator ??*/ true,
       onPaneSizeChange: (size) => _paneWidth = size,
     );
   }
 
-  Widget _buildLeftPane(MasterDetailThemeData theme) {
+  Widget _buildLeftPane(CupertinoThemeData /*MasterDetailThemeData*/ theme) {
     return Builder(
       builder: (context) {
-        return TitleBarTheme(
+        return /*TitleBarTheme(
           data: const TitleBarThemeData(
             style: TitleBarStyle.undecorated,
           ),
-          child: Column(
-            children: [
-              if (widget.appBar != null)
-                SizedBox(
-                  height: kYaruTitleBarHeight,
-                  child: widget.appBar!,
-                ),
-              Expanded(
-                child: Container(
-                  color: theme.sideBarColor,
-                  child: MasterListView(
-                    length: widget.controller.length,
-                    selectedIndex: _selectedIndex,
-                    onTap: _onTap,
-                    builder: widget.tileBuilder,
-                    availableWidth: _paneWidth!,
-                    startUndershoot: widget.appBar != null,
-                    endUndershoot: widget.bottomBar != null,
-                  ),
-                ),
+          child:*/
+            Column(
+          children: [
+            if (widget.appBar != null)
+              SizedBox(
+                height: kYaruTitleBarHeight,
+                child: widget.appBar!,
               ),
-              if (widget.bottomBar != null)
-                widget.bottomBar ?? const Placeholder(),
-            ],
-          ),
+            Expanded(
+              child: /*CupertinoTheme(
+                data: CupertinoTheme.of(context),
+                child:*/
+                  MasterListView(
+                length: widget.controller.length,
+                selectedIndex: _selectedIndex,
+                onTap: _onTap,
+                builder: widget.tileBuilder,
+                availableWidth: _paneWidth!,
+                startUndershoot: widget.appBar != null,
+                endUndershoot: widget.bottomBar != null,
+              ),
+              // ),
+            ),
+            if (widget.bottomBar != null)
+              widget.bottomBar ?? const Placeholder(),
+          ],
+          // ),
         );
       },
     );

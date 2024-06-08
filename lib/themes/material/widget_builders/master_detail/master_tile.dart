@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'constants.dart';
-import 'extensions.dart';
 
 const double _kScrollbarThickness = 8.0;
 const double _kScrollbarMargin = 2.0;
@@ -9,8 +8,8 @@ const Duration _kSelectedTileAnimationDuration = Duration(milliseconds: 250);
 /// Provides the recommended layout for [YaruMasterDetailPage.tileBuilder].
 ///
 /// This widget is structurally similar to [ListTile].
-class MasterTile extends StatelessWidget {
-  const MasterTile({
+class MaterialMasterTile extends StatelessWidget {
+  const MaterialMasterTile({
     super.key,
     this.selected,
     this.leading,
@@ -42,7 +41,7 @@ class MasterTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final scope = MasterTileScope.maybeOf(context);
+    final scope = MaterialMasterTileScope.maybeOf(context);
 
     final isSelected = selected ?? scope?.selected ?? false;
     final scrollbarThicknessWithTrack =
@@ -65,7 +64,7 @@ class MasterTile extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius:
                 const BorderRadius.all(Radius.circular(kButtonRadius)),
-            side: theme.colorScheme.isHighContrast && isSelected
+            side: /*theme.colorScheme.isHighContrast &&*/ isSelected
                 ? BorderSide(
                     color: theme.colorScheme.outlineVariant,
                     strokeAlign: BorderSide.strokeAlignOutside,
@@ -130,8 +129,8 @@ class MasterTile extends StatelessWidget {
   }
 }
 
-class MasterTileScope extends InheritedWidget {
-  const MasterTileScope({
+class MaterialMasterTileScope extends InheritedWidget {
+  const MaterialMasterTileScope({
     super.key,
     required super.child,
     required this.index,
@@ -143,16 +142,17 @@ class MasterTileScope extends InheritedWidget {
   final bool selected;
   final VoidCallback onTap;
 
-  static MasterTileScope of(BuildContext context) {
+  static MaterialMasterTileScope of(BuildContext context) {
     return maybeOf(context)!;
   }
 
-  static MasterTileScope? maybeOf(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<MasterTileScope>();
+  static MaterialMasterTileScope? maybeOf(BuildContext context) {
+    return context
+        .dependOnInheritedWidgetOfExactType<MaterialMasterTileScope>();
   }
 
   @override
-  bool updateShouldNotify(MasterTileScope oldWidget) {
+  bool updateShouldNotify(MaterialMasterTileScope oldWidget) {
     return selected != oldWidget.selected || index != oldWidget.index;
   }
 }

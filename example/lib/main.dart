@@ -418,6 +418,7 @@ class MasterDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AdaptiveMasterDetail(
+      length: 1,
       tileBuilder: (context, index, selected, availableWidth) {
         return const Placeholder();
       },

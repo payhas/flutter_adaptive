@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-class PageController extends ChangeNotifier {
-  PageController({required this.length, this.initialIndex = -1})
+class CupertinoPageController extends ChangeNotifier {
+  CupertinoPageController({required this.length, this.initialIndex = -1})
       : _index = initialIndex,
         _previousIndex = initialIndex;
   final int length;

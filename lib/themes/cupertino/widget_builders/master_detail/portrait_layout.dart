@@ -1,11 +1,8 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart' hide PageController;
 
 import 'master_detail_page.dart';
-import 'master_detail_theme.dart';
 import 'master_list_view.dart';
 import 'master_detail_page_controller.dart';
-import 'title_bar_theme.dart';
 
 class PortraitLayout extends StatefulWidget {
   const PortraitLayout({
@@ -35,7 +32,7 @@ class PortraitLayout extends StatefulWidget {
   final /*PreferredSize*/ Widget? appBar;
   final Widget? bottomBar;
 
-  final PageController controller;
+  final CupertinoPageController controller;
 
   @override
   State<PortraitLayout> createState() => _PortraitLayoutState();
@@ -91,13 +88,14 @@ class _PortraitLayoutState extends State<PortraitLayout> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = MasterDetailTheme.of(context);
+    // final theme = CupertinoTheme /*MasterDetailTheme*/ .of(context);
     return PopScope(
       onPopInvoked: (v) async => await _navigator.maybePop(),
-      child: CupertinoTheme(
-        data: CupertinoTheme.of(
+      child: CupertinoTheme /*MasterDetailTheme*/ (
+        data: CupertinoTheme /*MasterDetailTheme*/ .of(
             context) /*.copyWith(
-          pageTransitionsTheme: theme.portraitTransitions,
+          /*pageTransitionsTheme*/ portraitTransitions:
+              theme.portraitTransitions,
         )*/
         ,
         child: Navigator(
@@ -112,15 +110,17 @@ class _PortraitLayoutState extends State<PortraitLayout> {
           pages: [
             CupertinoPage(
               key: const ValueKey(-1),
-              child: TitleBarTheme(
+              child: /*TitleBarTheme(
                 data: const TitleBarThemeData(
                   style:
                       kIsWeb ? TitleBarStyle.undecorated : TitleBarStyle.normal,
                 ),
-                child: CupertinoPageScaffold(
-                  backgroundColor: theme.sideBarColor,
-                  navigationBar:
-                      widget.appBar as ObstructingPreferredSizeWidget,
+                child:*/
+                  CupertinoPageScaffold(
+                // backgroundColor:
+                //     theme.primaryContrastingColor /*sideBarColor*/,
+                navigationBar: widget.appBar as ObstructingPreferredSizeWidget,
+                child: SafeArea(
                   child: LayoutBuilder(
                     builder: (context, constraints) => MasterListView(
                       length: widget.controller.length,
@@ -132,14 +132,15 @@ class _PortraitLayoutState extends State<PortraitLayout> {
                       endUndershoot: widget.bottomBar != null,
                     ),
                   ),
-                  // bottomNavigationBar: widget.bottomBar == null
-                  //     ? null
-                  //     : Material(
-                  //         color: theme.sideBarColor,
-                  //         child: widget.bottomBar,
-                  //       ),
                 ),
+                // bottomNavigationBar: widget.bottomBar == null
+                //     ? null
+                //     : Material(
+                //         color: theme.sideBarColor,
+                //         child: widget.bottomBar,
+                //       ),
               ),
+              // ),
             ),
             if (_selectedIndex != -1) page(_selectedIndex),
           ],

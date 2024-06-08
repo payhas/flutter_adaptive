@@ -1,8 +1,6 @@
-// import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'constants.dart';
-// import 'extensions.dart';
 
 const double _kScrollbarThickness = 8.0;
 const double _kScrollbarMargin = 2.0;
@@ -11,8 +9,8 @@ const Duration _kSelectedTileAnimationDuration = Duration(milliseconds: 250);
 /// Provides the recommended layout for [YaruMasterDetailPage.tileBuilder].
 ///
 /// This widget is structurally similar to [ListTile].
-class MasterTile extends StatelessWidget {
-  const MasterTile({
+class MacosUIMasterTile extends StatelessWidget {
+  const MacosUIMasterTile({
     super.key,
     this.selected,
     this.leading,
@@ -44,7 +42,7 @@ class MasterTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = MacosTheme.of(context);
-    final scope = MasterTileScope.maybeOf(context);
+    final scope = MacosUIMasterTileScope.maybeOf(context);
 
     final isSelected = selected ?? scope?.selected ?? false;
     final scrollbarThicknessWithTrack =
@@ -57,7 +55,7 @@ class MasterTile extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(kButtonRadius)),
           color: isSelected
-              ? theme.canvasColor. /*colorScheme.onSurface.*/ withOpacity(0.07)
+              ? theme.dividerColor. /*colorScheme.onSurface.*/ withOpacity(0.07)
               : null,
         ),
         child: MacosListTile(
@@ -102,7 +100,10 @@ class MasterTile extends StatelessWidget {
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
       style: TextStyle(
-          color: MacosTheme.of(context).canvasColor /*.colorScheme.onSurface*/),
+          color: MacosTheme.of(context)
+              .typography
+              .body
+              .color /*.colorScheme.onSurface*/),
     );
   }
 
@@ -139,8 +140,8 @@ class MasterTile extends StatelessWidget {
   }
 }
 
-class MasterTileScope extends InheritedWidget {
-  const MasterTileScope({
+class MacosUIMasterTileScope extends InheritedWidget {
+  const MacosUIMasterTileScope({
     super.key,
     required super.child,
     required this.index,
@@ -152,16 +153,16 @@ class MasterTileScope extends InheritedWidget {
   final bool selected;
   final VoidCallback onTap;
 
-  static MasterTileScope of(BuildContext context) {
+  static MacosUIMasterTileScope of(BuildContext context) {
     return maybeOf(context)!;
   }
 
-  static MasterTileScope? maybeOf(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<MasterTileScope>();
+  static MacosUIMasterTileScope? maybeOf(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<MacosUIMasterTileScope>();
   }
 
   @override
-  bool updateShouldNotify(MasterTileScope oldWidget) {
+  bool updateShouldNotify(MacosUIMasterTileScope oldWidget) {
     return selected != oldWidget.selected || index != oldWidget.index;
   }
 }

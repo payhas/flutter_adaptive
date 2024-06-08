@@ -7,8 +7,8 @@ const _kDetailPageHeroTag = '<DetailPage hero tag>';
 ///
 /// This widget is similar to [Scaffold] with the exception that it wraps the
 /// [appBar] in a [Hero] to keep it in place at the top during page transitions.
-class DetailPage extends StatelessWidget {
-  const DetailPage({
+class MacosUIDetailPage extends StatelessWidget {
+  const MacosUIDetailPage({
     super.key,
     this.appBar,
     this.body,

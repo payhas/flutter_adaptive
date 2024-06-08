@@ -1,14 +1,9 @@
-import 'package:flutter/foundation.dart';
-// import 'package:flutter/material.dart' hide PageController;
-import 'package:flutter/widgets.dart' hide PageController;
 import 'package:macos_ui/macos_ui.dart';
 import 'package:flutter/cupertino.dart' hide PageController;
 
 import 'master_detail_page.dart';
-import 'master_detail_theme.dart';
 import 'master_list_view.dart';
 import 'master_detail_page_controller.dart';
-import 'title_bar_theme.dart';
 
 class PortraitLayout extends StatefulWidget {
   const PortraitLayout({
@@ -38,7 +33,7 @@ class PortraitLayout extends StatefulWidget {
   final ToolBar? appBar;
   final Widget? bottomBar;
 
-  final PageController controller;
+  final MacosUIPageController controller;
 
   @override
   State<PortraitLayout> createState() => _PortraitLayoutState();
@@ -94,7 +89,7 @@ class _PortraitLayoutState extends State<PortraitLayout> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = MasterDetailTheme.of(context);
+    // final theme = MacosTheme /*MasterDetailTheme*/ .of(context);
     final List<Widget> widgets = [];
     widgets.add(ContentArea(
       builder: (context, scrollController) {
@@ -130,16 +125,17 @@ class _PortraitLayoutState extends State<PortraitLayout> {
           pages: [
             CupertinoPage(
               key: const ValueKey(-1),
-              child: TitleBarTheme(
+              child: /*TitleBarTheme(
                 data: const TitleBarThemeData(
                   style:
                       kIsWeb ? TitleBarStyle.undecorated : TitleBarStyle.normal,
                 ),
-                child: MacosScaffold(
-                  backgroundColor: theme.sideBarColor,
-                  toolBar: widget.appBar,
-                  children:
-                      widgets /*LayoutBuilder(
+                child:*/
+                  MacosScaffold(
+                // backgroundColor: theme.sideBarColor,
+                toolBar: widget.appBar,
+                children:
+                    widgets /*LayoutBuilder(
                     builder: (context, constraints) => MasterListView(
                       length: widget.controller.length,
                       selectedIndex: _selectedIndex,
@@ -150,15 +146,15 @@ class _PortraitLayoutState extends State<PortraitLayout> {
                       endUndershoot: widget.bottomBar != null,
                     ),
                   )*/
-                  ,
-                  // bottomNavigationBar: widget.bottomBar == null
-                  //     ? null
-                  //     : Material(
-                  //         color: theme.sideBarColor,
-                  //         child: widget.bottomBar,
-                  //       ),
-                ),
+                ,
+                // bottomNavigationBar: widget.bottomBar == null
+                //     ? null
+                //     : Material(
+                //         color: theme.sideBarColor,
+                //         child: widget.bottomBar,
+                //       ),
               ),
+              // ),
             ),
             if (_selectedIndex != -1) page(_selectedIndex),
           ],

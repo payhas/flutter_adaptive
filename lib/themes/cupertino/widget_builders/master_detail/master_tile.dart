@@ -10,8 +10,8 @@ const Duration _kSelectedTileAnimationDuration = Duration(milliseconds: 250);
 /// Provides the recommended layout for [YaruMasterDetailPage.tileBuilder].
 ///
 /// This widget is structurally similar to [ListTile].
-class MasterTile extends StatelessWidget {
-  const MasterTile({
+class CupertinoMasterTile extends StatelessWidget {
+  const CupertinoMasterTile({
     super.key,
     this.selected,
     this.leading,
@@ -43,7 +43,7 @@ class MasterTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = CupertinoTheme.of(context);
-    final scope = MasterTileScope.maybeOf(context);
+    final scope = CupertinoMasterTileScope.maybeOf(context);
 
     final isSelected = selected ?? scope?.selected ?? false;
     final scrollbarThicknessWithTrack =
@@ -143,8 +143,8 @@ class MasterTile extends StatelessWidget {
   }
 }
 
-class MasterTileScope extends InheritedWidget {
-  const MasterTileScope({
+class CupertinoMasterTileScope extends InheritedWidget {
+  const CupertinoMasterTileScope({
     super.key,
     required super.child,
     required this.index,
@@ -156,16 +156,17 @@ class MasterTileScope extends InheritedWidget {
   final bool selected;
   final VoidCallback onTap;
 
-  static MasterTileScope of(BuildContext context) {
+  static CupertinoMasterTileScope of(BuildContext context) {
     return maybeOf(context)!;
   }
 
-  static MasterTileScope? maybeOf(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<MasterTileScope>();
+  static CupertinoMasterTileScope? maybeOf(BuildContext context) {
+    return context
+        .dependOnInheritedWidgetOfExactType<CupertinoMasterTileScope>();
   }
 
   @override
-  bool updateShouldNotify(MasterTileScope oldWidget) {
+  bool updateShouldNotify(CupertinoMasterTileScope oldWidget) {
     return selected != oldWidget.selected || index != oldWidget.index;
   }
 }

@@ -1,12 +1,11 @@
-import 'package:flutter/foundation.dart';
 import 'package:fluent_ui/fluent_ui.dart' hide PageController;
 import 'package:flutter/material.dart' show MaterialPage, Material;
 
 import 'master_detail_page.dart';
-import 'master_detail_theme.dart';
+// import 'master_detail_theme.dart';
 import 'master_list_view.dart';
 import 'master_detail_page_controller.dart';
-import 'title_bar_theme.dart';
+// import 'title_bar_theme.dart';
 
 class PortraitLayout extends StatefulWidget {
   const PortraitLayout({
@@ -36,7 +35,7 @@ class PortraitLayout extends StatefulWidget {
   final /*PreferredSize*/ Widget? appBar;
   final Widget? bottomBar;
 
-  final PageController controller;
+  final FluentUIPageController controller;
 
   @override
   State<PortraitLayout> createState() => _PortraitLayoutState();
@@ -92,7 +91,7 @@ class _PortraitLayoutState extends State<PortraitLayout> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = MasterDetailTheme.of(context);
+    // final theme = FluentTheme /*MasterDetailTheme*/ .of(context);
     return PopScope(
       onPopInvoked: (v) async => await _navigator.maybePop(),
       child: FluentTheme(
@@ -113,33 +112,36 @@ class _PortraitLayoutState extends State<PortraitLayout> {
           pages: [
             MaterialPage(
               key: const ValueKey(-1),
-              child: TitleBarTheme(
+              child: /*TitleBarTheme(
                 data: const TitleBarThemeData(
                   style:
                       kIsWeb ? TitleBarStyle.undecorated : TitleBarStyle.normal,
                 ),
-                child: ScaffoldPage(
-                  // backgroundColor: theme.sideBarColor,
-                  header: widget.appBar,
-                  content: LayoutBuilder(
-                    builder: (context, constraints) => MasterListView(
-                      length: widget.controller.length,
-                      selectedIndex: _selectedIndex,
-                      onTap: _onTap,
-                      builder: widget.tileBuilder,
-                      availableWidth: constraints.maxWidth,
-                      startUndershoot: widget.appBar != null,
-                      endUndershoot: widget.bottomBar != null,
-                    ),
+                child:*/
+                  ScaffoldPage(
+                // backgroundColor: theme.sideBarColor,
+                header: Container(
+                    color: FluentTheme.of(context).scaffoldBackgroundColor,
+                    child: widget.appBar),
+                content: LayoutBuilder(
+                  builder: (context, constraints) => MasterListView(
+                    length: widget.controller.length,
+                    selectedIndex: _selectedIndex,
+                    onTap: _onTap,
+                    builder: widget.tileBuilder,
+                    availableWidth: constraints.maxWidth,
+                    startUndershoot: widget.appBar != null,
+                    endUndershoot: widget.bottomBar != null,
                   ),
-                  bottomBar: widget.bottomBar == null
-                      ? null
-                      : Material(
-                          color: theme.sideBarColor,
-                          child: widget.bottomBar,
-                        ),
                 ),
+                bottomBar: widget.bottomBar == null
+                    ? null
+                    : Material(
+                        // color: theme.sideBarColor,
+                        child: widget.bottomBar,
+                      ),
               ),
+              // ),
             ),
             if (_selectedIndex != -1) page(_selectedIndex),
           ],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class PageController extends ChangeNotifier {
-  PageController({required this.length, this.initialIndex = -1})
+class MaterialPageController extends ChangeNotifier {
+  MaterialPageController({required this.length, this.initialIndex = -1})
       : _index = initialIndex,
         _previousIndex = initialIndex;
   final int length;

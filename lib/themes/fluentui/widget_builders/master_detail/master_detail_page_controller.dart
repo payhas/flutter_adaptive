@@ -1,7 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 
-class PageController extends ChangeNotifier {
-  PageController({required this.length, this.initialIndex = -1})
+class FluentUIPageController extends ChangeNotifier {
+  FluentUIPageController({required this.length, this.initialIndex = -1})
       : _index = initialIndex,
         _previousIndex = initialIndex;
   final int length;

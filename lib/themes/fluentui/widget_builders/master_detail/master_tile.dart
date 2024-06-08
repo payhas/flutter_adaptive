@@ -1,7 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:flutter/material.dart' show ColorScheme;
+// import 'package:flutter/material.dart' show ColorScheme;
 import 'constants.dart';
-import 'extensions.dart';
+// import 'extensions.dart';
 
 const double _kScrollbarThickness = 8.0;
 const double _kScrollbarMargin = 2.0;
@@ -10,8 +10,8 @@ const Duration _kSelectedTileAnimationDuration = Duration(milliseconds: 250);
 /// Provides the recommended layout for [YaruMasterDetailPage.tileBuilder].
 ///
 /// This widget is structurally similar to [ListTile].
-class MasterTile extends StatelessWidget {
-  const MasterTile({
+class FluentUIMasterTile extends StatelessWidget {
+  const FluentUIMasterTile({
     super.key,
     this.selected,
     this.leading,
@@ -43,13 +43,13 @@ class MasterTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = FluentTheme.of(context);
-    final scope = MasterTileScope.maybeOf(context);
+    final scope = FluentUIMasterTileScope.maybeOf(context);
 
     final isSelected = selected ?? scope?.selected ?? false;
     final scrollbarThicknessWithTrack =
         _calcScrollbarThicknessWithTrack(context);
 
-    final colorScheme = ColorScheme.fromSeed(seedColor: theme.activeColor);
+    // final colorScheme = ColorScheme.fromSeed(seedColor: theme.activeColor);
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: scrollbarThicknessWithTrack),
@@ -58,7 +58,8 @@ class MasterTile extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(kButtonRadius)),
           color: isSelected
-              ? /*theme.*/ colorScheme.onSurface.withOpacity(0.07)
+              ? theme
+                  .acrylicBackgroundColor /*colorScheme.onSurface.withOpacity(0.07)*/
               : null,
         ),
         child: ListTile.selectable(
@@ -66,15 +67,15 @@ class MasterTile extends StatelessWidget {
           // iconColor: theme.colorScheme.onSurface.withOpacity(0.8),
           // minVerticalPadding: 6,
           // visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
-          shape: RoundedRectangleBorder(
-            borderRadius:
-                const BorderRadius.all(Radius.circular(kButtonRadius)),
-            side: /*theme.*/ colorScheme.isHighContrast && isSelected
-                ? BorderSide(
-                    color: /*theme.*/ colorScheme.outlineVariant,
-                    strokeAlign: BorderSide.strokeAlignOutside,
-                  )
-                : BorderSide.none,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(kButtonRadius)),
+            // side: /*theme.*/ /*colorScheme.isHighContrast &&*/ isSelected
+            //     ? BorderSide(
+            //         color: theme
+            //             .acrylicBackgroundColor /*colorScheme.outlineVariant*/,
+            //         strokeAlign: BorderSide.strokeAlignOutside,
+            //       )
+            //     : BorderSide.none,
           ),
           leading: leading,
           title: _titleStyle(context, title),
@@ -98,15 +99,14 @@ class MasterTile extends StatelessWidget {
       return child;
     }
 
-    final colorScheme =
-        ColorScheme.fromSeed(seedColor: FluentTheme.of(context).activeColor);
+    // final colorScheme =
+    //     ColorScheme.fromSeed(seedColor: FluentTheme.of(context).activeColor);
 
     return DefaultTextStyle.merge(
       child: child,
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
-      style:
-          TextStyle(color: /*FluentTheme.of(context).*/ colorScheme.onSurface),
+      style: FluentTheme.of(context).typography.body /*colorScheme.onSurface*/,
     );
   }
 
@@ -120,7 +120,7 @@ class MasterTile extends StatelessWidget {
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
       // style: TextStyle(color: FluentTheme.of(context).textTheme.bodySmall!.color),
-      style: TextStyle(color: FluentTheme.of(context).typography.body!.color),
+      style: FluentTheme.of(context).typography.body,
     );
   }
 
@@ -139,8 +139,8 @@ class MasterTile extends StatelessWidget {
   }
 }
 
-class MasterTileScope extends InheritedWidget {
-  const MasterTileScope({
+class FluentUIMasterTileScope extends InheritedWidget {
+  const FluentUIMasterTileScope({
     super.key,
     required super.child,
     required this.index,
@@ -152,16 +152,17 @@ class MasterTileScope extends InheritedWidget {
   final bool selected;
   final VoidCallback onTap;
 
-  static MasterTileScope of(BuildContext context) {
+  static FluentUIMasterTileScope of(BuildContext context) {
     return maybeOf(context)!;
   }
 
-  static MasterTileScope? maybeOf(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<MasterTileScope>();
+  static FluentUIMasterTileScope? maybeOf(BuildContext context) {
+    return context
+        .dependOnInheritedWidgetOfExactType<FluentUIMasterTileScope>();
   }
 
   @override
-  bool updateShouldNotify(MasterTileScope oldWidget) {
+  bool updateShouldNotify(FluentUIMasterTileScope oldWidget) {
     return selected != oldWidget.selected || index != oldWidget.index;
   }
 }

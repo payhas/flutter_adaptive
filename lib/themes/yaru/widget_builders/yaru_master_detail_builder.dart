@@ -9,16 +9,20 @@ class YaruMasterDetailBuilder
     return YaruMasterDetailPage(
       length: 8,
       appBar: AppBar(title: const Text('Master')),
-      tileBuilder: (context, index, ___, selected) => YaruMasterTile(
+      tileBuilder: component
+          .tileBuilder /*(context, index, ___, selected) => YaruMasterTile(
         leading: const Icon(YaruIcons.menu),
         title: Text('Master $index'),
-      ),
-      pageBuilder: (context, index) => YaruDetailPage(
+      )*/
+      ,
+      pageBuilder: component
+          .pageBuilder /*(context, index) => YaruDetailPage(
         appBar: AppBar(
           title: Text('Detail $index'),
         ),
         body: Center(child: Text('Detail $index')),
-      ),
+      )*/
+      ,
       emptyBuilder: component.emptyBuilder,
       breakpoint: component.breakpoint,
       appBarBuilder: component.appBarBuilder,

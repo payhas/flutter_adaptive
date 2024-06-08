@@ -3,10 +3,10 @@ import 'package:flutter/widgets.dart' hide PageController;
 import 'package:macos_ui/macos_ui.dart';
 
 import 'landscape_layout.dart';
-import 'master_detail_theme.dart';
 import 'portrait_layout.dart';
 import 'paned_view_layout_delegate.dart';
 import 'master_detail_page_controller.dart';
+import 'constants.dart';
 
 const _kDefaultPaneWidth = 280.0;
 
@@ -49,8 +49,8 @@ typedef AppBarBuilder = Widget? Function(BuildContext context);
 ///  * [YaruMasterTile] - provides the recommended layout for [tileBuilder].
 ///  * [YaruDetailPage] - provides the recommended layout for [pageBuilder].
 ///  * [YaruMasterDetailTheme] - allows customizing the looks of [YaruMasterDetailPage].
-class MasterDetailPage extends StatefulWidget {
-  const MasterDetailPage({
+class MacosUIMasterDetailPage extends StatefulWidget {
+  const MacosUIMasterDetailPage({
     super.key,
     this.length,
     required this.tileBuilder,
@@ -131,7 +131,7 @@ class MasterDetailPage extends StatefulWidget {
   final ValueChanged<int?>? onSelected;
 
   /// An optional controller that can be used to navigate to a specific index.
-  final PageController? controller;
+  final MacosUIPageController? controller;
 
   /// A key to use when building the [Navigator] widget.
   final GlobalKey<NavigatorState>? navigatorKey;
@@ -175,15 +175,15 @@ class MasterDetailPage extends StatefulWidget {
   }
 
   @override
-  State<MasterDetailPage> createState() => _MasterDetailPageState();
+  State<MacosUIMasterDetailPage> createState() => _MasterDetailPageState();
 }
 
-class _MasterDetailPageState extends State<MasterDetailPage> {
-  late PageController _controller;
+class _MasterDetailPageState extends State<MacosUIMasterDetailPage> {
+  late MacosUIPageController _controller;
   late final GlobalKey<NavigatorState> _navigatorKey;
 
   void _updateController() => _controller = widget.controller ??
-      PageController(
+      MacosUIPageController(
         length: widget.length ?? widget.controller!.length,
         initialIndex: widget.initialIndex ?? -1,
       );
@@ -202,7 +202,7 @@ class _MasterDetailPageState extends State<MasterDetailPage> {
   }
 
   @override
-  void didUpdateWidget(covariant MasterDetailPage oldWidget) {
+  void didUpdateWidget(covariant MacosUIMasterDetailPage oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.controller != oldWidget.controller ||
         widget.length != oldWidget.length ||
@@ -213,9 +213,10 @@ class _MasterDetailPageState extends State<MasterDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = widget.breakpoint ??
-        MasterDetailTheme.of(context).breakpoint ??
-        MasterDetailThemeData.fallback(context).breakpoint!;
+    final breakpoint = widget.breakpoint ?? kMasterDetailBreakpoint
+        /*MasterDetailTheme.of(context).breakpoint ??
+        MasterDetailThemeData.fallback(context).breakpoint!*/
+        ;
     return Material(
       child: widget.length == 0 || widget.controller?.length == 0
           ? widget.emptyBuilder?.call(context) ?? const SizedBox.shrink()

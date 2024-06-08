@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'master_detail_page.dart';
 import 'master_tile.dart';
-import 'master_detail_theme.dart';
 import 'scroll_view_undershoot.dart';
 
 class MasterListView extends StatefulWidget {
@@ -40,7 +39,7 @@ class _MasterListViewState extends State<MasterListView> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = MasterDetailTheme.of(context);
+    // final theme = Theme /*MasterDetailTheme*/ .of(context);
     return ScrollViewUndershoot(
       controller: _controller,
       startUndershoot: widget.startUndershoot,
@@ -51,11 +50,12 @@ class _MasterListViewState extends State<MasterListView> {
           SliverFillRemaining(
             hasScrollBody: false,
             child: Padding(
-              padding: theme.listPadding ?? EdgeInsets.zero,
+              padding: const EdgeInsets.symmetric(
+                  vertical: 8) /*theme.listPadding ?? EdgeInsets.zero*/,
               child: Column(
                 children: List.generate(
                   widget.length,
-                  (index) => MasterTileScope(
+                  (index) => MaterialMasterTileScope(
                     index: index,
                     selected: index == widget.selectedIndex,
                     onTap: () => widget.onTap(index),
@@ -68,7 +68,7 @@ class _MasterListViewState extends State<MasterListView> {
                       ),
                     ),
                   ),
-                ).withSpacing(theme.tileSpacing ?? 0),
+                ).withSpacing(6 /*theme.tileSpacing ?? 0*/),
               ),
             ),
           ),
