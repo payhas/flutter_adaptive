@@ -6,6 +6,8 @@ class FluentUIMasterDetailBuilder
     extends AdaptiveWidgetBuilder<AdaptiveMasterDetail> {
   @override
   Widget build(BuildContext context, AdaptiveMasterDetail component) {
+    print("FluentUI Master Detail Builder build function.");
+
     return FluentUIMasterDetailPage(
       length: component.length,
       appBar: component.appBar,
@@ -17,7 +19,7 @@ class FluentUIMasterDetailBuilder
       bottomBar: component.bottomBar,
       initialIndex: component.initialIndex,
       onSelected: component.onSelected,
-      controller: component.controller as FluentUIPageController,
+      controller: component.controller as FluentUIPageController?,
       navigatorKey: component.navigatorKey,
       navigatorObservers: component.navigatorObservers,
       initialRoute: component.initialRoute,

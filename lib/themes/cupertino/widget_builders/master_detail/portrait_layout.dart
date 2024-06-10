@@ -89,6 +89,9 @@ class _PortraitLayoutState extends State<PortraitLayout> {
   @override
   Widget build(BuildContext context) {
     // final theme = CupertinoTheme /*MasterDetailTheme*/ .of(context);
+    final navbar = CupertinoNavigationBar(
+      trailing: widget.appBar,
+    );
     return PopScope(
       onPopInvoked: (v) async => await _navigator.maybePop(),
       child: CupertinoTheme /*MasterDetailTheme*/ (
@@ -119,7 +122,8 @@ class _PortraitLayoutState extends State<PortraitLayout> {
                   CupertinoPageScaffold(
                 // backgroundColor:
                 //     theme.primaryContrastingColor /*sideBarColor*/,
-                navigationBar: widget.appBar as ObstructingPreferredSizeWidget,
+                navigationBar:
+                    navbar /*widget.appBar as ObstructingPreferredSizeWidget*/,
                 child: SafeArea(
                   child: LayoutBuilder(
                     builder: (context, constraints) => MasterListView(

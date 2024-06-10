@@ -417,14 +417,17 @@ class MasterDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AdaptiveMasterDetail(
-      length: 1,
-      tileBuilder: (context, index, selected, availableWidth) {
-        return const Placeholder();
-      },
-      pageBuilder: (context, index) {
-        return const Placeholder();
-      },
+    return const Center(
+      child: Text("masterdetail"),
     );
+    // return AdaptiveMasterDetail(
+    //   length: 1,
+    //   tileBuilder: (context, index, selected, availableWidth) {
+    //     return const Text("Master");
+    //   },
+    //   pageBuilder: (context, index) {
+    //     return const Text("Detail");
+    //   },
+    // );
   }
 }

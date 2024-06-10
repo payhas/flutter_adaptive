@@ -13,7 +13,7 @@ typedef MasterTileBuilder = Widget Function(
 );
 
 class AdaptiveMasterDetail extends AdaptiveWidget {
-  const AdaptiveMasterDetail({
+  AdaptiveMasterDetail({
     super.key,
     this.length,
     required this.tileBuilder,
@@ -35,7 +35,9 @@ class AdaptiveMasterDetail extends AdaptiveWidget {
     this.initialRoute,
     this.onGenerateRoute,
     this.onUnknownRoute,
-  });
+  }) {
+    print("AdaptiveMasterDetail Widget  constructor");
+  }
 
   /// The total number of pages.
   final int? length;

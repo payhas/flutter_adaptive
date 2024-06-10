@@ -16,7 +16,8 @@ typedef MasterTileBuilder = Widget Function(
   double availableWidth,
 );
 
-typedef AppBarBuilder = PreferredSizeWidget? Function(BuildContext context);
+typedef AppBarBuilder = /*PreferredSize*/ Widget? Function(
+    BuildContext context);
 
 /// A responsive master-detail page.
 ///
@@ -109,7 +110,7 @@ class CupertinoMasterDetailPage extends StatefulWidget {
   ///
   /// See also:
   ///  * [YaruMasterDetailPage.appBarBuilder]
-  final ObstructingPreferredSizeWidget? appBar;
+  final /*ObstructingPreferredSize*/ Widget? appBar;
 
   /// An optional custom AppBar builder for the master pane.
   ///

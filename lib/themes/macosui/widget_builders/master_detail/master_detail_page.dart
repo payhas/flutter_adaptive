@@ -110,7 +110,7 @@ class MacosUIMasterDetailPage extends StatefulWidget {
   ///
   /// See also:
   ///  * [YaruMasterDetailPage.appBarBuilder]
-  final ToolBar? appBar;
+  final /*ToolBar*/ Widget? appBar;
 
   /// An optional custom AppBar builder for the master pane.
   ///
@@ -232,7 +232,7 @@ class _MasterDetailPageState extends State<MacosUIMasterDetailPage> {
                 pageBuilder: widget.pageBuilder,
                 onSelected: widget.onSelected,
                 appBar: widget.appBar ??
-                    widget.appBarBuilder?.call(context) as ToolBar,
+                    widget.appBarBuilder?.call(context) /*as ToolBar*/,
                 bottomBar: widget.bottomBar,
                 controller: _controller,
               ),

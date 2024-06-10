@@ -18,6 +18,7 @@ class YaruTheme extends AdaptiveBundle {
           YaruContextMenuBuilder(),
           YaruThemeDataBuilder(),
           YaruNavigationBuilder(),
+          YaruMasterDetailBuilder(),
         }, bundles: {
           YaruIcons(),
         });

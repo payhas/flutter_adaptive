@@ -7,9 +7,11 @@ class MaterialMasterDetailBuilder
     extends AdaptiveWidgetBuilder<AdaptiveMasterDetail> {
   @override
   Widget build(BuildContext context, AdaptiveMasterDetail component) {
+    print("Material Master Detail Builder build function.");
+
     return MaterialMasterDetailPage(
       length: component.length,
-      appBar: component.appBar as ObstructingPreferredSizeWidget,
+      appBar: component.appBar as PreferredSizeWidget?,
       tileBuilder: component.tileBuilder,
       pageBuilder: component.pageBuilder,
       emptyBuilder: component.emptyBuilder,
@@ -18,7 +20,7 @@ class MaterialMasterDetailBuilder
       bottomBar: component.bottomBar,
       initialIndex: component.initialIndex,
       onSelected: component.onSelected,
-      controller: component.controller as MaterialPageController,
+      controller: component.controller as MaterialPageController?,
       navigatorKey: component.navigatorKey,
       navigatorObservers: component.navigatorObservers,
       initialRoute: component.initialRoute,

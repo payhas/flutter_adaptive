@@ -2,10 +2,8 @@ import 'package:fluent_ui/fluent_ui.dart' hide PageController;
 import 'package:flutter/material.dart' show MaterialPage, Material;
 
 import 'master_detail_page.dart';
-// import 'master_detail_theme.dart';
 import 'master_list_view.dart';
 import 'master_detail_page_controller.dart';
-// import 'title_bar_theme.dart';
 
 class PortraitLayout extends StatefulWidget {
   const PortraitLayout({

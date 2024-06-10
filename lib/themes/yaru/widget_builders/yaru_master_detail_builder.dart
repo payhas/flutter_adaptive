@@ -6,30 +6,20 @@ class YaruMasterDetailBuilder
     extends AdaptiveWidgetBuilder<AdaptiveMasterDetail> {
   @override
   Widget build(BuildContext context, AdaptiveMasterDetail component) {
+    print("Yaru Master Detail Builder build function.");
+
     return YaruMasterDetailPage(
-      length: 8,
-      appBar: AppBar(title: const Text('Master')),
-      tileBuilder: component
-          .tileBuilder /*(context, index, ___, selected) => YaruMasterTile(
-        leading: const Icon(YaruIcons.menu),
-        title: Text('Master $index'),
-      )*/
-      ,
-      pageBuilder: component
-          .pageBuilder /*(context, index) => YaruDetailPage(
-        appBar: AppBar(
-          title: Text('Detail $index'),
-        ),
-        body: Center(child: Text('Detail $index')),
-      )*/
-      ,
+      length: component.length,
+      appBar: component.appBar as PreferredSizeWidget?,
+      tileBuilder: component.tileBuilder,
+      pageBuilder: component.pageBuilder,
       emptyBuilder: component.emptyBuilder,
       breakpoint: component.breakpoint,
       appBarBuilder: component.appBarBuilder,
       bottomBar: component.bottomBar,
       initialIndex: component.initialIndex,
       onSelected: component.onSelected,
-      controller: component.controller as YaruPageController,
+      controller: component.controller as YaruPageController?,
       navigatorKey: component.navigatorKey,
       navigatorObservers: component.navigatorObservers,
       initialRoute: component.initialRoute,

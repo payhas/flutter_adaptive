@@ -30,7 +30,7 @@ class PortraitLayout extends StatefulWidget {
   final IndexedWidgetBuilder pageBuilder;
   final ValueChanged<int>? onSelected;
 
-  final ToolBar? appBar;
+  final /*ToolBar*/ Widget? appBar;
   final Widget? bottomBar;
 
   final MacosUIPageController controller;
@@ -90,6 +90,10 @@ class _PortraitLayoutState extends State<PortraitLayout> {
   @override
   Widget build(BuildContext context) {
     // final theme = MacosTheme /*MasterDetailTheme*/ .of(context);
+    final toolBar = ToolBar(
+      leading: widget.appBar,
+    );
+
     final List<Widget> widgets = [];
     widgets.add(ContentArea(
       builder: (context, scrollController) {
@@ -133,7 +137,7 @@ class _PortraitLayoutState extends State<PortraitLayout> {
                 child:*/
                   MacosScaffold(
                 // backgroundColor: theme.sideBarColor,
-                toolBar: widget.appBar,
+                toolBar: toolBar /*widget.appBar*/,
                 children:
                     widgets /*LayoutBuilder(
                     builder: (context, constraints) => MasterListView(

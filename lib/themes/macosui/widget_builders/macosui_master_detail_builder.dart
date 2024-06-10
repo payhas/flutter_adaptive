@@ -8,9 +8,11 @@ class MacosUIMasterDetailBuilder
     extends AdaptiveWidgetBuilder<AdaptiveMasterDetail> {
   @override
   Widget build(BuildContext context, AdaptiveMasterDetail component) {
+    print("MacosUI Master Detail Builder build function.");
+
     return MacosUIMasterDetailPage(
       length: component.length,
-      appBar: component.appBar as ToolBar,
+      appBar: component.appBar,
       tileBuilder: component.tileBuilder,
       pageBuilder: component.pageBuilder,
       emptyBuilder: component.emptyBuilder,
@@ -19,7 +21,7 @@ class MacosUIMasterDetailBuilder
       bottomBar: component.bottomBar,
       initialIndex: component.initialIndex,
       onSelected: component.onSelected,
-      controller: component.controller as MacosUIPageController,
+      controller: component.controller as MacosUIPageController?,
       navigatorKey: component.navigatorKey,
       navigatorObservers: component.navigatorObservers,
       initialRoute: component.initialRoute,

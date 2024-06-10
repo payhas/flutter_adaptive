@@ -102,12 +102,7 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
   Widget _buildLeftPane(FluentThemeData /*MasterDetailThemeData*/ theme) {
     return Builder(
       builder: (context) {
-        return /*TitleBarTheme(
-          data: const TitleBarThemeData(
-            style: TitleBarStyle.undecorated,
-          ),
-          child:*/
-            Column(
+        return Column(
           children: [
             if (widget.appBar != null)
               Container(
@@ -118,20 +113,14 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
                 ),
               ),
             Expanded(
-              child: FluentTheme(
-                data: FluentTheme.of(context),
-                child: Container(
-                  // color: theme.sideBarColor,
-                  child: MasterListView(
-                    length: widget.controller.length,
-                    selectedIndex: _selectedIndex,
-                    onTap: _onTap,
-                    builder: widget.tileBuilder,
-                    availableWidth: _paneWidth!,
-                    startUndershoot: widget.appBar != null,
-                    endUndershoot: widget.bottomBar != null,
-                  ),
-                ),
+              child: MasterListView(
+                length: widget.controller.length,
+                selectedIndex: _selectedIndex,
+                onTap: _onTap,
+                builder: widget.tileBuilder,
+                availableWidth: _paneWidth!,
+                startUndershoot: widget.appBar != null,
+                endUndershoot: widget.bottomBar != null,
               ),
             ),
             if (widget.bottomBar != null)

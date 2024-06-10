@@ -7,9 +7,11 @@ class CupertinoMasterDetailBuilder
     extends AdaptiveWidgetBuilder<AdaptiveMasterDetail> {
   @override
   Widget build(BuildContext context, AdaptiveMasterDetail component) {
+    print("Cupertino Master Detail Builder build function.");
+
     return CupertinoMasterDetailPage(
       length: component.length,
-      appBar: component.appBar as ObstructingPreferredSizeWidget,
+      appBar: component.appBar as ObstructingPreferredSizeWidget?,
       tileBuilder: component.tileBuilder,
       pageBuilder: component.pageBuilder,
       emptyBuilder: component.emptyBuilder,
@@ -18,7 +20,7 @@ class CupertinoMasterDetailBuilder
       bottomBar: component.bottomBar,
       initialIndex: component.initialIndex,
       onSelected: component.onSelected,
-      controller: component.controller as CupertinoPageController,
+      controller: component.controller as CupertinoPageController?,
       navigatorKey: component.navigatorKey,
       navigatorObservers: component.navigatorObservers,
       initialRoute: component.initialRoute,
