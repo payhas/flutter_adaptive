@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart' hide PageController;
+import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart'
+    hide MasterTileBuilder;
 
 import 'master_detail_page.dart';
 import 'master_list_view.dart';
@@ -15,7 +17,7 @@ class PortraitLayout extends StatefulWidget {
     required this.tileBuilder,
     required this.pageBuilder,
     this.onSelected,
-    this.appBar,
+    this.appBarActions,
     this.bottomBar,
     required this.controller,
   });
@@ -29,7 +31,9 @@ class PortraitLayout extends StatefulWidget {
   final IndexedWidgetBuilder pageBuilder;
   final ValueChanged<int>? onSelected;
 
-  final /*PreferredSize*/ Widget? appBar;
+  final /*PreferredSize*/ /*Widget?*/ List<MasterDetailAppBarActionsItem>?
+      appBarActions;
+
   final Widget? bottomBar;
 
   final CupertinoPageController controller;
@@ -89,9 +93,20 @@ class _PortraitLayoutState extends State<PortraitLayout> {
   @override
   Widget build(BuildContext context) {
     // final theme = CupertinoTheme /*MasterDetailTheme*/ .of(context);
-    final navbar = CupertinoNavigationBar(
-      trailing: widget.appBar,
-    );
+    final navbar = (widget.appBarActions == null)
+        ? null
+        : CupertinoNavigationBar(
+            trailing: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                for (final item in widget.appBarActions!)
+                  CupertinoButton(
+                    onPressed: item.onPressed,
+                    child: item.icon ?? const Icon(CupertinoIcons.rectangle),
+                  ),
+              ],
+            ),
+          );
     return PopScope(
       onPopInvoked: (v) async => await _navigator.maybePop(),
       child: CupertinoTheme /*MasterDetailTheme*/ (
@@ -132,7 +147,7 @@ class _PortraitLayoutState extends State<PortraitLayout> {
                       onTap: _onTap,
                       builder: widget.tileBuilder,
                       availableWidth: constraints.maxWidth,
-                      startUndershoot: widget.appBar != null,
+                      startUndershoot: widget.appBarActions != null,
                       endUndershoot: widget.bottomBar != null,
                     ),
                   ),

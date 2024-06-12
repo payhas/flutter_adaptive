@@ -1,4 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart';
+import 'package:flutter/material.dart' show BackButton;
 
 const _kDetailPageHeroTag = '<DetailPage hero tag>';
 
@@ -9,7 +11,8 @@ const _kDetailPageHeroTag = '<DetailPage hero tag>';
 class FluentUIDetailPage extends StatelessWidget {
   const FluentUIDetailPage({
     super.key,
-    this.appBar,
+    this.appBarActions,
+    this.appBarTitle,
     this.body,
     // this.floatingActionButton,
     // this.floatingActionButtonLocation,
@@ -31,7 +34,10 @@ class FluentUIDetailPage extends StatelessWidget {
   final bool extendBodyBehindAppBar;
 
   /// See [Scaffold.appBar].
-  final /*PreferredSize*/ Widget? appBar;
+  final /*PreferredSize*/ /*Widget?*/ List<MasterDetailAppBarActionsItem>?
+      appBarActions;
+
+  final Widget? appBarTitle;
 
   /// See [Scaffold.body].
   final Widget? body;
@@ -67,6 +73,29 @@ class FluentUIDetailPage extends StatelessWidget {
   final Object? heroTag;
 
   /*PreferredSize*/ Widget? _buildAppBar(BuildContext context) {
+    Widget? wdgt;
+    if (Navigator.canPop(context)) {
+      wdgt = const BackButton();
+    }
+    final appBar = appBarActions == null
+        ? null
+        : PageHeader(
+            title: appBarTitle,
+            leading: wdgt,
+            commandBar: CommandBar(
+              isCompact: true,
+              mainAxisAlignment: MainAxisAlignment.end,
+              primaryItems: [
+                for (final item in appBarActions!)
+                  CommandBarButton(
+                    icon: item.icon,
+                    label: Text(item.title),
+                    onPressed: item.onPressed,
+                  )
+              ],
+            ),
+          );
+
     if (appBar == null ||
         heroTag == null ||
         context.findAncestorWidgetOfExactType<Hero>() != null) {
@@ -78,7 +107,7 @@ class FluentUIDetailPage extends StatelessWidget {
       child:*/
         Hero(
       tag: heroTag!,
-      child: appBar!,
+      child: appBar,
       // ),
     );
   }

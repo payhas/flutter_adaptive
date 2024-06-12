@@ -1,5 +1,7 @@
 import 'package:macos_ui/macos_ui.dart';
 import 'package:flutter/cupertino.dart' hide PageController;
+import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart'
+    hide MasterTileBuilder;
 
 import 'master_detail_page.dart';
 import 'master_list_view.dart';
@@ -16,7 +18,7 @@ class PortraitLayout extends StatefulWidget {
     required this.tileBuilder,
     required this.pageBuilder,
     this.onSelected,
-    this.appBar,
+    this.appBarActions,
     this.bottomBar,
     required this.controller,
   });
@@ -30,7 +32,9 @@ class PortraitLayout extends StatefulWidget {
   final IndexedWidgetBuilder pageBuilder;
   final ValueChanged<int>? onSelected;
 
-  final /*ToolBar*/ Widget? appBar;
+  final /*ToolBar*/ /*Widget?*/ List<MasterDetailAppBarActionsItem>?
+      appBarActions;
+
   final Widget? bottomBar;
 
   final MacosUIPageController controller;
@@ -90,9 +94,19 @@ class _PortraitLayoutState extends State<PortraitLayout> {
   @override
   Widget build(BuildContext context) {
     // final theme = MacosTheme /*MasterDetailTheme*/ .of(context);
-    final toolBar = ToolBar(
-      leading: widget.appBar,
-    );
+    final toolBar = (widget.appBarActions == null)
+        ? null
+        : ToolBar(
+            actions: [
+              for (final item in widget.appBarActions!)
+                ToolBarIconButton(
+                  label: item.title,
+                  icon: item.icon ?? const MacosIcon(CupertinoIcons.app),
+                  showLabel: false,
+                  onPressed: item.onPressed,
+                ),
+            ],
+          );
 
     final List<Widget> widgets = [];
     widgets.add(ContentArea(
@@ -104,7 +118,7 @@ class _PortraitLayoutState extends State<PortraitLayout> {
             onTap: _onTap,
             builder: widget.tileBuilder,
             availableWidth: constraints.maxWidth,
-            startUndershoot: widget.appBar != null,
+            startUndershoot: widget.appBarActions != null,
             endUndershoot: widget.bottomBar != null,
           ),
         );

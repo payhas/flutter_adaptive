@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart';
 
 const _kDetailPageHeroTag = '<DetailPage hero tag>';
 
@@ -9,7 +10,8 @@ const _kDetailPageHeroTag = '<DetailPage hero tag>';
 class CupertinoDetailPage extends StatelessWidget {
   const CupertinoDetailPage({
     super.key,
-    this.appBar,
+    this.appBarActions,
+    this.appBarTitle,
     this.body,
     // this.floatingActionButton,
     // this.floatingActionButtonLocation,
@@ -31,7 +33,10 @@ class CupertinoDetailPage extends StatelessWidget {
   // final bool extendBodyBehindAppBar;
 
   /// See [Scaffold.appBar].
-  final ObstructingPreferredSizeWidget? appBar;
+  final /*ObstructingPreferredSizeWidget?*/ List<MasterDetailAppBarActionsItem>?
+      appBarActions;
+
+  final Widget? appBarTitle;
 
   /// See [Scaffold.body].
   final Widget? body;
@@ -67,6 +72,20 @@ class CupertinoDetailPage extends StatelessWidget {
   final Object? heroTag;
 
   ObstructingPreferredSizeWidget? _buildAppBar(BuildContext context) {
+    final appBar = (appBarActions == null)
+        ? null
+        : CupertinoNavigationBar(
+            trailing: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                for (final item in appBarActions!)
+                  CupertinoButton(
+                    onPressed: item.onPressed,
+                    child: item.icon ?? const Icon(CupertinoIcons.rectangle),
+                  ),
+              ],
+            ),
+          );
     if (appBar == null ||
         heroTag == null ||
         context.findAncestorWidgetOfExactType<Hero>() != null) {

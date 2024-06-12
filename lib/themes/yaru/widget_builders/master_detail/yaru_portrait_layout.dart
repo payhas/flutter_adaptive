@@ -1,13 +1,17 @@
-import 'package:flutter/material.dart' hide PageController;
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:yaru/foundation.dart' show YaruPageController;
+import 'package:yaru/widgets.dart'
+    show YaruTitleBarTheme, YaruTitleBarThemeData, YaruTitleBarStyle;
 import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart'
     hide MasterTileBuilder;
 
-import 'master_detail_page.dart';
-import 'master_list_view.dart';
-import 'master_detail_page_controller.dart';
+import 'yaru_master_detail_page.dart';
+import 'yaru_master_detail_theme.dart';
+import 'yaru_master_list_view.dart';
 
-class PortraitLayout extends StatefulWidget {
-  const PortraitLayout({
+class YaruPortraitLayout extends StatefulWidget {
+  const YaruPortraitLayout({
     super.key,
     required this.navigatorKey,
     this.navigatorObservers = const <NavigatorObserver>[],
@@ -27,7 +31,7 @@ class PortraitLayout extends StatefulWidget {
   final String? initialRoute;
   final RouteFactory? onGenerateRoute;
   final RouteFactory? onUnknownRoute;
-  final MasterTileBuilder tileBuilder;
+  final YaruMasterTileBuilder tileBuilder;
   final IndexedWidgetBuilder pageBuilder;
   final ValueChanged<int>? onSelected;
 
@@ -36,13 +40,13 @@ class PortraitLayout extends StatefulWidget {
 
   final Widget? bottomBar;
 
-  final MaterialPageController controller;
+  final YaruPageController controller;
 
   @override
-  State<PortraitLayout> createState() => _PortraitLayoutState();
+  State<YaruPortraitLayout> createState() => _YaruPortraitLayoutState();
 }
 
-class _PortraitLayoutState extends State<PortraitLayout> {
+class _YaruPortraitLayoutState extends State<YaruPortraitLayout> {
   late int _selectedIndex;
 
   NavigatorState get _navigator => widget.navigatorKey.currentState!;
@@ -61,7 +65,7 @@ class _PortraitLayoutState extends State<PortraitLayout> {
   }
 
   @override
-  void didUpdateWidget(covariant PortraitLayout oldWidget) {
+  void didUpdateWidget(covariant YaruPortraitLayout oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.controller != oldWidget.controller) {
       oldWidget.controller.removeListener(_controllerCallback);
@@ -104,16 +108,13 @@ class _PortraitLayoutState extends State<PortraitLayout> {
             ],
           );
 
-    // final theme = Theme /*MasterDetailTheme*/ .of(context);
-
+    final theme = YaruMasterDetailTheme.of(context);
     return PopScope(
       onPopInvoked: (v) async => await _navigator.maybePop(),
       child: Theme(
-        data: Theme.of(
-            context) /*.copyWith(
+        data: Theme.of(context).copyWith(
           pageTransitionsTheme: theme.portraitTransitions,
-        )*/
-        ,
+        ),
         child: Navigator(
           key: widget.navigatorKey,
           initialRoute: widget.initialRoute,
@@ -126,34 +127,34 @@ class _PortraitLayoutState extends State<PortraitLayout> {
           pages: [
             MaterialPage(
               key: const ValueKey(-1),
-              child: /*TitleBarTheme(
-                data: const TitleBarThemeData(
-                  style:
-                      kIsWeb ? TitleBarStyle.undecorated : TitleBarStyle.normal,
+              child: YaruTitleBarTheme(
+                data: const YaruTitleBarThemeData(
+                  style: kIsWeb
+                      ? YaruTitleBarStyle.undecorated
+                      : YaruTitleBarStyle.normal,
                 ),
-                child: */
-                  Scaffold(
-                // backgroundColor: theme.sideBarColor,
-                appBar: appBar,
-                body: LayoutBuilder(
-                  builder: (context, constraints) => MasterListView(
-                    length: widget.controller.length,
-                    selectedIndex: _selectedIndex,
-                    onTap: _onTap,
-                    builder: widget.tileBuilder,
-                    availableWidth: constraints.maxWidth,
-                    startUndershoot: widget.appBarActions != null,
-                    endUndershoot: widget.bottomBar != null,
+                child: Scaffold(
+                  backgroundColor: theme.sideBarColor,
+                  appBar: appBar,
+                  body: LayoutBuilder(
+                    builder: (context, constraints) => YaruMasterListView(
+                      length: widget.controller.length,
+                      selectedIndex: _selectedIndex,
+                      onTap: _onTap,
+                      builder: widget.tileBuilder,
+                      availableWidth: constraints.maxWidth,
+                      startUndershoot: widget.appBarActions != null,
+                      endUndershoot: widget.bottomBar != null,
+                    ),
                   ),
+                  bottomNavigationBar: widget.bottomBar == null
+                      ? null
+                      : Material(
+                          color: theme.sideBarColor,
+                          child: widget.bottomBar,
+                        ),
                 ),
-                bottomNavigationBar: widget.bottomBar == null
-                    ? null
-                    : Material(
-                        // color: theme.sideBarColor,
-                        child: widget.bottomBar,
-                      ),
               ),
-              // ),
             ),
             if (_selectedIndex != -1) page(_selectedIndex),
           ],

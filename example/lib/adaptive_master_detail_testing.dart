@@ -175,6 +175,29 @@ class MasterDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return AdaptiveMasterDetail(
       length: 1,
+      appBarActions: [
+        MasterDetailAppBarActionsItem(
+          title: "Settings",
+          // icon: AdaptiveIcon(AdaptiveIcons.settings),
+          onPressed: () {
+            // showDialog(
+            //   context: context,
+            //   builder: (context) {
+            //     return AlertDialog(
+            //       title: const Text("Settings"),
+            //       content: const Text("Application settings"),
+            //       actions: [
+            //         TextButton(
+            //           child: const Text("Ok"),
+            //           onPressed: () => Navigator.pop(context),
+            //         ),
+            //       ],
+            //     );
+            //   },
+            // );
+          },
+        ),
+      ],
       tileBuilder: (context, index, selected, availableWidth) {
         return const Text("Master");
       },

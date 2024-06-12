@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart';
 
-const _kDetailPageHeroTag = '<DetailPage hero tag>';
+const _kYaruDetailPageHeroTag = '<YaruDetailPage hero tag>';
 
 /// Provides the recommended layout for [YaruMasterDetailPage.pageBuilder].
 ///
 /// This widget is similar to [Scaffold] with the exception that it wraps the
 /// [appBar] in a [Hero] to keep it in place at the top during page transitions.
-class MaterialDetailPage extends StatelessWidget {
-  const MaterialDetailPage({
+class YaruDetailPage extends StatelessWidget {
+  const YaruDetailPage({
     super.key,
     this.appBarActions,
     this.appBarTitle,
@@ -23,7 +23,7 @@ class MaterialDetailPage extends StatelessWidget {
     this.backgroundColor,
     this.extendBody = false,
     this.extendBodyBehindAppBar = false,
-    this.heroTag = _kDetailPageHeroTag,
+    this.heroTag = _kYaruDetailPageHeroTag,
   });
 
   /// See [Scaffold.extendBody].

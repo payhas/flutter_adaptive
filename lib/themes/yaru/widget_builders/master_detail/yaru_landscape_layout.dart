@@ -1,19 +1,16 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart' hide PageController;
+import 'package:flutter/material.dart';
+import 'package:yaru/yaru.dart';
 import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart'
     hide MasterTileBuilder;
 
-import 'master_list_view.dart';
-import 'paned_view_layout_delegate.dart';
-import 'paned_view.dart';
-import 'master_detail_page_controller.dart';
-import 'master_detail_page.dart';
+import 'yaru_master_list_view.dart';
+import 'yaru_paned_view_layout_delegate.dart';
+import 'yaru_paned_view.dart';
 
-const kYaruTitleBarHeight = 46.0;
-
-class LandscapeLayout extends StatefulWidget {
-  const LandscapeLayout({
+class YaruLandscapeLayout extends StatefulWidget {
+  const YaruLandscapeLayout({
     super.key,
     required this.navigatorKey,
     this.navigatorObservers = const <NavigatorObserver>[],
@@ -34,19 +31,19 @@ class LandscapeLayout extends StatefulWidget {
   final String? initialRoute;
   final RouteFactory? onGenerateRoute;
   final RouteFactory? onUnknownRoute;
-  final MasterTileBuilder tileBuilder;
+  final YaruMasterTileBuilder tileBuilder;
   final IndexedWidgetBuilder pageBuilder;
   final ValueChanged<int>? onSelected;
-  final PanedViewLayoutDelegate paneLayoutDelegate;
+  final YaruPanedViewLayoutDelegate paneLayoutDelegate;
   final /*Widget?*/ List<MasterDetailAppBarActionsItem>? appBarActions;
   final Widget? bottomBar;
-  final MaterialPageController controller;
+  final YaruPageController controller;
 
   @override
-  State<LandscapeLayout> createState() => _LandscapeLayoutState();
+  State<YaruLandscapeLayout> createState() => _YaruLandscapeLayoutState();
 }
 
-class _LandscapeLayoutState extends State<LandscapeLayout> {
+class _YaruLandscapeLayoutState extends State<YaruLandscapeLayout> {
   late int _selectedIndex;
   double? _paneWidth;
 
@@ -65,7 +62,7 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
   }
 
   @override
-  void didUpdateWidget(covariant LandscapeLayout oldWidget) {
+  void didUpdateWidget(covariant YaruLandscapeLayout oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.controller != oldWidget.controller) {
       oldWidget.controller.removeListener(_controllerCallback);
@@ -88,17 +85,17 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme /*MasterDetailTheme*/ .of(context);
-    return PanedView(
+    final theme = YaruMasterDetailTheme.of(context);
+    return YaruPanedView(
       pane: _buildLeftPane(theme),
       page: _buildPage(context),
       layoutDelegate: widget.paneLayoutDelegate,
-      includeSeparator: /*theme.includeSeparator ??*/ true,
+      includeSeparator: theme.includeSeparator ?? true,
       onPaneSizeChange: (size) => _paneWidth = size,
     );
   }
 
-  Widget _buildLeftPane(ThemeData /*MasterDetailThemeData*/ theme) {
+  Widget _buildLeftPane(YaruMasterDetailThemeData theme) {
     final appBar = widget.appBarActions == null
         ? null
         : AppBar(
@@ -113,53 +110,50 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
 
     return Builder(
       builder: (context) {
-        return /*TitleBarTheme(
-          data: const TitleBarThemeData(
-            style: TitleBarStyle.undecorated,
+        return YaruTitleBarTheme(
+          data: const YaruTitleBarThemeData(
+            style: YaruTitleBarStyle.undecorated,
           ),
-          child:*/
-            Column(
-          children: [
-            if (widget.appBarActions != null)
-              SizedBox(
-                height: kYaruTitleBarHeight,
-                child: appBar,
-              ),
-            Expanded(
-              child: Container(
-                // color: theme.sideBarColor,
-                child: MasterListView(
-                  length: widget.controller.length,
-                  selectedIndex: _selectedIndex,
-                  onTap: _onTap,
-                  builder: widget.tileBuilder,
-                  availableWidth: _paneWidth!,
-                  startUndershoot: widget.appBarActions != null,
-                  endUndershoot: widget.bottomBar != null,
+          child: Column(
+            children: [
+              if (widget.appBarActions != null)
+                SizedBox(
+                  height: kYaruTitleBarHeight,
+                  child: appBar,
+                ),
+              Expanded(
+                child: Container(
+                  color: theme.sideBarColor,
+                  child: YaruMasterListView(
+                    length: widget.controller.length,
+                    selectedIndex: _selectedIndex,
+                    onTap: _onTap,
+                    builder: widget.tileBuilder,
+                    availableWidth: _paneWidth!,
+                    startUndershoot: widget.appBarActions != null,
+                    endUndershoot: widget.bottomBar != null,
+                  ),
                 ),
               ),
-            ),
-            if (widget.bottomBar != null)
-              Material(
-                // color: theme.sideBarColor,
-                child: widget.bottomBar,
-              ),
-          ],
-          // ),
+              if (widget.bottomBar != null)
+                Material(
+                  color: theme.sideBarColor,
+                  child: widget.bottomBar,
+                ),
+            ],
+          ),
         );
       },
     );
   }
 
   Widget _buildPage(BuildContext context) {
-    // final theme = Theme /*MasterDetailTheme*/ .of(context);
+    final theme = YaruMasterDetailTheme.of(context);
 
     return Theme(
-      data: Theme.of(
-          context) /*.copyWith(
+      data: Theme.of(context).copyWith(
         pageTransitionsTheme: theme.landscapeTransitions,
-      )*/
-      ,
+      ),
       child: ScaffoldMessenger(
         child: Navigator(
           key: widget.navigatorKey,

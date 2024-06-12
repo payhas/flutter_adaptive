@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_adaptive/base/adaptive_widget.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 typedef AdaptiveAppBarBuilder = PreferredSizeWidget? Function(
@@ -24,8 +23,8 @@ class AdaptiveMasterDetail extends AdaptiveWidget {
     //   paneSide: YaruPaneSide.start,
     // ),
     this.breakpoint,
-    this.appBar,
-    this.appBarBuilder,
+    this.appBarActions,
+    // this.appBarBuilder,
     this.bottomBar,
     this.initialIndex,
     this.onSelected,
@@ -74,16 +73,17 @@ class AdaptiveMasterDetail extends AdaptiveWidget {
   ///
   /// See also:
   ///  * [YaruMasterDetailPage.appBarBuilder]
-  final /*PreferredSize*/ Widget? appBar;
+  final /*PreferredSize*/ /*Widget?*/ List<MasterDetailAppBarActionsItem>?
+      appBarActions;
 
-  /// An optional custom AppBar builder for the master pane.
-  ///
-  /// The builder is called whenever the master-detail layout changes between
-  /// landscape and portrait modes.
-  ///
-  /// See also:
-  ///  * [YaruMasterDetailPage.appBar]
-  final AdaptiveAppBarBuilder? appBarBuilder;
+  // /// An optional custom AppBar builder for the master pane.
+  // ///
+  // /// The builder is called whenever the master-detail layout changes between
+  // /// landscape and portrait modes.
+  // ///
+  // /// See also:
+  // ///  * [YaruMasterDetailPage.appBar]
+  // final AdaptiveAppBarBuilder? appBarBuilder;
 
   /// An optional bottom bar for the left pane.
   final Widget? bottomBar;
@@ -146,4 +146,16 @@ class AdaptiveMasterDetailPageController extends ChangeNotifier {
     _index = value;
     notifyListeners();
   }
+}
+
+class MasterDetailAppBarActionsItem {
+  MasterDetailAppBarActionsItem({
+    required this.title,
+    this.icon,
+    this.onPressed,
+  });
+
+  String title;
+  /*Adaptive*/ Icon? icon;
+  VoidCallback? onPressed;
 }

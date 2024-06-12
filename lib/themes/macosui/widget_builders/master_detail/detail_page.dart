@@ -1,5 +1,6 @@
 import 'package:macos_ui/macos_ui.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart';
 
 const _kDetailPageHeroTag = '<DetailPage hero tag>';
 
@@ -10,7 +11,8 @@ const _kDetailPageHeroTag = '<DetailPage hero tag>';
 class MacosUIDetailPage extends StatelessWidget {
   const MacosUIDetailPage({
     super.key,
-    this.appBar,
+    this.appBarActions,
+    this.appBarTitle,
     this.body,
     // this.floatingActionButton,
     // this.floatingActionButtonLocation,
@@ -32,7 +34,9 @@ class MacosUIDetailPage extends StatelessWidget {
   final bool extendBodyBehindAppBar;
 
   /// See [Scaffold.appBar].
-  final ToolBar? appBar;
+  final /*ToolBar?*/ List<MasterDetailAppBarActionsItem>? appBarActions;
+
+  final Widget? appBarTitle;
 
   /// See [Scaffold.body].
   final Widget? body;
@@ -68,13 +72,28 @@ class MacosUIDetailPage extends StatelessWidget {
   final Object? heroTag;
 
   ToolBar? _buildAppBar(BuildContext context) {
+    final appBar = appBarActions == null
+        ? null
+        : ToolBar(
+            title: appBarTitle,
+            actions: [
+              for (final item in appBarActions!)
+                ToolBarIconButton(
+                  label: item.title,
+                  icon: item.icon ?? const MacosIcon(CupertinoIcons.app),
+                  showLabel: false,
+                  onPressed: item.onPressed,
+                ),
+            ],
+          );
+
     if (appBar == null ||
         heroTag == null ||
         context.findAncestorWidgetOfExactType<Hero>() != null) {
       return appBar;
     }
 
-    return appBar!; /*PreferredSize(
+    return appBar; /*PreferredSize(
       preferredSize: appBar!.preferredSize,
       child: Hero(
         tag: heroTag!,

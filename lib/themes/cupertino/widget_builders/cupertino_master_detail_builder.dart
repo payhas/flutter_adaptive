@@ -11,12 +11,13 @@ class CupertinoMasterDetailBuilder
 
     return CupertinoMasterDetailPage(
       length: component.length,
-      appBar: component.appBar as ObstructingPreferredSizeWidget?,
+      appBarActions:
+          component.appBarActions /*as ObstructingPreferredSizeWidget?*/,
       tileBuilder: component.tileBuilder,
       pageBuilder: component.pageBuilder,
       emptyBuilder: component.emptyBuilder,
       breakpoint: component.breakpoint,
-      appBarBuilder: component.appBarBuilder,
+      // appBarBuilder: component.appBarBuilder,
       bottomBar: component.bottomBar,
       initialIndex: component.initialIndex,
       onSelected: component.onSelected,

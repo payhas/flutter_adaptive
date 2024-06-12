@@ -1,24 +1,24 @@
-import 'package:flutter/cupertino.dart' hide PageController;
+import 'package:flutter/material.dart';
+import 'package:yaru/foundation.dart' show YaruPageController;
 import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart';
 
-import 'landscape_layout.dart';
-// import 'master_detail_theme.dart';
-import 'portrait_layout.dart';
-import 'paned_view_layout_delegate.dart';
-import 'master_detail_page_controller.dart';
-import 'constants.dart';
+import 'yaru_detail_page.dart';
+import 'yaru_landscape_layout.dart';
+import 'yaru_master_detail_theme.dart';
+import 'yaru_master_tile.dart';
+import 'yaru_portrait_layout.dart';
+import 'yaru_paned_view_layout_delegate.dart';
 
 const _kDefaultPaneWidth = 280.0;
 
-typedef MasterTileBuilder = Widget Function(
+typedef YaruMasterTileBuilder = Widget Function(
   BuildContext context,
   int index,
   bool selected,
   double availableWidth,
 );
 
-typedef AppBarBuilder = /*PreferredSize*/ Widget? Function(
-    BuildContext context);
+typedef YaruAppBarBuilder = PreferredSizeWidget? Function(BuildContext context);
 
 /// A responsive master-detail page.
 ///
@@ -50,16 +50,16 @@ typedef AppBarBuilder = /*PreferredSize*/ Widget? Function(
 ///  * [YaruMasterTile] - provides the recommended layout for [tileBuilder].
 ///  * [YaruDetailPage] - provides the recommended layout for [pageBuilder].
 ///  * [YaruMasterDetailTheme] - allows customizing the looks of [YaruMasterDetailPage].
-class CupertinoMasterDetailPage extends StatefulWidget {
-  const CupertinoMasterDetailPage({
+class YaruMasterDetailPage extends StatefulWidget {
+  const YaruMasterDetailPage({
     super.key,
     this.length,
     required this.tileBuilder,
     required this.pageBuilder,
     this.emptyBuilder,
-    this.paneLayoutDelegate = const FixedPaneDelegate(
+    this.paneLayoutDelegate = const YaruFixedPaneDelegate(
       paneSize: _kDefaultPaneWidth,
-      paneSide: PaneSide.start,
+      paneSide: YaruPaneSide.start,
     ),
     this.breakpoint,
     this.appBarActions,
@@ -83,7 +83,7 @@ class CupertinoMasterDetailPage extends StatefulWidget {
   ///
   /// See also:
   ///  * [YaruMasterTile]
-  final MasterTileBuilder tileBuilder;
+  final YaruMasterTileBuilder tileBuilder;
 
   /// A builder that is called for each page to build its detail page.
   ///
@@ -96,7 +96,7 @@ class CupertinoMasterDetailPage extends StatefulWidget {
 
   /// Controls the width, side and resizing capacity of the pane.
   /// [YaruPanedViewLayoutDelegate.paneSide] need to be horizontal (see: [YaruPaneSide.isHorizontal]).
-  final PanedViewLayoutDelegate paneLayoutDelegate;
+  final YaruPanedViewLayoutDelegate paneLayoutDelegate;
 
   /// The breakpoint at which `YaruMasterDetailPage` switches between portrait
   /// and landscape layouts.
@@ -111,8 +111,8 @@ class CupertinoMasterDetailPage extends StatefulWidget {
   ///
   /// See also:
   ///  * [YaruMasterDetailPage.appBarBuilder]
-  final /*ObstructingPreferredSize*/ /*Widget?*/ List<
-      MasterDetailAppBarActionsItem>? appBarActions;
+  final /*PreferredSizeWidget?*/ List<MasterDetailAppBarActionsItem>?
+      appBarActions;
 
   // /// An optional custom AppBar builder for the master pane.
   // ///
@@ -121,7 +121,7 @@ class CupertinoMasterDetailPage extends StatefulWidget {
   // ///
   // /// See also:
   // ///  * [YaruMasterDetailPage.appBar]
-  // final AppBarBuilder? appBarBuilder;
+  // final YaruAppBarBuilder? appBarBuilder;
 
   /// An optional bottom bar for the left pane.
   final Widget? bottomBar;
@@ -133,7 +133,7 @@ class CupertinoMasterDetailPage extends StatefulWidget {
   final ValueChanged<int?>? onSelected;
 
   /// An optional controller that can be used to navigate to a specific index.
-  final CupertinoPageController? controller;
+  final YaruPageController? controller;
 
   /// A key to use when building the [Navigator] widget.
   final GlobalKey<NavigatorState>? navigatorKey;
@@ -171,21 +171,21 @@ class CupertinoMasterDetailPage extends StatefulWidget {
   /// Returns the orientation of the [YaruMasterDetailPage] that most tightly
   /// encloses the given context or `null` if there is no [YaruMasterDetailPage].
   static Orientation? maybeOrientationOf(BuildContext context) {
-    final scope =
-        context.dependOnInheritedWidgetOfExactType<_MasterDetailLayoutScope>();
+    final scope = context
+        .dependOnInheritedWidgetOfExactType<_YaruMasterDetailLayoutScope>();
     return scope?.orientation;
   }
 
   @override
-  State<CupertinoMasterDetailPage> createState() => _MasterDetailPageState();
+  State<YaruMasterDetailPage> createState() => _YaruMasterDetailPageState();
 }
 
-class _MasterDetailPageState extends State<CupertinoMasterDetailPage> {
-  late CupertinoPageController _controller;
+class _YaruMasterDetailPageState extends State<YaruMasterDetailPage> {
+  late YaruPageController _controller;
   late final GlobalKey<NavigatorState> _navigatorKey;
 
   void _updateController() => _controller = widget.controller ??
-      CupertinoPageController(
+      YaruPageController(
         length: widget.length ?? widget.controller!.length,
         initialIndex: widget.initialIndex ?? -1,
       );
@@ -204,7 +204,7 @@ class _MasterDetailPageState extends State<CupertinoMasterDetailPage> {
   }
 
   @override
-  void didUpdateWidget(covariant CupertinoMasterDetailPage oldWidget) {
+  void didUpdateWidget(covariant YaruMasterDetailPage oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.controller != oldWidget.controller ||
         widget.length != oldWidget.length ||
@@ -215,52 +215,50 @@ class _MasterDetailPageState extends State<CupertinoMasterDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = widget.breakpoint ?? kMasterDetailBreakpoint
-        /*CupertinoTheme/*MasterDetailTheme*/.of(context).breakpoint ??
-        MasterDetailThemeData.fallback(context).breakpoint!*/
-        ;
-    return /*Material(
-      child: */
-        widget.length == 0 || widget.controller?.length == 0
-            ? widget.emptyBuilder?.call(context) ?? const SizedBox.shrink()
-            : _MasterDetailLayoutBuilder(
-                breakpoint: breakpoint,
-                portrait: (context) => PortraitLayout(
-                  navigatorKey: _navigatorKey,
-                  navigatorObservers: widget.navigatorObservers,
-                  initialRoute: widget.initialRoute,
-                  onGenerateRoute: widget.onGenerateRoute,
-                  onUnknownRoute: widget.onUnknownRoute,
-                  tileBuilder: widget.tileBuilder,
-                  pageBuilder: widget.pageBuilder,
-                  onSelected: widget.onSelected,
-                  appBarActions: widget
-                      .appBarActions /*?? widget.appBarBuilder?.call(context)*/,
-                  bottomBar: widget.bottomBar,
-                  controller: _controller,
-                ),
-                landscape: (context) => LandscapeLayout(
-                  navigatorKey: _navigatorKey,
-                  navigatorObservers: widget.navigatorObservers,
-                  initialRoute: widget.initialRoute,
-                  onGenerateRoute: widget.onGenerateRoute,
-                  onUnknownRoute: widget.onUnknownRoute,
-                  tileBuilder: widget.tileBuilder,
-                  pageBuilder: widget.pageBuilder,
-                  onSelected: widget.onSelected,
-                  paneLayoutDelegate: widget.paneLayoutDelegate,
-                  appBarActions: widget
-                      .appBarActions /*?? widget.appBarBuilder?.call(context)*/,
-                  bottomBar: widget.bottomBar,
-                  controller: _controller,
-                ),
-                // ),
-              );
+    final breakpoint = widget.breakpoint ??
+        YaruMasterDetailTheme.of(context).breakpoint ??
+        YaruMasterDetailThemeData.fallback(context).breakpoint!;
+    return Material(
+      child: widget.length == 0 || widget.controller?.length == 0
+          ? widget.emptyBuilder?.call(context) ?? const SizedBox.shrink()
+          : _YaruMasterDetailLayoutBuilder(
+              breakpoint: breakpoint,
+              portrait: (context) => YaruPortraitLayout(
+                navigatorKey: _navigatorKey,
+                navigatorObservers: widget.navigatorObservers,
+                initialRoute: widget.initialRoute,
+                onGenerateRoute: widget.onGenerateRoute,
+                onUnknownRoute: widget.onUnknownRoute,
+                tileBuilder: widget.tileBuilder,
+                pageBuilder: widget.pageBuilder,
+                onSelected: widget.onSelected,
+                appBarActions: widget
+                    .appBarActions /*?? widget.appBarBuilder?.call(context)*/,
+                bottomBar: widget.bottomBar,
+                controller: _controller,
+              ),
+              landscape: (context) => YaruLandscapeLayout(
+                navigatorKey: _navigatorKey,
+                navigatorObservers: widget.navigatorObservers,
+                initialRoute: widget.initialRoute,
+                onGenerateRoute: widget.onGenerateRoute,
+                onUnknownRoute: widget.onUnknownRoute,
+                tileBuilder: widget.tileBuilder,
+                pageBuilder: widget.pageBuilder,
+                onSelected: widget.onSelected,
+                paneLayoutDelegate: widget.paneLayoutDelegate,
+                appBarActions: widget
+                    .appBarActions /*?? widget.appBarBuilder?.call(context)*/,
+                bottomBar: widget.bottomBar,
+                controller: _controller,
+              ),
+            ),
+    );
   }
 }
 
-class _MasterDetailLayoutBuilder extends StatelessWidget {
-  const _MasterDetailLayoutBuilder({
+class _YaruMasterDetailLayoutBuilder extends StatelessWidget {
+  const _YaruMasterDetailLayoutBuilder({
     required this.breakpoint,
     required this.portrait,
     required this.landscape,
@@ -277,7 +275,7 @@ class _MasterDetailLayoutBuilder extends StatelessWidget {
         final orientation = constraints.maxWidth < breakpoint
             ? Orientation.portrait
             : Orientation.landscape;
-        return _MasterDetailLayoutScope(
+        return _YaruMasterDetailLayoutScope(
           orientation: orientation,
           child: orientation == Orientation.portrait
               ? portrait(context)
@@ -288,8 +286,8 @@ class _MasterDetailLayoutBuilder extends StatelessWidget {
   }
 }
 
-class _MasterDetailLayoutScope extends InheritedWidget {
-  const _MasterDetailLayoutScope({
+class _YaruMasterDetailLayoutScope extends InheritedWidget {
+  const _YaruMasterDetailLayoutScope({
     required this.orientation,
     required super.child,
   });
@@ -297,7 +295,7 @@ class _MasterDetailLayoutScope extends InheritedWidget {
   final Orientation orientation;
 
   @override
-  bool updateShouldNotify(_MasterDetailLayoutScope oldWidget) {
+  bool updateShouldNotify(_YaruMasterDetailLayoutScope oldWidget) {
     return orientation != oldWidget.orientation;
   }
 }

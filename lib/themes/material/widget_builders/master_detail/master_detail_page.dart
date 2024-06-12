@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart' hide PageController;
+import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart';
 
 import 'landscape_layout.dart';
 import 'portrait_layout.dart';
@@ -59,8 +60,8 @@ class MaterialMasterDetailPage extends StatefulWidget {
       paneSide: PaneSide.start,
     ),
     this.breakpoint,
-    this.appBar,
-    this.appBarBuilder,
+    this.appBarActions,
+    // this.appBarBuilder,
     this.bottomBar,
     this.initialIndex,
     this.onSelected,
@@ -108,16 +109,17 @@ class MaterialMasterDetailPage extends StatefulWidget {
   ///
   /// See also:
   ///  * [YaruMasterDetailPage.appBarBuilder]
-  final PreferredSizeWidget? appBar;
+  final /*PreferredSizeWidget?*/ List<MasterDetailAppBarActionsItem>?
+      appBarActions;
 
-  /// An optional custom AppBar builder for the master pane.
-  ///
-  /// The builder is called whenever the master-detail layout changes between
-  /// landscape and portrait modes.
-  ///
-  /// See also:
-  ///  * [YaruMasterDetailPage.appBar]
-  final AppBarBuilder? appBarBuilder;
+  // /// An optional custom AppBar builder for the master pane.
+  // ///
+  // /// The builder is called whenever the master-detail layout changes between
+  // /// landscape and portrait modes.
+  // ///
+  // /// See also:
+  // ///  * [YaruMasterDetailPage.appBar]
+  // final AppBarBuilder? appBarBuilder;
 
   /// An optional bottom bar for the left pane.
   final Widget? bottomBar;
@@ -229,7 +231,8 @@ class _MasterDetailPageState extends State<MaterialMasterDetailPage> {
                 tileBuilder: widget.tileBuilder,
                 pageBuilder: widget.pageBuilder,
                 onSelected: widget.onSelected,
-                appBar: widget.appBar ?? widget.appBarBuilder?.call(context),
+                appBarActions: widget
+                    .appBarActions /*?? widget.appBarBuilder?.call(context)*/,
                 bottomBar: widget.bottomBar,
                 controller: _controller,
               ),
@@ -243,7 +246,8 @@ class _MasterDetailPageState extends State<MaterialMasterDetailPage> {
                 pageBuilder: widget.pageBuilder,
                 onSelected: widget.onSelected,
                 paneLayoutDelegate: widget.paneLayoutDelegate,
-                appBar: widget.appBar ?? widget.appBarBuilder?.call(context),
+                appBarActions: widget
+                    .appBarActions /*?? widget.appBarBuilder?.call(context)*/,
                 bottomBar: widget.bottomBar,
                 controller: _controller,
               ),

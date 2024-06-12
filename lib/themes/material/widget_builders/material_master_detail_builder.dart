@@ -11,12 +11,12 @@ class MaterialMasterDetailBuilder
 
     return MaterialMasterDetailPage(
       length: component.length,
-      appBar: component.appBar as PreferredSizeWidget?,
+      appBarActions: component.appBarActions /*as PreferredSizeWidget?*/,
       tileBuilder: component.tileBuilder,
       pageBuilder: component.pageBuilder,
       emptyBuilder: component.emptyBuilder,
       breakpoint: component.breakpoint,
-      appBarBuilder: component.appBarBuilder,
+      // appBarBuilder: component.appBarBuilder,
       bottomBar: component.bottomBar,
       initialIndex: component.initialIndex,
       onSelected: component.onSelected,

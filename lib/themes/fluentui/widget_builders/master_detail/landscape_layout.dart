@@ -4,6 +4,8 @@ import 'package:fluent_ui/fluent_ui.dart' hide PageController;
 import 'package:flutter/material.dart'
     hide PageController
     show MaterialPage, Material;
+import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart'
+    hide MasterTileBuilder;
 
 import 'master_list_view.dart';
 import 'paned_view_layout_delegate.dart';
@@ -25,7 +27,7 @@ class LandscapeLayout extends StatefulWidget {
     required this.pageBuilder,
     this.onSelected,
     required this.paneLayoutDelegate,
-    this.appBar,
+    this.appBarActions,
     this.bottomBar,
     required this.controller,
   });
@@ -39,7 +41,7 @@ class LandscapeLayout extends StatefulWidget {
   final IndexedWidgetBuilder pageBuilder;
   final ValueChanged<int>? onSelected;
   final PanedViewLayoutDelegate paneLayoutDelegate;
-  final Widget? appBar;
+  final /*Widget?*/ List<MasterDetailAppBarActionsItem>? appBarActions;
   final Widget? bottomBar;
   final FluentUIPageController controller;
 
@@ -100,16 +102,33 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
   }
 
   Widget _buildLeftPane(FluentThemeData /*MasterDetailThemeData*/ theme) {
+    final appBar = widget.appBarActions == null
+        ? null
+        : CommandBar(
+            mainAxisAlignment: MainAxisAlignment.end,
+            isCompact: true,
+            primaryItems: [
+              for (final item in widget.appBarActions!)
+                CommandBarButton(
+                  icon: item.icon,
+                  label: Text(item.title),
+                  onPressed: item.onPressed,
+                )
+            ],
+          );
+
     return Builder(
       builder: (context) {
         return Column(
           children: [
-            if (widget.appBar != null)
+            if (widget.appBarActions != null)
               Container(
+                padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0),
+                alignment: Alignment.centerRight,
                 color: FluentTheme.of(context).scaffoldBackgroundColor,
                 child: SizedBox(
                   // height: kYaruTitleBarHeight,
-                  child: widget.appBar!,
+                  child: appBar,
                 ),
               ),
             Expanded(
@@ -119,7 +138,7 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
                 onTap: _onTap,
                 builder: widget.tileBuilder,
                 availableWidth: _paneWidth!,
-                startUndershoot: widget.appBar != null,
+                startUndershoot: widget.appBarActions != null,
                 endUndershoot: widget.bottomBar != null,
               ),
             ),

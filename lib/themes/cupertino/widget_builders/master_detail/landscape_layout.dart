@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart' hide PageController;
+import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart'
+    hide MasterTileBuilder;
 
 import 'master_list_view.dart';
 import 'paned_view_layout_delegate.dart';
@@ -22,7 +24,7 @@ class LandscapeLayout extends StatefulWidget {
     required this.pageBuilder,
     this.onSelected,
     required this.paneLayoutDelegate,
-    this.appBar,
+    this.appBarActions,
     this.bottomBar,
     required this.controller,
   });
@@ -36,7 +38,7 @@ class LandscapeLayout extends StatefulWidget {
   final IndexedWidgetBuilder pageBuilder;
   final ValueChanged<int>? onSelected;
   final PanedViewLayoutDelegate paneLayoutDelegate;
-  final Widget? appBar;
+  final /*Widget?*/ List<MasterDetailAppBarActionsItem>? appBarActions;
   final Widget? bottomBar;
   final CupertinoPageController controller;
 
@@ -97,6 +99,21 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
   }
 
   Widget _buildLeftPane(CupertinoThemeData /*MasterDetailThemeData*/ theme) {
+    final appBar = (widget.appBarActions == null)
+        ? null
+        : CupertinoNavigationBar(
+            trailing: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                for (final item in widget.appBarActions!)
+                  CupertinoButton(
+                    onPressed: item.onPressed,
+                    child: item.icon ?? const Icon(CupertinoIcons.rectangle),
+                  ),
+              ],
+            ),
+          );
+
     return Builder(
       builder: (context) {
         return /*TitleBarTheme(
@@ -106,10 +123,10 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
           child:*/
             Column(
           children: [
-            if (widget.appBar != null)
+            if (widget.appBarActions != null)
               SizedBox(
                 height: kYaruTitleBarHeight,
-                child: widget.appBar!,
+                child: appBar,
               ),
             Expanded(
               child: /*CupertinoTheme(
@@ -121,7 +138,7 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
                 onTap: _onTap,
                 builder: widget.tileBuilder,
                 availableWidth: _paneWidth!,
-                startUndershoot: widget.appBar != null,
+                startUndershoot: widget.appBarActions != null,
                 endUndershoot: widget.bottomBar != null,
               ),
               // ),

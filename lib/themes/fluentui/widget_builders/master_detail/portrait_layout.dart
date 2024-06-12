@@ -1,5 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart' hide PageController;
 import 'package:flutter/material.dart' show MaterialPage, Material;
+import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart'
+    hide MasterTileBuilder;
 
 import 'master_detail_page.dart';
 import 'master_list_view.dart';
@@ -16,7 +18,7 @@ class PortraitLayout extends StatefulWidget {
     required this.tileBuilder,
     required this.pageBuilder,
     this.onSelected,
-    this.appBar,
+    this.appBarActions,
     this.bottomBar,
     required this.controller,
   });
@@ -30,7 +32,9 @@ class PortraitLayout extends StatefulWidget {
   final IndexedWidgetBuilder pageBuilder;
   final ValueChanged<int>? onSelected;
 
-  final /*PreferredSize*/ Widget? appBar;
+  final /*PreferredSize*/ /*Widget?*/ List<MasterDetailAppBarActionsItem>?
+      appBarActions;
+
   final Widget? bottomBar;
 
   final FluentUIPageController controller;
@@ -89,6 +93,23 @@ class _PortraitLayoutState extends State<PortraitLayout> {
 
   @override
   Widget build(BuildContext context) {
+    final appBar = (widget.appBarActions == null)
+        ? null
+        : PageHeader(
+            commandBar: CommandBar(
+              isCompact: true,
+              mainAxisAlignment: MainAxisAlignment.end,
+              primaryItems: [
+                for (final item in widget.appBarActions!)
+                  CommandBarButton(
+                    icon: item.icon,
+                    label: Text(item.title),
+                    onPressed: item.onPressed,
+                  )
+              ],
+            ),
+          );
+
     // final theme = FluentTheme /*MasterDetailTheme*/ .of(context);
     return PopScope(
       onPopInvoked: (v) async => await _navigator.maybePop(),
@@ -118,9 +139,11 @@ class _PortraitLayoutState extends State<PortraitLayout> {
                 child:*/
                   ScaffoldPage(
                 // backgroundColor: theme.sideBarColor,
-                header: Container(
-                    color: FluentTheme.of(context).scaffoldBackgroundColor,
-                    child: widget.appBar),
+                header:
+                    appBar /*Container(
+                        color: FluentTheme.of(context).scaffoldBackgroundColor,
+                        child: /*widget.*/ appBar)*/
+                ,
                 content: LayoutBuilder(
                   builder: (context, constraints) => MasterListView(
                     length: widget.controller.length,
@@ -128,7 +151,7 @@ class _PortraitLayoutState extends State<PortraitLayout> {
                     onTap: _onTap,
                     builder: widget.tileBuilder,
                     availableWidth: constraints.maxWidth,
-                    startUndershoot: widget.appBar != null,
+                    startUndershoot: widget.appBarActions != null,
                     endUndershoot: widget.bottomBar != null,
                   ),
                 ),
