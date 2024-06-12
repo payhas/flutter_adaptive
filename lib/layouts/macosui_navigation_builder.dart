@@ -12,12 +12,23 @@ class MacosUINavigationBuilder
     extends AdaptiveWidgetBuilder<AdaptiveNavigation> {
   @override
   Widget build(BuildContext context, AdaptiveNavigation component) {
-    return MacosNavigation(groupDestinations: component.groupDestinations);
+    return MacosNavigation(
+        groupDestinations:
+            drawerSidebarGroupDestinations(component.groupDestinations));
   }
 }
 
 class MacosNavigation extends StatefulWidget {
-  const MacosNavigation({super.key, required this.groupDestinations});
+  MacosNavigation({super.key, required this.groupDestinations})
+      : assert(
+          groupDestinations
+                  .expand((group) => group.destinations)
+                  .where(
+                      (destination) => destination.showOnDrawerSidebar == true)
+                  .length >=
+              2,
+          'There must be at least 2 AdaptiveDestinations with showOnDrawerSidebar = true',
+        );
 
   final List<AdaptiveGroupDestination> groupDestinations;
 
@@ -36,6 +47,9 @@ class MacosNavigationState extends State<MacosNavigation> {
 
   @override
   Widget build(BuildContext context) {
+    var allDestinations =
+        widget.groupDestinations.expand((group) => group.destinations).toList();
+
     return MacosWindow(
       sidebar: Sidebar(
         minWidth: 200,
@@ -46,21 +60,71 @@ class MacosNavigationState extends State<MacosNavigation> {
             itemSize: SidebarItemSize.large,
             currentIndex: _selectedIndex,
             onChanged: _onItemTapped,
-            items: widget.groupDestinations
-                .expand((group) => group.destinations)
-                .map((dest) {
+            items: allDestinations.map((dest) {
+              int index = allDestinations.indexOf(dest);
               return SidebarItem(
-                leading: dest.icon,
+                leading: ColorFiltered(
+                  colorFilter: ColorFilter.mode(
+                      _selectedIndex == index
+                          ? CupertinoColors.white
+                          : CupertinoColors.systemBlue,
+                      BlendMode.srcIn),
+                  child: dest.icon,
+                ),
                 label: Text(dest.label),
               );
             }).toList(),
           );
         },
       ),
-      child: widget.groupDestinations
-          .expand((group) => group.destinations)
-          .toList()[_selectedIndex]
-          .page,
+      child: MacosPage(
+          content: allDestinations[_selectedIndex].page,
+          title: allDestinations[_selectedIndex].label),
+    );
+  }
+}
+
+class MacosPage extends StatelessWidget {
+  const MacosPage({super.key, required this.content, required this.title});
+
+  final Widget content;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return MacosScaffold(
+      toolBar: ToolBar(
+        title: Text(title),
+        titleWidth: 150.0,
+        leading: MacosTooltip(
+          message: 'Toggle Sidebar',
+          useMousePosition: false,
+          child: MacosIconButton(
+            icon: MacosIcon(
+              CupertinoIcons.sidebar_left,
+              color: MacosTheme.brightnessOf(context).resolve(
+                const Color.fromRGBO(0, 0, 0, 0.5),
+                const Color.fromRGBO(255, 255, 255, 0.5),
+              ),
+              size: 20.0,
+            ),
+            boxConstraints: const BoxConstraints(
+              minHeight: 20,
+              minWidth: 20,
+              maxWidth: 48,
+              maxHeight: 38,
+            ),
+            onPressed: () => MacosWindowScope.of(context).toggleSidebar(),
+          ),
+        ),
+      ),
+      children: [
+        ContentArea(
+          builder: (context, scrollController) {
+            return content;
+          },
+        ),
+      ],
     );
   }
 }

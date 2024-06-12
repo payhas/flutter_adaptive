@@ -6,12 +6,22 @@ class YaruNavigationBuilder extends AdaptiveWidgetBuilder<AdaptiveNavigation> {
   @override
   Widget build(BuildContext context, AdaptiveNavigation component) {
     return LinuxResponsiveNavigation(
-        groupDestinations: component.groupDestinations);
+        groupDestinations:
+            drawerSidebarGroupDestinations(component.groupDestinations));
   }
 }
 
 class LinuxResponsiveNavigation extends StatelessWidget {
-  const LinuxResponsiveNavigation({super.key, required this.groupDestinations});
+  LinuxResponsiveNavigation({super.key, required this.groupDestinations})
+      : assert(
+          groupDestinations
+                  .expand((group) => group.destinations)
+                  .where(
+                      (destination) => destination.showOnDrawerSidebar == true)
+                  .length >=
+              2,
+          'There must be at least 2 AdaptiveDestinations with showOnDrawerSidebar = true',
+        );
 
   final List<AdaptiveGroupDestination> groupDestinations;
 

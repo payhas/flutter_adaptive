@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart';
 import 'package:provider/provider.dart';
+import 'package:yaru/yaru.dart';
 
-void main() {
+void main() async {
+  await YaruWindowTitleBar.ensureInitialized();
+
   runApp(const MyApp());
 }
 
@@ -22,8 +25,10 @@ class MyApp extends StatelessWidget {
           builder: (context, theme, _) => AdaptiveApp(
             theme: theme.getTheme(),
             debugShowCheckedModeBanner: false,
-            home: AdaptiveNavigation(
-                groupDestinations: const <AdaptiveGroupDestination>[
+            home: const AdaptiveNavigation(
+                showBottomNavigationBarOnMobile: true,
+                showNavigationDrawerOnMobile: false,
+                groupDestinations: <AdaptiveGroupDestination>[
                   AdaptiveGroupDestination(
                       name: "Files",
                       destinations: <AdaptiveDestination>[

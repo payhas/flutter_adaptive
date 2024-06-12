@@ -2,29 +2,16 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 class AdaptiveNavigation extends AdaptiveWidget {
-  AdaptiveNavigation({
+  const AdaptiveNavigation({
     super.key,
     required this.groupDestinations,
-  })  : assert(
-          groupDestinations
-                  .expand((group) => group.destinations)
-                  .where(
-                      (destination) => destination.showOnBottomAppBar == true)
-                  .length >=
-              2,
-          'There must be at least 2 AdaptiveDestinations with showOnBottomAppBar = true',
-        ),
-        assert(
-          groupDestinations
-                  .expand((group) => group.destinations)
-                  .where(
-                      (destination) => destination.showOnNavigationRail == true)
-                  .length >=
-              2,
-          'There must be at least 2 AdaptiveDestinations with showOnNavigationRail = true',
-        );
+    this.showNavigationDrawerOnMobile = false,
+    this.showBottomNavigationBarOnMobile = true,
+  });
 
   final List<AdaptiveGroupDestination> groupDestinations;
+  final bool showNavigationDrawerOnMobile;
+  final bool showBottomNavigationBarOnMobile;
 }
 
 class FormFactor {
@@ -40,6 +27,7 @@ class AdaptiveDestination {
     required this.page,
     this.showOnNavigationRail,
     this.showOnBottomAppBar,
+    this.showOnDrawerSidebar = true,
   });
 
   final Widget icon;
@@ -47,11 +35,27 @@ class AdaptiveDestination {
   final Widget page;
   final bool? showOnNavigationRail;
   final bool? showOnBottomAppBar;
+  final bool showOnDrawerSidebar;
 }
 
 class AdaptiveGroupDestination {
-  const AdaptiveGroupDestination({required this.destinations, required this.name});
+  const AdaptiveGroupDestination(
+      {required this.destinations, required this.name});
 
   final String name;
   final List<AdaptiveDestination> destinations;
+}
+
+List<AdaptiveGroupDestination> drawerSidebarGroupDestinations(
+    List<AdaptiveGroupDestination> groupDestinations) {
+  return groupDestinations
+      .map((group) {
+        List<AdaptiveDestination> filteredDestinations = group.destinations
+            .where((destination) => destination.showOnDrawerSidebar)
+            .toList();
+        return AdaptiveGroupDestination(
+            name: group.name, destinations: filteredDestinations);
+      })
+      .where((group) => group.destinations.isNotEmpty)
+      .toList();
 }
