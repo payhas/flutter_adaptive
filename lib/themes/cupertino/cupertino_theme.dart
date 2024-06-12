@@ -26,6 +26,7 @@ class CupertinoTheme extends AdaptiveBundle {
             CupertinoNavigationBarBuilder(),
             CupertinoNavigationBuilder(),
             CupertinoMasterDetailBuilder(),
+            CupertinoDetailPageBuilder(),
           },
           bundles: {
             CupertinoIcons(),

@@ -26,6 +26,7 @@ class MaterialTheme extends AdaptiveBundle {
             MaterialNavigationBarBuilder(),
             MaterialNavigationBuilder(),
             MaterialMasterDetailBuilder(),
+            MaterialDetailPageBuilder(),
           },
           bundles: {
             MaterialIcons(),

@@ -180,21 +180,14 @@ class MasterDetailPage extends StatelessWidget {
           title: "Settings",
           // icon: AdaptiveIcon(AdaptiveIcons.settings),
           onPressed: () {
-            // showDialog(
-            //   context: context,
-            //   builder: (context) {
-            //     return AlertDialog(
-            //       title: const Text("Settings"),
-            //       content: const Text("Application settings"),
-            //       actions: [
-            //         TextButton(
-            //           child: const Text("Ok"),
-            //           onPressed: () => Navigator.pop(context),
-            //         ),
-            //       ],
-            //     );
-            //   },
-            // );
+            showAdaptiveModalDialog(
+              context: context,
+              title: const Text("Settings"),
+              content: const Text("Application settings"),
+              primaryButton: AdaptiveModalDialogAction(
+                  onPressed: () => Navigator.pop(context),
+                  child: const AdaptiveText("OK")),
+            );
           },
         ),
       ],
@@ -202,7 +195,41 @@ class MasterDetailPage extends StatelessWidget {
         return const Text("Master");
       },
       pageBuilder: (context, index) {
-        return MyHomePage(title: "Detail");
+        return AdaptiveDetailPage(
+          appBarTitle: const AdaptiveText("Detail"),
+          appBarActions: [
+            MasterDetailAppBarActionsItem(
+              title: "Call",
+              // icon: const Icon(CupertinoIcons.phone, size: 24.0),
+              onPressed: () {
+                showAdaptiveModalDialog<void>(
+                  context: context,
+                  title: const Text("Call"),
+                  content: const Text("Call a friend"),
+                  primaryButton: AdaptiveModalDialogAction(
+                      onPressed: () => Navigator.pop(context),
+                      child: const AdaptiveText("OK")),
+                );
+              },
+            ),
+            MasterDetailAppBarActionsItem(
+              title: "Video Call",
+              // icon: const Icon(CupertinoIcons.video_camera, size: 24.0),
+              onPressed: () {
+                showAdaptiveModalDialog(
+                  context: context,
+                  title: const Text("VideoCall"),
+                  content: const Text("VideoCall a friend"),
+                  primaryButton: AdaptiveModalDialogAction(
+                      onPressed: () => Navigator.pop(context),
+                      child: const AdaptiveText("OK")),
+                );
+              },
+            ),
+          ],
+          body: const MyHomePage(title: "Detail"),
+        );
+        // return MyHomePage(title: "Detail");
       },
     );
   }

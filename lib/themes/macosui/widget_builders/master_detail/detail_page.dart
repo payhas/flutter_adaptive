@@ -105,10 +105,16 @@ class MacosUIDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> widgets = [];
-    widgets.add(body ??
-        const Placeholder(
-          child: Text("Details"),
-        ));
+    widgets.add(
+      ContentArea(
+        builder: (context, scrollController) {
+          return body ??
+              const Placeholder(
+                child: Text("Details"),
+              );
+        },
+      ),
+    );
     return MacosScaffold(
       toolBar: _buildAppBar(context),
       // floatingActionButton: floatingActionButton,
