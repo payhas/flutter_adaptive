@@ -11,6 +11,7 @@ class YaruMasterDetailBuilder
 
     return YaruMasterDetailPage(
       length: component.length,
+      appBarTitle: component.appBarTitle,
       appBarActions: component.appBarActions /*as PreferredSizeWidget?*/,
       tileBuilder: component.tileBuilder,
       pageBuilder: component.pageBuilder,

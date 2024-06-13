@@ -1,6 +1,5 @@
 import 'package:flutter_adaptive/flutter_adaptive.dart'
     hide CupertinoTheme, CupertinoIcons;
-import 'package:macos_ui/macos_ui.dart';
 import 'package:flutter/widgets.dart' hide PageController;
 import 'master_detail/master_detail_library.dart';
 
@@ -12,6 +11,7 @@ class MacosUIMasterDetailBuilder
 
     return MacosUIMasterDetailPage(
       length: component.length,
+      appBarTitle: component.appBarTitle,
       appBarActions: component.appBarActions,
       tileBuilder: component.tileBuilder,
       pageBuilder: component.pageBuilder,

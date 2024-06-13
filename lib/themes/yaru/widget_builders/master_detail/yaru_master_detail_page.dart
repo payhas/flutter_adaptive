@@ -63,6 +63,7 @@ class YaruMasterDetailPage extends StatefulWidget {
     ),
     this.breakpoint,
     this.appBarActions,
+    this.appBarTitle,
     // this.appBarBuilder,
     this.bottomBar,
     this.initialIndex,
@@ -113,6 +114,8 @@ class YaruMasterDetailPage extends StatefulWidget {
   ///  * [YaruMasterDetailPage.appBarBuilder]
   final /*PreferredSizeWidget?*/ List<MasterDetailAppBarActionsItem>?
       appBarActions;
+
+  final Widget? appBarTitle;
 
   // /// An optional custom AppBar builder for the master pane.
   // ///
@@ -232,6 +235,7 @@ class _YaruMasterDetailPageState extends State<YaruMasterDetailPage> {
                 tileBuilder: widget.tileBuilder,
                 pageBuilder: widget.pageBuilder,
                 onSelected: widget.onSelected,
+                appBarTitle: widget.appBarTitle,
                 appBarActions: widget
                     .appBarActions /*?? widget.appBarBuilder?.call(context)*/,
                 bottomBar: widget.bottomBar,
@@ -247,6 +251,7 @@ class _YaruMasterDetailPageState extends State<YaruMasterDetailPage> {
                 pageBuilder: widget.pageBuilder,
                 onSelected: widget.onSelected,
                 paneLayoutDelegate: widget.paneLayoutDelegate,
+                appBarTitle: widget.appBarTitle,
                 appBarActions: widget
                     .appBarActions /*?? widget.appBarBuilder?.call(context)*/,
                 bottomBar: widget.bottomBar,

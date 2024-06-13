@@ -75,11 +75,15 @@ class CupertinoDetailPage extends StatelessWidget {
     final appBar = (appBarActions == null)
         ? null
         : CupertinoNavigationBar(
+            middle: appBarTitle,
             trailing: Row(
+              mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 for (final item in appBarActions!)
                   CupertinoButton(
+                    // color: CupertinoColors.activeGreen,
+                    // alignment: Alignment.topCenter,
                     onPressed: item.onPressed,
                     child: item.icon ?? const Icon(CupertinoIcons.rectangle),
                   ),

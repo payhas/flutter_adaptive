@@ -19,6 +19,7 @@ class PortraitLayout extends StatefulWidget {
     required this.pageBuilder,
     this.onSelected,
     this.appBarActions,
+    this.appBarTitle,
     this.bottomBar,
     required this.controller,
   });
@@ -34,6 +35,8 @@ class PortraitLayout extends StatefulWidget {
 
   final /*ToolBar*/ /*Widget?*/ List<MasterDetailAppBarActionsItem>?
       appBarActions;
+
+  final Widget? appBarTitle;
 
   final Widget? bottomBar;
 
@@ -97,6 +100,11 @@ class _PortraitLayoutState extends State<PortraitLayout> {
     final toolBar = (widget.appBarActions == null)
         ? null
         : ToolBar(
+            title: widget.appBarTitle,
+            decoration: BoxDecoration(
+              color: MacosTheme.of(context).canvasColor,
+            ),
+            dividerColor: MacosTheme.of(context).dividerColor,
             actions: [
               for (final item in widget.appBarActions!)
                 ToolBarIconButton(

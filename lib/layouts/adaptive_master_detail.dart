@@ -23,6 +23,7 @@ class AdaptiveMasterDetail extends AdaptiveWidget {
     //   paneSide: YaruPaneSide.start,
     // ),
     this.breakpoint,
+    this.appBarTitle,
     this.appBarActions,
     // this.appBarBuilder,
     this.bottomBar,
@@ -75,6 +76,8 @@ class AdaptiveMasterDetail extends AdaptiveWidget {
   ///  * [YaruMasterDetailPage.appBarBuilder]
   final /*PreferredSize*/ /*Widget?*/ List<MasterDetailAppBarActionsItem>?
       appBarActions;
+
+  final Widget? appBarTitle;
 
   // /// An optional custom AppBar builder for the master pane.
   // ///

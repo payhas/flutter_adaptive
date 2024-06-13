@@ -11,6 +11,7 @@ class CupertinoMasterDetailBuilder
 
     return CupertinoMasterDetailPage(
       length: component.length,
+      appBarTitle: component.appBarTitle,
       appBarActions:
           component.appBarActions /*as ObstructingPreferredSizeWidget?*/,
       tileBuilder: component.tileBuilder,

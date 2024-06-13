@@ -28,6 +28,7 @@ class LandscapeLayout extends StatefulWidget {
     this.onSelected,
     required this.paneLayoutDelegate,
     this.appBarActions,
+    this.appBarTitle,
     this.bottomBar,
     required this.controller,
   });
@@ -42,6 +43,7 @@ class LandscapeLayout extends StatefulWidget {
   final ValueChanged<int>? onSelected;
   final PanedViewLayoutDelegate paneLayoutDelegate;
   final /*Widget?*/ List<MasterDetailAppBarActionsItem>? appBarActions;
+  final Widget? appBarTitle;
   final Widget? bottomBar;
   final FluentUIPageController controller;
 
@@ -104,17 +106,21 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
   Widget _buildLeftPane(FluentThemeData /*MasterDetailThemeData*/ theme) {
     final appBar = widget.appBarActions == null
         ? null
-        : CommandBar(
-            mainAxisAlignment: MainAxisAlignment.end,
-            isCompact: true,
-            primaryItems: [
-              for (final item in widget.appBarActions!)
-                CommandBarButton(
-                  icon: item.icon,
-                  label: Text(item.title),
-                  onPressed: item.onPressed,
-                )
-            ],
+        : PageHeader(
+            title: widget.appBarTitle,
+            commandBar: CommandBar(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.end,
+              isCompact: true,
+              primaryItems: [
+                for (final item in widget.appBarActions!)
+                  CommandBarButton(
+                    icon: item.icon,
+                    label: Text(item.title),
+                    onPressed: item.onPressed,
+                  )
+              ],
+            ),
           );
 
     return Builder(
@@ -127,7 +133,7 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
                 alignment: Alignment.centerRight,
                 color: FluentTheme.of(context).scaffoldBackgroundColor,
                 child: SizedBox(
-                  // height: kYaruTitleBarHeight,
+                  // height: kYaruTitleBarHeigsht,
                   child: appBar,
                 ),
               ),

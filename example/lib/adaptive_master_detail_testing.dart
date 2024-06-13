@@ -175,6 +175,7 @@ class MasterDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return AdaptiveMasterDetail(
       length: 1,
+      appBarTitle: const AdaptiveText("Master"),
       appBarActions: [
         MasterDetailAppBarActionsItem(
           title: "Settings",
@@ -194,7 +195,7 @@ class MasterDetailPage extends StatelessWidget {
       tileBuilder: (context, index, selected, availableWidth) {
         return const Text("Master");
       },
-      pageBuilder: (context, index) {
+      pageBuilder: (ctx, index) {
         return AdaptiveDetailPage(
           appBarTitle: const AdaptiveText("Detail"),
           appBarActions: [

@@ -11,6 +11,7 @@ class MaterialMasterDetailBuilder
 
     return MaterialMasterDetailPage(
       length: component.length,
+      appBarTitle: component.appBarTitle,
       appBarActions: component.appBarActions /*as PreferredSizeWidget?*/,
       tileBuilder: component.tileBuilder,
       pageBuilder: component.pageBuilder,

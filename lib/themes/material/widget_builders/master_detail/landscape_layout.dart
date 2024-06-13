@@ -9,6 +9,7 @@ import 'paned_view_layout_delegate.dart';
 import 'paned_view.dart';
 import 'master_detail_page_controller.dart';
 import 'master_detail_page.dart';
+import 'constants.dart';
 
 const kYaruTitleBarHeight = 46.0;
 
@@ -25,6 +26,7 @@ class LandscapeLayout extends StatefulWidget {
     this.onSelected,
     required this.paneLayoutDelegate,
     this.appBarActions,
+    this.appBarTitle,
     this.bottomBar,
     required this.controller,
   });
@@ -39,6 +41,7 @@ class LandscapeLayout extends StatefulWidget {
   final ValueChanged<int>? onSelected;
   final PanedViewLayoutDelegate paneLayoutDelegate;
   final /*Widget?*/ List<MasterDetailAppBarActionsItem>? appBarActions;
+  final Widget? appBarTitle;
   final Widget? bottomBar;
   final MaterialPageController controller;
 
@@ -102,6 +105,7 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
     final appBar = widget.appBarActions == null
         ? null
         : AppBar(
+            title: widget.appBarTitle,
             actions: [
               for (final item in widget.appBarActions!)
                 IconButton(
@@ -155,11 +159,9 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
     // final theme = Theme /*MasterDetailTheme*/ .of(context);
 
     return Theme(
-      data: Theme.of(
-          context) /*.copyWith(
-        pageTransitionsTheme: theme.landscapeTransitions,
-      )*/
-      ,
+      data: Theme.of(context).copyWith(
+        pageTransitionsTheme: kLandscapeLayoutPageTransitionsTheme,
+      ),
       child: ScaffoldMessenger(
         child: Navigator(
           key: widget.navigatorKey,

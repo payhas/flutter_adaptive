@@ -22,6 +22,7 @@ class YaruPortraitLayout extends StatefulWidget {
     required this.pageBuilder,
     this.onSelected,
     this.appBarActions,
+    this.appBarTitle,
     this.bottomBar,
     required this.controller,
   });
@@ -37,6 +38,8 @@ class YaruPortraitLayout extends StatefulWidget {
 
   final /*PreferredSizeWidget?*/ List<MasterDetailAppBarActionsItem>?
       appBarActions;
+
+  final Widget? appBarTitle;
 
   final Widget? bottomBar;
 
@@ -99,6 +102,7 @@ class _YaruPortraitLayoutState extends State<YaruPortraitLayout> {
     final appBar = (widget.appBarActions == null)
         ? null
         : AppBar(
+            title: widget.appBarTitle,
             actions: [
               for (final item in widget.appBarActions!)
                 IconButton(

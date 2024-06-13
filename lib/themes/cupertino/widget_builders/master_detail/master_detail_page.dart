@@ -62,6 +62,7 @@ class CupertinoMasterDetailPage extends StatefulWidget {
       paneSide: PaneSide.start,
     ),
     this.breakpoint,
+    this.appBarTitle,
     this.appBarActions,
     // this.appBarBuilder,
     this.bottomBar,
@@ -113,6 +114,8 @@ class CupertinoMasterDetailPage extends StatefulWidget {
   ///  * [YaruMasterDetailPage.appBarBuilder]
   final /*ObstructingPreferredSize*/ /*Widget?*/ List<
       MasterDetailAppBarActionsItem>? appBarActions;
+
+  final Widget? appBarTitle;
 
   // /// An optional custom AppBar builder for the master pane.
   // ///
@@ -234,6 +237,7 @@ class _MasterDetailPageState extends State<CupertinoMasterDetailPage> {
                   tileBuilder: widget.tileBuilder,
                   pageBuilder: widget.pageBuilder,
                   onSelected: widget.onSelected,
+                  appBarTitle: widget.appBarTitle,
                   appBarActions: widget
                       .appBarActions /*?? widget.appBarBuilder?.call(context)*/,
                   bottomBar: widget.bottomBar,
@@ -249,6 +253,7 @@ class _MasterDetailPageState extends State<CupertinoMasterDetailPage> {
                   pageBuilder: widget.pageBuilder,
                   onSelected: widget.onSelected,
                   paneLayoutDelegate: widget.paneLayoutDelegate,
+                  appBarTitle: widget.appBarTitle,
                   appBarActions: widget
                       .appBarActions /*?? widget.appBarBuilder?.call(context)*/,
                   bottomBar: widget.bottomBar,

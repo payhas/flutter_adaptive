@@ -5,6 +5,7 @@ import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart'
 import 'master_detail_page.dart';
 import 'master_list_view.dart';
 import 'master_detail_page_controller.dart';
+import 'constants.dart';
 
 class PortraitLayout extends StatefulWidget {
   const PortraitLayout({
@@ -18,6 +19,7 @@ class PortraitLayout extends StatefulWidget {
     required this.pageBuilder,
     this.onSelected,
     this.appBarActions,
+    this.appBarTitle,
     this.bottomBar,
     required this.controller,
   });
@@ -33,6 +35,8 @@ class PortraitLayout extends StatefulWidget {
 
   final /*PreferredSizeWidget?*/ List<MasterDetailAppBarActionsItem>?
       appBarActions;
+
+  final Widget? appBarTitle;
 
   final Widget? bottomBar;
 
@@ -95,6 +99,7 @@ class _PortraitLayoutState extends State<PortraitLayout> {
     final appBar = (widget.appBarActions == null)
         ? null
         : AppBar(
+            title: widget.appBarTitle,
             actions: [
               for (final item in widget.appBarActions!)
                 IconButton(
@@ -109,11 +114,9 @@ class _PortraitLayoutState extends State<PortraitLayout> {
     return PopScope(
       onPopInvoked: (v) async => await _navigator.maybePop(),
       child: Theme(
-        data: Theme.of(
-            context) /*.copyWith(
-          pageTransitionsTheme: theme.portraitTransitions,
-        )*/
-        ,
+        data: Theme.of(context).copyWith(
+          pageTransitionsTheme: kPortraitLayoutPageTransitionsTheme,
+        ),
         child: Navigator(
           key: widget.navigatorKey,
           initialRoute: widget.initialRoute,

@@ -12,7 +12,7 @@ import 'paned_view.dart';
 import 'master_detail_page_controller.dart';
 import 'master_detail_page.dart';
 
-const kYaruTitleBarHeight = 46.0;
+const kYaruTitleBarHeight = 52.0;
 
 class LandscapeLayout extends StatefulWidget {
   const LandscapeLayout({
@@ -27,6 +27,7 @@ class LandscapeLayout extends StatefulWidget {
     this.onSelected,
     required this.paneLayoutDelegate,
     this.appBarActions,
+    this.appBarTitle,
     this.bottomBar,
     required this.controller,
   });
@@ -41,6 +42,7 @@ class LandscapeLayout extends StatefulWidget {
   final ValueChanged<int>? onSelected;
   final PanedViewLayoutDelegate paneLayoutDelegate;
   final /*Widget?*/ List<MasterDetailAppBarActionsItem>? appBarActions;
+  final Widget? appBarTitle;
   final Widget? bottomBar;
   final MacosUIPageController controller;
 
@@ -104,6 +106,11 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
     final appBar = (widget.appBarActions == null)
         ? null
         : ToolBar(
+            title: widget.appBarTitle,
+            decoration: BoxDecoration(
+              color: MacosTheme.of(context).canvasColor,
+            ),
+            dividerColor: MacosTheme.of(context).dividerColor,
             actions: [
               for (final item in widget.appBarActions!)
                 ToolBarIconButton(

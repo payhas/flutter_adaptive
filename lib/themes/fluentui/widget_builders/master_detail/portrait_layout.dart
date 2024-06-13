@@ -19,6 +19,7 @@ class PortraitLayout extends StatefulWidget {
     required this.pageBuilder,
     this.onSelected,
     this.appBarActions,
+    this.appBarTitle,
     this.bottomBar,
     required this.controller,
   });
@@ -34,6 +35,8 @@ class PortraitLayout extends StatefulWidget {
 
   final /*PreferredSize*/ /*Widget?*/ List<MasterDetailAppBarActionsItem>?
       appBarActions;
+
+  final Widget? appBarTitle;
 
   final Widget? bottomBar;
 
@@ -96,6 +99,7 @@ class _PortraitLayoutState extends State<PortraitLayout> {
     final appBar = (widget.appBarActions == null)
         ? null
         : PageHeader(
+            title: widget.appBarTitle,
             commandBar: CommandBar(
               isCompact: true,
               mainAxisAlignment: MainAxisAlignment.end,

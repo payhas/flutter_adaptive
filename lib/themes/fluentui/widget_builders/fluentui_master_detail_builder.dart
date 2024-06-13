@@ -10,6 +10,7 @@ class FluentUIMasterDetailBuilder
 
     return FluentUIMasterDetailPage(
       length: component.length,
+      appBarTitle: component.appBarTitle,
       appBarActions: component.appBarActions,
       tileBuilder: component.tileBuilder,
       pageBuilder: component.pageBuilder,

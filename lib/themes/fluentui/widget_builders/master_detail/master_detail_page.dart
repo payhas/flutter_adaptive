@@ -31,6 +31,7 @@ class FluentUIMasterDetailPage extends StatefulWidget {
     ),
     this.breakpoint,
     this.appBarActions,
+    this.appBarTitle,
     // this.appBarBuilder,
     this.bottomBar,
     this.initialIndex,
@@ -80,6 +81,8 @@ class FluentUIMasterDetailPage extends StatefulWidget {
   /// See also:
   ///  * [YaruMasterDetailPage.appBarBuilder]
   final /*PreferredSize*/ List<MasterDetailAppBarActionsItem>? appBarActions;
+
+  final Widget? appBarTitle;
 
   // /// An optional custom AppBar builder for the master pane.
   // ///
@@ -199,6 +202,7 @@ class _MasterDetailPageState extends State<FluentUIMasterDetailPage> {
               tileBuilder: widget.tileBuilder,
               pageBuilder: widget.pageBuilder,
               onSelected: widget.onSelected,
+              appBarTitle: widget.appBarTitle,
               appBarActions: widget
                   .appBarActions /*?? widget.appBarBuilder?.call(context)*/,
               bottomBar: widget.bottomBar,
@@ -214,6 +218,7 @@ class _MasterDetailPageState extends State<FluentUIMasterDetailPage> {
               pageBuilder: widget.pageBuilder,
               onSelected: widget.onSelected,
               paneLayoutDelegate: widget.paneLayoutDelegate,
+              appBarTitle: widget.appBarTitle,
               appBarActions: widget
                   .appBarActions /*?? widget.appBarBuilder?.call(context)*/,
               bottomBar: widget.bottomBar,

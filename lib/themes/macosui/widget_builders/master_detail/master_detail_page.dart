@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart' show Material;
 import 'package:flutter/widgets.dart' hide PageController;
-import 'package:macos_ui/macos_ui.dart';
 import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart';
 
 import 'landscape_layout.dart';
@@ -63,6 +62,7 @@ class MacosUIMasterDetailPage extends StatefulWidget {
     ),
     this.breakpoint,
     this.appBarActions,
+    this.appBarTitle,
     // this.appBarBuilder,
     this.bottomBar,
     this.initialIndex,
@@ -113,6 +113,8 @@ class MacosUIMasterDetailPage extends StatefulWidget {
   ///  * [YaruMasterDetailPage.appBarBuilder]
   final /*ToolBar*/ /*Widget?*/ List<MasterDetailAppBarActionsItem>?
       appBarActions;
+
+  final Widget? appBarTitle;
 
   // /// An optional custom AppBar builder for the master pane.
   // ///
@@ -233,6 +235,7 @@ class _MasterDetailPageState extends State<MacosUIMasterDetailPage> {
                 tileBuilder: widget.tileBuilder,
                 pageBuilder: widget.pageBuilder,
                 onSelected: widget.onSelected,
+                appBarTitle: widget.appBarTitle,
                 appBarActions: widget.appBarActions,
                 //     /*??
                 //     widget.appBarBuilder?.call(context)*/ /*as ToolBar*/,
@@ -249,6 +252,7 @@ class _MasterDetailPageState extends State<MacosUIMasterDetailPage> {
                 pageBuilder: widget.pageBuilder,
                 onSelected: widget.onSelected,
                 paneLayoutDelegate: widget.paneLayoutDelegate,
+                appBarTitle: widget.appBarTitle,
                 appBarActions: widget.appBarActions,
                 //     /*?? widget.appBarBuilder?.call(context)*/,
                 bottomBar: widget.bottomBar,

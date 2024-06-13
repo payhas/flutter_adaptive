@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart';
 
+import 'constants.dart';
+
 const _kDetailPageHeroTag = '<DetailPage hero tag>';
 
 /// Provides the recommended layout for [YaruMasterDetailPage.pageBuilder].
@@ -102,19 +104,24 @@ class MaterialDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: _buildAppBar(context),
-      body: body,
-      floatingActionButton: floatingActionButton,
-      floatingActionButtonLocation: floatingActionButtonLocation,
-      floatingActionButtonAnimator: floatingActionButtonAnimator,
-      persistentFooterButtons: persistentFooterButtons,
-      persistentFooterAlignment: persistentFooterAlignment,
-      bottomNavigationBar: bottomNavigationBar,
-      bottomSheet: bottomSheet,
-      backgroundColor: backgroundColor,
-      extendBody: extendBody,
-      extendBodyBehindAppBar: extendBodyBehindAppBar,
+    return Theme(
+      data: Theme.of(context).copyWith(
+        pageTransitionsTheme: kDetailPageTransitionsTheme,
+      ),
+      child: Scaffold(
+        appBar: _buildAppBar(context),
+        body: body,
+        floatingActionButton: floatingActionButton,
+        floatingActionButtonLocation: floatingActionButtonLocation,
+        floatingActionButtonAnimator: floatingActionButtonAnimator,
+        persistentFooterButtons: persistentFooterButtons,
+        persistentFooterAlignment: persistentFooterAlignment,
+        bottomNavigationBar: bottomNavigationBar,
+        bottomSheet: bottomSheet,
+        backgroundColor: backgroundColor,
+        extendBody: extendBody,
+        extendBodyBehindAppBar: extendBodyBehindAppBar,
+      ),
     );
   }
 }

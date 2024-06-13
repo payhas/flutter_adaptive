@@ -18,6 +18,7 @@ class PortraitLayout extends StatefulWidget {
     required this.pageBuilder,
     this.onSelected,
     this.appBarActions,
+    this.appBarTitle,
     this.bottomBar,
     required this.controller,
   });
@@ -33,6 +34,8 @@ class PortraitLayout extends StatefulWidget {
 
   final /*PreferredSize*/ /*Widget?*/ List<MasterDetailAppBarActionsItem>?
       appBarActions;
+
+  final Widget? appBarTitle;
 
   final Widget? bottomBar;
 
@@ -96,7 +99,9 @@ class _PortraitLayoutState extends State<PortraitLayout> {
     final navbar = (widget.appBarActions == null)
         ? null
         : CupertinoNavigationBar(
+            middle: widget.appBarTitle,
             trailing: Row(
+              mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 for (final item in widget.appBarActions!)

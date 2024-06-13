@@ -22,6 +22,7 @@ class YaruLandscapeLayout extends StatefulWidget {
     this.onSelected,
     required this.paneLayoutDelegate,
     this.appBarActions,
+    this.appBarTitle,
     this.bottomBar,
     required this.controller,
   });
@@ -36,6 +37,7 @@ class YaruLandscapeLayout extends StatefulWidget {
   final ValueChanged<int>? onSelected;
   final YaruPanedViewLayoutDelegate paneLayoutDelegate;
   final /*Widget?*/ List<MasterDetailAppBarActionsItem>? appBarActions;
+  final Widget? appBarTitle;
   final Widget? bottomBar;
   final YaruPageController controller;
 
@@ -99,6 +101,7 @@ class _YaruLandscapeLayoutState extends State<YaruLandscapeLayout> {
     final appBar = widget.appBarActions == null
         ? null
         : AppBar(
+            title: widget.appBarTitle,
             actions: [
               for (final item in widget.appBarActions!)
                 IconButton(

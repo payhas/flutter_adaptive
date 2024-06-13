@@ -10,7 +10,7 @@ import 'paned_view.dart';
 import 'master_detail_page_controller.dart';
 import 'master_detail_page.dart';
 
-const kYaruTitleBarHeight = 46.0;
+const kYaruTitleBarHeight = 44.0;
 
 class LandscapeLayout extends StatefulWidget {
   const LandscapeLayout({
@@ -25,6 +25,7 @@ class LandscapeLayout extends StatefulWidget {
     this.onSelected,
     required this.paneLayoutDelegate,
     this.appBarActions,
+    this.appBarTitle,
     this.bottomBar,
     required this.controller,
   });
@@ -39,6 +40,7 @@ class LandscapeLayout extends StatefulWidget {
   final ValueChanged<int>? onSelected;
   final PanedViewLayoutDelegate paneLayoutDelegate;
   final /*Widget?*/ List<MasterDetailAppBarActionsItem>? appBarActions;
+  final Widget? appBarTitle;
   final Widget? bottomBar;
   final CupertinoPageController controller;
 
@@ -102,7 +104,9 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
     final appBar = (widget.appBarActions == null)
         ? null
         : CupertinoNavigationBar(
+            middle: widget.appBarTitle,
             trailing: Row(
+              mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 for (final item in widget.appBarActions!)

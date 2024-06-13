@@ -76,6 +76,10 @@ class MacosUIDetailPage extends StatelessWidget {
         ? null
         : ToolBar(
             title: appBarTitle,
+            decoration: BoxDecoration(
+              color: MacosTheme.of(context).canvasColor,
+            ),
+            dividerColor: MacosTheme.of(context).dividerColor,
             actions: [
               for (final item in appBarActions!)
                 ToolBarIconButton(
@@ -108,10 +112,13 @@ class MacosUIDetailPage extends StatelessWidget {
     widgets.add(
       ContentArea(
         builder: (context, scrollController) {
-          return body ??
-              const Placeholder(
-                child: Text("Details"),
-              );
+          return Container(
+            color: MacosTheme.of(context).canvasColor,
+            child: body ??
+                const Placeholder(
+                  child: Text("Details"),
+                ),
+          );
         },
       ),
     );
