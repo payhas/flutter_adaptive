@@ -7,13 +7,21 @@ class FluentUINavigationBuilder
   @override
   Widget build(BuildContext context, AdaptiveNavigation component) {
     return FluentNavigation(
-        groupDestinations:
-            drawerSidebarGroupDestinations(component.groupDestinations));
+      groupDestinations: component.groupDestinations,
+      showOnlyModalNavigationDrawerOnDesktop:
+          component.showOnlyModalNavigationDrawerOnDesktop,
+      showOnlyNavigationRailOnDesktop:
+          component.showOnlyNavigationRailOnDesktop,
+    );
   }
 }
 
 class FluentNavigation extends StatefulWidget {
-  FluentNavigation({super.key, required this.groupDestinations})
+  FluentNavigation(
+      {super.key,
+      required this.groupDestinations,
+      required this.showOnlyModalNavigationDrawerOnDesktop,
+      required this.showOnlyNavigationRailOnDesktop})
       : assert(
           groupDestinations
                   .expand((group) => group.destinations)
@@ -22,9 +30,13 @@ class FluentNavigation extends StatefulWidget {
                   .length >=
               2,
           'There must be at least 2 AdaptiveDestinations with showOnDrawerSidebar = true',
-        );
+        ),
+        assert(showOnlyModalNavigationDrawerOnDesktop == false ||
+            showOnlyNavigationRailOnDesktop == false);
 
   final List<AdaptiveGroupDestination> groupDestinations;
+  final bool showOnlyModalNavigationDrawerOnDesktop;
+  final bool showOnlyNavigationRailOnDesktop;
 
   @override
   FluentNavigationState createState() => FluentNavigationState();
@@ -41,14 +53,29 @@ class FluentNavigationState extends State<FluentNavigation> {
 
   @override
   Widget build(BuildContext context) {
-    var allDestinations =
-        widget.groupDestinations.expand((group) => group.destinations).toList();
+    var paneDisplayMode = PaneDisplayMode.auto;
 
     double menuWidth = 50.0;
 
-    if (MediaQuery.sizeOf(context).width <= 640) {
+    if (widget.showOnlyModalNavigationDrawerOnDesktop) {
+      paneDisplayMode = PaneDisplayMode.minimal;
       menuWidth = 100.0;
     }
+
+    if (widget.showOnlyNavigationRailOnDesktop) {
+      paneDisplayMode = PaneDisplayMode.compact;
+    }
+
+    if (paneDisplayMode == PaneDisplayMode.auto &&
+        MediaQuery.sizeOf(context).width <= 640) {
+      menuWidth = 100.0;
+    }
+
+    var drawerGroupDestinations =
+        drawerSidebarGroupDestinations(widget.groupDestinations);
+
+    var allDestinations =
+        drawerGroupDestinations.expand((group) => group.destinations).toList();
 
     return NavigationView(
       appBar: NavigationAppBar(
@@ -69,7 +96,7 @@ class FluentNavigationState extends State<FluentNavigation> {
       pane: NavigationPane(
         selected: _selectedIndex,
         onChanged: _onItemTapped,
-        displayMode: PaneDisplayMode.auto,
+        displayMode: paneDisplayMode,
         items: [
           for (int i = 0; i < allDestinations.length; i++) ...[
             PaneItem(

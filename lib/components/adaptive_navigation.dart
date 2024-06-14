@@ -7,11 +7,17 @@ class AdaptiveNavigation extends AdaptiveWidget {
     required this.groupDestinations,
     this.showNavigationDrawerOnMobile = false,
     this.showBottomNavigationBarOnMobile = true,
+    this.showOnlyModalNavigationDrawerOnDesktop = false,
+    this.showOnlyNavigationRailOnDesktop = false,
+    this.showOnlyModalNavigationDrawerOnTablet = false,
   });
 
   final List<AdaptiveGroupDestination> groupDestinations;
   final bool showNavigationDrawerOnMobile;
   final bool showBottomNavigationBarOnMobile;
+  final bool showOnlyModalNavigationDrawerOnDesktop;
+  final bool showOnlyNavigationRailOnDesktop;
+  final bool showOnlyModalNavigationDrawerOnTablet;
 }
 
 class FormFactor {

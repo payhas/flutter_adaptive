@@ -12,9 +12,7 @@ class MacosUINavigationBuilder
     extends AdaptiveWidgetBuilder<AdaptiveNavigation> {
   @override
   Widget build(BuildContext context, AdaptiveNavigation component) {
-    return MacosNavigation(
-        groupDestinations:
-            drawerSidebarGroupDestinations(component.groupDestinations));
+    return MacosNavigation(groupDestinations: component.groupDestinations);
   }
 }
 
@@ -47,8 +45,11 @@ class MacosNavigationState extends State<MacosNavigation> {
 
   @override
   Widget build(BuildContext context) {
+    var sidebarGroupDestinations =
+        drawerSidebarGroupDestinations(widget.groupDestinations);
+
     var allDestinations =
-        widget.groupDestinations.expand((group) => group.destinations).toList();
+        sidebarGroupDestinations.expand((group) => group.destinations).toList();
 
     return MacosWindow(
       sidebar: Sidebar(
@@ -56,7 +57,7 @@ class MacosNavigationState extends State<MacosNavigation> {
         builder: (context, scrollController) {
           return GroupSidebarItems(
             scrollController: scrollController,
-            groupDestinations: widget.groupDestinations,
+            groupDestinations: sidebarGroupDestinations,
             itemSize: SidebarItemSize.large,
             currentIndex: _selectedIndex,
             onChanged: _onItemTapped,

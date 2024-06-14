@@ -26,8 +26,8 @@ class MyApp extends StatelessWidget {
             theme: theme.getTheme(),
             debugShowCheckedModeBanner: false,
             home: const AdaptiveNavigation(
+                showNavigationDrawerOnMobile: true,
                 showBottomNavigationBarOnMobile: true,
-                showNavigationDrawerOnMobile: false,
                 groupDestinations: <AdaptiveGroupDestination>[
                   AdaptiveGroupDestination(
                       name: "Files",

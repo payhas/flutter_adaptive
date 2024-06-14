@@ -10,6 +10,12 @@ class MaterialNavigationBuilder
       showNavigationDrawerOnMobile: component.showNavigationDrawerOnMobile,
       showBottomNavigationBarOnMobile:
           component.showBottomNavigationBarOnMobile,
+      showOnlyNavigationRailOnDesktop:
+          component.showOnlyNavigationRailOnDesktop,
+      showOnlyModalNavigationDrawerOnTablet:
+          component.showOnlyModalNavigationDrawerOnTablet,
+      showOnlyModalNavigationDrawerOnDesktop:
+          component.showOnlyModalNavigationDrawerOnDesktop,
     );
   }
 }
@@ -19,11 +25,19 @@ class ResponsiveNavigation extends StatelessWidget {
       {super.key,
       required this.groupDestinations,
       required this.showNavigationDrawerOnMobile,
-      required this.showBottomNavigationBarOnMobile});
+      required this.showBottomNavigationBarOnMobile,
+      required this.showOnlyModalNavigationDrawerOnDesktop,
+      required this.showOnlyNavigationRailOnDesktop,
+      required this.showOnlyModalNavigationDrawerOnTablet})
+      : assert(showOnlyModalNavigationDrawerOnDesktop == false ||
+            showOnlyNavigationRailOnDesktop == false);
 
   final List<AdaptiveGroupDestination> groupDestinations;
   final bool showNavigationDrawerOnMobile;
   final bool showBottomNavigationBarOnMobile;
+  final bool showOnlyModalNavigationDrawerOnDesktop;
+  final bool showOnlyNavigationRailOnDesktop;
+  final bool showOnlyModalNavigationDrawerOnTablet;
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +50,20 @@ class ResponsiveNavigation extends StatelessWidget {
             showBottomNavigationBarOnMobile: showBottomNavigationBarOnMobile,
           );
         } else if (constraints.maxWidth < FormFactor.desktop) {
+          if (showOnlyModalNavigationDrawerOnTablet) {
+            return ModalNavigationDrawerMenu(
+                groupDestinations: groupDestinations);
+          }
           return NavigationRailMenu(groupDestinations: groupDestinations);
         } else {
-          return OpenNavigationDrawerMenu(
-              groupDestinations:
-                  drawerSidebarGroupDestinations(groupDestinations));
+          if (showOnlyModalNavigationDrawerOnDesktop) {
+            return ModalNavigationDrawerMenu(
+                groupDestinations: groupDestinations);
+          }
+          if (showOnlyNavigationRailOnDesktop) {
+            return NavigationRailMenu(groupDestinations: groupDestinations);
+          }
+          return OpenNavigationDrawerMenu(groupDestinations: groupDestinations);
         }
       },
     );
@@ -74,8 +97,7 @@ class NavigationMobile extends StatelessWidget {
       return BottomNavigationBarMenu(groupDestinations: groupDestinations);
     }
 
-    return ModalNavigationDrawerMenu(
-        groupDestinations: drawerSidebarGroupDestinations(groupDestinations));
+    return ModalNavigationDrawerMenu(groupDestinations: groupDestinations);
   }
 }
 
@@ -121,12 +143,11 @@ class BottomWithDrawerNavigationMenuState
 
   @override
   Widget build(BuildContext context) {
-    var allDrawerSidebarGroupDestinations =
+    var drawerGroupDestinations =
         drawerSidebarGroupDestinations(widget.groupDestinations);
 
-    var allDrawerSideBarDestinations = allDrawerSidebarGroupDestinations
-        .expand((group) => group.destinations)
-        .toList();
+    var drawerDestinations =
+        drawerGroupDestinations.expand((group) => group.destinations).toList();
 
     var bottomAppBarDestinations = widget.groupDestinations
         .expand((group) => group.destinations)
@@ -137,50 +158,24 @@ class BottomWithDrawerNavigationMenuState
       appBar: AppBar(
           title:
               Text(bottomAppBarDestinations[_bottomAppBarSelectedIndex].label)),
-      drawer: NavigationDrawer(
-        onDestinationSelected: (index) {
-          setState(() {
-            _drawerSelectedIndex = index;
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => Scaffold(
-                        appBar: AppBar(
-                            title: Text(allDrawerSideBarDestinations[
-                                    _drawerSelectedIndex]
-                                .label)),
-                        body: allDrawerSideBarDestinations[_drawerSelectedIndex]
-                            .page)));
-          });
-        },
-        selectedIndex: _drawerSelectedIndex,
-        children: <Widget>[
-          for (int i = 0;
-              i < allDrawerSidebarGroupDestinations.length;
-              i++) ...[
-            Padding(
-              padding: const EdgeInsets.fromLTRB(28, 16, 16, 10),
-              child: Text(
-                allDrawerSidebarGroupDestinations[i].name,
-                style: Theme.of(context).textTheme.titleSmall,
-              ),
-            ),
-            ...allDrawerSidebarGroupDestinations[i].destinations.map((dest) {
-              return NavigationDrawerDestination(
-                  icon: dest.icon, label: Text(dest.label));
-            }),
-            if (i < allDrawerSidebarGroupDestinations.length - 1)
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 28),
-                child: Divider(),
-              ),
-            if (i == allDrawerSidebarGroupDestinations.length - 1)
-              const SizedBox(
-                height: 16,
-              )
-          ],
-        ],
-      ),
+      drawer: GroupedNavigationDrawer(
+          groupDestinations: drawerGroupDestinations,
+          onDestinationSelected: (index) {
+            setState(() {
+              _drawerSelectedIndex = index;
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Scaffold(
+                          appBar: AppBar(
+                              title: Text(
+                                  drawerDestinations[_drawerSelectedIndex]
+                                      .label)),
+                          body:
+                              drawerDestinations[_drawerSelectedIndex].page)));
+            });
+          },
+          selectedIndex: _drawerSelectedIndex),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _bottomAppBarSelectedIndex,
         onDestinationSelected: _bottomAppBarOnItemTapped,
@@ -337,39 +332,18 @@ class ModalNavigationDrawerMenuState extends State<ModalNavigationDrawerMenu> {
 
   @override
   Widget build(BuildContext context) {
+    var drawerGroupDestinations =
+        drawerSidebarGroupDestinations(widget.groupDestinations);
+
     var allDestinations =
-        widget.groupDestinations.expand((group) => group.destinations).toList();
+        drawerGroupDestinations.expand((group) => group.destinations).toList();
 
     return Scaffold(
       appBar: AppBar(title: Text(allDestinations[_selectedIndex].label)),
-      drawer: NavigationDrawer(
-        onDestinationSelected: _onItemTapped,
-        selectedIndex: _selectedIndex,
-        children: <Widget>[
-          for (int i = 0; i < widget.groupDestinations.length; i++) ...[
-            Padding(
-              padding: const EdgeInsets.fromLTRB(28, 16, 16, 10),
-              child: Text(
-                widget.groupDestinations[i].name,
-                style: Theme.of(context).textTheme.titleSmall,
-              ),
-            ),
-            ...widget.groupDestinations[i].destinations.map((dest) {
-              return NavigationDrawerDestination(
-                  icon: dest.icon, label: Text(dest.label));
-            }),
-            if (i < widget.groupDestinations.length - 1)
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 28),
-                child: Divider(),
-              ),
-            if (i == widget.groupDestinations.length - 1)
-              const SizedBox(
-                height: 16,
-              )
-          ],
-        ],
-      ),
+      drawer: GroupedNavigationDrawer(
+          groupDestinations: drawerGroupDestinations,
+          onDestinationSelected: _onItemTapped,
+          selectedIndex: _selectedIndex),
       body: allDestinations[_selectedIndex].page,
     );
   }
@@ -405,44 +379,67 @@ class OpenNavigationDrawerMenuState extends State<OpenNavigationDrawerMenu> {
 
   @override
   Widget build(BuildContext context) {
+    var drawerGroupDestinations =
+        drawerSidebarGroupDestinations(widget.groupDestinations);
+
     return Scaffold(
       body: Row(
         children: [
-          NavigationDrawer(
-            onDestinationSelected: _onItemTapped,
-            selectedIndex: _selectedIndex,
-            children: <Widget>[
-              for (int i = 0; i < widget.groupDestinations.length; i++) ...[
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(28, 16, 16, 10),
-                  child: Text(
-                    widget.groupDestinations[i].name,
-                    style: Theme.of(context).textTheme.titleSmall,
-                  ),
-                ),
-                ...widget.groupDestinations[i].destinations.map((dest) {
-                  return NavigationDrawerDestination(
-                      icon: dest.icon, label: Text(dest.label));
-                }),
-                if (i < widget.groupDestinations.length - 1)
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 28),
-                    child: Divider(),
-                  ),
-                if (i == widget.groupDestinations.length - 1)
-                  const SizedBox(
-                    height: 16,
-                  )
-              ],
-            ],
-          ),
+          GroupedNavigationDrawer(
+              groupDestinations: drawerGroupDestinations,
+              onDestinationSelected: _onItemTapped,
+              selectedIndex: _selectedIndex),
           Expanded(
-              child: widget.groupDestinations
+              child: drawerGroupDestinations
                   .expand((group) => group.destinations)
                   .toList()[_selectedIndex]
                   .page),
         ],
       ),
+    );
+  }
+}
+
+class GroupedNavigationDrawer extends StatelessWidget {
+  const GroupedNavigationDrawer(
+      {super.key,
+      this.onDestinationSelected,
+      this.selectedIndex,
+      required this.groupDestinations});
+
+  final ValueChanged<int>? onDestinationSelected;
+  final int? selectedIndex;
+  final List<AdaptiveGroupDestination> groupDestinations;
+
+  @override
+  Widget build(BuildContext context) {
+    return NavigationDrawer(
+      onDestinationSelected: onDestinationSelected,
+      selectedIndex: selectedIndex,
+      children: <Widget>[
+        for (int i = 0; i < groupDestinations.length; i++) ...[
+          Padding(
+            padding: const EdgeInsets.fromLTRB(28, 16, 16, 10),
+            child: Text(
+              groupDestinations[i].name,
+              style: Theme.of(context).textTheme.titleSmall,
+            ),
+          ),
+          ...groupDestinations[i].destinations.map((dest) {
+            return NavigationDrawerDestination(
+                icon: dest.icon, label: Text(dest.label));
+          }),
+          if (i < groupDestinations.length - 1)
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 28),
+              child: Divider(),
+            ),
+          if (i == groupDestinations.length - 1)
+            const SizedBox(
+              height: 16,
+            )
+        ],
+      ],
     );
   }
 }
