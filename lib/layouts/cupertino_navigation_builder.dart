@@ -7,20 +7,116 @@ class CupertinoNavigationBuilder
     extends AdaptiveWidgetBuilder<AdaptiveNavigation> {
   @override
   Widget build(BuildContext context, AdaptiveNavigation component) {
-    return CupertinoNavigation(destinations: component.destinations);
+    return CupertinoNavigation(
+      groupDestinations: component.groupDestinations,
+      showNavigationDrawerOnMobile: component.showNavigationDrawerOnMobile,
+      showBottomNavigationBarOnMobile:
+          component.showBottomNavigationBarOnMobile,
+      showOnlyModalNavigationDrawerOnDesktop:
+          component.showOnlyModalNavigationDrawerOnDesktop,
+      showOnlyModalNavigationDrawerOnTablet:
+          component.showOnlyModalNavigationDrawerOnTablet,
+    );
   }
 }
 
-class CupertinoNavigation extends StatefulWidget {
-  const CupertinoNavigation({super.key, required this.destinations});
+class CupertinoNavigation extends StatelessWidget {
+  const CupertinoNavigation(
+      {super.key,
+      required this.groupDestinations,
+      required this.showNavigationDrawerOnMobile,
+      required this.showBottomNavigationBarOnMobile,
+      required this.showOnlyModalNavigationDrawerOnDesktop,
+      required this.showOnlyModalNavigationDrawerOnTablet});
 
-  final List<AdaptiveDestination> destinations;
+  final List<AdaptiveGroupDestination> groupDestinations;
+  final bool showNavigationDrawerOnMobile;
+  final bool showBottomNavigationBarOnMobile;
+  final bool showOnlyModalNavigationDrawerOnDesktop;
+  final bool showOnlyModalNavigationDrawerOnTablet;
 
   @override
-  CupertinoNavigationState createState() => CupertinoNavigationState();
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (constraints.maxWidth < FormFactor.tablet) {
+          return CupertinoMobile(
+            groupDestinations: groupDestinations,
+            showBottomNavigationBarOnMobile: showBottomNavigationBarOnMobile,
+            showNavigationDrawerOnMobile: showNavigationDrawerOnMobile,
+          );
+        } else if (constraints.maxWidth < FormFactor.desktop) {
+          if (showOnlyModalNavigationDrawerOnTablet) {
+            return CupertinoSidebar(
+                groupDestinations: groupDestinations, isMobile: true);
+          }
+          return CupertinoSidebar(
+              groupDestinations: groupDestinations, isMobile: false);
+        } else {
+          if (showOnlyModalNavigationDrawerOnDesktop) {
+            return CupertinoSidebar(
+                groupDestinations: groupDestinations, isMobile: true);
+          }
+          return CupertinoSidebar(
+              groupDestinations: groupDestinations, isMobile: false);
+        }
+      },
+    );
+  }
 }
 
-class CupertinoNavigationState extends State<CupertinoNavigation> {
+class CupertinoMobile extends StatelessWidget {
+  const CupertinoMobile(
+      {super.key,
+      required this.groupDestinations,
+      required this.showNavigationDrawerOnMobile,
+      required this.showBottomNavigationBarOnMobile})
+      : assert(
+            showNavigationDrawerOnMobile == true ||
+                showBottomNavigationBarOnMobile == true,
+            "Set at least one navigation on mobile");
+
+  final List<AdaptiveGroupDestination> groupDestinations;
+  final bool showNavigationDrawerOnMobile;
+  final bool showBottomNavigationBarOnMobile;
+
+  @override
+  Widget build(BuildContext context) {
+    if (showBottomNavigationBarOnMobile == true &&
+        showNavigationDrawerOnMobile == true) {
+      return BottomWithSideBarMenu(groupDestinations: groupDestinations);
+    }
+
+    if (showBottomNavigationBarOnMobile == true) {
+      return CupertinoTabBarMenu(groupDestinations: groupDestinations);
+    }
+
+    return CupertinoSidebar(
+        groupDestinations: groupDestinations, isMobile: true);
+  }
+}
+
+class CupertinoTabBarMenu extends StatefulWidget {
+  final List<AdaptiveGroupDestination> groupDestinations;
+
+  CupertinoTabBarMenu({super.key, required this.groupDestinations})
+      : assert(
+          groupDestinations
+                  .expand((group) => group.destinations)
+                  .where(
+                      (destination) => destination.showOnBottomAppBar == true)
+                  .length >=
+              2,
+          'There must be at least 2 AdaptiveDestinations with showOnBottomAppBar = true',
+        );
+
+  @override
+  CupertinoTabBarMenuState createState() {
+    return CupertinoTabBarMenuState();
+  }
+}
+
+class CupertinoTabBarMenuState extends State<CupertinoTabBarMenu> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -31,51 +127,62 @@ class CupertinoNavigationState extends State<CupertinoNavigation> {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        if (constraints.maxWidth >= FormFactor.tablet) {
-          return CupertinoSidebar(
-            destinations: widget.destinations,
-            selectedIndex: _selectedIndex,
-            onItemTapped: _onItemTapped,
-          );
-        } else {
-          return CupertinoTabScaffold(
-            tabBar: CupertinoTabBar(
-              items: widget.destinations
-                  .map((destination) => BottomNavigationBarItem(
-                        icon: destination.icon,
-                        label: destination.label,
-                      ))
-                  .toList(),
-              currentIndex: _selectedIndex,
-              onTap: _onItemTapped,
-            ),
-            tabBuilder: (context, index) {
-              return CupertinoTabView(
-                builder: (context) {
-                  return widget.destinations[index].page;
-                },
-              );
-            },
-          );
-        }
+    var bottomAppBarDestinations = widget.groupDestinations
+        .expand((group) => group.destinations)
+        .where((destination) => destination.showOnBottomAppBar == true)
+        .toList();
+
+    return CupertinoTabScaffold(
+      tabBar: CupertinoTabBar(
+        items: bottomAppBarDestinations
+            .map((destination) => BottomNavigationBarItem(
+                  icon: destination.icon,
+                  label: destination.label,
+                ))
+            .toList(),
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+      ),
+      tabBuilder: (context, index) {
+        return CupertinoTabView(
+          builder: (context) {
+            return bottomAppBarDestinations[index].page;
+          },
+        );
       },
     );
   }
 }
 
 class CupertinoSidebar extends StatefulWidget {
-  const CupertinoSidebar({
+  CupertinoSidebar({
     super.key,
-    required this.destinations,
-    required this.selectedIndex,
-    required this.onItemTapped,
-  });
+    required this.groupDestinations,
+    required this.isMobile,
+    this.width = 230,
+    this.sidebarAnimationDuration = 200,
+    this.backgroundColor,
+    this.shadowColor,
+    this.tabScaffold,
+    this.selectedTabDestination,
+  }) : assert(
+          groupDestinations
+                  .expand((group) => group.destinations)
+                  .where(
+                      (destination) => destination.showOnDrawerSidebar == true)
+                  .length >=
+              2,
+          'There must be at least 2 AdaptiveDestinations with showOnDrawerSidebar = true',
+        );
 
-  final List<AdaptiveDestination> destinations;
-  final int selectedIndex;
-  final ValueChanged<int> onItemTapped;
+  final List<AdaptiveGroupDestination> groupDestinations;
+  final bool isMobile;
+  final double width;
+  final int sidebarAnimationDuration;
+  final Color? backgroundColor;
+  final Color? shadowColor;
+  final CupertinoTabScaffold? tabScaffold;
+  final AdaptiveDestination? selectedTabDestination;
 
   @override
   CupertinoSidebarState createState() => CupertinoSidebarState();
@@ -83,54 +190,82 @@ class CupertinoSidebar extends StatefulWidget {
 
 class CupertinoSidebarState extends State<CupertinoSidebar>
     with TickerProviderStateMixin {
+  late AnimationController _sidebarAnimationController;
+  late Animation<double> _sidebarWidthAnimation;
+
+  int _selectedIndex = 0;
+
   bool _isSidebarVisible = true;
-  late AnimationController _animationController;
-  late AnimationController _buttonAnimationController;
-  late Animation<double> _widthAnimation;
-  late Animation<double> _fadeAnimation;
+
+  bool _initAnim = false;
 
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(
-      duration: const Duration(milliseconds: 150),
+
+    _sidebarAnimationController = AnimationController(
+      duration: Duration(
+          milliseconds: !widget.isMobile ? widget.sidebarAnimationDuration : 0),
       vsync: this,
     );
 
-    _buttonAnimationController = AnimationController(
-      duration: const Duration(milliseconds: 100),
-      vsync: this,
-    );
+    _sidebarWidthAnimation = Tween<double>(begin: 0, end: -widget.width)
+        .animate(_sidebarAnimationController);
 
-    _widthAnimation =
-        Tween<double>(begin: 230, end: 0).animate(_animationController)
-          ..addStatusListener((status) {
-            if (status == AnimationStatus.completed) {
-              _buttonAnimationController.forward();
-            } else if (status == AnimationStatus.reverse) {
-              _buttonAnimationController.reverse();
-            }
-          });
-
-    _fadeAnimation =
-        Tween<double>(begin: 0, end: 1).animate(_buttonAnimationController);
+    if (widget.isMobile) _toggleSidebarVisibility();
   }
 
   @override
   void dispose() {
-    _animationController.dispose();
-    _buttonAnimationController.dispose();
+    _sidebarAnimationController.dispose();
     super.dispose();
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+
+      if (widget.isMobile && widget.tabScaffold == null) {
+        _toggleSidebarVisibility();
+      }
+
+      if (widget.isMobile && widget.tabScaffold != null) {
+        var selectedDrawerDestination =
+            drawerSidebarGroupDestinations(widget.groupDestinations)
+                .expand((g) => g.destinations)
+                .toList()[index];
+
+        _isSidebarVisible = false;
+
+        Navigator.push(
+            context,
+            CupertinoPageRoute(
+                builder: (context) => CupertinoPageScaffold(
+                      navigationBar: CupertinoNavigationBar(
+                        middle: Text(selectedDrawerDestination.label),
+                      ),
+                      child: selectedDrawerDestination.page,
+                    ))).then((_) {
+          _isSidebarVisible = true;
+        });
+      }
+    });
   }
 
   void _toggleSidebarVisibility() {
     setState(() {
       if (_isSidebarVisible) {
-        _animationController.forward();
+        _sidebarAnimationController.forward();
       } else {
-        _animationController.reverse();
+        _sidebarAnimationController.reverse();
       }
       _isSidebarVisible = !_isSidebarVisible;
+
+      if (widget.isMobile && !_initAnim) {
+        _sidebarAnimationController.duration =
+            Duration(milliseconds: widget.sidebarAnimationDuration);
+        _initAnim = true;
+      }
     });
   }
 
@@ -138,31 +273,24 @@ class CupertinoSidebarState extends State<CupertinoSidebar>
   Widget build(BuildContext context) {
     var brightness = CupertinoTheme.of(context).brightness;
 
+    var sidebarGroupDestinations =
+        drawerSidebarGroupDestinations(widget.groupDestinations);
+
+    var allDestinations =
+        sidebarGroupDestinations.expand((g) => g.destinations).toList();
+
     return CupertinoPageScaffold(
-      child: Row(
-        children: [
-          AnimatedBuilder(
-            animation: _widthAnimation,
-            builder: (context, child) {
-              return Container(
-                width: _widthAnimation.value,
-                decoration: BoxDecoration(
-                  color: brightness == Brightness.light
-                      ? CupertinoColors.systemGrey6
-                      : CupertinoColors.darkBackgroundGray,
-                  boxShadow: [
-                    BoxShadow(
-                      color: brightness == Brightness.light
-                          ? Colors.grey.withOpacity(0.5)
-                          : Colors.black26,
-                      spreadRadius: 1,
-                      blurRadius: 1,
-                    ),
-                  ],
-                ),
-                child: _widthAnimation.value == 230
-                    ? Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: AnimatedBuilder(
+          animation: _sidebarWidthAnimation,
+          builder: (context, child) {
+            return Stack(
+              children: [
+                widget.isMobile == false
+                    ? Positioned(
+                        left: _sidebarWidthAnimation.value + widget.width,
+                        top: 0.0,
+                        right: 0.0,
+                        bottom: 0.0,
                         child: Column(
                           children: [
                             Padding(
@@ -170,186 +298,276 @@ class CupertinoSidebarState extends State<CupertinoSidebar>
                                   left: 8.0,
                                   right: 8.0,
                                   top: 10.0,
-                                  bottom: 8.0),
+                                  bottom: 10.0),
                               child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  CupertinoButton(
-                                    onPressed: _toggleSidebarVisibility,
-                                    padding: EdgeInsets.zero,
-                                    minSize: 0.0,
-                                    child: const Icon(
-                                      size: 20.0,
-                                      CupertinoIcons.sidebar_left,
+                                  if (_sidebarAnimationController.isCompleted)
+                                    CupertinoButton(
+                                      pressedOpacity: 1.0,
+                                      onPressed: _toggleSidebarVisibility,
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 10.0),
+                                      minSize: 0.0,
+                                      child: const Icon(
+                                        size: 20.0,
+                                        CupertinoIcons.sidebar_left,
+                                      ),
                                     ),
-                                  ),
-                                  CupertinoButton(
-                                    onPressed: () {},
-                                    padding: EdgeInsets.zero,
-                                    minSize: 0.0,
-                                    child: Text(
-                                      "Edit",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: Theme.of(context)
-                                              .textTheme
-                                              .titleSmall
-                                              ?.fontSize),
-                                    ),
-                                  ),
+                                  Expanded(
+                                      child: Text(
+                                          textAlign: TextAlign.center,
+                                          style: const TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                          allDestinations[_selectedIndex]
+                                              .label)),
                                 ],
                               ),
                             ),
-                            Container(
-                              padding: const EdgeInsets.only(
-                                  left: 5.0, right: 5.0, bottom: 5.0),
-                              alignment: Alignment.centerLeft,
-                              child: const Text(
-                                'Photos',
-                                style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
                             Expanded(
-                              child: ListView.builder(
-                                itemCount: widget.destinations.length,
-                                itemBuilder: (context, index) {
-                                  final destination =
-                                      widget.destinations[index];
-
-                                  return GestureDetector(
-                                    onTap: () => widget.onItemTapped(index),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: widget.selectedIndex == index
-                                            ? CupertinoColors.systemBlue
-                                            : Colors.transparent,
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                      ),
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 7.0,
-                                        horizontal: 8.0,
-                                      ),
-                                      child: Row(
-                                        children: [
-                                          ColorFiltered(
-                                            colorFilter: ColorFilter.mode(
-                                                widget.selectedIndex == index
-                                                    ? CupertinoColors.white
-                                                    : CupertinoColors
-                                                        .systemBlue,
-                                                BlendMode.srcIn),
-                                            child: destination.icon,
-                                          ),
-                                          const SizedBox(width: 8.0),
-                                          Text(
-                                            destination.label,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .titleSmall
-                                                ?.copyWith(
-                                                  color: brightness ==
-                                                          Brightness.light
-                                                      ? widget.selectedIndex ==
-                                                              index
-                                                          ? CupertinoColors
-                                                              .white
-                                                          : CupertinoColors
-                                                              .black
-                                                      : CupertinoColors.white,
-                                                  fontWeight:
-                                                      widget.selectedIndex ==
-                                                              index
-                                                          ? FontWeight.normal
-                                                          : null,
-                                                ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
+                              child: allDestinations[_selectedIndex].page,
                             ),
                           ],
                         ),
                       )
-                    : null,
-              );
-            },
-          ),
-          Expanded(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      !_isSidebarVisible
-                          ? FadeTransition(
-                              opacity: _fadeAnimation,
+                    : CupertinoPageScaffold(
+                        navigationBar: CupertinoNavigationBar(
+                          leading: CupertinoButton(
+                            pressedOpacity: 1.0,
+                            onPressed: _toggleSidebarVisibility,
+                            padding: EdgeInsets.zero,
+                            minSize: 0.0,
+                            child: const Icon(
+                              size: 20.0,
+                              CupertinoIcons.sidebar_left,
+                            ),
+                          ),
+                          middle: Text(widget.selectedTabDestination?.label ??
+                              allDestinations[_selectedIndex].label),
+                        ),
+                        child: widget.tabScaffold ??
+                            allDestinations[_selectedIndex].page),
+                Positioned(
+                  left: _sidebarWidthAnimation.value,
+                  top: 0.0,
+                  bottom: 0.0,
+                  child: TapRegion(
+                    onTapOutside: (_) {
+                      if (_isSidebarVisible && widget.isMobile) {
+                        _toggleSidebarVisibility();
+                      }
+                    },
+                    child: Container(
+                      width: widget.width,
+                      decoration: BoxDecoration(
+                        color: widget.backgroundColor ??
+                            (brightness == Brightness.light
+                                ? CupertinoColors.systemGrey6
+                                : CupertinoColors.darkBackgroundGray),
+                        boxShadow: [
+                          BoxShadow(
+                            color: widget.shadowColor ??
+                                (brightness == Brightness.light
+                                    ? CupertinoColors.systemGrey4
+                                    : CupertinoColors.black),
+                            spreadRadius: 1,
+                            blurRadius: 1,
+                          ),
+                        ],
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 8.0,
+                                  right: 8.0,
+                                  top: 12.0,
+                                  bottom: 10.0),
                               child: CupertinoButton(
+                                pressedOpacity: 1.0,
                                 onPressed: _toggleSidebarVisibility,
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 10.0),
+                                padding: EdgeInsets.zero,
                                 minSize: 0.0,
                                 child: const Icon(
                                   size: 20.0,
                                   CupertinoIcons.sidebar_left,
                                 ),
                               ),
-                            )
-                          : const SizedBox(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CupertinoButton(
-                            onPressed: () {},
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 10.0),
-                            minSize: 0.0,
-                            child: Text(
-                              "Aspect",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: Theme.of(context)
-                                      .textTheme
-                                      .titleSmall
-                                      ?.fontSize),
                             ),
-                          ),
-                          CupertinoButton(
-                            onPressed: () {},
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 10.0),
-                            minSize: 0.0,
-                            child: Text(
-                              "Select",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: Theme.of(context)
-                                      .textTheme
-                                      .titleSmall
-                                      ?.fontSize),
+                            Expanded(
+                              child: ListView(
+                                padding: EdgeInsets.zero,
+                                children:
+                                    sidebarGroupDestinations.expand((group) {
+                                  int groupIndex =
+                                      sidebarGroupDestinations.indexOf(group);
+                                  List<Widget> groupItems = [
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                          left: 8.0,
+                                          right: 8.0,
+                                          bottom: 5.0,
+                                          top: groupIndex == 0 ? 0.0 : 10.0),
+                                      child: Text(
+                                        group.name,
+                                        style: TextStyle(
+                                          fontSize: groupIndex == 0 ? 24 : 18,
+                                          fontWeight: groupIndex == 0
+                                              ? FontWeight.bold
+                                              : FontWeight.w500,
+                                        ),
+                                      ),
+                                    ),
+                                  ];
+                                  groupItems.addAll(
+                                    group.destinations.map((destination) {
+                                      int index =
+                                          allDestinations.indexOf(destination);
+                                      return GestureDetector(
+                                        onTap: () => _onItemTapped(index),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: _selectedIndex == index
+                                                ? CupertinoColors.systemBlue
+                                                : Colors.transparent,
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          padding: const EdgeInsets.symmetric(
+                                            vertical: 7.0,
+                                            horizontal: 8.0,
+                                          ),
+                                          margin: EdgeInsets.only(
+                                              bottom: index ==
+                                                      allDestinations.length - 1
+                                                  ? 8.0
+                                                  : 0.0),
+                                          child: Row(
+                                            children: [
+                                              ColorFiltered(
+                                                colorFilter: ColorFilter.mode(
+                                                    _selectedIndex == index
+                                                        ? CupertinoColors.white
+                                                        : CupertinoColors
+                                                            .systemBlue,
+                                                    BlendMode.srcIn),
+                                                child: destination.icon,
+                                              ),
+                                              const SizedBox(width: 8.0),
+                                              Text(
+                                                destination.label,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .titleSmall
+                                                    ?.copyWith(
+                                                      color: brightness ==
+                                                              Brightness.light
+                                                          ? _selectedIndex ==
+                                                                  index
+                                                              ? CupertinoColors
+                                                                  .white
+                                                              : CupertinoColors
+                                                                  .black
+                                                          : CupertinoColors
+                                                              .white,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                    ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    }).toList(),
+                                  );
+                                  return groupItems;
+                                }).toList(),
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ],
+                    ),
                   ),
                 ),
-                Expanded(
-                  child: widget.destinations[widget.selectedIndex].page,
-                ),
               ],
-            ),
-          ),
-        ],
+            );
+          }),
+    );
+  }
+}
+
+class BottomWithSideBarMenu extends StatefulWidget {
+  final List<AdaptiveGroupDestination> groupDestinations;
+
+  BottomWithSideBarMenu({super.key, required this.groupDestinations})
+      : assert(
+          groupDestinations
+                  .expand((group) => group.destinations)
+                  .where(
+                      (destination) => destination.showOnBottomAppBar == true)
+                  .length >=
+              2,
+          'There must be at least 2 AdaptiveDestinations with showOnBottomAppBar = true',
+        ),
+        assert(
+          groupDestinations
+                  .expand((group) => group.destinations)
+                  .where(
+                      (destination) => destination.showOnDrawerSidebar == true)
+                  .length >=
+              2,
+          'There must be at least 2 AdaptiveDestinations with showOnDrawerSidebar = true',
+        );
+
+  @override
+  BottomWithSideBarMenuState createState() {
+    return BottomWithSideBarMenuState();
+  }
+}
+
+class BottomWithSideBarMenuState extends State<BottomWithSideBarMenu> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    var bottomAppBarDestinations = widget.groupDestinations
+        .expand((group) => group.destinations)
+        .where((destination) => destination.showOnBottomAppBar == true)
+        .toList();
+
+    return CupertinoSidebar(
+      groupDestinations: widget.groupDestinations,
+      isMobile: true,
+      selectedTabDestination: bottomAppBarDestinations[_selectedIndex],
+      tabScaffold: CupertinoTabScaffold(
+        tabBar: CupertinoTabBar(
+          items: bottomAppBarDestinations
+              .map((destination) => BottomNavigationBarItem(
+                    icon: destination.icon,
+                    label: destination.label,
+                  ))
+              .toList(),
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
+        ),
+        tabBuilder: (context, index) {
+          return CupertinoTabView(
+            builder: (context) {
+              return bottomAppBarDestinations[index].page;
+            },
+          );
+        },
       ),
     );
   }
