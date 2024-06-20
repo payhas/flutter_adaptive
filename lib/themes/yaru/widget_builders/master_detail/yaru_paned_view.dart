@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'yaru_paned_view_layout_delegate.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 class YaruPanedView extends StatefulWidget {
   const YaruPanedView({
@@ -18,7 +18,7 @@ class YaruPanedView extends StatefulWidget {
   final Widget page;
 
   /// Controls the size, side and resizing capacity of the pane.
-  final YaruPanedViewLayoutDelegate layoutDelegate;
+  final PanedViewLayoutDelegate layoutDelegate;
 
   /// Called each time the pane size change.
   final ValueChanged<double>? onPaneSizeChange;
@@ -109,10 +109,10 @@ class _YaruPanedViewState extends State<YaruPanedView> {
 
   Widget _buildFlexContainer(List<Widget> children) {
     final isRtl = Directionality.of(context) == TextDirection.rtl;
-    final top = widget.layoutDelegate.paneSide == YaruPaneSide.top;
-    final left = widget.layoutDelegate.paneSide == YaruPaneSide.left ||
-        (!isRtl && widget.layoutDelegate.paneSide == YaruPaneSide.start ||
-            isRtl && widget.layoutDelegate.paneSide == YaruPaneSide.end);
+    final top = widget.layoutDelegate.paneSide == PaneSide.top;
+    final left = widget.layoutDelegate.paneSide == PaneSide.left ||
+        (!isRtl && widget.layoutDelegate.paneSide == PaneSide.start ||
+            isRtl && widget.layoutDelegate.paneSide == PaneSide.end);
 
     return widget.layoutDelegate.paneSide.isHorizontal
         ? Row(
@@ -156,10 +156,10 @@ class _YaruPanedViewState extends State<YaruPanedView> {
     ThemeData theme,
   ) {
     final isRtl = Directionality.of(context) == TextDirection.rtl;
-    final top = widget.layoutDelegate.paneSide == YaruPaneSide.top;
-    final left = widget.layoutDelegate.paneSide == YaruPaneSide.left ||
-        (!isRtl && widget.layoutDelegate.paneSide == YaruPaneSide.start ||
-            isRtl && widget.layoutDelegate.paneSide == YaruPaneSide.end);
+    final top = widget.layoutDelegate.paneSide == PaneSide.top;
+    final left = widget.layoutDelegate.paneSide == PaneSide.left ||
+        (!isRtl && widget.layoutDelegate.paneSide == PaneSide.start ||
+            isRtl && widget.layoutDelegate.paneSide == PaneSide.end);
     final isHorizontal = widget.layoutDelegate.paneSide.isHorizontal;
     final isVertical = widget.layoutDelegate.paneSide.isVertical;
 

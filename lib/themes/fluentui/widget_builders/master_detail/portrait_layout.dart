@@ -1,11 +1,12 @@
 import 'package:fluent_ui/fluent_ui.dart' hide PageController;
-import 'package:flutter/material.dart' show MaterialPage, Material;
+import 'package:flutter/material.dart' show MaterialPage, Material, Theme;
 import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart'
     hide MasterTileBuilder;
 
 import 'master_detail_page.dart';
 import 'master_list_view.dart';
 import 'master_detail_page_controller.dart';
+import 'constants.dart';
 
 class PortraitLayout extends StatefulWidget {
   const PortraitLayout({
@@ -15,21 +16,23 @@ class PortraitLayout extends StatefulWidget {
     this.initialRoute,
     this.onGenerateRoute,
     this.onUnknownRoute,
-    required this.tileBuilder,
+    this.tileBuilder,
+    this.masterBuilder,
     required this.pageBuilder,
     this.onSelected,
     this.appBarActions,
     this.appBarTitle,
     this.bottomBar,
     required this.controller,
-  });
+  }) : assert((masterBuilder == null) != (tileBuilder == null));
 
   final GlobalKey<NavigatorState> navigatorKey;
   final List<NavigatorObserver> navigatorObservers;
   final String? initialRoute;
   final RouteFactory? onGenerateRoute;
   final RouteFactory? onUnknownRoute;
-  final MasterTileBuilder tileBuilder;
+  final MasterTileBuilder? tileBuilder;
+  final WidgetBuilder? masterBuilder;
   final IndexedWidgetBuilder pageBuilder;
   final ValueChanged<int>? onSelected;
 
@@ -117,12 +120,10 @@ class _PortraitLayoutState extends State<PortraitLayout> {
     // final theme = FluentTheme /*MasterDetailTheme*/ .of(context);
     return PopScope(
       onPopInvoked: (v) async => await _navigator.maybePop(),
-      child: FluentTheme(
-        data: FluentTheme.of(
-            context) /*.copyWith(
-          pageTransitionsTheme: theme.portraitTransitions,
-        )*/
-        ,
+      child: /*Fluent*/ Theme(
+        data: /*Fluent*/ Theme.of(context).copyWith(
+          pageTransitionsTheme: kPortraitLayoutPageTransitionsTheme,
+        ),
         child: Navigator(
           key: widget.navigatorKey,
           initialRoute: widget.initialRoute,
@@ -135,38 +136,28 @@ class _PortraitLayoutState extends State<PortraitLayout> {
           pages: [
             MaterialPage(
               key: const ValueKey(-1),
-              child: /*TitleBarTheme(
-                data: const TitleBarThemeData(
-                  style:
-                      kIsWeb ? TitleBarStyle.undecorated : TitleBarStyle.normal,
-                ),
-                child:*/
-                  ScaffoldPage(
-                // backgroundColor: theme.sideBarColor,
-                header:
-                    appBar /*Container(
-                        color: FluentTheme.of(context).scaffoldBackgroundColor,
-                        child: /*widget.*/ appBar)*/
-                ,
-                content: LayoutBuilder(
-                  builder: (context, constraints) => MasterListView(
-                    length: widget.controller.length,
-                    selectedIndex: _selectedIndex,
-                    onTap: _onTap,
-                    builder: widget.tileBuilder,
-                    availableWidth: constraints.maxWidth,
-                    startUndershoot: widget.appBarActions != null,
-                    endUndershoot: widget.bottomBar != null,
-                  ),
-                ),
-                bottomBar: widget.bottomBar == null
-                    ? null
-                    : Material(
-                        // color: theme.sideBarColor,
-                        child: widget.bottomBar,
+              child: (widget.masterBuilder != null)
+                  ? widget.masterBuilder!(context)
+                  : ScaffoldPage(
+                      header: appBar,
+                      content: LayoutBuilder(
+                        builder: (context, constraints) => MasterListView(
+                          length: widget.controller.length,
+                          selectedIndex: _selectedIndex,
+                          onTap: _onTap,
+                          builder: widget.tileBuilder!,
+                          availableWidth: constraints.maxWidth,
+                          startUndershoot: widget.appBarActions != null,
+                          endUndershoot: widget.bottomBar != null,
+                        ),
                       ),
-              ),
-              // ),
+                      bottomBar: widget.bottomBar == null
+                          ? null
+                          : Material(
+                              // color: theme.sideBarColor,
+                              child: widget.bottomBar,
+                            ),
+                    ),
             ),
             if (_selectedIndex != -1) page(_selectedIndex),
           ],

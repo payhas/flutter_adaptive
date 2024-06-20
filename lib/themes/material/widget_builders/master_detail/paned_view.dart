@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'paned_view_layout_delegate.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 class PanedView extends StatefulWidget {
   const PanedView({

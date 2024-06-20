@@ -15,26 +15,27 @@ class PortraitLayout extends StatefulWidget {
     this.initialRoute,
     this.onGenerateRoute,
     this.onUnknownRoute,
-    required this.tileBuilder,
+    this.tileBuilder,
+    this.masterBuilder,
     required this.pageBuilder,
     this.onSelected,
     this.appBarActions,
     this.appBarTitle,
     this.bottomBar,
     required this.controller,
-  });
+  }) : assert((masterBuilder == null) != (tileBuilder == null));
 
   final GlobalKey<NavigatorState> navigatorKey;
   final List<NavigatorObserver> navigatorObservers;
   final String? initialRoute;
   final RouteFactory? onGenerateRoute;
   final RouteFactory? onUnknownRoute;
-  final MasterTileBuilder tileBuilder;
+  final MasterTileBuilder? tileBuilder;
+  final WidgetBuilder? masterBuilder;
   final IndexedWidgetBuilder pageBuilder;
   final ValueChanged<int>? onSelected;
 
-  final /*ToolBar*/ /*Widget?*/ List<MasterDetailAppBarActionsItem>?
-      appBarActions;
+  final List<MasterDetailAppBarActionsItem>? appBarActions;
 
   final Widget? appBarTitle;
 
@@ -116,22 +117,22 @@ class _PortraitLayoutState extends State<PortraitLayout> {
             ],
           );
 
-    final List<Widget> widgets = [];
-    widgets.add(ContentArea(
-      builder: (context, scrollController) {
-        return LayoutBuilder(
-          builder: (context, constraints) => MasterListView(
-            length: widget.controller.length,
-            selectedIndex: _selectedIndex,
-            onTap: _onTap,
-            builder: widget.tileBuilder,
-            availableWidth: constraints.maxWidth,
-            startUndershoot: widget.appBarActions != null,
-            endUndershoot: widget.bottomBar != null,
-          ),
-        );
-      },
-    ));
+    // final List<Widget> widgets = [];
+    // widgets.add(ContentArea(
+    //   builder: (context, scrollController) {
+    //     return LayoutBuilder(
+    //       builder: (context, constraints) => MasterListView(
+    //         length: widget.controller.length,
+    //         selectedIndex: _selectedIndex,
+    //         onTap: _onTap,
+    //         builder: widget.tileBuilder,
+    //         availableWidth: constraints.maxWidth,
+    //         startUndershoot: widget.appBarActions != null,
+    //         endUndershoot: widget.bottomBar != null,
+    //       ),
+    //     );
+    //   },
+    // ));
 
     return PopScope(
       onPopInvoked: (v) async => await _navigator.maybePop(),
@@ -151,36 +152,35 @@ class _PortraitLayoutState extends State<PortraitLayout> {
           pages: [
             CupertinoPage(
               key: const ValueKey(-1),
-              child: /*TitleBarTheme(
-                data: const TitleBarThemeData(
-                  style:
-                      kIsWeb ? TitleBarStyle.undecorated : TitleBarStyle.normal,
-                ),
-                child:*/
-                  MacosScaffold(
-                // backgroundColor: theme.sideBarColor,
-                toolBar: toolBar /*widget.appBar*/,
-                children:
-                    widgets /*LayoutBuilder(
-                    builder: (context, constraints) => MasterListView(
-                      length: widget.controller.length,
-                      selectedIndex: _selectedIndex,
-                      onTap: _onTap,
-                      builder: widget.tileBuilder,
-                      availableWidth: constraints.maxWidth,
-                      startUndershoot: widget.appBar != null,
-                      endUndershoot: widget.bottomBar != null,
+              child: (widget.masterBuilder != null)
+                  ? widget.masterBuilder!(context)
+                  : MacosScaffold(
+                      // backgroundColor: theme.sideBarColor,
+                      toolBar: toolBar,
+                      children: [
+                        ContentArea(
+                          builder: (context, scrollController) {
+                            return LayoutBuilder(
+                              builder: (context, constraints) => MasterListView(
+                                length: widget.controller.length,
+                                selectedIndex: _selectedIndex,
+                                onTap: _onTap,
+                                builder: widget.tileBuilder!,
+                                availableWidth: constraints.maxWidth,
+                                startUndershoot: widget.appBarActions != null,
+                                endUndershoot: widget.bottomBar != null,
+                              ),
+                            );
+                          },
+                        )
+                      ],
+                      // bottomNavigationBar: widget.bottomBar == null
+                      //     ? null
+                      //     : Material(
+                      //         color: theme.sideBarColor,
+                      //         child: widget.bottomBar,
+                      //       ),
                     ),
-                  )*/
-                ,
-                // bottomNavigationBar: widget.bottomBar == null
-                //     ? null
-                //     : Material(
-                //         color: theme.sideBarColor,
-                //         child: widget.bottomBar,
-                //       ),
-              ),
-              // ),
             ),
             if (_selectedIndex != -1) page(_selectedIndex),
           ],

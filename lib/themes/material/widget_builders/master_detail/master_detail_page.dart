@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart' hide PageController;
-import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 import 'landscape_layout.dart';
 import 'portrait_layout.dart';
-import 'paned_view_layout_delegate.dart';
 import 'master_detail_page_controller.dart';
 import 'constants.dart';
 
@@ -52,7 +51,8 @@ class MaterialMasterDetailPage extends StatefulWidget {
   const MaterialMasterDetailPage({
     super.key,
     this.length,
-    required this.tileBuilder,
+    this.tileBuilder,
+    this.masterBuilder,
     required this.pageBuilder,
     this.emptyBuilder,
     this.paneLayoutDelegate = const FixedPaneDelegate(
@@ -73,7 +73,8 @@ class MaterialMasterDetailPage extends StatefulWidget {
     this.onGenerateRoute,
     this.onUnknownRoute,
   })  : assert(initialIndex == null || controller == null),
-        assert((length == null) != (controller == null));
+        assert((length == null) != (controller == null)),
+        assert((masterBuilder == null) != (tileBuilder == null));
 
   /// The total number of pages.
   final int? length;
@@ -82,7 +83,9 @@ class MaterialMasterDetailPage extends StatefulWidget {
   ///
   /// See also:
   ///  * [YaruMasterTile]
-  final MasterTileBuilder tileBuilder;
+  final MasterTileBuilder? tileBuilder;
+
+  final WidgetBuilder? masterBuilder;
 
   /// A builder that is called for each page to build its detail page.
   ///
@@ -216,10 +219,7 @@ class _MasterDetailPageState extends State<MaterialMasterDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = widget.breakpoint ?? kMasterDetailBreakpoint
-        /*MasterDetailTheme.of(context).breakpoint ??
-        MasterDetailThemeData.fallback(context).breakpoint!*/
-        ;
+    final breakpoint = widget.breakpoint ?? kMasterDetailBreakpoint;
     return Material(
       child: widget.length == 0 || widget.controller?.length == 0
           ? widget.emptyBuilder?.call(context) ?? const SizedBox.shrink()
@@ -232,11 +232,11 @@ class _MasterDetailPageState extends State<MaterialMasterDetailPage> {
                 onGenerateRoute: widget.onGenerateRoute,
                 onUnknownRoute: widget.onUnknownRoute,
                 tileBuilder: widget.tileBuilder,
+                masterBuilder: widget.masterBuilder,
                 pageBuilder: widget.pageBuilder,
                 onSelected: widget.onSelected,
                 appBarTitle: widget.appBarTitle,
-                appBarActions: widget
-                    .appBarActions /*?? widget.appBarBuilder?.call(context)*/,
+                appBarActions: widget.appBarActions,
                 bottomBar: widget.bottomBar,
                 controller: _controller,
               ),
@@ -247,12 +247,12 @@ class _MasterDetailPageState extends State<MaterialMasterDetailPage> {
                 onGenerateRoute: widget.onGenerateRoute,
                 onUnknownRoute: widget.onUnknownRoute,
                 tileBuilder: widget.tileBuilder,
+                masterBuilder: widget.masterBuilder,
                 pageBuilder: widget.pageBuilder,
                 onSelected: widget.onSelected,
                 paneLayoutDelegate: widget.paneLayoutDelegate,
                 appBarTitle: widget.appBarTitle,
-                appBarActions: widget
-                    .appBarActions /*?? widget.appBarBuilder?.call(context)*/,
+                appBarActions: widget.appBarActions,
                 bottomBar: widget.bottomBar,
                 controller: _controller,
               ),

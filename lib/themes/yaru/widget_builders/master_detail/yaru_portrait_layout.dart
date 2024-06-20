@@ -18,26 +18,27 @@ class YaruPortraitLayout extends StatefulWidget {
     this.initialRoute,
     this.onGenerateRoute,
     this.onUnknownRoute,
-    required this.tileBuilder,
+    this.tileBuilder,
+    this.masterBuilder,
     required this.pageBuilder,
     this.onSelected,
     this.appBarActions,
     this.appBarTitle,
     this.bottomBar,
     required this.controller,
-  });
+  }) : assert((masterBuilder == null) != (tileBuilder == null));
 
   final GlobalKey<NavigatorState> navigatorKey;
   final List<NavigatorObserver> navigatorObservers;
   final String? initialRoute;
   final RouteFactory? onGenerateRoute;
   final RouteFactory? onUnknownRoute;
-  final YaruMasterTileBuilder tileBuilder;
+  final YaruMasterTileBuilder? tileBuilder;
+  final WidgetBuilder? masterBuilder;
   final IndexedWidgetBuilder pageBuilder;
   final ValueChanged<int>? onSelected;
 
-  final /*PreferredSizeWidget?*/ List<MasterDetailAppBarActionsItem>?
-      appBarActions;
+  final List<MasterDetailAppBarActionsItem>? appBarActions;
 
   final Widget? appBarTitle;
 
@@ -137,27 +138,29 @@ class _YaruPortraitLayoutState extends State<YaruPortraitLayout> {
                       ? YaruTitleBarStyle.undecorated
                       : YaruTitleBarStyle.normal,
                 ),
-                child: Scaffold(
-                  backgroundColor: theme.sideBarColor,
-                  appBar: appBar,
-                  body: LayoutBuilder(
-                    builder: (context, constraints) => YaruMasterListView(
-                      length: widget.controller.length,
-                      selectedIndex: _selectedIndex,
-                      onTap: _onTap,
-                      builder: widget.tileBuilder,
-                      availableWidth: constraints.maxWidth,
-                      startUndershoot: widget.appBarActions != null,
-                      endUndershoot: widget.bottomBar != null,
-                    ),
-                  ),
-                  bottomNavigationBar: widget.bottomBar == null
-                      ? null
-                      : Material(
-                          color: theme.sideBarColor,
-                          child: widget.bottomBar,
+                child: (widget.masterBuilder != null)
+                    ? widget.masterBuilder!(context)
+                    : Scaffold(
+                        backgroundColor: theme.sideBarColor,
+                        appBar: appBar,
+                        body: LayoutBuilder(
+                          builder: (context, constraints) => YaruMasterListView(
+                            length: widget.controller.length,
+                            selectedIndex: _selectedIndex,
+                            onTap: _onTap,
+                            builder: widget.tileBuilder!,
+                            availableWidth: constraints.maxWidth,
+                            startUndershoot: widget.appBarActions != null,
+                            endUndershoot: widget.bottomBar != null,
+                          ),
                         ),
-                ),
+                        bottomNavigationBar: widget.bottomBar == null
+                            ? null
+                            : Material(
+                                color: theme.sideBarColor,
+                                child: widget.bottomBar,
+                              ),
+                      ),
               ),
             ),
             if (_selectedIndex != -1) page(_selectedIndex),

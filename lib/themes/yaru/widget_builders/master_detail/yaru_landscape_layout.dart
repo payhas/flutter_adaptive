@@ -2,11 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:yaru/yaru.dart';
-import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart'
-    hide MasterTileBuilder;
+import 'package:flutter_adaptive/flutter_adaptive.dart' hide MasterTileBuilder;
 
 import 'yaru_master_list_view.dart';
-import 'yaru_paned_view_layout_delegate.dart';
 import 'yaru_paned_view.dart';
 
 class YaruLandscapeLayout extends StatefulWidget {
@@ -17,7 +15,8 @@ class YaruLandscapeLayout extends StatefulWidget {
     this.initialRoute,
     this.onGenerateRoute,
     this.onUnknownRoute,
-    required this.tileBuilder,
+    this.tileBuilder,
+    this.masterBuilder,
     required this.pageBuilder,
     this.onSelected,
     required this.paneLayoutDelegate,
@@ -25,18 +24,19 @@ class YaruLandscapeLayout extends StatefulWidget {
     this.appBarTitle,
     this.bottomBar,
     required this.controller,
-  });
+  }) : assert((masterBuilder == null) != (tileBuilder == null));
 
   final GlobalKey<NavigatorState> navigatorKey;
   final List<NavigatorObserver> navigatorObservers;
   final String? initialRoute;
   final RouteFactory? onGenerateRoute;
   final RouteFactory? onUnknownRoute;
-  final YaruMasterTileBuilder tileBuilder;
+  final YaruMasterTileBuilder? tileBuilder;
+  final WidgetBuilder? masterBuilder;
   final IndexedWidgetBuilder pageBuilder;
   final ValueChanged<int>? onSelected;
-  final YaruPanedViewLayoutDelegate paneLayoutDelegate;
-  final /*Widget?*/ List<MasterDetailAppBarActionsItem>? appBarActions;
+  final PanedViewLayoutDelegate paneLayoutDelegate;
+  final List<MasterDetailAppBarActionsItem>? appBarActions;
   final Widget? appBarTitle;
   final Widget? bottomBar;
   final YaruPageController controller;
@@ -117,34 +117,39 @@ class _YaruLandscapeLayoutState extends State<YaruLandscapeLayout> {
           data: const YaruTitleBarThemeData(
             style: YaruTitleBarStyle.undecorated,
           ),
-          child: Column(
-            children: [
-              if (widget.appBarActions != null)
-                SizedBox(
-                  height: kYaruTitleBarHeight,
-                  child: appBar,
-                ),
-              Expanded(
-                child: Container(
-                  color: theme.sideBarColor,
-                  child: YaruMasterListView(
-                    length: widget.controller.length,
-                    selectedIndex: _selectedIndex,
-                    onTap: _onTap,
-                    builder: widget.tileBuilder,
-                    availableWidth: _paneWidth!,
-                    startUndershoot: widget.appBarActions != null,
-                    endUndershoot: widget.bottomBar != null,
+          child: (widget.masterBuilder != null)
+              ? widget.masterBuilder!(context)
+              : Scaffold(
+                  appBar: appBar,
+                  body: Column(
+                    children: [
+                      // if (widget.appBarActions != null)
+                      //   SizedBox(
+                      //     height: kYaruTitleBarHeight,
+                      //     child: appBar,
+                      //   ),
+                      Expanded(
+                        child: Container(
+                          color: theme.sideBarColor,
+                          child: YaruMasterListView(
+                            length: widget.controller.length,
+                            selectedIndex: _selectedIndex,
+                            onTap: _onTap,
+                            builder: widget.tileBuilder!,
+                            availableWidth: _paneWidth!,
+                            startUndershoot: widget.appBarActions != null,
+                            endUndershoot: widget.bottomBar != null,
+                          ),
+                        ),
+                      ),
+                      if (widget.bottomBar != null)
+                        Material(
+                          color: theme.sideBarColor,
+                          child: widget.bottomBar,
+                        ),
+                    ],
                   ),
                 ),
-              ),
-              if (widget.bottomBar != null)
-                Material(
-                  color: theme.sideBarColor,
-                  child: widget.bottomBar,
-                ),
-            ],
-          ),
         );
       },
     );

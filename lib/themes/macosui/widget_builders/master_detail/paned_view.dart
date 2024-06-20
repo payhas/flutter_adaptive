@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart' show Divider, VerticalDivider;
 import 'package:flutter/widgets.dart';
-import 'paned_view_layout_delegate.dart';
 import 'package:macos_ui/macos_ui.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 class PanedView extends StatefulWidget {
   const PanedView({

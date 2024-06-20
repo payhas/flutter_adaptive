@@ -1,6 +1,8 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart';
-import 'package:flutter/material.dart' show BackButton;
+import 'package:flutter/material.dart' show BackButton, Theme;
+
+import 'constants.dart';
 
 const _kDetailPageHeroTag = '<DetailPage hero tag>';
 
@@ -114,13 +116,18 @@ class FluentUIDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScaffoldPage(
-      header: _buildAppBar(context),
-      content: body ??
-          const Placeholder(
-            child: FlutterLogo(),
-          ),
-      bottomBar: bottomNavigationBar,
+    return Theme(
+      data: Theme.of(context).copyWith(
+        pageTransitionsTheme: kDetailPageTransitionsTheme,
+      ),
+      child: ScaffoldPage(
+        header: _buildAppBar(context),
+        content: body ??
+            const Placeholder(
+              child: FlutterLogo(),
+            ),
+        bottomBar: bottomNavigationBar,
+      ),
     );
   }
 }

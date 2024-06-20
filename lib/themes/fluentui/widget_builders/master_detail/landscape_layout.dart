@@ -3,15 +3,14 @@ import 'dart:math';
 import 'package:fluent_ui/fluent_ui.dart' hide PageController;
 import 'package:flutter/material.dart'
     hide PageController
-    show MaterialPage, Material;
-import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart'
-    hide MasterTileBuilder;
+    show MaterialPage, Material, Theme;
+import 'package:flutter_adaptive/flutter_adaptive.dart' hide MasterTileBuilder;
 
 import 'master_list_view.dart';
-import 'paned_view_layout_delegate.dart';
 import 'paned_view.dart';
 import 'master_detail_page_controller.dart';
 import 'master_detail_page.dart';
+import 'constants.dart';
 
 const kYaruTitleBarHeight = 46.0;
 
@@ -23,7 +22,8 @@ class LandscapeLayout extends StatefulWidget {
     this.initialRoute,
     this.onGenerateRoute,
     this.onUnknownRoute,
-    required this.tileBuilder,
+    this.tileBuilder,
+    this.masterBuilder,
     required this.pageBuilder,
     this.onSelected,
     required this.paneLayoutDelegate,
@@ -31,18 +31,19 @@ class LandscapeLayout extends StatefulWidget {
     this.appBarTitle,
     this.bottomBar,
     required this.controller,
-  });
+  }) : assert((masterBuilder == null) != (tileBuilder == null));
 
   final GlobalKey<NavigatorState> navigatorKey;
   final List<NavigatorObserver> navigatorObservers;
   final String? initialRoute;
   final RouteFactory? onGenerateRoute;
   final RouteFactory? onUnknownRoute;
-  final MasterTileBuilder tileBuilder;
+  final MasterTileBuilder? tileBuilder;
+  final WidgetBuilder? masterBuilder;
   final IndexedWidgetBuilder pageBuilder;
   final ValueChanged<int>? onSelected;
   final PanedViewLayoutDelegate paneLayoutDelegate;
-  final /*Widget?*/ List<MasterDetailAppBarActionsItem>? appBarActions;
+  final List<MasterDetailAppBarActionsItem>? appBarActions;
   final Widget? appBarTitle;
   final Widget? bottomBar;
   final FluentUIPageController controller;
@@ -125,37 +126,42 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
 
     return Builder(
       builder: (context) {
-        return Column(
-          children: [
-            if (widget.appBarActions != null)
-              Container(
-                padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0),
-                alignment: Alignment.centerRight,
-                color: FluentTheme.of(context).scaffoldBackgroundColor,
-                child: SizedBox(
-                  // height: kYaruTitleBarHeigsht,
-                  child: appBar,
+        return (widget.masterBuilder != null)
+            ? widget.masterBuilder!(context)
+            : ScaffoldPage(
+                header: appBar,
+                content: Column(
+                  children: [
+                    // if (widget.appBarActions != null)
+                    //   Container(
+                    //     padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0),
+                    //     alignment: Alignment.centerRight,
+                    //     color: FluentTheme.of(context).scaffoldBackgroundColor,
+                    //     child: SizedBox(
+                    //       // height: kYaruTitleBarHeigsht,
+                    //       child: appBar,
+                    //     ),
+                    //   ),
+                    Expanded(
+                      child: MasterListView(
+                        length: widget.controller.length,
+                        selectedIndex: _selectedIndex,
+                        onTap: _onTap,
+                        builder: widget.tileBuilder!,
+                        availableWidth: _paneWidth!,
+                        startUndershoot: widget.appBarActions != null,
+                        endUndershoot: widget.bottomBar != null,
+                      ),
+                    ),
+                    if (widget.bottomBar != null)
+                      Material(
+                        // color: theme.sideBarColor,
+                        child: widget.bottomBar,
+                      ),
+                  ],
+                  // ),
                 ),
-              ),
-            Expanded(
-              child: MasterListView(
-                length: widget.controller.length,
-                selectedIndex: _selectedIndex,
-                onTap: _onTap,
-                builder: widget.tileBuilder,
-                availableWidth: _paneWidth!,
-                startUndershoot: widget.appBarActions != null,
-                endUndershoot: widget.bottomBar != null,
-              ),
-            ),
-            if (widget.bottomBar != null)
-              Material(
-                // color: theme.sideBarColor,
-                child: widget.bottomBar,
-              ),
-          ],
-          // ),
-        );
+              );
       },
     );
   }
@@ -163,12 +169,10 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
   Widget _buildPage(BuildContext context) {
     // final theme = MasterDetailTheme.of(context);
 
-    return FluentTheme(
-      data: FluentTheme.of(
-          context) /*.copyWith(
-        pageTransitionsTheme: theme.landscapeTransitions,
-      )*/
-      ,
+    return /*Fluent*/ Theme(
+      data: /*Fluent*/ Theme.of(context).copyWith(
+        pageTransitionsTheme: kLandscapeLayoutPageTransitionsTheme,
+      ),
       child: /*ScaffoldMessenger(
         child:*/
           Navigator(

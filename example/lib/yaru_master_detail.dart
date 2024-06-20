@@ -3,7 +3,7 @@ import 'package:yaru/yaru.dart'
     hide YaruMasterDetailPage, YaruMasterTile, YaruDetailPage;
 import 'package:flutter_adaptive/themes/yaru/widget_builders/master_detail/master_detail_library.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart'
-    show MasterDetailAppBarActionsItem;
+    show MasterDetailAppBarActionsItem, ResizablePaneDelegate;
 
 void main() => runApp(MyApp());
 
@@ -20,6 +20,11 @@ class MyApp extends StatelessWidget {
           themeMode: ThemeMode.light,
           home: Builder(builder: (context) {
             return YaruMasterDetailPage(
+              paneLayoutDelegate: const ResizablePaneDelegate(
+                initialPaneSize: 280,
+                minPageSize: kYaruMasterDetailBreakpoint / 2,
+                minPaneSize: 175,
+              ),
               length: 8,
               appBarTitle: const Text("Master"),
               appBarActions: [
@@ -45,6 +50,24 @@ class MyApp extends StatelessWidget {
                   },
                 ),
               ],
+              // masterBuilder: (context) {
+              //   return Scaffold(
+              //     appBar: AppBar(
+              //       title: const Text("MasterBuilder"),
+              //       actions: [
+              //         IconButton(
+              //           icon: const Icon(Icons.settings),
+              //           onPressed: () {},
+              //         ),
+              //       ],
+              //     ),
+              //     body: const SafeArea(
+              //       child: Center(
+              //         child: Text("Master"),
+              //       ),
+              //     ),
+              //   );
+              // },
               tileBuilder: (context, index, selected, ___) => YaruMasterTile(
                 leading: const Icon(Icons.menu),
                 title: Text('Master $index'),

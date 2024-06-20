@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_adaptive/themes/material/widget_builders/master_detail/master_detail_library.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart'
-    show MasterDetailAppBarActionsItem;
+    show MasterDetailAppBarActionsItem, ResizablePaneDelegate;
 
 void main() => runApp(MyApp());
 
@@ -16,6 +16,11 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       home: Builder(builder: (context) {
         return MaterialMasterDetailPage(
+          paneLayoutDelegate: const ResizablePaneDelegate(
+            initialPaneSize: 280,
+            minPageSize: kMasterDetailBreakpoint / 2,
+            minPaneSize: 175,
+          ),
           length: 8,
           appBarTitle: const Text("Master"),
           appBarActions: [
@@ -41,6 +46,24 @@ class MyApp extends StatelessWidget {
               },
             ),
           ],
+          // masterBuilder: (context) {
+          //   return Scaffold(
+          //     appBar: AppBar(
+          //       title: const Text("MasterBuilder"),
+          //       actions: [
+          //         IconButton(
+          //           icon: const Icon(Icons.settings),
+          //           onPressed: () {},
+          //         ),
+          //       ],
+          //     ),
+          //     body: const SafeArea(
+          //       child: Center(
+          //         child: Text("Master"),
+          //       ),
+          //     ),
+          //   );
+          // },
           tileBuilder: (context, index, selected, ___) => MaterialMasterTile(
             leading: const Icon(Icons.menu),
             title: Text('Master $index'),

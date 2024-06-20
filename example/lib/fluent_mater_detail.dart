@@ -1,6 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart'
-    show MasterDetailAppBarActionsItem;
+    show MasterDetailAppBarActionsItem, ResizablePaneDelegate;
 import 'package:flutter_adaptive/themes/fluentui/widget_builders/master_detail/master_detail_library.dart';
 
 void main() => runApp(MyApp());
@@ -17,6 +17,11 @@ class MyApp extends StatelessWidget {
       home: NavigationView(
         content: Builder(builder: (context) {
           return FluentUIMasterDetailPage(
+            paneLayoutDelegate: const ResizablePaneDelegate(
+              initialPaneSize: 280,
+              minPageSize: kMasterDetailBreakpoint / 2,
+              minPaneSize: 175,
+            ),
             length: 10,
             appBarTitle: const Text("Master"),
             appBarActions: [
@@ -42,6 +47,29 @@ class MyApp extends StatelessWidget {
                 },
               ),
             ],
+            // masterBuilder: (context) {
+            //   return ScaffoldPage(
+            //     header: PageHeader(
+            //       title: const Text("Master"),
+            //       commandBar: CommandBar(
+            //         isCompact: true,
+            //         mainAxisAlignment: MainAxisAlignment.end,
+            //         primaryItems: [
+            //           CommandBarButton(
+            //             icon: const Icon(FluentIcons.settings),
+            //             label: const Text("Settings"),
+            //             onPressed: () {},
+            //           )
+            //         ],
+            //       ),
+            //     ),
+            //     content: const SafeArea(
+            //       child: Center(
+            //         child: Text("Master"),
+            //       ),
+            //     ),
+            //   );
+            // },
             tileBuilder: (context, index, selected, ___) {
               switch (index) {
                 case 0:

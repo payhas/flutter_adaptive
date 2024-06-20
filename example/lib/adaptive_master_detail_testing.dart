@@ -4,6 +4,8 @@ import 'package:yaru/widgets.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/foundation.dart';
 
+const kMasterDetailBreakpoint = 620.0;
+
 void main() {
   runApp(const MyApp());
 }
@@ -175,6 +177,11 @@ class MasterDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return AdaptiveMasterDetail(
       length: 1,
+      paneLayoutDelegate: const ResizablePaneDelegate(
+        initialPaneSize: 280,
+        minPageSize: kMasterDetailBreakpoint / 2,
+        minPaneSize: 175,
+      ),
       appBarTitle: const AdaptiveText("Master"),
       appBarActions: [
         MasterDetailAppBarActionsItem(
@@ -192,9 +199,21 @@ class MasterDetailPage extends StatelessWidget {
           },
         ),
       ],
-      tileBuilder: (context, index, selected, availableWidth) {
-        return const Text("Master");
+      masterBuilder: (context) {
+        return const AdaptiveScaffold(
+          appBar: AdaptiveAppBar(
+            title: AdaptiveText("Master"),
+          ),
+          body: SafeArea(
+            child: Center(
+              child: AdaptiveText("Master"),
+            ),
+          ),
+        );
       },
+      // tileBuilder: (context, index, selected, availableWidth) {
+      //   return const Text("Master");
+      // },
       pageBuilder: (ctx, index) {
         return AdaptiveDetailPage(
           appBarTitle: const AdaptiveText("Detail"),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart' show ThemeMode;
-import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart' hide CupertinoIcons;
 import 'package:macos_ui/macos_ui.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/cupertino.dart' show CupertinoIcons;
@@ -22,6 +22,11 @@ class MyApp extends StatelessWidget {
         themeMode: ThemeMode.light,
         home: Builder(builder: (context) {
           return MacosUIMasterDetailPage(
+            paneLayoutDelegate: const ResizablePaneDelegate(
+              initialPaneSize: 280,
+              minPageSize: kMasterDetailBreakpoint / 2,
+              minPaneSize: 175,
+            ),
             length: 8,
             appBarTitle: const Text("Master"),
             appBarActions: [
@@ -47,6 +52,28 @@ class MyApp extends StatelessWidget {
                 },
               ),
             ],
+            // masterBuilder: (context) {
+            //   return MacosScaffold(
+            //     toolBar: ToolBar(
+            //       title: const Text("MasterBuilder"),
+            //       actions: [
+            //         ToolBarIconButton(
+            //           label: "Settings",
+            //           showLabel: false,
+            //           icon: const Icon(CupertinoIcons.settings),
+            //           onPressed: () {},
+            //         ),
+            //       ],
+            //     ),
+            //     children: [
+            //       ContentArea(
+            //         builder: (context, scrollController) => const Center(
+            //           child: Text("Master"),
+            //         ),
+            //       ),
+            //     ],
+            //   );
+            // },
             tileBuilder: (context, index, selected, ___) => MacosUIMasterTile(
               leading: const Icon(CupertinoIcons.add),
               title: Text('Master $index'),

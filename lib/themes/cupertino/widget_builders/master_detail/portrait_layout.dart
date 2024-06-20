@@ -14,26 +14,27 @@ class PortraitLayout extends StatefulWidget {
     this.initialRoute,
     this.onGenerateRoute,
     this.onUnknownRoute,
-    required this.tileBuilder,
+    this.tileBuilder,
+    this.masterBuilder,
     required this.pageBuilder,
     this.onSelected,
     this.appBarActions,
     this.appBarTitle,
     this.bottomBar,
     required this.controller,
-  });
+  }) : assert((masterBuilder == null) != (tileBuilder == null));
 
   final GlobalKey<NavigatorState> navigatorKey;
   final List<NavigatorObserver> navigatorObservers;
   final String? initialRoute;
   final RouteFactory? onGenerateRoute;
   final RouteFactory? onUnknownRoute;
-  final MasterTileBuilder tileBuilder;
+  final MasterTileBuilder? tileBuilder;
+  final WidgetBuilder? masterBuilder;
   final IndexedWidgetBuilder pageBuilder;
   final ValueChanged<int>? onSelected;
 
-  final /*PreferredSize*/ /*Widget?*/ List<MasterDetailAppBarActionsItem>?
-      appBarActions;
+  final List<MasterDetailAppBarActionsItem>? appBarActions;
 
   final Widget? appBarTitle;
 
@@ -95,7 +96,6 @@ class _PortraitLayoutState extends State<PortraitLayout> {
 
   @override
   Widget build(BuildContext context) {
-    // final theme = CupertinoTheme /*MasterDetailTheme*/ .of(context);
     final navbar = (widget.appBarActions == null)
         ? null
         : CupertinoNavigationBar(
@@ -114,13 +114,8 @@ class _PortraitLayoutState extends State<PortraitLayout> {
           );
     return PopScope(
       onPopInvoked: (v) async => await _navigator.maybePop(),
-      child: CupertinoTheme /*MasterDetailTheme*/ (
-        data: CupertinoTheme /*MasterDetailTheme*/ .of(
-            context) /*.copyWith(
-          /*pageTransitionsTheme*/ portraitTransitions:
-              theme.portraitTransitions,
-        )*/
-        ,
+      child: CupertinoTheme(
+        data: CupertinoTheme.of(context),
         child: Navigator(
           key: widget.navigatorKey,
           initialRoute: widget.initialRoute,
@@ -133,38 +128,24 @@ class _PortraitLayoutState extends State<PortraitLayout> {
           pages: [
             CupertinoPage(
               key: const ValueKey(-1),
-              child: /*TitleBarTheme(
-                data: const TitleBarThemeData(
-                  style:
-                      kIsWeb ? TitleBarStyle.undecorated : TitleBarStyle.normal,
-                ),
-                child:*/
-                  CupertinoPageScaffold(
-                // backgroundColor:
-                //     theme.primaryContrastingColor /*sideBarColor*/,
-                navigationBar:
-                    navbar /*widget.appBar as ObstructingPreferredSizeWidget*/,
-                child: SafeArea(
-                  child: LayoutBuilder(
-                    builder: (context, constraints) => MasterListView(
-                      length: widget.controller.length,
-                      selectedIndex: _selectedIndex,
-                      onTap: _onTap,
-                      builder: widget.tileBuilder,
-                      availableWidth: constraints.maxWidth,
-                      startUndershoot: widget.appBarActions != null,
-                      endUndershoot: widget.bottomBar != null,
+              child: (widget.masterBuilder != null)
+                  ? widget.masterBuilder!(context)
+                  : CupertinoPageScaffold(
+                      navigationBar: navbar,
+                      child: SafeArea(
+                        child: LayoutBuilder(
+                          builder: (context, constraints) => MasterListView(
+                            length: widget.controller.length,
+                            selectedIndex: _selectedIndex,
+                            onTap: _onTap,
+                            builder: widget.tileBuilder!,
+                            availableWidth: constraints.maxWidth,
+                            startUndershoot: widget.appBarActions != null,
+                            endUndershoot: widget.bottomBar != null,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                // bottomNavigationBar: widget.bottomBar == null
-                //     ? null
-                //     : Material(
-                //         color: theme.sideBarColor,
-                //         child: widget.bottomBar,
-                //       ),
-              ),
-              // ),
             ),
             if (_selectedIndex != -1) page(_selectedIndex),
           ],

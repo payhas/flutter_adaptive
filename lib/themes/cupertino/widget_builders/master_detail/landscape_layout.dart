@@ -1,11 +1,10 @@
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart' hide PageController;
-import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart'
-    hide MasterTileBuilder;
+import 'package:flutter_adaptive/flutter_adaptive.dart'
+    hide MasterTileBuilder, CupertinoIcons, CupertinoTheme;
 
 import 'master_list_view.dart';
-import 'paned_view_layout_delegate.dart';
 import 'paned_view.dart';
 import 'master_detail_page_controller.dart';
 import 'master_detail_page.dart';
@@ -20,7 +19,8 @@ class LandscapeLayout extends StatefulWidget {
     this.initialRoute,
     this.onGenerateRoute,
     this.onUnknownRoute,
-    required this.tileBuilder,
+    this.tileBuilder,
+    this.masterBuilder,
     required this.pageBuilder,
     this.onSelected,
     required this.paneLayoutDelegate,
@@ -28,18 +28,19 @@ class LandscapeLayout extends StatefulWidget {
     this.appBarTitle,
     this.bottomBar,
     required this.controller,
-  });
+  }) : assert((masterBuilder == null) != (tileBuilder == null));
 
   final GlobalKey<NavigatorState> navigatorKey;
   final List<NavigatorObserver> navigatorObservers;
   final String? initialRoute;
   final RouteFactory? onGenerateRoute;
   final RouteFactory? onUnknownRoute;
-  final MasterTileBuilder tileBuilder;
+  final MasterTileBuilder? tileBuilder;
+  final WidgetBuilder? masterBuilder;
   final IndexedWidgetBuilder pageBuilder;
   final ValueChanged<int>? onSelected;
   final PanedViewLayoutDelegate paneLayoutDelegate;
-  final /*Widget?*/ List<MasterDetailAppBarActionsItem>? appBarActions;
+  final List<MasterDetailAppBarActionsItem>? appBarActions;
   final Widget? appBarTitle;
   final Widget? bottomBar;
   final CupertinoPageController controller;
@@ -120,38 +121,35 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
 
     return Builder(
       builder: (context) {
-        return /*TitleBarTheme(
-          data: const TitleBarThemeData(
-            style: TitleBarStyle.undecorated,
-          ),
-          child:*/
-            Column(
-          children: [
-            if (widget.appBarActions != null)
-              SizedBox(
-                height: kYaruTitleBarHeight,
-                child: appBar,
-              ),
-            Expanded(
-              child: /*CupertinoTheme(
-                data: CupertinoTheme.of(context),
-                child:*/
-                  MasterListView(
-                length: widget.controller.length,
-                selectedIndex: _selectedIndex,
-                onTap: _onTap,
-                builder: widget.tileBuilder,
-                availableWidth: _paneWidth!,
-                startUndershoot: widget.appBarActions != null,
-                endUndershoot: widget.bottomBar != null,
-              ),
-              // ),
-            ),
-            if (widget.bottomBar != null)
-              widget.bottomBar ?? const Placeholder(),
-          ],
-          // ),
-        );
+        return (widget.masterBuilder != null)
+            ? widget.masterBuilder!(context)
+            : CupertinoPageScaffold(
+                navigationBar: appBar,
+                child: SafeArea(
+                  child: Column(
+                    children: [
+                      // if (widget.appBarActions != null)
+                      //   SizedBox(
+                      //     height: kYaruTitleBarHeight,
+                      //     child: appBar,
+                      //   ),
+                      Expanded(
+                        child: MasterListView(
+                          length: widget.controller.length,
+                          selectedIndex: _selectedIndex,
+                          onTap: _onTap,
+                          builder: widget.tileBuilder!,
+                          availableWidth: _paneWidth!,
+                          startUndershoot: widget.appBarActions != null,
+                          endUndershoot: widget.bottomBar != null,
+                        ),
+                      ),
+                      if (widget.bottomBar != null)
+                        widget.bottomBar ?? const Placeholder(),
+                    ],
+                  ),
+                ),
+              );
       },
     );
   }

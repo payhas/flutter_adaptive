@@ -1,6 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart';
 
+const _kDefaultPaneWidth = 280.0;
+
 typedef AdaptiveAppBarBuilder = PreferredSizeWidget? Function(
     BuildContext context);
 
@@ -12,16 +14,17 @@ typedef MasterTileBuilder = Widget Function(
 );
 
 class AdaptiveMasterDetail extends AdaptiveWidget {
-  AdaptiveMasterDetail({
+  const AdaptiveMasterDetail({
     super.key,
     this.length,
-    required this.tileBuilder,
+    this.tileBuilder,
+    this.masterBuilder,
     required this.pageBuilder,
     this.emptyBuilder,
-    // this.paneLayoutDelegate = const YaruFixedPaneDelegate(
-    //   paneSize: _kDefaultPaneWidth,
-    //   paneSide: YaruPaneSide.start,
-    // ),
+    this.paneLayoutDelegate = const FixedPaneDelegate(
+      paneSize: _kDefaultPaneWidth,
+      paneSide: PaneSide.start,
+    ),
     this.breakpoint,
     this.appBarTitle,
     this.appBarActions,
@@ -35,9 +38,7 @@ class AdaptiveMasterDetail extends AdaptiveWidget {
     this.initialRoute,
     this.onGenerateRoute,
     this.onUnknownRoute,
-  }) {
-    print("AdaptiveMasterDetail Widget  constructor");
-  }
+  }) : assert((masterBuilder == null) != (tileBuilder == null));
 
   /// The total number of pages.
   final int? length;
@@ -46,7 +47,9 @@ class AdaptiveMasterDetail extends AdaptiveWidget {
   ///
   /// See also:
   ///  * [YaruMasterTile]
-  final MasterTileBuilder tileBuilder;
+  final MasterTileBuilder? tileBuilder;
+
+  final WidgetBuilder? masterBuilder;
 
   /// A builder that is called for each page to build its detail page.
   ///
@@ -57,9 +60,9 @@ class AdaptiveMasterDetail extends AdaptiveWidget {
   /// A builder that is called if there are no pages to display.
   final WidgetBuilder? emptyBuilder;
 
-  // /// Controls the width, side and resizing capacity of the pane.
-  // /// [YaruPanedViewLayoutDelegate.paneSide] need to be horizontal (see: [YaruPaneSide.isHorizontal]).
-  // final YaruPanedViewLayoutDelegate paneLayoutDelegate;
+  /// Controls the width, side and resizing capacity of the pane.
+  /// [YaruPanedViewLayoutDelegate.paneSide] need to be horizontal (see: [YaruPaneSide.isHorizontal]).
+  final PanedViewLayoutDelegate paneLayoutDelegate;
 
   /// The breakpoint at which `YaruMasterDetailPage` switches between portrait
   /// and landscape layouts.

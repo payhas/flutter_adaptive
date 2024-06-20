@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 /// The recommended padding around page content in Yaru applications.
 const kPagePadding = 20.0;
 
@@ -25,3 +27,33 @@ const kIconSize = 20.0;
 
 const kTargetCanvasSize = 24.0;
 const kTargetIconSize = 20.0;
+
+const kLandscapeLayoutPageTransitionsTheme = PageTransitionsTheme(
+  builders: <TargetPlatform, PageTransitionsBuilder>{
+    TargetPlatform.android: ZoomPageTransitionsBuilder(),
+    TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+    TargetPlatform.linux: OpenUpwardsPageTransitionsBuilder(),
+    TargetPlatform.macOS: FadeUpwardsPageTransitionsBuilder(),
+    TargetPlatform.windows: FadeUpwardsPageTransitionsBuilder(),
+  },
+);
+
+const kPortraitLayoutPageTransitionsTheme = PageTransitionsTheme(
+  builders: <TargetPlatform, PageTransitionsBuilder>{
+    TargetPlatform.android: ZoomPageTransitionsBuilder(),
+    TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+    TargetPlatform.linux: OpenUpwardsPageTransitionsBuilder(),
+    TargetPlatform.macOS: FadeUpwardsPageTransitionsBuilder(),
+    TargetPlatform.windows: FadeUpwardsPageTransitionsBuilder(),
+  },
+);
+
+const kDetailPageTransitionsTheme = PageTransitionsTheme(
+  builders: <TargetPlatform, PageTransitionsBuilder>{
+    TargetPlatform.android: ZoomPageTransitionsBuilder(),
+    TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+    TargetPlatform.linux: OpenUpwardsPageTransitionsBuilder(),
+    TargetPlatform.macOS: FadeUpwardsPageTransitionsBuilder(),
+    TargetPlatform.windows: FadeUpwardsPageTransitionsBuilder(),
+  },
+);

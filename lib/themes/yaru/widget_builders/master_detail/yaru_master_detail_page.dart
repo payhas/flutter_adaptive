@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:yaru/foundation.dart' show YaruPageController;
-import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 import 'yaru_detail_page.dart';
 import 'yaru_landscape_layout.dart';
 import 'yaru_master_detail_theme.dart';
 import 'yaru_master_tile.dart';
 import 'yaru_portrait_layout.dart';
-import 'yaru_paned_view_layout_delegate.dart';
 
 const _kDefaultPaneWidth = 280.0;
 
@@ -54,12 +53,13 @@ class YaruMasterDetailPage extends StatefulWidget {
   const YaruMasterDetailPage({
     super.key,
     this.length,
-    required this.tileBuilder,
+    this.tileBuilder,
+    this.masterBuilder,
     required this.pageBuilder,
     this.emptyBuilder,
-    this.paneLayoutDelegate = const YaruFixedPaneDelegate(
+    this.paneLayoutDelegate = const FixedPaneDelegate(
       paneSize: _kDefaultPaneWidth,
-      paneSide: YaruPaneSide.start,
+      paneSide: PaneSide.start,
     ),
     this.breakpoint,
     this.appBarActions,
@@ -75,7 +75,8 @@ class YaruMasterDetailPage extends StatefulWidget {
     this.onGenerateRoute,
     this.onUnknownRoute,
   })  : assert(initialIndex == null || controller == null),
-        assert((length == null) != (controller == null));
+        assert((length == null) != (controller == null)),
+        assert((masterBuilder == null) != (tileBuilder == null));
 
   /// The total number of pages.
   final int? length;
@@ -84,7 +85,9 @@ class YaruMasterDetailPage extends StatefulWidget {
   ///
   /// See also:
   ///  * [YaruMasterTile]
-  final YaruMasterTileBuilder tileBuilder;
+  final YaruMasterTileBuilder? tileBuilder;
+
+  final WidgetBuilder? masterBuilder;
 
   /// A builder that is called for each page to build its detail page.
   ///
@@ -97,7 +100,7 @@ class YaruMasterDetailPage extends StatefulWidget {
 
   /// Controls the width, side and resizing capacity of the pane.
   /// [YaruPanedViewLayoutDelegate.paneSide] need to be horizontal (see: [YaruPaneSide.isHorizontal]).
-  final YaruPanedViewLayoutDelegate paneLayoutDelegate;
+  final PanedViewLayoutDelegate paneLayoutDelegate;
 
   /// The breakpoint at which `YaruMasterDetailPage` switches between portrait
   /// and landscape layouts.
@@ -233,11 +236,11 @@ class _YaruMasterDetailPageState extends State<YaruMasterDetailPage> {
                 onGenerateRoute: widget.onGenerateRoute,
                 onUnknownRoute: widget.onUnknownRoute,
                 tileBuilder: widget.tileBuilder,
+                masterBuilder: widget.masterBuilder,
                 pageBuilder: widget.pageBuilder,
                 onSelected: widget.onSelected,
                 appBarTitle: widget.appBarTitle,
-                appBarActions: widget
-                    .appBarActions /*?? widget.appBarBuilder?.call(context)*/,
+                appBarActions: widget.appBarActions,
                 bottomBar: widget.bottomBar,
                 controller: _controller,
               ),
@@ -248,12 +251,12 @@ class _YaruMasterDetailPageState extends State<YaruMasterDetailPage> {
                 onGenerateRoute: widget.onGenerateRoute,
                 onUnknownRoute: widget.onUnknownRoute,
                 tileBuilder: widget.tileBuilder,
+                masterBuilder: widget.masterBuilder,
                 pageBuilder: widget.pageBuilder,
                 onSelected: widget.onSelected,
                 paneLayoutDelegate: widget.paneLayoutDelegate,
                 appBarTitle: widget.appBarTitle,
-                appBarActions: widget
-                    .appBarActions /*?? widget.appBarBuilder?.call(context)*/,
+                appBarActions: widget.appBarActions,
                 bottomBar: widget.bottomBar,
                 controller: _controller,
               ),

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_adaptive/themes/cupertino/widget_builders/master_detail/master_detail_library.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart'
-    show MasterDetailAppBarActionsItem;
+    show MasterDetailAppBarActionsItem, ResizablePaneDelegate;
 
 void main() => runApp(MyApp());
 
@@ -17,6 +17,11 @@ class MyApp extends StatelessWidget {
       ),
       home: Builder(builder: (context) {
         return CupertinoMasterDetailPage(
+          paneLayoutDelegate: const ResizablePaneDelegate(
+            initialPaneSize: 280,
+            minPageSize: kMasterDetailBreakpoint / 2,
+            minPaneSize: 175,
+          ),
           length: 8,
           appBarTitle: const Text("Master"),
           appBarActions: [
@@ -42,10 +47,26 @@ class MyApp extends StatelessWidget {
               },
             ),
           ],
-          tileBuilder: (context, index, selected, ___) => CupertinoMasterTile(
-            leading: const Icon(CupertinoIcons.add),
-            title: Text('Master $index'),
-          ),
+          masterBuilder: (context) {
+            return CupertinoPageScaffold(
+              navigationBar: CupertinoNavigationBar(
+                middle: const Text("MasterBuilder"),
+                trailing: CupertinoButton(
+                  onPressed: () {},
+                  child: const Icon(CupertinoIcons.settings),
+                ),
+              ),
+              child: const SafeArea(
+                child: Center(
+                  child: Text("Master"),
+                ),
+              ),
+            );
+          },
+          // tileBuilder: (context, index, selected, ___) => CupertinoMasterTile(
+          //   leading: const Icon(CupertinoIcons.add),
+          //   title: Text('Master $index'),
+          // ),
           pageBuilder: (context, index) => CupertinoDetailPage(
             appBarTitle: const Text("Detail"),
             appBarActions: [
