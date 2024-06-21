@@ -74,8 +74,12 @@ class MacosUIMasterDetailPage extends StatefulWidget {
     this.onGenerateRoute,
     this.onUnknownRoute,
   })  : assert(initialIndex == null || controller == null),
-        assert((length == null) != (controller == null)),
-        assert((masterBuilder == null) != (tileBuilder == null));
+        assert((masterBuilder == null) != (tileBuilder == null)),
+        assert((masterBuilder == null) ==
+            ((length == null) != (controller == null))),
+        assert((masterBuilder == null) != (length == null)),
+        assert((masterBuilder != null) == (appBarActions == null)),
+        assert((masterBuilder != null) == (appBarTitle == null));
 
   /// The total number of pages.
   final int? length;
@@ -191,7 +195,9 @@ class _MasterDetailPageState extends State<MacosUIMasterDetailPage> {
 
   void _updateController() => _controller = widget.controller ??
       MacosUIPageController(
-        length: widget.length ?? widget.controller!.length,
+        length: (widget.masterBuilder != null)
+            ? 0
+            : widget.length ?? widget.controller!.length,
         initialIndex: widget.initialIndex ?? -1,
       );
 

@@ -46,6 +46,7 @@ export 'icons/adaptive_icon_builder.dart';
 export 'layouts/adaptive_master_detail.dart';
 export 'layouts/adaptive_detail_page.dart';
 export 'layouts/adaptive_paned_view_layout_delegate.dart';
+export 'layouts/adaptive_master_tile.dart';
 
 export 'themes/adaptive_theme.dart';
 export 'themes/themed_appearance_manager.dart';
@@ -76,6 +77,7 @@ export 'themes/material/widget_builders/material_app_bar_builder.dart';
 export 'themes/material/widget_builders/material_navigation_bar_builder.dart';
 export 'themes/material/widget_builders/material_master_detail_builder.dart';
 export 'themes/material/widget_builders/material_detail_page_builder.dart';
+export 'themes/material/widget_builders/material_master_tile_builder.dart';
 
 export 'themes/cupertino/cupertino_theme.dart';
 export 'themes/cupertino/cupertino_icons.dart';
@@ -102,6 +104,7 @@ export 'themes/cupertino/widget_builders/cupertino_app_bar_builder.dart';
 export 'themes/cupertino/widget_builders/cupertino_navigation_bar_builder.dart';
 export 'themes/cupertino/widget_builders/cupertino_master_detail_builder.dart';
 export 'themes/cupertino/widget_builders/cupertino_detail_page_builder.dart';
+export 'themes/cupertino/widget_builders/cupertino_master_tile_builder.dart';
 
 export 'themes/fluentui/fluentui_theme.dart';
 export 'themes/fluentui/fluentui_icons.dart';
@@ -125,6 +128,7 @@ export 'themes/fluentui/widget_builders/fluentui_theme_data_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_app_bar_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_master_detail_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_detail_page_builder.dart';
+export 'themes/fluentui/widget_builders/fluentui_master_tile_builder.dart';
 
 export 'themes/yaru/yaru_theme.dart';
 export 'themes/yaru/yaru_icons.dart';
@@ -145,6 +149,7 @@ export 'themes/yaru/widget_builders/yaru_icon_builder.dart';
 export 'themes/yaru/widget_builders/yaru_theme_data_builder.dart';
 export 'themes/yaru/widget_builders/yaru_master_detail_builder.dart';
 export 'themes/yaru/widget_builders/yaru_detail_page_builder.dart';
+export 'themes/yaru/widget_builders/yaru_master_tile_builder.dart';
 
 export 'themes/macosui/macosui_theme.dart';
 export 'themes/macosui/macosui_icons.dart';
@@ -167,3 +172,4 @@ export 'themes/macosui/widget_builders/macosui_theme_data_builder.dart';
 export 'themes/macosui/widget_builders/macosui_app_bar_builder.dart';
 export 'themes/macosui/widget_builders/macosui_master_detail_builder.dart';
 export 'themes/macosui/widget_builders/macosui_detail_page_builder.dart';
+export 'themes/macosui/widget_builders/macosui_master_tile_builder.dart';

@@ -25,53 +25,59 @@ class MyApp extends StatelessWidget {
                 minPageSize: kYaruMasterDetailBreakpoint / 2,
                 minPaneSize: 175,
               ),
-              length: 8,
-              appBarTitle: const Text("Master"),
-              appBarActions: [
-                MasterDetailAppBarActionsItem(
-                  title: "Settings",
-                  icon: const Icon(Icons.settings, size: 16.0),
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          title: const Text("Settings"),
-                          content: const Text("Application settings"),
-                          actions: [
-                            TextButton(
-                              child: const Text("Ok"),
-                              onPressed: () => Navigator.pop(context),
-                            ),
-                          ],
+              // length: 8,
+              // appBarTitle: const Text("Master"),
+              // appBarActions: [
+              //   MasterDetailAppBarActionsItem(
+              //     title: "Settings",
+              //     icon: const Icon(Icons.settings, size: 16.0),
+              //     onPressed: () {
+              //       showDialog(
+              //         context: context,
+              //         builder: (context) {
+              //           return AlertDialog(
+              //             title: const Text("Settings"),
+              //             content: const Text("Application settings"),
+              //             actions: [
+              //               TextButton(
+              //                 child: const Text("Ok"),
+              //                 onPressed: () => Navigator.pop(context),
+              //               ),
+              //             ],
+              //           );
+              //         },
+              //       );
+              //     },
+              //   ),
+              // ],
+              masterBuilder: (context) {
+                return Scaffold(
+                  appBar: AppBar(
+                    title: const Text("MasterBuilder"),
+                    actions: [
+                      IconButton(
+                        icon: const Icon(Icons.settings),
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
+                  body: SafeArea(
+                    child: ListView.builder(
+                      itemCount: 8,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          title: Text("Master $index"),
+                          onTap: () {},
                         );
                       },
-                    );
-                  },
-                ),
-              ],
-              // masterBuilder: (context) {
-              //   return Scaffold(
-              //     appBar: AppBar(
-              //       title: const Text("MasterBuilder"),
-              //       actions: [
-              //         IconButton(
-              //           icon: const Icon(Icons.settings),
-              //           onPressed: () {},
-              //         ),
-              //       ],
-              //     ),
-              //     body: const SafeArea(
-              //       child: Center(
-              //         child: Text("Master"),
-              //       ),
-              //     ),
-              //   );
-              // },
-              tileBuilder: (context, index, selected, ___) => YaruMasterTile(
-                leading: const Icon(Icons.menu),
-                title: Text('Master $index'),
-              ),
+                    ),
+                  ),
+                );
+              },
+              // tileBuilder: (context, index, selected, ___) => YaruMasterTile(
+              //   leading: const Icon(Icons.menu),
+              //   title: Text('Master $index'),
+              // ),
               pageBuilder: (context, index) => YaruDetailPage(
                 appBarTitle: const Text("Detail"),
                 appBarActions: [

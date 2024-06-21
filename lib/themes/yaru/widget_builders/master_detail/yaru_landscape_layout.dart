@@ -1,11 +1,13 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:yaru/yaru.dart';
-import 'package:flutter_adaptive/flutter_adaptive.dart' hide MasterTileBuilder;
+import 'package:yaru/yaru.dart' hide YaruMasterTileBuilder;
+import 'package:flutter_adaptive/flutter_adaptive.dart'
+    hide MasterTileBuilder, YaruMasterTileBuilder;
 
 import 'yaru_master_list_view.dart';
 import 'yaru_paned_view.dart';
+import 'yaru_master_detail_page.dart';
 
 class YaruLandscapeLayout extends StatefulWidget {
   const YaruLandscapeLayout({
@@ -24,7 +26,9 @@ class YaruLandscapeLayout extends StatefulWidget {
     this.appBarTitle,
     this.bottomBar,
     required this.controller,
-  }) : assert((masterBuilder == null) != (tileBuilder == null));
+  })  : assert((masterBuilder == null) != (tileBuilder == null)),
+        assert((masterBuilder != null) == (appBarActions == null)),
+        assert((masterBuilder != null) == (appBarTitle == null));
 
   final GlobalKey<NavigatorState> navigatorKey;
   final List<NavigatorObserver> navigatorObservers;

@@ -176,7 +176,7 @@ class MasterDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AdaptiveMasterDetail(
-      length: 1,
+      length: 8,
       paneLayoutDelegate: const ResizablePaneDelegate(
         initialPaneSize: 280,
         minPageSize: kMasterDetailBreakpoint / 2,
@@ -199,21 +199,22 @@ class MasterDetailPage extends StatelessWidget {
           },
         ),
       ],
-      masterBuilder: (context) {
-        return const AdaptiveScaffold(
-          appBar: AdaptiveAppBar(
-            title: AdaptiveText("Master"),
-          ),
-          body: SafeArea(
-            child: Center(
-              child: AdaptiveText("Master"),
-            ),
-          ),
-        );
-      },
-      // tileBuilder: (context, index, selected, availableWidth) {
-      //   return const Text("Master");
+      // masterBuilder: (context) {
+      //   return const AdaptiveScaffold(
+      //     appBar: AdaptiveAppBar(
+      //       title: AdaptiveText("Master"),
+      //     ),
+      //     body: SafeArea(
+      //       child: Center(
+      //         child: AdaptiveText("Master"),
+      //       ),
+      //     ),
+      //   );
       // },
+      tileBuilder: (context, index, selected, availableWidth) =>
+          AdaptiveMasterTile(
+        title: Text("Master $index"),
+      ),
       pageBuilder: (ctx, index) {
         return AdaptiveDetailPage(
           appBarTitle: const AdaptiveText("Detail"),

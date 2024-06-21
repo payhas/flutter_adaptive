@@ -20,6 +20,7 @@ class YaruTheme extends AdaptiveBundle {
           YaruNavigationBuilder(),
           YaruMasterDetailBuilder(),
           YaruDetailPageBuilder(),
+          YaruMasterTileBuilder(),
         }, bundles: {
           YaruIcons(),
         });
