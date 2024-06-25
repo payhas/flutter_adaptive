@@ -6,6 +6,7 @@ class CupertinoIconButtonBuilder
   @override
   Widget build(BuildContext context, AdaptiveIconButton widget) {
     return CupertinoButton(
+      padding: EdgeInsets.zero,
       onPressed: widget.onPressed,
       child: widget.icon,
     );

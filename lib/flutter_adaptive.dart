@@ -35,8 +35,7 @@ export 'components/adaptive_modal_dialog.dart';
 export 'components/adaptive_modal_bottom_sheet.dart';
 export 'components/adaptive_context_menu_item.dart';
 export 'components/adaptive_context_menu.dart';
-export 'components/adaptive_scaffold.dart';
-export 'components/adaptive_navigation_bar.dart';
+export 'components/adaptive_page.dart';
 export 'components/adaptive_navigation.dart';
 
 export 'icons/adaptive_icons.dart';
@@ -66,10 +65,9 @@ export 'themes/material/widget_builders/material_modal_bottom_sheet_builder.dart
 export 'themes/material/widget_builders/material_context_menu_item_builder.dart';
 export 'themes/material/widget_builders/material_context_menu_builder.dart';
 export 'themes/material/widget_builders/material_icon_builder.dart';
-export 'themes/material/widget_builders/material_scaffold_builder.dart';
+export 'themes/material/widget_builders/material_page_builder.dart';
 export 'themes/material/widget_builders/material_theme_data_builder.dart';
 export 'themes/material/widget_builders/material_app_bar_builder.dart';
-export 'themes/material/widget_builders/material_navigation_bar_builder.dart';
 
 export 'themes/cupertino/cupertino_theme.dart';
 export 'themes/cupertino/cupertino_icons.dart';
@@ -90,10 +88,9 @@ export 'themes/cupertino/widget_builders/cupertino_modal_bottom_sheet_builder.da
 export 'themes/cupertino/widget_builders/cupertino_context_menu_item_builder.dart';
 export 'themes/cupertino/widget_builders/cupertino_context_menu_builder.dart';
 export 'themes/cupertino/widget_builders/cupertino_icon_builder.dart';
-export 'themes/cupertino/widget_builders/cupertino_scaffold_builder.dart';
+export 'themes/cupertino/widget_builders/cupertino_page_builder.dart';
 export 'themes/cupertino/widget_builders/cupertino_theme_data_builder.dart';
 export 'themes/cupertino/widget_builders/cupertino_app_bar_builder.dart';
-export 'themes/cupertino/widget_builders/cupertino_navigation_bar_builder.dart';
 
 export 'themes/fluentui/fluentui_theme.dart';
 export 'themes/fluentui/fluentui_icons.dart';
@@ -112,7 +109,7 @@ export 'themes/fluentui/widget_builders/fluentui_date_picker_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_modal_dialog_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_context_menu_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_icon_builder.dart';
-export 'themes/fluentui/widget_builders/fluentui_scaffold_builder.dart';
+export 'themes/fluentui/widget_builders/fluentui_page_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_theme_data_builder.dart';
 export 'themes/fluentui/widget_builders/fluentui_app_bar_builder.dart';
 
@@ -133,6 +130,7 @@ export 'themes/yaru/widget_builders/yaru_modal_dialog_builder.dart';
 export 'themes/yaru/widget_builders/yaru_context_menu_builder.dart';
 export 'themes/yaru/widget_builders/yaru_icon_builder.dart';
 export 'themes/yaru/widget_builders/yaru_theme_data_builder.dart';
+export 'themes/yaru/widget_builders/yaru_app_bar_builder.dart';
 
 export 'themes/macosui/macosui_theme.dart';
 export 'themes/macosui/macosui_icons.dart';
@@ -150,6 +148,6 @@ export 'themes/macosui/widget_builders/macosui_linear_progress_indicator_builder
 export 'themes/macosui/widget_builders/macosui_date_picker_builder.dart';
 export 'themes/macosui/widget_builders/macosui_modal_dialog_builder.dart';
 export 'themes/macosui/widget_builders/macosui_context_menu_builder.dart';
-export 'themes/macosui/widget_builders/macosui_scaffold_builder.dart';
+export 'themes/macosui/widget_builders/macosui_page_builder.dart';
 export 'themes/macosui/widget_builders/macosui_theme_data_builder.dart';
 export 'themes/macosui/widget_builders/macosui_app_bar_builder.dart';

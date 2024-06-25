@@ -72,24 +72,12 @@ class LinuxNavigationDrawerMenuState extends State<LinuxNavigationDrawerMenu> {
   int _selectedIndex = 0;
   int _selectedGroupIndex = 0;
 
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   void _onItemTapped(int groupIndex, int index) {
     setState(() {
       _selectedGroupIndex = groupIndex;
       _selectedIndex = index;
-    });
-  }
-
-  void _openDrawer() {
-    setState(() {
-      _scaffoldKey.currentState?.openDrawer();
-    });
-  }
-
-  void _closeDrawer() {
-    setState(() {
-      _scaffoldKey.currentState?.closeDrawer();
     });
   }
 
@@ -179,31 +167,7 @@ class LinuxNavigationDrawerMenuState extends State<LinuxNavigationDrawerMenu> {
     if (widget.isPermanent) {
       if (widget.isModal) {
         return Scaffold(
-          key: _scaffoldKey,
-          appBar: YaruWindowTitleBar(
-              platform: YaruWindowControlPlatform.yaru,
-              buttonPadding: const EdgeInsets.all(10.0),
-              buttonSpacing: 10.0,
-              title: Text(
-                drawerGroupDestinations[_selectedGroupIndex]
-                    .destinations[_selectedIndex]
-                    .label,
-                style: Theme.of(context)
-                    .textTheme
-                    .titleSmall
-                    ?.copyWith(fontWeight: FontWeight.bold),
-              ),
-              border: BorderSide.none,
-              backgroundColor: Colors.transparent,
-              leading: IconButton(
-                  onPressed: () {
-                    if (_scaffoldKey.currentState?.isDrawerOpen == true) {
-                      _closeDrawer();
-                    } else {
-                      _openDrawer();
-                    }
-                  },
-                  icon: const Icon(YaruIcons.pan_start))),
+          key: scaffoldKey,
           drawer: yaruDrawer(),
           body: drawerGroupDestinations[_selectedGroupIndex]
               .destinations[_selectedIndex]
@@ -216,22 +180,6 @@ class LinuxNavigationDrawerMenuState extends State<LinuxNavigationDrawerMenu> {
               yaruDrawer(),
               Expanded(
                 child: Scaffold(
-                  appBar: YaruWindowTitleBar(
-                    platform: YaruWindowControlPlatform.yaru,
-                    buttonPadding: const EdgeInsets.all(10.0),
-                    buttonSpacing: 10.0,
-                    title: Text(
-                      drawerGroupDestinations[_selectedGroupIndex]
-                          .destinations[_selectedIndex]
-                          .label,
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleSmall
-                          ?.copyWith(fontWeight: FontWeight.bold),
-                    ),
-                    border: BorderSide.none,
-                    backgroundColor: Colors.transparent,
-                  ),
                   body: drawerGroupDestinations[_selectedGroupIndex]
                       .destinations[_selectedIndex]
                       .page,
@@ -245,32 +193,7 @@ class LinuxNavigationDrawerMenuState extends State<LinuxNavigationDrawerMenu> {
       return LayoutBuilder(
         builder: (context, constraints) {
           return Scaffold(
-              key: _scaffoldKey,
-              appBar: YaruWindowTitleBar(
-                platform: YaruWindowControlPlatform.yaru,
-                buttonPadding: const EdgeInsets.all(10.0),
-                buttonSpacing: 10.0,
-                leading: IconButton(
-                    onPressed: () {
-                      if (_scaffoldKey.currentState?.isDrawerOpen == true) {
-                        _closeDrawer();
-                      } else {
-                        _openDrawer();
-                      }
-                    },
-                    icon: const Icon(YaruIcons.pan_start)),
-                title: Text(
-                  drawerGroupDestinations[_selectedGroupIndex]
-                      .destinations[_selectedIndex]
-                      .label,
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleSmall
-                      ?.copyWith(fontWeight: FontWeight.bold),
-                ),
-                border: BorderSide.none,
-                backgroundColor: Colors.transparent,
-              ),
+              key: scaffoldKey,
               drawer: Drawer(
                 shape: const RoundedRectangleBorder(),
                 width: constraints.maxWidth,

@@ -101,6 +101,36 @@ class NavigationMobile extends StatelessWidget {
   }
 }
 
+class BottomWithDrawerNavigationMenuScope extends InheritedWidget {
+  const BottomWithDrawerNavigationMenuScope(
+      {super.key,
+      required super.child,
+      required this.drawerSelectedIndex,
+      required this.groupedDrawer});
+
+  final int drawerSelectedIndex;
+  final Widget groupedDrawer;
+
+  @override
+  bool updateShouldNotify(BottomWithDrawerNavigationMenuScope oldWidget) {
+    return drawerSelectedIndex != oldWidget.drawerSelectedIndex;
+  }
+
+  static BottomWithDrawerNavigationMenuScope of(BuildContext context) {
+    final BottomWithDrawerNavigationMenuScope? result =
+        context.dependOnInheritedWidgetOfExactType<
+            BottomWithDrawerNavigationMenuScope>();
+    assert(result != null,
+        'No BottomWithDrawerNavigationMenuScope found in context');
+    return result!;
+  }
+
+  static BottomWithDrawerNavigationMenuScope? maybeOf(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<
+        BottomWithDrawerNavigationMenuScope>();
+  }
+}
+
 class BottomWithDrawerNavigationMenu extends StatefulWidget {
   BottomWithDrawerNavigationMenu({super.key, required this.groupDestinations})
       : assert(
@@ -115,11 +145,11 @@ class BottomWithDrawerNavigationMenu extends StatefulWidget {
         assert(
           groupDestinations
                   .expand((group) => group.destinations)
-                  .where(
-                      (destination) => destination.showOnDrawerSidebar == true)
+                  .where((destination) =>
+                      destination.showOnDrawerWhenBottomWithDrawer == true)
                   .length >=
               2,
-          'There must be at least 2 AdaptiveDestinations with showOnDrawerSidebar = true',
+          'There must be at least 2 AdaptiveDestinations with showOnDrawerWhenBottomWithDrawer = true',
         );
 
   final List<AdaptiveGroupDestination> groupDestinations;
@@ -144,7 +174,7 @@ class BottomWithDrawerNavigationMenuState
   @override
   Widget build(BuildContext context) {
     var drawerGroupDestinations =
-        drawerSidebarGroupDestinations(widget.groupDestinations);
+        drawerWhenBottomWithDrawerGroupDestinations(widget.groupDestinations);
 
     var drawerDestinations =
         drawerGroupDestinations.expand((group) => group.destinations).toList();
@@ -154,11 +184,8 @@ class BottomWithDrawerNavigationMenuState
         .where((destination) => destination.showOnBottomAppBar == true)
         .toList();
 
-    return Scaffold(
-      appBar: AppBar(
-          title:
-              Text(bottomAppBarDestinations[_bottomAppBarSelectedIndex].label)),
-      drawer: GroupedNavigationDrawer(
+    Widget groupedDrawer() {
+      return GroupedNavigationDrawer(
           groupDestinations: drawerGroupDestinations,
           onDestinationSelected: (index) {
             setState(() {
@@ -166,27 +193,30 @@ class BottomWithDrawerNavigationMenuState
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => Scaffold(
-                          appBar: AppBar(
-                              title: Text(
-                                  drawerDestinations[_drawerSelectedIndex]
-                                      .label)),
-                          body:
-                              drawerDestinations[_drawerSelectedIndex].page)));
+                      builder: (context) =>
+                          drawerDestinations[_drawerSelectedIndex].page));
             });
           },
-          selectedIndex: _drawerSelectedIndex),
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _bottomAppBarSelectedIndex,
-        onDestinationSelected: _bottomAppBarOnItemTapped,
-        destinations: bottomAppBarDestinations
-            .map((destination) => NavigationDestination(
-                  icon: destination.icon,
-                  label: destination.label,
-                ))
-            .toList(),
+          selectedIndex: _drawerSelectedIndex);
+    }
+
+    return BottomWithDrawerNavigationMenuScope(
+      drawerSelectedIndex: _drawerSelectedIndex,
+      groupedDrawer: groupedDrawer(),
+      child: Scaffold(
+        drawer: groupedDrawer(),
+        bottomNavigationBar: NavigationBar(
+          selectedIndex: _bottomAppBarSelectedIndex,
+          onDestinationSelected: _bottomAppBarOnItemTapped,
+          destinations: bottomAppBarDestinations
+              .map((destination) => NavigationDestination(
+                    icon: destination.icon,
+                    label: destination.label,
+                  ))
+              .toList(),
+        ),
+        body: bottomAppBarDestinations[_bottomAppBarSelectedIndex].page,
       ),
-      body: bottomAppBarDestinations[_bottomAppBarSelectedIndex].page,
     );
   }
 }
@@ -300,6 +330,35 @@ class NavigationRailMenuState extends State<NavigationRailMenu> {
   }
 }
 
+class ModalNavigationDrawerMenuScope extends InheritedWidget {
+  const ModalNavigationDrawerMenuScope(
+      {super.key,
+      required super.child,
+      required this.drawerSelectedIndex,
+      required this.groupedDrawer});
+
+  final int drawerSelectedIndex;
+  final Widget groupedDrawer;
+
+  @override
+  bool updateShouldNotify(ModalNavigationDrawerMenuScope oldWidget) {
+    return drawerSelectedIndex != oldWidget.drawerSelectedIndex;
+  }
+
+  static ModalNavigationDrawerMenuScope of(BuildContext context) {
+    final ModalNavigationDrawerMenuScope? result = context
+        .dependOnInheritedWidgetOfExactType<ModalNavigationDrawerMenuScope>();
+    assert(
+        result != null, 'No ModalNavigationDrawerMenuScope found in context');
+    return result!;
+  }
+
+  static ModalNavigationDrawerMenuScope? maybeOf(BuildContext context) {
+    return context
+        .dependOnInheritedWidgetOfExactType<ModalNavigationDrawerMenuScope>();
+  }
+}
+
 class ModalNavigationDrawerMenu extends StatefulWidget {
   ModalNavigationDrawerMenu({super.key, required this.groupDestinations})
       : assert(
@@ -338,13 +397,20 @@ class ModalNavigationDrawerMenuState extends State<ModalNavigationDrawerMenu> {
     var allDestinations =
         drawerGroupDestinations.expand((group) => group.destinations).toList();
 
-    return Scaffold(
-      appBar: AppBar(title: Text(allDestinations[_selectedIndex].label)),
-      drawer: GroupedNavigationDrawer(
+    Widget groupedDrawer() {
+      return GroupedNavigationDrawer(
           groupDestinations: drawerGroupDestinations,
           onDestinationSelected: _onItemTapped,
-          selectedIndex: _selectedIndex),
-      body: allDestinations[_selectedIndex].page,
+          selectedIndex: _selectedIndex);
+    }
+
+    return ModalNavigationDrawerMenuScope(
+      drawerSelectedIndex: _selectedIndex,
+      groupedDrawer: groupedDrawer(),
+      child: Scaffold(
+        drawer: groupedDrawer(),
+        body: allDestinations[_selectedIndex].page,
+      ),
     );
   }
 }

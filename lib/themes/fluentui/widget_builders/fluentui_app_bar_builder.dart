@@ -3,40 +3,22 @@ import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 class FluentUIAppBarBuilder extends AdaptiveWidgetBuilder<AdaptiveAppBar> {
   @override
-  CommandBar build(BuildContext context, AdaptiveAppBar component) {
-    return CommandBar(
-      primaryItems: mapPrimaryItems(component),
+  Widget build(BuildContext context, AdaptiveAppBar component) {
+    return Row(
+      children: [
+        component.leading ?? const SizedBox.shrink(),
+        Expanded(
+          child: CommandBar(
+              mainAxisAlignment: MainAxisAlignment.end,
+              primaryItems: component.actions?.map((action) {
+                    return CommandBarButton(
+                        onPressed: action.onPressed,
+                        icon: action.icon,
+                        label: action.label);
+                  }).toList() ??
+                  []),
+        ),
+      ],
     );
-  }
-
-  List<CommandBarItem> mapPrimaryItems(AdaptiveAppBar component) {
-    var items = List<CommandBarItem>.empty();
-    if (component.title != null) {
-      items.add(CommandBarWidget(child: component.title!));
-    }
-
-    return items;
-  }
-}
-
-class CommandBarWidget extends CommandBarItem {
-  const CommandBarWidget({
-    super.key,
-    required this.child,
-  });
-
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context, CommandBarItemDisplayMode displayMode) {
-    switch (displayMode) {
-      case CommandBarItemDisplayMode.inPrimary:
-      case CommandBarItemDisplayMode.inPrimaryCompact:
-        return CommandBarItemInPrimary(
-          child: child,
-        );
-      case CommandBarItemDisplayMode.inSecondary:
-        return child;
-    }
   }
 }

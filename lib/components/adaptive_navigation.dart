@@ -34,6 +34,7 @@ class AdaptiveDestination {
     this.showOnNavigationRail,
     this.showOnBottomAppBar,
     this.showOnDrawerSidebar = true,
+    this.showOnDrawerWhenBottomWithDrawer = true,
   });
 
   final Widget icon;
@@ -42,6 +43,7 @@ class AdaptiveDestination {
   final bool? showOnNavigationRail;
   final bool? showOnBottomAppBar;
   final bool showOnDrawerSidebar;
+  final bool showOnDrawerWhenBottomWithDrawer;
 }
 
 class AdaptiveGroupDestination {
@@ -62,6 +64,20 @@ List<AdaptiveGroupDestination> drawerSidebarGroupDestinations(
         return AdaptiveGroupDestination(
             name: group.name, destinations: filteredDestinations);
       })
+      .where((group) => group.destinations.isNotEmpty)
+      .toList();
+}
+
+List<AdaptiveGroupDestination> drawerWhenBottomWithDrawerGroupDestinations(
+    List<AdaptiveGroupDestination> groupDestinations) {
+  return groupDestinations
+      .map((group) {
+    List<AdaptiveDestination> filteredDestinations = group.destinations
+        .where((destination) => destination.showOnDrawerWhenBottomWithDrawer)
+        .toList();
+    return AdaptiveGroupDestination(
+        name: group.name, destinations: filteredDestinations);
+  })
       .where((group) => group.destinations.isNotEmpty)
       .toList();
 }

@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           builder: (context, theme, _) => AdaptiveApp(
             theme: theme.getTheme(),
             debugShowCheckedModeBanner: false,
-            home: const AdaptiveNavigation(
+            home: AdaptiveNavigation(
                 showNavigationDrawerOnMobile: true,
                 showBottomNavigationBarOnMobile: true,
                 groupDestinations: <AdaptiveGroupDestination>[
@@ -33,27 +33,84 @@ class MyApp extends StatelessWidget {
                       name: "Files",
                       destinations: <AdaptiveDestination>[
                         AdaptiveDestination(
+                          showOnDrawerWhenBottomWithDrawer: false,
                           icon: AdaptiveIcon(
                             AdaptiveIcons.home,
                           ),
                           label: 'Home',
-                          page: MyHomePage(title: "Home Page"),
-                          showOnBottomAppBar: true,
+                          page: AdaptivePage(
+                              appBar: AdaptiveAppBar(
+                                title: AdaptiveText("Home"),
+                                actions: [
+                                  AdaptiveAppBarAction(
+                                    onPressed: () {},
+                                    label: AdaptiveText('Bluetooth'),
+                                    icon: AdaptiveIcon(AdaptiveIcons.bluetooth),
+                                  ),
+                                  AdaptiveAppBarAction(
+                                      onPressed: () {},
+                                      label: AdaptiveText('Search'),
+                                      icon: AdaptiveIcon(AdaptiveIcons.search)),
+                                  AdaptiveAppBarAction(
+                                      onPressed: () {},
+                                      label: AdaptiveText('Edit'),
+                                      icon: AdaptiveIcon(AdaptiveIcons.edit)),
+                                ],
+                              ),
+                              bottomBar: Container(
+                                color: theme.getTheme().brightness ==
+                                        Brightness.light
+                                    ? Colors.white
+                                    : Colors.black26,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 8.0),
+                                  child: Row(children: [
+                                    AdaptiveIconButton(
+                                        onPressed: () {},
+                                        icon: AdaptiveIcon(AdaptiveIcons.add)),
+                                    Expanded(
+                                        child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: AdaptiveTextInput(
+                                          placeholder: "Message"),
+                                    )),
+                                    AdaptiveIconButton(
+                                        onPressed: () {},
+                                        icon: AdaptiveIcon(AdaptiveIcons.send)),
+                                  ]),
+                                ),
+                              ),
+                              body: MyHomePage()),
                           showOnNavigationRail: true,
+                          showOnBottomAppBar: true,
                         ),
                         AdaptiveDestination(
+                          showOnDrawerWhenBottomWithDrawer: false,
                           icon: AdaptiveIcon(AdaptiveIcons.chat),
                           label: 'Chat',
-                          page: Center(child: Text('Chat Page')),
-                          showOnBottomAppBar: true,
+                          page: AdaptivePage(
+                              appBar: AdaptiveAppBar(
+                                title: Text("Chat"),
+                                actions: [
+                                  AdaptiveAppBarAction(
+                                      onPressed: () {},
+                                      label: AdaptiveText('Search'),
+                                      icon: AdaptiveIcon(AdaptiveIcons.search)),
+                                ],
+                              ),
+                              body: Center(child: Text('Chat Page'))),
                           showOnNavigationRail: true,
+                          showOnBottomAppBar: true,
                         ),
                         AdaptiveDestination(
+                          showOnDrawerWhenBottomWithDrawer: false,
                           icon: AdaptiveIcon(AdaptiveIcons.music_note),
                           label: 'Music',
-                          page: Center(child: Text('Music Page')),
-                          showOnBottomAppBar: true,
+                          page: AdaptivePage(
+                              body: Center(child: Text('Music Page'))),
                           showOnNavigationRail: true,
+                          showOnBottomAppBar: true,
                         ),
                       ]),
                   AdaptiveGroupDestination(
@@ -64,29 +121,47 @@ class MyApp extends StatelessWidget {
                             AdaptiveIcons.edit,
                           ),
                           label: 'Edit',
-                          page: Center(child: Text('Edit Page')),
+                          page: AdaptivePage(
+                              appBar: AdaptiveAppBar(
+                                actions: [
+                                  AdaptiveAppBarAction(
+                                      onPressed: () {},
+                                      label: AdaptiveText('Aspect Ratio'),
+                                      icon: AdaptiveIcon(
+                                          AdaptiveIcons.aspect_ratio)),
+                                ],
+                              ),
+                              body: Center(child: Text('Edit Page'))),
                           showOnNavigationRail: true,
                         ),
                         AdaptiveDestination(
                           icon: AdaptiveIcon(AdaptiveIcons.cake),
                           label: 'Cake',
-                          page: Center(child: Text('Cake Page')),
+                          page: AdaptivePage(
+                              appBar: AdaptiveAppBar(),
+                              body: Center(child: Text('Cake Page'))),
                         ),
                         AdaptiveDestination(
                           icon: AdaptiveIcon(AdaptiveIcons.book),
                           label: 'Book',
-                          page: Center(child: Text('Book Page')),
+                          page: AdaptivePage(
+                              appBar: AdaptiveAppBar(),
+                              body: Center(child: Text('Book Page'))),
                           showOnNavigationRail: true,
                         ),
                         AdaptiveDestination(
                           icon: AdaptiveIcon(AdaptiveIcons.camera),
                           label: 'Camera',
-                          page: Center(child: Text('Camera Page')),
+                          page: AdaptivePage(
+                              appBar: AdaptiveAppBar(),
+                              body: Center(child: Text('Camera Page'))),
                         ),
                         AdaptiveDestination(
                           icon: AdaptiveIcon(AdaptiveIcons.badge),
                           label: 'Badge',
-                          page: Center(child: Text('Badge Page')),
+                          page: AdaptivePage(
+                              appBar: AdaptiveAppBar(),
+                              body: Center(child: Text('Badge Page'))),
                         ),
                       ]),
                   AdaptiveGroupDestination(
@@ -97,27 +172,33 @@ class MyApp extends StatelessWidget {
                             AdaptiveIcons.album,
                           ),
                           label: 'Album',
-                          page: Center(child: Text('Album Page')),
-                          showOnBottomAppBar: true,
+                          page: AdaptivePage(
+                              appBar: AdaptiveAppBar(),
+                              body: Center(child: Text('Album Page'))),
                           showOnNavigationRail: true,
                         ),
                         AdaptiveDestination(
                           icon: AdaptiveIcon(AdaptiveIcons.bluetooth),
                           label: 'Bluetooth',
-                          page: Center(child: Text('Bluetooth Page')),
+                          page: AdaptivePage(
+                              appBar: AdaptiveAppBar(),
+                              body: Center(child: Text('Bluetooth Page'))),
                           showOnNavigationRail: true,
                         ),
                         AdaptiveDestination(
                           icon: AdaptiveIcon(AdaptiveIcons.coffee),
                           label: 'Coffee',
-                          page: Center(child: Text('Coffee Page')),
-                          showOnBottomAppBar: true,
+                          page: AdaptivePage(
+                              appBar: AdaptiveAppBar(),
+                              body: Center(child: Text('Coffee Page'))),
                           showOnNavigationRail: true,
                         ),
                         AdaptiveDestination(
                           icon: AdaptiveIcon(AdaptiveIcons.airplanemode_active),
                           label: 'Airplane',
-                          page: Center(child: Text('Airplane Page')),
+                          page: AdaptivePage(
+                              appBar: AdaptiveAppBar(),
+                              body: Center(child: Text('Airplane Page'))),
                         ),
                       ]),
                   AdaptiveGroupDestination(
@@ -128,17 +209,23 @@ class MyApp extends StatelessWidget {
                             AdaptiveIcons.cloud,
                           ),
                           label: 'Cloud',
-                          page: Center(child: Text('Cloud Page')),
+                          page: AdaptivePage(
+                              appBar: AdaptiveAppBar(),
+                              body: Center(child: Text('Cloud Page'))),
                         ),
                         AdaptiveDestination(
                           icon: AdaptiveIcon(AdaptiveIcons.diamond),
                           label: 'Diamond',
-                          page: Center(child: Text('Diamond Page')),
+                          page: AdaptivePage(
+                              appBar: AdaptiveAppBar(),
+                              body: Center(child: Text('Diamond Page'))),
                         ),
                         AdaptiveDestination(
                           icon: AdaptiveIcon(AdaptiveIcons.alarm),
                           label: 'Alarm',
-                          page: Center(child: Text('Alarm Page')),
+                          page: AdaptivePage(
+                              appBar: AdaptiveAppBar(),
+                              body: Center(child: Text('Alarm Page'))),
                         ),
                       ]),
                 ]),
@@ -150,9 +237,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
