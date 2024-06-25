@@ -72,15 +72,7 @@ class MaterialMasterDetailPage extends StatefulWidget {
     this.onGenerateRoute,
     this.onUnknownRoute,
   })  : assert(initialIndex == null || controller == null),
-        assert((masterBuilder == null) != (tileBuilder == null)),
-        assert((length == null) !=
-            (controller ==
-                null)) /*,
-        assert((masterBuilder != null) == (controller != null)),
-        assert((masterBuilder == null) != (length == null)),
-        assert((masterBuilder != null) == (appBarActions == null)),
-        assert((masterBuilder != null) == (appBarTitle == null))*/
-  ;
+        assert((length == null) != (controller == null));
 
   /// The total number of pages.
   final int? length;

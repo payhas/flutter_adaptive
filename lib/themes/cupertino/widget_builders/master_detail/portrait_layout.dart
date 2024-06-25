@@ -21,12 +21,7 @@ class PortraitLayout extends StatefulWidget {
     this.appBarTitle,
     this.bottomBar,
     required this.controller,
-  }) : assert((masterBuilder == null) !=
-            (tileBuilder ==
-                null)) /*,
-        assert((masterBuilder != null) == (appBarActions == null)),
-        assert((masterBuilder != null) == (appBarTitle == null))*/
-  ;
+  });
 
   final GlobalKey<NavigatorState> navigatorKey;
   final List<NavigatorObserver> navigatorObservers;

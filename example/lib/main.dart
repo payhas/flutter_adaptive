@@ -506,7 +506,7 @@ class MasterDetailPage extends StatelessWidget {
               },
             ),
           ],
-          body: const MyHomePage(title: "Detail"),
+          body: Center(child: Text("Detail $index")),
         );
       },
     );
