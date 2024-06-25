@@ -114,7 +114,7 @@ packages:
     source: hosted
     version: "2.1.2"
   fluent_ui:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: fluent_ui
       sha256: a8c76cb501303d108cb9bd33e516da7cfd078031ff427d68eab6069bf4492a2c
