@@ -5,7 +5,6 @@ import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart'
 
 import 'master_detail_page.dart';
 import 'master_list_view.dart';
-import 'master_detail_page_controller.dart';
 
 class PortraitLayout extends StatefulWidget {
   const PortraitLayout({
@@ -23,9 +22,12 @@ class PortraitLayout extends StatefulWidget {
     this.appBarTitle,
     this.bottomBar,
     required this.controller,
-  })  : assert((masterBuilder == null) != (tileBuilder == null)),
+  }) : assert((masterBuilder == null) !=
+            (tileBuilder ==
+                null)) /*,
         assert((masterBuilder != null) == (appBarActions == null)),
-        assert((masterBuilder != null) == (appBarTitle == null));
+        assert((masterBuilder != null) == (appBarTitle == null))*/
+  ;
 
   final GlobalKey<NavigatorState> navigatorKey;
   final List<NavigatorObserver> navigatorObservers;
@@ -43,7 +45,7 @@ class PortraitLayout extends StatefulWidget {
 
   final Widget? bottomBar;
 
-  final MacosUIPageController controller;
+  final AdaptiveMasterDetailPageController controller;
 
   @override
   State<PortraitLayout> createState() => _PortraitLayoutState();

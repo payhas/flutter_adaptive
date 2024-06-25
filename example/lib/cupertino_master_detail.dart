@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           appBarActions: [
             MasterDetailAppBarActionsItem(
               title: "Settings",
-              icon: const Icon(CupertinoIcons.settings, size: 16.0),
+              // icon: const Icon(CupertinoIcons.settings, size: 16.0),
               onPressed: () {
                 showCupertinoDialog(
                   context: context,
@@ -72,7 +72,7 @@ class MyApp extends StatelessWidget {
             appBarActions: [
               MasterDetailAppBarActionsItem(
                 title: "Call",
-                icon: const Icon(CupertinoIcons.phone, size: 24.0),
+                // icon: const Icon(CupertinoIcons.phone, size: 24.0),
                 onPressed: () {
                   showCupertinoDialog(
                     context: context,
@@ -93,7 +93,7 @@ class MyApp extends StatelessWidget {
               ),
               MasterDetailAppBarActionsItem(
                 title: "Video Call",
-                icon: const Icon(CupertinoIcons.video_camera, size: 24.0),
+                // icon: const Icon(CupertinoIcons.video_camera, size: 24.0),
                 onPressed: () {
                   showCupertinoDialog(
                     context: context,

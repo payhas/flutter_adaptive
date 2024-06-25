@@ -20,7 +20,7 @@ class MacosUIMasterDetailBuilder
       bottomBar: component.bottomBar,
       initialIndex: component.initialIndex,
       onSelected: component.onSelected,
-      controller: component.controller as MacosUIPageController?,
+      controller: component.controller,
       navigatorKey: component.navigatorKey,
       navigatorObservers: component.navigatorObservers,
       initialRoute: component.initialRoute,

@@ -26,9 +26,12 @@ class YaruLandscapeLayout extends StatefulWidget {
     this.appBarTitle,
     this.bottomBar,
     required this.controller,
-  })  : assert((masterBuilder == null) != (tileBuilder == null)),
+  }) : assert((masterBuilder == null) !=
+            (tileBuilder ==
+                null)) /*,
         assert((masterBuilder != null) == (appBarActions == null)),
-        assert((masterBuilder != null) == (appBarTitle == null));
+        assert((masterBuilder != null) == (appBarTitle == null))*/
+  ;
 
   final GlobalKey<NavigatorState> navigatorKey;
   final List<NavigatorObserver> navigatorObservers;
@@ -43,7 +46,7 @@ class YaruLandscapeLayout extends StatefulWidget {
   final List<MasterDetailAppBarActionsItem>? appBarActions;
   final Widget? appBarTitle;
   final Widget? bottomBar;
-  final YaruPageController controller;
+  final AdaptiveMasterDetailPageController controller;
 
   @override
   State<YaruLandscapeLayout> createState() => _YaruLandscapeLayoutState();

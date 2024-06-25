@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
           appBarActions: [
             MasterDetailAppBarActionsItem(
               title: "Settings",
-              icon: const Icon(Icons.settings, size: 16.0),
+              // icon: const Icon(Icons.settings, size: 16.0),
               onPressed: () {
                 showDialog(
                   context: context,
@@ -73,7 +73,7 @@ class MyApp extends StatelessWidget {
             appBarActions: [
               MasterDetailAppBarActionsItem(
                 title: "Call",
-                icon: const Icon(Icons.phone, size: 24.0),
+                // icon: const Icon(Icons.phone, size: 24.0),
                 onPressed: () {
                   showDialog(
                     context: context,
@@ -94,7 +94,7 @@ class MyApp extends StatelessWidget {
               ),
               MasterDetailAppBarActionsItem(
                 title: "Video Call",
-                icon: const Icon(Icons.video_call, size: 24.0),
+                // icon: const Icon(Icons.video_call, size: 24.0),
                 onPressed: () {
                   showDialog(
                     context: context,

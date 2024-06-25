@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'Master-Detail example',
       theme: FluentThemeData.light(),
       darkTheme: FluentThemeData.dark(),
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.dark,
       home: NavigationView(
         content: Builder(builder: (context) {
           return FluentUIMasterDetailPage(
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
             appBarActions: [
               MasterDetailAppBarActionsItem(
                 title: "Settings",
-                icon: const Icon(FluentIcons.settings, size: 16.0),
+                // icon: const Icon(FluentIcons.settings, size: 16.0),
                 onPressed: () {
                   showDialog(
                     context: context,
@@ -91,7 +91,7 @@ class MyApp extends StatelessWidget {
                 appBarActions: [
                   MasterDetailAppBarActionsItem(
                     title: "Call",
-                    icon: const Icon(FluentIcons.phone, size: 24.0),
+                    // icon: const Icon(FluentIcons.phone, size: 24.0),
                     onPressed: () {
                       showDialog(
                         context: ctx,
@@ -112,7 +112,7 @@ class MyApp extends StatelessWidget {
                   ),
                   MasterDetailAppBarActionsItem(
                     title: "Video Call",
-                    icon: const Icon(FluentIcons.camera, size: 24.0),
+                    // icon: const Icon(FluentIcons.camera, size: 24.0),
                     onPressed: () {
                       showDialog(
                         context: ctx,

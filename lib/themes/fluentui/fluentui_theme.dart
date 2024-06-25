@@ -24,6 +24,7 @@ class FluentUITheme extends AdaptiveBundle {
           FluentUIMasterDetailBuilder(),
           FluentUIDetailPageBuilder(),
           FluentUIMasterTileBuilder(),
+          FluentUIListTileBuilder(),
         }, bundles: {
           FluentUIIcons(),
         });

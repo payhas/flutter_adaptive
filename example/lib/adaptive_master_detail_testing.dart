@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter_adaptive/flutter_adaptive.dart';
 import 'package:provider/provider.dart';
 import 'package:yaru/widgets.dart';
@@ -175,53 +177,68 @@ class MasterDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final length = Random().nextInt(8) + 1;
+    final controller = AdaptiveMasterDetailPageController(length: length);
+
     return AdaptiveMasterDetail(
-      length: 8,
       paneLayoutDelegate: const ResizablePaneDelegate(
         initialPaneSize: 280,
         minPageSize: kMasterDetailBreakpoint / 2,
         minPaneSize: 175,
+        paneSide: PaneSide.end,
       ),
-      appBarTitle: const AdaptiveText("Master"),
-      appBarActions: [
-        MasterDetailAppBarActionsItem(
-          title: "Settings",
-          // icon: AdaptiveIcon(AdaptiveIcons.settings),
-          onPressed: () {
-            showAdaptiveModalDialog(
-              context: context,
-              title: const Text("Settings"),
-              content: const Text("Application settings"),
-              primaryButton: AdaptiveModalDialogAction(
-                  onPressed: () => Navigator.pop(context),
-                  child: const AdaptiveText("OK")),
-            );
-          },
-        ),
-      ],
-      // masterBuilder: (context) {
-      //   return const AdaptiveScaffold(
-      //     appBar: AdaptiveAppBar(
-      //       title: AdaptiveText("Master"),
-      //     ),
-      //     body: SafeArea(
-      //       child: Center(
-      //         child: AdaptiveText("Master"),
-      //       ),
-      //     ),
-      //   );
-      // },
-      tileBuilder: (context, index, selected, availableWidth) =>
-          AdaptiveMasterTile(
-        title: Text("Master $index"),
-      ),
+      controller: controller,
+      masterBuilder: (context) {
+        return AdaptiveScaffold(
+          appBar: const AdaptiveAppBar(
+            title: AdaptiveText("Master"),
+          ),
+          body: SafeArea(
+            child: ListView.builder(
+              itemCount: length,
+              itemBuilder: (context, index) {
+                return AdaptiveListTile(
+                  title: Text("Master $index"),
+                  onTap: () {
+                    controller.index = index;
+                  },
+                );
+              },
+            ),
+          ),
+        );
+      },
+      // length: 8,
+      // appBarTitle: const AdaptiveText("Master"),
+      // appBarActions: [
+      //   MasterDetailAppBarActionsItem(
+      //     title: "Settings",
+      //     // icon: AdaptiveIcon(AdaptiveIcons.settings),
+      //     onPressed: () {
+      //       showAdaptiveModalDialog(
+      //         context: context,
+      //         title: const Text("Settings"),
+      //         content: const Text("Application settings"),
+      //         primaryButton: AdaptiveModalDialogAction(
+      //             onPressed: () => Navigator.pop(context),
+      //             child: const AdaptiveText("OK")),
+      //       );
+      //     },
+      //   ),
+      // ],
+      // tileBuilder: (context, index, selected, availableWidth) =>
+      //     AdaptiveMasterTile(
+      //   title: Text("Master $index"),
+      // ),
       pageBuilder: (ctx, index) {
         return AdaptiveDetailPage(
-          appBarTitle: const AdaptiveText("Detail"),
+          appBarTitle: AdaptiveText("Detail $index"),
           appBarActions: [
             MasterDetailAppBarActionsItem(
               title: "Call",
-              // icon: const Icon(CupertinoIcons.phone, size: 24.0),
+              icon: const AdaptiveIcon(
+                AdaptiveIcons.phone,
+              ),
               onPressed: () {
                 showAdaptiveModalDialog<void>(
                   context: context,
@@ -235,7 +252,7 @@ class MasterDetailPage extends StatelessWidget {
             ),
             MasterDetailAppBarActionsItem(
               title: "Video Call",
-              // icon: const Icon(CupertinoIcons.video_camera, size: 24.0),
+              icon: const AdaptiveIcon(AdaptiveIcons.videocam),
               onPressed: () {
                 showAdaptiveModalDialog(
                   context: context,

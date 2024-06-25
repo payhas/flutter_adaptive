@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:yaru/yaru.dart' show YaruPageController;
 import 'package:flutter_adaptive/flutter_adaptive.dart' hide YaruIcons;
 import 'master_detail/master_detail_library.dart';
 
@@ -20,7 +19,7 @@ class YaruMasterDetailBuilder
       bottomBar: component.bottomBar,
       initialIndex: component.initialIndex,
       onSelected: component.onSelected,
-      controller: component.controller as YaruPageController?,
+      controller: component.controller,
       navigatorKey: component.navigatorKey,
       navigatorObservers: component.navigatorObservers,
       initialRoute: component.initialRoute,

@@ -3,7 +3,6 @@ import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 import 'landscape_layout.dart';
 import 'portrait_layout.dart';
-import 'master_detail_page_controller.dart';
 import 'constants.dart';
 
 const _kDefaultPaneWidth = 280.0;
@@ -75,11 +74,14 @@ class CupertinoMasterDetailPage extends StatefulWidget {
     this.onUnknownRoute,
   })  : assert(initialIndex == null || controller == null),
         assert((masterBuilder == null) != (tileBuilder == null)),
-        assert((masterBuilder == null) ==
-            ((length == null) != (controller == null))),
+        assert((length == null) !=
+            (controller ==
+                null)) /*,
+        assert((masterBuilder != null) == (controller != null)),
         assert((masterBuilder == null) != (length == null)),
         assert((masterBuilder != null) == (appBarActions == null)),
-        assert((masterBuilder != null) == (appBarTitle == null));
+        assert((masterBuilder != null) == (appBarTitle == null))*/
+  ;
 
   /// The total number of pages.
   final int? length;
@@ -142,7 +144,7 @@ class CupertinoMasterDetailPage extends StatefulWidget {
   final ValueChanged<int?>? onSelected;
 
   /// An optional controller that can be used to navigate to a specific index.
-  final CupertinoPageController? controller;
+  final AdaptiveMasterDetailPageController? controller;
 
   /// A key to use when building the [Navigator] widget.
   final GlobalKey<NavigatorState>? navigatorKey;
@@ -190,11 +192,11 @@ class CupertinoMasterDetailPage extends StatefulWidget {
 }
 
 class _MasterDetailPageState extends State<CupertinoMasterDetailPage> {
-  late CupertinoPageController _controller;
+  late AdaptiveMasterDetailPageController _controller;
   late final GlobalKey<NavigatorState> _navigatorKey;
 
   void _updateController() => _controller = widget.controller ??
-      CupertinoPageController(
+      AdaptiveMasterDetailPageController(
         length: (widget.masterBuilder != null)
             ? 0
             : widget.length ?? widget.controller!.length,

@@ -38,7 +38,16 @@ class AdaptiveMasterDetail extends AdaptiveWidget {
     this.initialRoute,
     this.onGenerateRoute,
     this.onUnknownRoute,
-  }) : assert((masterBuilder == null) != (tileBuilder == null));
+  })  : assert(initialIndex == null || controller == null),
+        assert((masterBuilder == null) != (tileBuilder == null)),
+        assert((length == null) !=
+            (controller ==
+                null)) /*,
+        // assert((masterBuilder != null) == (controller != null)),
+        // assert((masterBuilder == null) != (length == null)),
+        // assert((masterBuilder != null) == (appBarActions == null)),
+        assert((masterBuilder != null) == (appBarTitle == null))*/
+  ;
 
   /// The total number of pages.
   final int? length;
@@ -162,6 +171,6 @@ class MasterDetailAppBarActionsItem {
   });
 
   String title;
-  /*Adaptive*/ Icon? icon;
+  AdaptiveIcon? icon;
   VoidCallback? onPressed;
 }

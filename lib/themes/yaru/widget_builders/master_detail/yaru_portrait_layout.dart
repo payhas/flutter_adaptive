@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:yaru/foundation.dart' show YaruPageController;
 import 'package:yaru/widgets.dart'
     show YaruTitleBarTheme, YaruTitleBarThemeData, YaruTitleBarStyle;
 import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart'
@@ -26,9 +25,12 @@ class YaruPortraitLayout extends StatefulWidget {
     this.appBarTitle,
     this.bottomBar,
     required this.controller,
-  })  : assert((masterBuilder == null) != (tileBuilder == null)),
+  }) : assert((masterBuilder == null) !=
+            (tileBuilder ==
+                null)) /*,
         assert((masterBuilder != null) == (appBarActions == null)),
-        assert((masterBuilder != null) == (appBarTitle == null));
+        assert((masterBuilder != null) == (appBarTitle == null))*/
+  ;
 
   final GlobalKey<NavigatorState> navigatorKey;
   final List<NavigatorObserver> navigatorObservers;
@@ -46,7 +48,7 @@ class YaruPortraitLayout extends StatefulWidget {
 
   final Widget? bottomBar;
 
-  final YaruPageController controller;
+  final AdaptiveMasterDetailPageController controller;
 
   @override
   State<YaruPortraitLayout> createState() => _YaruPortraitLayoutState();
@@ -141,7 +143,10 @@ class _YaruPortraitLayoutState extends State<YaruPortraitLayout> {
                       : YaruTitleBarStyle.normal,
                 ),
                 child: (widget.masterBuilder != null)
-                    ? widget.masterBuilder!(context)
+                    ? LayoutBuilder(
+                        builder: (context, constraints) =>
+                            widget.masterBuilder!(context),
+                      )
                     : Scaffold(
                         backgroundColor: theme.sideBarColor,
                         appBar: appBar,

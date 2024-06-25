@@ -3,13 +3,19 @@ import 'package:yaru/yaru.dart'
     hide YaruMasterDetailPage, YaruMasterTile, YaruDetailPage;
 import 'package:flutter_adaptive/themes/yaru/widget_builders/master_detail/master_detail_library.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart'
-    show MasterDetailAppBarActionsItem, ResizablePaneDelegate;
+    show
+        MasterDetailAppBarActionsItem,
+        ResizablePaneDelegate,
+        AdaptiveMasterDetailPageController;
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    const length = 8;
+    final controller = AdaptiveMasterDetailPageController(length: length);
+
     return YaruTheme(
       builder: (ctx, yaru, child) {
         return MaterialApp(
@@ -50,6 +56,7 @@ class MyApp extends StatelessWidget {
               //     },
               //   ),
               // ],
+              controller: controller,
               masterBuilder: (context) {
                 return Scaffold(
                   appBar: AppBar(
@@ -63,11 +70,13 @@ class MyApp extends StatelessWidget {
                   ),
                   body: SafeArea(
                     child: ListView.builder(
-                      itemCount: 8,
+                      itemCount: length,
                       itemBuilder: (context, index) {
                         return ListTile(
                           title: Text("Master $index"),
-                          onTap: () {},
+                          onTap: () {
+                            controller.index = index;
+                          },
                         );
                       },
                     ),
@@ -83,7 +92,7 @@ class MyApp extends StatelessWidget {
                 appBarActions: [
                   MasterDetailAppBarActionsItem(
                     title: "Call",
-                    icon: const Icon(Icons.phone, size: 24.0),
+                    // icon: const Icon(Icons.phone, size: 24.0),
                     onPressed: () {
                       showDialog(
                         context: context,
@@ -104,7 +113,7 @@ class MyApp extends StatelessWidget {
                   ),
                   MasterDetailAppBarActionsItem(
                     title: "Video Call",
-                    icon: const Icon(Icons.video_call, size: 24.0),
+                    // icon: const Icon(Icons.video_call, size: 24.0),
                     onPressed: () {
                       showDialog(
                         context: context,
