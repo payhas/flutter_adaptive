@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart' hide PageController;
 import 'package:flutter_adaptive/flutter_adaptive.dart'
-    hide MasterTileBuilder, CupertinoIcons, CupertinoTheme;
+    hide MasterTileBuilder, CupertinoIcons, CupertinoTheme, CupertinoPage;
 
 import 'master_list_view.dart';
 import 'paned_view.dart';

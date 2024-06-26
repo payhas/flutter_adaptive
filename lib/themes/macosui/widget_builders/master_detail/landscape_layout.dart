@@ -4,7 +4,7 @@ import 'package:flutter/material.dart' show Material;
 import 'package:macos_ui/macos_ui.dart';
 import 'package:flutter/cupertino.dart' hide PageController;
 import 'package:flutter_adaptive/flutter_adaptive.dart'
-    hide MasterTileBuilder, CupertinoIcons;
+    hide MasterTileBuilder, CupertinoIcons, CupertinoPage;
 
 import 'master_list_view.dart';
 import 'paned_view.dart';

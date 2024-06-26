@@ -46,8 +46,8 @@ class MyApp extends StatelessWidget {
                                 actions: [
                                   AdaptiveAppBarAction(
                                     onPressed: () {},
-                                    label: AdaptiveText('Bluetooth'),
-                                    icon: AdaptiveIcon(AdaptiveIcons.bluetooth),
+                                    label: Text('Bluetooth'),
+                                     icon: AdaptiveIcon(AdaptiveIcons.bluetooth),
                                   ),
                                   AdaptiveAppBarAction(
                                       onPressed: () {},
