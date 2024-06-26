@@ -17,7 +17,7 @@ class MacosUITheme extends AdaptiveBundle {
           MacosUIDatePickerBuilder(),
           MacosUIModalDialogBuilder(),
           MacosUIContextMenuBuilder(),
-          MacosUIScaffoldBuilder(),
+          MacosUIPageBuilder(),
           MacosUIThemeDataBuilder(),
           MacosUIAppBarBuilder(),
           MacosUINavigationBuilder(),
@@ -27,5 +27,6 @@ class MacosUITheme extends AdaptiveBundle {
           MacosUIListTileBuilder(),
         }, bundles: {
           MacosUIIcons(),
-        });
+        }
+        );
 }

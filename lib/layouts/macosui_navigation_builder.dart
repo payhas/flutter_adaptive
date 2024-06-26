@@ -78,54 +78,7 @@ class MacosNavigationState extends State<MacosNavigation> {
           );
         },
       ),
-      child: MacosPage(
-          content: allDestinations[_selectedIndex].page,
-          title: allDestinations[_selectedIndex].label),
-    );
-  }
-}
-
-class MacosPage extends StatelessWidget {
-  const MacosPage({super.key, required this.content, required this.title});
-
-  final Widget content;
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return MacosScaffold(
-      toolBar: ToolBar(
-        title: Text(title),
-        titleWidth: 150.0,
-        leading: MacosTooltip(
-          message: 'Toggle Sidebar',
-          useMousePosition: false,
-          child: MacosIconButton(
-            icon: MacosIcon(
-              CupertinoIcons.sidebar_left,
-              color: MacosTheme.brightnessOf(context).resolve(
-                const Color.fromRGBO(0, 0, 0, 0.5),
-                const Color.fromRGBO(255, 255, 255, 0.5),
-              ),
-              size: 20.0,
-            ),
-            boxConstraints: const BoxConstraints(
-              minHeight: 20,
-              minWidth: 20,
-              maxWidth: 48,
-              maxHeight: 38,
-            ),
-            onPressed: () => MacosWindowScope.of(context).toggleSidebar(),
-          ),
-        ),
-      ),
-      children: [
-        ContentArea(
-          builder: (context, scrollController) {
-            return content;
-          },
-        ),
-      ],
+      child: allDestinations[_selectedIndex].page,
     );
   }
 }

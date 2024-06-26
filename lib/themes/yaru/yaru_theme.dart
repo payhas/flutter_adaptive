@@ -1,4 +1,5 @@
 import 'package:flutter_adaptive/flutter_adaptive.dart';
+import 'package:flutter_adaptive/themes/yaru/widget_builders/yaru_page_builder.dart';
 
 class YaruTheme extends AdaptiveBundle {
   YaruTheme()
@@ -16,7 +17,9 @@ class YaruTheme extends AdaptiveBundle {
           YaruLinearProgressIndicatorBuilder(),
           YaruModalDialogBuilder(),
           YaruContextMenuBuilder(),
+          YaruPageBuilder(),
           YaruThemeDataBuilder(),
+          YaruAppBarBuilder(),
           YaruNavigationBuilder(),
           YaruMasterDetailBuilder(),
           YaruDetailPageBuilder(),
