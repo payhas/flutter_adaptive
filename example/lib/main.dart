@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart';
 import 'package:provider/provider.dart';
@@ -24,221 +23,232 @@ class MyApp extends StatelessWidget {
       builder: (context) => ChangeNotifierProvider(
         create: (_) => ThemeNotifier(),
         child: Consumer<ThemeNotifier>(
-          builder: (context, theme, _) => AdaptiveApp(
-            theme: theme.getTheme(),
-            debugShowCheckedModeBanner: false,
-            home: AdaptiveNavigation(
-                showNavigationDrawerOnMobile: true,
-                showBottomNavigationBarOnMobile: true,
-                groupDestinations: <AdaptiveGroupDestination>[
-                  AdaptiveGroupDestination(
-                      name: "Files",
-                      destinations: <AdaptiveDestination>[
-                        AdaptiveDestination(
-                          showOnDrawerWhenBottomWithDrawer: false,
-                          icon: AdaptiveIcon(
-                            AdaptiveIcons.home,
-                          ),
-                          label: 'Home',
-                          page: AdaptivePage(
-                              appBar: AdaptiveAppBar(
-                                title: AdaptiveText("Home"),
-                                actions: [
-                                  AdaptiveAppBarAction(
-                                    onPressed: () {},
-                                    label: Text('Bluetooth'),
-                                     icon: AdaptiveIcon(AdaptiveIcons.bluetooth),
-                                  ),
-                                  AdaptiveAppBarAction(
+          builder: (context, theme, _) {
+            Widget bottomBar() {
+              return Container(
+                color: theme.getTheme().brightness == Brightness.light
+                    ? Colors.white
+                    : Colors.black26,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Row(children: [
+                    AdaptiveIconButton(
+                        onPressed: () {},
+                        icon: AdaptiveIcon(AdaptiveIcons.add)),
+                    Expanded(
+                        child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: AdaptiveTextInput(placeholder: "Message"),
+                    )),
+                    AdaptiveIconButton(
+                        onPressed: () {},
+                        icon: AdaptiveIcon(AdaptiveIcons.send)),
+                  ]),
+                ),
+              );
+            }
+
+            return AdaptiveApp(
+              theme: theme.getTheme(),
+              debugShowCheckedModeBanner: false,
+              home: AdaptiveNavigation(
+                  showNavigationDrawerOnMobile: true,
+                  showBottomNavigationBarOnMobile: true,
+                  groupDestinations: <AdaptiveGroupDestination>[
+                    AdaptiveGroupDestination(
+                        name: "Files",
+                        destinations: <AdaptiveDestination>[
+                          AdaptiveDestination(
+                            showOnDrawerWhenBottomWithDrawer: false,
+                            icon: AdaptiveIcon(
+                              AdaptiveIcons.home,
+                            ),
+                            label: 'Home',
+                            page: AdaptivePage(
+                                appBar: AdaptiveAppBar(
+                                  title: AdaptiveText("Home"),
+                                  actions: [
+                                    AdaptiveAppBarAction(
                                       onPressed: () {},
-                                      label: AdaptiveText('Search'),
-                                      icon: AdaptiveIcon(AdaptiveIcons.search)),
-                                  AdaptiveAppBarAction(
-                                      onPressed: () {},
-                                      label: AdaptiveText('Edit'),
-                                      icon: AdaptiveIcon(AdaptiveIcons.edit)),
-                                ],
-                              ),
-                              bottomBar: Container(
-                                color: theme.getTheme().brightness ==
-                                        Brightness.light
-                                    ? Colors.white
-                                    : Colors.black26,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 8.0),
-                                  child: Row(children: [
-                                    AdaptiveIconButton(
+                                      label: Text('Bluetooth'),
+                                      icon:
+                                          AdaptiveIcon(AdaptiveIcons.bluetooth),
+                                    ),
+                                    AdaptiveAppBarAction(
                                         onPressed: () {},
-                                        icon: AdaptiveIcon(AdaptiveIcons.add)),
-                                    Expanded(
-                                        child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: AdaptiveTextInput(
-                                          placeholder: "Message"),
-                                    )),
-                                    AdaptiveIconButton(
+                                        label: AdaptiveText('Search'),
+                                        icon:
+                                            AdaptiveIcon(AdaptiveIcons.search)),
+                                    AdaptiveAppBarAction(
                                         onPressed: () {},
-                                        icon: AdaptiveIcon(AdaptiveIcons.send)),
-                                  ]),
+                                        label: AdaptiveText('Edit'),
+                                        icon: AdaptiveIcon(AdaptiveIcons.edit)),
+                                  ],
                                 ),
-                              ),
-                              body: MyHomePage()),
-                          showOnNavigationRail: true,
-                          showOnBottomAppBar: true,
-                        ),
-                        AdaptiveDestination(
-                          showOnDrawerWhenBottomWithDrawer: false,
-                          icon: AdaptiveIcon(AdaptiveIcons.chat),
-                          label: 'Chat',
-                          page: AdaptivePage(
-                              appBar: AdaptiveAppBar(
-                                title: Text("Chat"),
-                                actions: [
-                                  AdaptiveAppBarAction(
-                                      onPressed: () {},
-                                      label: AdaptiveText('Search'),
-                                      icon: AdaptiveIcon(AdaptiveIcons.search)),
-                                ],
-                              ),
-                              body: Center(child: Text('Chat Page'))),
-                          showOnNavigationRail: true,
-                          showOnBottomAppBar: true,
-                        ),
-                        AdaptiveDestination(
-                          showOnDrawerWhenBottomWithDrawer: false,
-                          icon: AdaptiveIcon(AdaptiveIcons.music_note),
-                          label: 'Music',
-                          page: AdaptivePage(
-                              body: Center(child: Text('Music Page'))),
-                          showOnNavigationRail: true,
-                          showOnBottomAppBar: true,
-                        ),
-                        AdaptiveDestination(
-                          icon: AdaptiveIcon(AdaptiveIcons.album),
-                          label: 'Master-Detail',
-                          page: MasterDetailPage(),
-                          showOnBottomAppBar: true,
-                          showOnNavigationRail: true,
-                        ),
-                      ]),
-                  AdaptiveGroupDestination(
-                      name: "Settings",
-                      destinations: <AdaptiveDestination>[
-                        AdaptiveDestination(
-                          icon: AdaptiveIcon(
-                            AdaptiveIcons.edit,
+                                bottomBar: bottomBar(),
+                                child: MyHomePage()),
+                            showOnNavigationRail: true,
+                            showOnBottomAppBar: true,
                           ),
-                          label: 'Edit',
-                          page: AdaptivePage(
-                              appBar: AdaptiveAppBar(
-                                actions: [
-                                  AdaptiveAppBarAction(
-                                      onPressed: () {},
-                                      label: AdaptiveText('Aspect Ratio'),
-                                      icon: AdaptiveIcon(
-                                          AdaptiveIcons.aspect_ratio)),
-                                ],
-                              ),
-                              body: Center(child: Text('Edit Page'))),
-                          showOnNavigationRail: true,
-                        ),
-                        AdaptiveDestination(
-                          icon: AdaptiveIcon(AdaptiveIcons.cake),
-                          label: 'Cake',
-                          page: AdaptivePage(
-                              appBar: AdaptiveAppBar(),
-                              body: Center(child: Text('Cake Page'))),
-                        ),
-                        AdaptiveDestination(
-                          icon: AdaptiveIcon(AdaptiveIcons.book),
-                          label: 'Book',
-                          page: AdaptivePage(
-                              appBar: AdaptiveAppBar(),
-                              body: Center(child: Text('Book Page'))),
-                          showOnNavigationRail: true,
-                        ),
-                        AdaptiveDestination(
-                          icon: AdaptiveIcon(AdaptiveIcons.camera),
-                          label: 'Camera',
-                          page: AdaptivePage(
-                              appBar: AdaptiveAppBar(),
-                              body: Center(child: Text('Camera Page'))),
-                        ),
-                        AdaptiveDestination(
-                          icon: AdaptiveIcon(AdaptiveIcons.badge),
-                          label: 'Badge',
-                          page: AdaptivePage(
-                              appBar: AdaptiveAppBar(),
-                              body: Center(child: Text('Badge Page'))),
-                        ),
-                      ]),
-                  AdaptiveGroupDestination(
-                      name: "Library",
-                      destinations: <AdaptiveDestination>[
-                        AdaptiveDestination(
-                          icon: AdaptiveIcon(
-                            AdaptiveIcons.album,
+                          AdaptiveDestination(
+                            showOnDrawerWhenBottomWithDrawer: false,
+                            icon: AdaptiveIcon(AdaptiveIcons.chat),
+                            label: 'Chat',
+                            page: AdaptivePage(
+                                appBar: AdaptiveAppBar(
+                                  title: Text("Chat"),
+                                  actions: [
+                                    AdaptiveAppBarAction(
+                                        onPressed: () {},
+                                        label: AdaptiveText('Search'),
+                                        icon:
+                                            AdaptiveIcon(AdaptiveIcons.search)),
+                                  ],
+                                ),
+                                child: Center(child: Text('Chat Page'))),
+                            showOnNavigationRail: true,
+                            showOnBottomAppBar: true,
                           ),
-                          label: 'Album',
-                          page: AdaptivePage(
-                              appBar: AdaptiveAppBar(),
-                              body: Center(child: Text('Album Page'))),
-                          showOnNavigationRail: true,
-                        ),
-                        AdaptiveDestination(
-                          icon: AdaptiveIcon(AdaptiveIcons.bluetooth),
-                          label: 'Bluetooth',
-                          page: AdaptivePage(
-                              appBar: AdaptiveAppBar(),
-                              body: Center(child: Text('Bluetooth Page'))),
-                          showOnNavigationRail: true,
-                        ),
-                        AdaptiveDestination(
-                          icon: AdaptiveIcon(AdaptiveIcons.coffee),
-                          label: 'Coffee',
-                          page: AdaptivePage(
-                              appBar: AdaptiveAppBar(),
-                              body: Center(child: Text('Coffee Page'))),
-                          showOnNavigationRail: true,
-                        ),
-                        AdaptiveDestination(
-                          icon: AdaptiveIcon(AdaptiveIcons.airplanemode_active),
-                          label: 'Airplane',
-                          page: AdaptivePage(
-                              appBar: AdaptiveAppBar(),
-                              body: Center(child: Text('Airplane Page'))),
-                        ),
-                      ]),
-                  AdaptiveGroupDestination(
-                      name: "Search",
-                      destinations: <AdaptiveDestination>[
-                        AdaptiveDestination(
-                          icon: AdaptiveIcon(
-                            AdaptiveIcons.cloud,
+                          AdaptiveDestination(
+                            showOnDrawerWhenBottomWithDrawer: false,
+                            icon: AdaptiveIcon(AdaptiveIcons.music_note),
+                            label: 'Music',
+                            page: AdaptivePage(
+                                child: Center(child: Text('Music Page'))),
+                            showOnNavigationRail: true,
+                            showOnBottomAppBar: true,
                           ),
-                          label: 'Cloud',
-                          page: AdaptivePage(
-                              appBar: AdaptiveAppBar(),
-                              body: Center(child: Text('Cloud Page'))),
-                        ),
-                        AdaptiveDestination(
-                          icon: AdaptiveIcon(AdaptiveIcons.diamond),
-                          label: 'Diamond',
-                          page: AdaptivePage(
-                              appBar: AdaptiveAppBar(),
-                              body: Center(child: Text('Diamond Page'))),
-                        ),
-                        AdaptiveDestination(
-                          icon: AdaptiveIcon(AdaptiveIcons.alarm),
-                          label: 'Alarm',
-                          page: AdaptivePage(
-                              appBar: AdaptiveAppBar(),
-                              body: Center(child: Text('Alarm Page'))),
-                        ),
-                      ]),
-                ]),
-          ),
+                          AdaptiveDestination(
+                            icon: AdaptiveIcon(AdaptiveIcons.album),
+                            label: 'Master-Detail',
+                            page: AdaptivePage(
+                                child: MasterDetailPage(
+                              bottomBar: bottomBar(),
+                            )),
+                            showOnBottomAppBar: true,
+                            showOnNavigationRail: true,
+                            showOnDrawerWhenBottomWithDrawer: true,
+                          ),
+                        ]),
+                    AdaptiveGroupDestination(
+                        name: "Settings",
+                        destinations: <AdaptiveDestination>[
+                          AdaptiveDestination(
+                            icon: AdaptiveIcon(
+                              AdaptiveIcons.edit,
+                            ),
+                            label: 'Edit',
+                            page: AdaptivePage(
+                                appBar: AdaptiveAppBar(
+                                  actions: [
+                                    AdaptiveAppBarAction(
+                                        onPressed: () {},
+                                        label: AdaptiveText('Aspect Ratio'),
+                                        icon: AdaptiveIcon(
+                                            AdaptiveIcons.aspect_ratio)),
+                                  ],
+                                ),
+                                child: Center(child: Text('Edit Page'))),
+                            showOnNavigationRail: true,
+                          ),
+                          AdaptiveDestination(
+                            icon: AdaptiveIcon(AdaptiveIcons.cake),
+                            label: 'Cake',
+                            page: AdaptivePage(
+                                appBar: AdaptiveAppBar(),
+                                child: Center(child: Text('Cake Page'))),
+                          ),
+                          AdaptiveDestination(
+                            icon: AdaptiveIcon(AdaptiveIcons.book),
+                            label: 'Book',
+                            page: AdaptivePage(
+                                appBar: AdaptiveAppBar(),
+                                child: Center(child: Text('Book Page'))),
+                            showOnNavigationRail: true,
+                          ),
+                          AdaptiveDestination(
+                            icon: AdaptiveIcon(AdaptiveIcons.camera),
+                            label: 'Camera',
+                            page: AdaptivePage(
+                                appBar: AdaptiveAppBar(),
+                                child: Center(child: Text('Camera Page'))),
+                          ),
+                          AdaptiveDestination(
+                            icon: AdaptiveIcon(AdaptiveIcons.badge),
+                            label: 'Badge',
+                            page: AdaptivePage(
+                                appBar: AdaptiveAppBar(),
+                                child: Center(child: Text('Badge Page'))),
+                          ),
+                        ]),
+                    AdaptiveGroupDestination(
+                        name: "Library",
+                        destinations: <AdaptiveDestination>[
+                          AdaptiveDestination(
+                            icon: AdaptiveIcon(
+                              AdaptiveIcons.album,
+                            ),
+                            label: 'Album',
+                            page: AdaptivePage(
+                                appBar: AdaptiveAppBar(),
+                                child: Center(child: Text('Album Page'))),
+                            showOnNavigationRail: true,
+                          ),
+                          AdaptiveDestination(
+                            icon: AdaptiveIcon(AdaptiveIcons.bluetooth),
+                            label: 'Bluetooth',
+                            page: AdaptivePage(
+                                appBar: AdaptiveAppBar(),
+                                child: Center(child: Text('Bluetooth Page'))),
+                            showOnNavigationRail: true,
+                          ),
+                          AdaptiveDestination(
+                            icon: AdaptiveIcon(AdaptiveIcons.coffee),
+                            label: 'Coffee',
+                            page: AdaptivePage(
+                                appBar: AdaptiveAppBar(),
+                                child: Center(child: Text('Coffee Page'))),
+                            showOnNavigationRail: true,
+                          ),
+                          AdaptiveDestination(
+                            icon:
+                                AdaptiveIcon(AdaptiveIcons.airplanemode_active),
+                            label: 'Airplane',
+                            page: AdaptivePage(
+                                appBar: AdaptiveAppBar(),
+                                child: Center(child: Text('Airplane Page'))),
+                          ),
+                        ]),
+                    AdaptiveGroupDestination(
+                        name: "Search",
+                        destinations: <AdaptiveDestination>[
+                          AdaptiveDestination(
+                            icon: AdaptiveIcon(
+                              AdaptiveIcons.cloud,
+                            ),
+                            label: 'Cloud',
+                            page: AdaptivePage(
+                                appBar: AdaptiveAppBar(),
+                                child: Center(child: Text('Cloud Page'))),
+                          ),
+                          AdaptiveDestination(
+                            icon: AdaptiveIcon(AdaptiveIcons.diamond),
+                            label: 'Diamond',
+                            page: AdaptivePage(
+                                appBar: AdaptiveAppBar(),
+                                child: Center(child: Text('Diamond Page'))),
+                          ),
+                          AdaptiveDestination(
+                            icon: AdaptiveIcon(AdaptiveIcons.alarm),
+                            label: 'Alarm',
+                            page: AdaptivePage(
+                                appBar: AdaptiveAppBar(),
+                                child: Center(child: Text('Alarm Page'))),
+                          ),
+                        ]),
+                  ]),
+            );
+          },
         ),
       ),
     );
@@ -600,13 +610,16 @@ class ThemeNotifier with ChangeNotifier {
 }
 
 class MasterDetailPage extends StatelessWidget {
-  const MasterDetailPage({super.key});
+  const MasterDetailPage({super.key, this.bottomBar});
+
+  final Widget? bottomBar;
 
   @override
   Widget build(BuildContext context) {
     const kMasterDetailBreakpoint = 620.0;
     final length = Random().nextInt(8) + 1;
     final controller = AdaptiveMasterDetailPageController(length: length);
+    //controller.index = 0;
 
     return AdaptiveMasterDetail(
       paneLayoutDelegate: const ResizablePaneDelegate(
@@ -615,83 +628,91 @@ class MasterDetailPage extends StatelessWidget {
         minPaneSize: 175,
         paneSide: PaneSide.start,
       ),
-      // controller: controller,
-      // masterBuilder: (context) {
-      //   return AdaptiveScaffold(
-      //     appBar: const AdaptiveAppBar(
-      //       title: AdaptiveText("Master"),
-      //     ),
-      //     body: SafeArea(
-      //       child: ListView.builder(
-      //         itemCount: length,
-      //         itemBuilder: (context, index) {
-      //           return AdaptiveListTile(
-      //             title: Text("Master $index"),
-      //             onTap: () {
-      //               controller.index = index;
-      //             },
-      //           );
-      //         },
-      //       ),
-      //     ),
-      //   );
-      // },
-      length: 8,
-      appBarTitle: const AdaptiveText("Master"),
-      appBarActions: [
-        MasterDetailAppBarActionsItem(
-          title: "Settings",
-          icon: const AdaptiveIcon(AdaptiveIcons.settings),
-          onPressed: () {
-            showAdaptiveModalDialog(
-              context: context,
-              title: const Text("Settings"),
-              content: const Text("Application settings"),
-              primaryButton: AdaptiveModalDialogAction(
-                  onPressed: () => Navigator.pop(context),
-                  child: const AdaptiveText("OK")),
-            );
-          },
-        ),
-      ],
-      tileBuilder: (context, index, selected, availableWidth) =>
-          AdaptiveMasterTile(
-        title: Text("Master $index"),
-      ),
+      controller: controller,
+      masterBuilder: (context) {
+        return AdaptivePage(
+          appBar: AdaptiveAppBar(
+            title: AdaptiveText("Master"),
+            actions: [
+              AdaptiveAppBarAction(
+                  onPressed: () {
+                    showAdaptiveModalDialog(
+                      context: context,
+                      title: const Text("Settings"),
+                      content: const Text("Application settings"),
+                      primaryButton: AdaptiveModalDialogAction(
+                          onPressed: () {
+                            Navigator.of(context, rootNavigator: true)
+                                .maybePop();
+                          },
+                          child: const AdaptiveText("OK")),
+                    );
+                  },
+                  icon: AdaptiveIcon(AdaptiveIcons.settings)),
+            ],
+          ),
+          child: ListView.builder(
+            itemCount: length,
+            itemBuilder: (context, index) {
+              return AdaptiveListTile(
+                title: Text("Master $index"),
+                onTap: () {
+                  controller.index = index;
+                },
+              );
+            },
+          ),
+        );
+      },
       pageBuilder: (ctx, index) {
-        return AdaptiveDetailPage(
-          appBarTitle: AdaptiveText("Detail $index"),
-          appBarActions: [
-            MasterDetailAppBarActionsItem(
-              title: "Call",
-              icon: const AdaptiveIcon(AdaptiveIcons.phone),
-              onPressed: () {
-                showAdaptiveModalDialog<void>(
-                  context: context,
-                  title: const Text("Call"),
-                  content: const Text("Call a friend"),
-                  primaryButton: AdaptiveModalDialogAction(
-                      onPressed: () => Navigator.pop(context),
-                      child: const AdaptiveText("OK")),
-                );
-              },
-            ),
-            MasterDetailAppBarActionsItem(
-              title: "Video Call",
-              icon: const AdaptiveIcon(AdaptiveIcons.videocam),
-              onPressed: () {
-                showAdaptiveModalDialog(
-                  context: context,
-                  title: const Text("VideoCall"),
-                  content: const Text("VideoCall a friend"),
-                  primaryButton: AdaptiveModalDialogAction(
-                      onPressed: () => Navigator.pop(context),
-                      child: const AdaptiveText("OK")),
-                );
-              },
-            ),
-          ],
-          body: Center(child: Text("Detail $index")),
+        return AdaptivePage(
+          appBar: AdaptiveAppBar(
+            leading: AdaptiveIconButton(
+                onPressed: () {
+                  showAdaptiveModalDialog<void>(
+                    context: context,
+                    title: const Text("Profile"),
+                    content: const Text("Information"),
+                    primaryButton: AdaptiveModalDialogAction(
+                        onPressed: () => Navigator.pop(context),
+                        child: const AdaptiveText("OK")),
+                  );
+                },
+                icon: AdaptiveIcon(AdaptiveIcons.account_circle)),
+            title: Text("Master $index"),
+            actions: [
+              AdaptiveAppBarAction(
+                  onPressed: () {
+                    showAdaptiveModalDialog<void>(
+                      context: context,
+                      title: const Text("Call"),
+                      content: const Text("Call a friend"),
+                      primaryButton: AdaptiveModalDialogAction(
+                          onPressed: () =>
+                              Navigator.of(context, rootNavigator: true)
+                                  .maybePop(),
+                          child: const AdaptiveText("OK")),
+                    );
+                  },
+                  icon: AdaptiveIcon(AdaptiveIcons.phone)),
+              AdaptiveAppBarAction(
+                  onPressed: () {
+                    showAdaptiveModalDialog(
+                      context: context,
+                      title: const Text("VideoCall"),
+                      content: const Text("VideoCall a friend"),
+                      primaryButton: AdaptiveModalDialogAction(
+                          onPressed: () =>
+                              Navigator.of(context, rootNavigator: true)
+                                  .maybePop(),
+                          child: const AdaptiveText("OK")),
+                    );
+                  },
+                  icon: AdaptiveIcon(AdaptiveIcons.videocam))
+            ],
+          ),
+          bottomBar: bottomBar,
+          child: Center(child: Text("Detail $index")),
         );
       },
     );

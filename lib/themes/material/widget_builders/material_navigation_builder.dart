@@ -309,7 +309,6 @@ class NavigationRailMenuState extends State<NavigationRailMenu> {
       body: Row(
         children: [
           NavigationRail(
-            groupAlignment: 0,
             selectedIndex: _selectedIndex,
             onDestinationSelected: _onItemTapped,
             labelType: NavigationRailLabelType.all,
@@ -385,7 +384,7 @@ class ModalNavigationDrawerMenuState extends State<ModalNavigationDrawerMenu> {
     setState(() {
       _selectedIndex = index;
 
-      Navigator.pop(context);
+      Navigator.maybePop(context);
     });
   }
 
@@ -407,10 +406,7 @@ class ModalNavigationDrawerMenuState extends State<ModalNavigationDrawerMenu> {
     return ModalNavigationDrawerMenuScope(
       drawerSelectedIndex: _selectedIndex,
       groupedDrawer: groupedDrawer(),
-      child: Scaffold(
-        drawer: groupedDrawer(),
-        body: allDestinations[_selectedIndex].page,
-      ),
+      child: allDestinations[_selectedIndex].page,
     );
   }
 }

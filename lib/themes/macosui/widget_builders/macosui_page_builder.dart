@@ -12,7 +12,7 @@ class MacosUIPageBuilder extends AdaptiveWidgetBuilder<AdaptivePage> {
           builder: (context, scrollController) {
             return Column(
               children: [
-                Expanded(child: component.body),
+                Expanded(child: component.child),
                 component.bottomBar ?? const SizedBox.shrink() ,
               ],
             );

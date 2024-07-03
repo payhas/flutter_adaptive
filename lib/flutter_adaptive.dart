@@ -11,11 +11,11 @@ export 'base/adaptive_widget_builder.dart';
 export 'base/adaptive_function.dart';
 export 'base/adaptive_function_builder.dart';
 
-export 'layouts/fluentui_navigation_builder.dart';
-export 'layouts/macosui_navigation_builder.dart';
-export 'layouts/cupertino_navigation_builder.dart';
-export 'layouts/yaru_navigation_builder.dart';
-export 'layouts/material_navigation_builder.dart';
+export 'themes/fluentui/widget_builders/fluentui_navigation_builder.dart';
+export 'themes/macosui/widget_builders/macosui_navigation_builder.dart';
+export 'themes/cupertino/widget_builders/cupertino_navigation_builder.dart';
+export 'themes/yaru/widget_builders/yaru_navigation_builder.dart';
+export 'themes/material/widget_builders/material_navigation_builder.dart';
 
 export 'components/adaptive_app.dart';
 export 'components/adaptive_theme_data.dart';

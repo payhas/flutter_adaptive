@@ -15,7 +15,7 @@ class AdaptiveDetailPage extends AdaptiveWidget {
 
   final Widget? appBarTitle;
 
-  /// See [Scaffold.body].
+  /// See [Scaffold.child].
   final Widget? body;
 
   /// See [Scaffold.backgroundColor].

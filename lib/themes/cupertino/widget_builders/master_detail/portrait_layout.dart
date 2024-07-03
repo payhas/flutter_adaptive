@@ -88,7 +88,8 @@ class _PortraitLayoutState extends State<PortraitLayout> {
     return CupertinoPage(
       key: ValueKey(index),
       child: Builder(
-        builder: (context) => widget.pageBuilder(context, _selectedIndex),
+        builder: (context) => CupertinoPortraitDetailBuilderPage(
+            child: widget.pageBuilder(context, _selectedIndex)),
       ),
     );
   }
@@ -152,5 +153,16 @@ class _PortraitLayoutState extends State<PortraitLayout> {
         ),
       ),
     );
+  }
+}
+
+class CupertinoPortraitDetailBuilderPage extends StatelessWidget {
+  const CupertinoPortraitDetailBuilderPage({super.key, required this.child});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return child;
   }
 }

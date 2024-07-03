@@ -172,9 +172,10 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
           CupertinoPage(
             key: ValueKey(_selectedIndex),
             child: Builder(
-              builder: (context) => widget.controller.length > _selectedIndex
-                  ? widget.pageBuilder(context, _selectedIndex)
-                  : widget.pageBuilder(context, 0),
+              builder: (context) => CupertinoLandscapeDetailBuilderPage(
+                  child: widget.controller.length > _selectedIndex
+                      ? widget.pageBuilder(context, _selectedIndex)
+                      : widget.pageBuilder(context, 0)),
             ),
           ),
         ],
@@ -182,5 +183,16 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
         observers: [...widget.navigatorObservers, HeroController()],
       ),
     );
+  }
+}
+
+class CupertinoLandscapeDetailBuilderPage extends StatelessWidget {
+  const CupertinoLandscapeDetailBuilderPage({super.key, required this.child});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return child;
   }
 }

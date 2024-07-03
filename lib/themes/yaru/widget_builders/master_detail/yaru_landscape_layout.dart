@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:yaru/yaru.dart' hide YaruMasterTileBuilder;
 import 'package:flutter_adaptive/flutter_adaptive.dart'
-    hide MasterTileBuilder, YaruMasterTileBuilder;
+    hide MasterTileBuilder, YaruMasterTileBuilder, MaterialPage;
 
 import 'yaru_master_list_view.dart';
 import 'yaru_paned_view.dart';
@@ -119,7 +119,7 @@ class _YaruLandscapeLayoutState extends State<YaruLandscapeLayout> {
           data: const YaruTitleBarThemeData(
             style: YaruTitleBarStyle.undecorated,
           ),
-          child: (widget.masterBuilder != null)
+           child: (widget.masterBuilder != null)
               ? widget.masterBuilder!(context)
               : Scaffold(
                   appBar: appBar,
@@ -174,9 +174,12 @@ class _YaruLandscapeLayoutState extends State<YaruLandscapeLayout> {
             MaterialPage(
               key: ValueKey(_selectedIndex),
               child: Builder(
-                builder: (context) => widget.controller.length > _selectedIndex
-                    ? widget.pageBuilder(context, _selectedIndex)
-                    : widget.pageBuilder(context, 0),
+                builder: (context) {
+                  return YaruLandscapeDetailBuilderPage(
+                      child: widget.controller.length > _selectedIndex
+                          ? widget.pageBuilder(context, _selectedIndex)
+                          : widget.pageBuilder(context, 0));
+                },
               ),
             ),
           ],
@@ -185,5 +188,16 @@ class _YaruLandscapeLayoutState extends State<YaruLandscapeLayout> {
         ),
       ),
     );
+  }
+}
+
+class YaruLandscapeDetailBuilderPage extends StatelessWidget {
+  const YaruLandscapeDetailBuilderPage({super.key, required this.child});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return child;
   }
 }

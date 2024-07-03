@@ -1,7 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart' hide PageController;
-import 'package:flutter_adaptive/flutter_adaptive.dart' hide MasterTileBuilder;
+import 'package:flutter_adaptive/flutter_adaptive.dart'
+    hide MasterTileBuilder
+    hide MaterialPage;
 
 import 'master_list_view.dart';
 import 'paned_view.dart';
