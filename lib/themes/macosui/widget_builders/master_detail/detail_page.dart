@@ -38,7 +38,7 @@ class MacosUIDetailPage extends StatelessWidget {
 
   final Widget? appBarTitle;
 
-  /// See [Scaffold.body].
+  /// See [Scaffold.child].
   final Widget? body;
 
   // /// See [Scaffold.floatingActionButton].

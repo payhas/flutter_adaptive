@@ -39,7 +39,7 @@ class AdaptiveDestination {
 
   final Widget icon;
   final String label;
-  final Widget page;
+  final AdaptivePage page;
   final bool? showOnNavigationRail;
   final bool? showOnBottomAppBar;
   final bool showOnDrawerSidebar;

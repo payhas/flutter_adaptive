@@ -184,9 +184,10 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
           CupertinoPage(
             key: ValueKey(_selectedIndex),
             child: Builder(
-              builder: (context) => widget.controller.length > _selectedIndex
-                  ? widget.pageBuilder(context, _selectedIndex)
-                  : widget.pageBuilder(context, 0),
+              builder: (context) => MacosLandscapeDetailBuilderPage(
+                  child: widget.controller.length > _selectedIndex
+                      ? widget.pageBuilder(context, _selectedIndex)
+                      : widget.pageBuilder(context, 0)),
             ),
           ),
         ],
@@ -195,5 +196,16 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
       ),
       // ),
     );
+  }
+}
+
+class MacosLandscapeDetailBuilderPage extends StatelessWidget {
+  const MacosLandscapeDetailBuilderPage({super.key, required this.child});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return child;
   }
 }

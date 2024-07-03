@@ -89,7 +89,8 @@ class _PortraitLayoutState extends State<PortraitLayout> {
     return CupertinoPage(
       key: ValueKey(index),
       child: Builder(
-        builder: (context) => widget.pageBuilder(context, _selectedIndex),
+        builder: (context) => MacosPortraitDetailBuilderPage(
+            child: widget.pageBuilder(context, _selectedIndex)),
       ),
     );
   }
@@ -187,5 +188,16 @@ class _PortraitLayoutState extends State<PortraitLayout> {
         ),
       ),
     );
+  }
+}
+
+class MacosPortraitDetailBuilderPage extends StatelessWidget {
+  const MacosPortraitDetailBuilderPage({super.key, required this.child});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return child;
   }
 }

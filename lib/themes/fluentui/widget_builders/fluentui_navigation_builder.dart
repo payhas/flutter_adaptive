@@ -45,6 +45,9 @@ class FluentNavigation extends StatefulWidget {
 class FluentNavigationState extends State<FluentNavigation> {
   int _selectedIndex = 0;
 
+  final FluentBackButtonNotifier fluentBackButtonNotifier =
+      FluentBackButtonNotifier();
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -77,8 +80,46 @@ class FluentNavigationState extends State<FluentNavigation> {
     var allDestinations =
         drawerGroupDestinations.expand((group) => group.destinations).toList();
 
+    Widget leading() {
+      final ModalRoute<dynamic>? parentRoute = ModalRoute.of(context);
+      final canPop = parentRoute?.canPop ?? false;
+
+      final localizations = FluentLocalizations.of(context);
+      final onPressed = canPop ? () => Navigator.maybePop(context) : null;
+
+      return NavigationPaneTheme(
+        data: NavigationPaneTheme.of(context).merge(NavigationPaneThemeData(
+          unselectedIconColor: ButtonState.resolveWith((states) {
+            if (states.isDisabled) {
+              return ButtonThemeData.buttonColor(context, states);
+            }
+            return ButtonThemeData.uncheckedInputColor(
+              FluentTheme.of(context),
+              states,
+            ).basedOnLuminance();
+          }),
+        )),
+        child: Builder(
+          builder: (context) => PaneItem(
+            icon: const Icon(FluentIcons.back, size: 14.0),
+            title: Text(localizations.backButtonTooltip),
+            body: const SizedBox.shrink(),
+          ).build(
+            context,
+            false,
+            () {
+              onPressed?.call();
+              fluentBackButtonNotifier.onPressed();
+            },
+            displayMode: PaneDisplayMode.compact,
+          ),
+        ),
+      );
+    }
+
     return NavigationView(
       appBar: NavigationAppBar(
+        leading: leading(),
         title: Text(allDestinations[_selectedIndex].label),
         actions: Row(
           children: [
@@ -108,5 +149,11 @@ class FluentNavigationState extends State<FluentNavigation> {
         ],
       ),
     );
+  }
+}
+
+class FluentBackButtonNotifier with ChangeNotifier {
+  void onPressed() {
+    notifyListeners();
   }
 }

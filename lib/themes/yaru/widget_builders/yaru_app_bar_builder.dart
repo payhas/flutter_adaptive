@@ -2,11 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart' hide YaruIcons;
 import 'package:yaru/yaru.dart';
 
+import 'master_detail/yaru_landscape_layout.dart';
+import 'master_detail/yaru_portrait_layout.dart';
+
 class YaruAppBarBuilder extends AdaptiveWidgetBuilder<AdaptiveAppBar> {
   @override
   YaruWindowTitleBar build(BuildContext context, AdaptiveAppBar component) {
     LinuxNavigationDrawerMenuState? linuxNavigationDrawerMenuState =
         context.findAncestorStateOfType<LinuxNavigationDrawerMenuState>();
+
+    YaruPortraitDetailBuilderPage? yaruPortraitDetailBuilderPage =
+        context.findAncestorWidgetOfExactType<YaruPortraitDetailBuilderPage>();
+
+    YaruLandscapeDetailBuilderPage? yaruLandscapeDetailBuilderPage =
+        context.findAncestorWidgetOfExactType<YaruLandscapeDetailBuilderPage>();
 
     var scaffoldKey = linuxNavigationDrawerMenuState?.scaffoldKey;
 
@@ -34,22 +43,36 @@ class YaruAppBarBuilder extends AdaptiveWidgetBuilder<AdaptiveAppBar> {
       backgroundColor: Colors.transparent,
       leading: Builder(builder: (context) {
         if (component.leading != null) {
+          if (yaruPortraitDetailBuilderPage != null) {
+            return const BackButton();
+          }
           return component.leading!;
         } else {
+          if (yaruPortraitDetailBuilderPage != null) {
+            return const BackButton();
+          }
           if (isPermanent && isModal) {
             return drawerButton();
           }
-          if (!isPermanent) {
+          if (!isPermanent && yaruLandscapeDetailBuilderPage == null) {
             return drawerButton();
           }
         }
         return const SizedBox.shrink();
       }),
-      title: component.title,
-      actions: component.actions?.map((action) {
-        return AdaptiveIconButton(
-            onPressed: action.onPressed, icon: action.icon);
-      }).toList(),
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          if (component.title != null)
+            Expanded(
+                child: Align(
+                    alignment: Alignment.center, child: component.title!)),
+          ...?component.actions?.map((action) {
+            return AdaptiveIconButton(
+                onPressed: action.onPressed, icon: action.icon);
+          }),
+        ],
+      ),
     );
   }
 }

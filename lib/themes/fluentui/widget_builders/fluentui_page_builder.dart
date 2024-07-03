@@ -6,11 +6,8 @@ class FluentUIPageBuilder extends AdaptiveWidgetBuilder<AdaptivePage> {
   Widget build(BuildContext context, AdaptivePage component) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: component.appBar?.build(context) ?? const SizedBox.shrink(),
-        ),
-        Expanded(child: component.body),
+        component.appBar?.build(context) ?? const SizedBox.shrink(),
+        Expanded(child: component.child),
         component.bottomBar ?? const SizedBox.shrink(),
       ],
     );

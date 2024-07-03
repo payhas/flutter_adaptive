@@ -7,7 +7,7 @@ class YaruPageBuilder extends AdaptiveWidgetBuilder<AdaptivePage> {
   @override
   Widget build(BuildContext context, AdaptivePage component) {
     return Scaffold(
-      body: component.body,
+      body: component.child,
       appBar: component.appBar?.build(context) as YaruWindowTitleBar?,
       bottomNavigationBar: component.bottomBar,
     );

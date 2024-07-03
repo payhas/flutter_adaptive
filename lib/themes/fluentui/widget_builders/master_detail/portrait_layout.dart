@@ -91,7 +91,8 @@ class _PortraitLayoutState extends State<PortraitLayout> {
     return MaterialPage(
       key: ValueKey(index),
       child: Builder(
-        builder: (context) => widget.pageBuilder(context, _selectedIndex),
+        builder: (context) => FluentUIPortraitDetailBuilderPage(
+            child: widget.pageBuilder(context, _selectedIndex)),
       ),
     );
   }
@@ -164,5 +165,16 @@ class _PortraitLayoutState extends State<PortraitLayout> {
         ),
       ),
     );
+  }
+}
+
+class FluentUIPortraitDetailBuilderPage extends StatelessWidget {
+  const FluentUIPortraitDetailBuilderPage({super.key, required this.child});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return child;
   }
 }

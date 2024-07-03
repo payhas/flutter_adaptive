@@ -92,7 +92,8 @@ class _YaruPortraitLayoutState extends State<YaruPortraitLayout> {
     return MaterialPage(
       key: ValueKey(index),
       child: Builder(
-        builder: (context) => widget.pageBuilder(context, _selectedIndex),
+        builder: (context) => YaruPortraitDetailBuilderPage(
+            child: widget.pageBuilder(context, _selectedIndex)),
       ),
     );
   }
@@ -171,5 +172,16 @@ class _YaruPortraitLayoutState extends State<YaruPortraitLayout> {
         ),
       ),
     );
+  }
+}
+
+class YaruPortraitDetailBuilderPage extends StatelessWidget {
+  const YaruPortraitDetailBuilderPage({super.key, required this.child});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return child;
   }
 }

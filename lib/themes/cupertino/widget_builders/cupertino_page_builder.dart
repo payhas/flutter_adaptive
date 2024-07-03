@@ -20,7 +20,7 @@ class CupertinoPage extends StatefulWidget {
 
 class CupertinoPageState extends State<CupertinoPage> {
   final _bottomBarKey = GlobalKey();
-  double? _bottomBarHeight = 0.0;
+  double _bottomBarHeight = 0.0;
 
   @override
   void initState() {
@@ -31,7 +31,7 @@ class CupertinoPageState extends State<CupertinoPage> {
         RenderBox? renderBox =
             _bottomBarKey.currentContext?.findRenderObject() as RenderBox?;
         setState(() {
-          _bottomBarHeight = renderBox?.size.height;
+          _bottomBarHeight = renderBox?.size.height ?? 0.0;
         });
       }
     });
@@ -45,7 +45,7 @@ class CupertinoPageState extends State<CupertinoPage> {
         context.findAncestorWidgetOfExactType<CupertinoTabScaffold>();
 
     if (cupertinoTabScaffold != null) {
-       bottomPosition = cupertinoTabScaffold.tabBar.height;
+      bottomPosition = cupertinoTabScaffold.tabBar.height;
     }
 
     return CupertinoPageScaffold(
@@ -53,8 +53,11 @@ class CupertinoPageState extends State<CupertinoPage> {
           widget.adaptivePage.appBar?.build(context) as CupertinoNavigationBar?,
       child: Stack(children: [
         Padding(
-          padding: EdgeInsets.only(bottom: _bottomBarHeight ?? 0.0),
-          child: widget.adaptivePage.body,
+          padding: EdgeInsets.only(
+              bottom: widget.adaptivePage.bottomBar != null
+                  ? _bottomBarHeight
+                  : 0.0),
+          child: widget.adaptivePage.child,
         ),
         if (widget.adaptivePage.bottomBar != null)
           Positioned(
