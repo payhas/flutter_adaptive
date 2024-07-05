@@ -55,6 +55,17 @@ class FluentNavigationState extends State<FluentNavigation> {
   }
 
   @override
+  void initState() {
+    super.initState();
+
+    window();
+  }
+
+  Future<void> window() async {
+    await YaruWindowTitleBar.ensureInitialized();
+  }
+
+  @override
   Widget build(BuildContext context) {
     var paneDisplayMode = PaneDisplayMode.auto;
 

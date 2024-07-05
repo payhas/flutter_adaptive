@@ -82,6 +82,17 @@ class LinuxNavigationDrawerMenuState extends State<LinuxNavigationDrawerMenu> {
   }
 
   @override
+  void initState() {
+    super.initState();
+
+    window();
+  }
+
+  Future<void> window() async {
+    await YaruWindowTitleBar.ensureInitialized();
+  }
+
+  @override
   Widget build(BuildContext context) {
     var brightness = Theme.of(context).brightness;
 
