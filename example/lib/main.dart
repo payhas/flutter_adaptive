@@ -1,13 +1,31 @@
+import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart';
 import 'package:provider/provider.dart';
-import 'package:yaru/yaru.dart';
 
 void main() async {
-  await YaruWindowTitleBar.ensureInitialized();
-
   runApp(const MyApp());
+}
+
+String detectPlatform() {
+  if (Platform.isIOS) {
+    return 'Cupertino';
+  }
+
+  if (Platform.isMacOS) {
+    return 'MacosUI';
+  }
+
+  if (Platform.isWindows) {
+    return 'FluentUI';
+  }
+
+  if (Platform.isLinux) {
+    return 'Yaru';
+  }
+
+  return 'Material';
 }
 
 class MyApp extends StatelessWidget {
@@ -18,7 +36,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Adaptive(
       bundles: {
-        AdaptiveTheme(),
+        AdaptiveTheme(defaultTheme: detectPlatform()),
       },
       builder: (context) => ChangeNotifierProvider(
         create: (_) => ThemeNotifier(),
