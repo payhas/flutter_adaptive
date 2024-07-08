@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
-
-import '../base/adaptive_function.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 Future<T?> showAdaptiveModalBottomSheet<T>({
   required BuildContext context,

@@ -1,7 +1,5 @@
 import 'package:flutter/widgets.dart';
-
-import '../base/adaptive.dart';
-import '../base/adaptive_appearance_manager.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 class ThemedAppearanceManager extends AdaptiveAppearanceManager<String> {
   static const themeAppearanceName = 'Theme';

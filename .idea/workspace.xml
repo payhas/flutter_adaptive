@@ -1,36 +1,307 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="main.dart" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/main.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            </state>
-          </provider>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="557a7e28-0370-499e-9536-4d1aa3b59c6c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_app.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_app_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_checkbox.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_checkbox.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_circular_progress_indicator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_circular_progress_indicator.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_context_menu.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_context_menu.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_context_menu_item.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_context_menu_item.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_date_picker.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_date_picker.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_elevated_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_elevated_button.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_icon_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_icon_button.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_linear_progress_indicator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_linear_progress_indicator.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_list_tile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_list_tile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_modal_bottom_sheet.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_modal_bottom_sheet.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_modal_dialog.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_modal_dialog.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_navigation.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_navigation.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_slider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_slider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_switch.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_switch.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_text.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_text.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_text_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_text_button.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_text_input.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_text_input.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_theme_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/components/adaptive_theme_data.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/flutter_adaptive.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/flutter_adaptive.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/icons/adaptive_icon.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/icons/adaptive_icon.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/icons/adaptive_icon_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/icons/adaptive_icon_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/layouts/adaptive_detail_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/layouts/adaptive_detail_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/layouts/adaptive_master_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/layouts/adaptive_master_detail.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/layouts/adaptive_master_tile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/layouts/adaptive_master_tile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/adaptive_theme.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/adaptive_theme.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/cupertino_icons.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/cupertino_icons.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/cupertino_theme.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/cupertino_theme.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_app_bar_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_app_bar_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_app_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_app_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_checkbox_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_checkbox_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_circular_progress_indicator_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_circular_progress_indicator_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_context_menu_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_context_menu_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_context_menu_item_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_context_menu_item_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_date_picker_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_date_picker_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_detail_page_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_detail_page_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_elevated_button_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_elevated_button_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_icon_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_icon_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_icon_button_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_icon_button_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_linear_progress_indicator_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_linear_progress_indicator_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_list_tile_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_list_tile_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_master_detail_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_master_detail_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_master_tile_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_master_tile_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_modal_bottom_sheet_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_modal_bottom_sheet_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_modal_dialog_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_modal_dialog_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_navigation_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_navigation_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_page_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_page_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_slider_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_slider_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_switch_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_switch_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_text_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_text_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_text_button_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_text_button_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_text_input_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_text_input_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_theme_data_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/cupertino_theme_data_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/master_detail/detail_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/master_detail/detail_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/master_detail/landscape_layout.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/master_detail/landscape_layout.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/master_detail/master_detail_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/master_detail/master_detail_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/master_detail/paned_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/master_detail/paned_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/master_detail/portrait_layout.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/cupertino/widget_builders/master_detail/portrait_layout.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/fluentui_icons.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/fluentui_icons.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/fluentui_theme.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/fluentui_theme.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/fluentui_app_bar_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/fluentui_app_bar_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/fluentui_app_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/fluentui_app_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/fluentui_checkbox_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/fluentui_checkbox_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/fluentui_circular_progress_indicator_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/fluentui_circular_progress_indicator_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/fluentui_context_menu_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/fluentui_context_menu_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/fluentui_date_picker_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/fluentui_date_picker_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/fluentui_detail_page_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/fluentui_detail_page_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/fluentui_elevated_button_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/fluentui_elevated_button_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/fluentui_icon_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/fluentui_icon_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/fluentui_icon_button_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/fluentui_icon_button_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/fluentui_linear_progress_indicator_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/fluentui_linear_progress_indicator_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/fluentui_list_tile_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/fluentui_list_tile_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/fluentui_master_detail_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/fluentui_master_detail_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/fluentui_master_tile_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/fluentui_master_tile_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/fluentui_modal_dialog_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/fluentui_modal_dialog_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/fluentui_navigation_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/fluentui_navigation_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/fluentui_page_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/fluentui_page_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/fluentui_slider_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/fluentui_slider_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/fluentui_switch_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/fluentui_switch_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/fluentui_text_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/fluentui_text_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/fluentui_text_button_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/fluentui_text_button_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/fluentui_text_input_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/fluentui_text_input_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/fluentui_theme_data_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/fluentui_theme_data_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/master_detail/constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/master_detail/constants.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/master_detail/detail_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/master_detail/detail_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/master_detail/landscape_layout.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/master_detail/landscape_layout.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/master_detail/master_detail_library.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/master_detail/master_detail_library.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/master_detail/master_detail_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/master_detail/master_detail_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/master_detail/master_list_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/master_detail/master_list_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/master_detail/master_tile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/master_detail/master_tile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/master_detail/paned_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/master_detail/paned_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/master_detail/portrait_layout.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/master_detail/portrait_layout.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/fluentui/widget_builders/master_detail/scroll_view_undershoot.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/widget_builders/master_detail/scroll_view_undershoot.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/macosui_icons.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/macosui_icons.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/macosui_theme.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/macosui_theme.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/macosui_app_bar_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/macosui_app_bar_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/macosui_app_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/macosui_app_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/macosui_checkbox_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/macosui_checkbox_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/macosui_circular_progress_indicator_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/macosui_circular_progress_indicator_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/macosui_context_menu_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/macosui_context_menu_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/macosui_date_picker_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/macosui_date_picker_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/macosui_detail_page_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/macosui_detail_page_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/macosui_elevated_button_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/macosui_elevated_button_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/macosui_icon_button_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/macosui_icon_button_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/macosui_linear_progress_indicator_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/macosui_linear_progress_indicator_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/macosui_list_tile_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/macosui_list_tile_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/macosui_master_detail_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/macosui_master_detail_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/macosui_master_tile_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/macosui_master_tile_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/macosui_modal_dialog_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/macosui_modal_dialog_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/macosui_navigation_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/macosui_navigation_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/macosui_page_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/macosui_page_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/macosui_slider_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/macosui_slider_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/macosui_switch_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/macosui_switch_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/macosui_text_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/macosui_text_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/macosui_text_button_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/macosui_text_button_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/macosui_text_input_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/macosui_text_input_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/macosui_theme_data_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/macosui_theme_data_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/master_detail/constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/master_detail/constants.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/master_detail/detail_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/master_detail/detail_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/master_detail/landscape_layout.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/master_detail/landscape_layout.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/master_detail/master_detail_library.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/master_detail/master_detail_library.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/master_detail/master_detail_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/master_detail/master_detail_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/master_detail/master_list_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/master_detail/master_list_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/master_detail/master_tile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/master_detail/master_tile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/master_detail/paned_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/master_detail/paned_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/master_detail/portrait_layout.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/master_detail/portrait_layout.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/macosui/widget_builders/master_detail/scroll_view_undershoot.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/widget_builders/master_detail/scroll_view_undershoot.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/material_icons.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/material_icons.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/material_theme.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/material_theme.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/master_detail/detail_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/master_detail/detail_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/master_detail/landscape_layout.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/master_detail/landscape_layout.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/master_detail/master_detail_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/master_detail/master_detail_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/master_detail/paned_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/master_detail/paned_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/master_detail/portrait_layout.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/master_detail/portrait_layout.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_app_bar_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_app_bar_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_app_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_app_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_checkbox_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_checkbox_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_circular_progress_indicator_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_circular_progress_indicator_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_context_menu_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_context_menu_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_context_menu_item_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_context_menu_item_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_date_picker_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_date_picker_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_detail_page_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_detail_page_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_elevated_button_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_elevated_button_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_icon_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_icon_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_icon_button_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_icon_button_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_linear_progress_indicator_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_linear_progress_indicator_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_list_tile_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_list_tile_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_master_detail_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_master_detail_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_master_tile_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_master_tile_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_modal_bottom_sheet_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_modal_bottom_sheet_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_modal_dialog_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_modal_dialog_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_navigation_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_navigation_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_page_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_page_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_slider_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_slider_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_switch_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_switch_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_text_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_text_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_text_button_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_text_button_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_text_input_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_text_input_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_theme_data_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/material/widget_builders/material_theme_data_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/themed_appearance_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/themed_appearance_manager.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/themed_component_builder_selector.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/themed_component_builder_selector.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/master_detail/master_detail_library.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/master_detail/master_detail_library.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/master_detail/yaru_detail_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/master_detail/yaru_detail_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/master_detail/yaru_landscape_layout.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/master_detail/yaru_landscape_layout.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/master_detail/yaru_master_detail_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/master_detail/yaru_master_detail_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/master_detail/yaru_master_detail_theme.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/master_detail/yaru_master_detail_theme.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/master_detail/yaru_master_list_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/master_detail/yaru_master_list_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/master_detail/yaru_master_tile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/master_detail/yaru_master_tile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/master_detail/yaru_paned_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/master_detail/yaru_paned_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/master_detail/yaru_portrait_layout.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/master_detail/yaru_portrait_layout.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/yaru_app_bar_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/yaru_app_bar_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/yaru_app_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/yaru_app_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/yaru_checkbox_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/yaru_checkbox_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/yaru_circular_progress_indicator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/yaru_circular_progress_indicator.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/yaru_context_menu_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/yaru_context_menu_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/yaru_detail_page_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/yaru_detail_page_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/yaru_elevated_button_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/yaru_elevated_button_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/yaru_icon_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/yaru_icon_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/yaru_icon_button_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/yaru_icon_button_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/yaru_linear_progress_indicator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/yaru_linear_progress_indicator.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/yaru_list_tile_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/yaru_list_tile_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/yaru_master_detail_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/yaru_master_detail_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/yaru_master_tile_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/yaru_master_tile_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/yaru_modal_dialog_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/yaru_modal_dialog_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/yaru_navigation_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/yaru_navigation_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/yaru_page_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/yaru_page_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/yaru_slider_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/yaru_slider_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/yaru_switch_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/yaru_switch_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/yaru_text_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/yaru_text_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/yaru_text_button_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/yaru_text_button_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/yaru_text_input_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/yaru_text_input_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/widget_builders/yaru_theme_data_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/widget_builders/yaru_theme_data_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/yaru_icons.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/yaru_icons.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/lib/themes/yaru/yaru_theme.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/yaru_theme.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/.flutter-plugins" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/flutter_adaptive_fluent_ui.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/lib/flutter_adaptive_fluent_ui.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive_fluent_ui/test/flutter_adaptive_fluent_ui_test.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/.flutter-plugins" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/flutter_adaptive_macos_ui.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/lib/flutter_adaptive_macos_ui.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive_macos_ui/test/flutter_adaptive_macos_ui_test.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/.flutter-plugins" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/flutter_adaptive_yaru.dart" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/lib/flutter_adaptive_yaru.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/flutter_adaptive_yaru/test/flutter_adaptive_yaru_test.dart" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2ix8xdxXvDt38rgRLoH7zqrw9v2" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/Split-Packages-#68&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Atash\StudioProjects\flutter_adaptive\libs\flutter_adaptive_yaru\lib" />
+      <recent name="C:\Users\Atash\StudioProjects\flutter_adaptive\libs\flutter_adaptive_macos_ui\lib" />
+      <recent name="C:\Users\Atash\StudioProjects\flutter_adaptive\example\lib" />
+      <recent name="C:\Users\Atash\StudioProjects\flutter_adaptive\libs\flutter_adaptive_fluent_ui\lib" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/example/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="557a7e28-0370-499e-9536-4d1aa3b59c6c" name="Changes" comment="" />
+      <created>1720421116082</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1720421116082</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
         </entry>
-      </file>
-    </leaf>
-  </component>
-  <component name="ToolWindowManager">
-    <editor active="true" />
-    <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-    </layout>
-  </component>
-  <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <option name="show-excluded-files" value="false" />
-      </pane>
-    </panes>
-  </component>
-  <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="dart.analysis.tool.window.force.activate" value="true" />
-    <property name="show.migrate.to.gradle.popup" value="false" />
+      </map>
+    </option>
   </component>
 </project>

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../layouts/adaptive_master_detail.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 import 'constants.dart';
 

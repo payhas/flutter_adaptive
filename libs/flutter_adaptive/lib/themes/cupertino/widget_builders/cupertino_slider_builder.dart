@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import '../../../flutter_adaptive.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 class CupertinoSliderBuilder extends AdaptiveWidgetBuilder<AdaptiveSlider> {
   @override

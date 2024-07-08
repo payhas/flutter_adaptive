@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' hide PageController;
-import '../../../flutter_adaptive.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 import 'master_detail/master_detail_library.dart';
 
 class MaterialMasterDetailBuilder

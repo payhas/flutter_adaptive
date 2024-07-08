@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../base/adaptive_widget.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 import 'dart:ui' as ui show TextHeightBehavior;
 
 class AdaptiveText extends AdaptiveWidget {

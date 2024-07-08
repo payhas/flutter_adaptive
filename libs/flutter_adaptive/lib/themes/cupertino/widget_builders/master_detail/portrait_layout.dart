@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart' hide PageController;
-import '../../../../layouts/adaptive_master_detail.dart' hide MasterTileBuilder;
+import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart'
+    hide MasterTileBuilder;
 
 import 'master_detail_page.dart';
 import 'master_list_view.dart';

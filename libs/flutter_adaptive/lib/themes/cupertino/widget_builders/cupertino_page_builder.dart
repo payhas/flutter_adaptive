@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import '../../../flutter_adaptive.dart' hide CupertinoIcons, CupertinoTheme;
+import 'package:flutter_adaptive/flutter_adaptive.dart' hide CupertinoIcons, CupertinoTheme;
 
 class CupertinoPageBuilder extends AdaptiveWidgetBuilder<AdaptivePage> {
   @override

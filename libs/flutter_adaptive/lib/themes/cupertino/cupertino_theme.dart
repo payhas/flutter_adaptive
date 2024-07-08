@@ -1,4 +1,4 @@
-import '../../flutter_adaptive.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 class CupertinoTheme extends AdaptiveBundle {
   CupertinoTheme()

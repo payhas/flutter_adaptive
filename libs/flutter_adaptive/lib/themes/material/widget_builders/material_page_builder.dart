@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../flutter_adaptive.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 import 'master_detail/portrait_layout.dart';
 
 class MaterialPageBuilder extends AdaptiveWidgetBuilder<AdaptivePage> {

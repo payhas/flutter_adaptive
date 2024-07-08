@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../base/adaptive_component_builder.dart';
-import '../../../components/adaptive_theme_data.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 class MaterialThemeDataBuilder
     extends AdaptiveComponentBuilder<AdaptiveThemeData, dynamic> {

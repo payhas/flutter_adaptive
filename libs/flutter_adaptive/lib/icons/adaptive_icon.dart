@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../base/adaptive.dart';
-import '../base/adaptive_component.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 class AdaptiveIcon extends StatelessWidget with AdaptiveComponent<Icon> {
   static String namePrefix = 'icon_';

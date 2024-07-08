@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' show Divider, VerticalDivider;
-import '../../../../flutter_adaptive.dart' hide CupertinoTheme;
+import 'package:flutter_adaptive/flutter_adaptive.dart' hide CupertinoTheme;
 
 class PanedView extends StatefulWidget {
   const PanedView({

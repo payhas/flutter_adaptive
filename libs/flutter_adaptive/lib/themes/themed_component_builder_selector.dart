@@ -1,8 +1,4 @@
-import '../base/adaptive_component.dart';
-import '../base/adaptive_component_builder.dart';
-import '../base/adaptive_component_builder_selector.dart';
-
-import 'themed_appearance_manager.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 class ThemedWidgetBuilderSelector extends AdaptiveComponentBuilderSelector {
   @override
