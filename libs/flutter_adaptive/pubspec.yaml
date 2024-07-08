@@ -1,7 +1,7 @@
 name: flutter_adaptive
 description: "Adaptive widgets for flutter."
-version: 0.0.1
-homepage:
+version: 1.0.0-preview001
+repository: https://github.com/payhas/flutter_adaptive
 
 environment:
   sdk: '>=3.3.3 <4.0.0'
