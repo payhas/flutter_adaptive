@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart' as ios;
-import '../../flutter_adaptive.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 class CupertinoIcons extends AdaptiveBundle {
   CupertinoIcons()

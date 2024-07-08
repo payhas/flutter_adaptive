@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import '../../../base/adaptive_widget_builder.dart';
-import '../../../components/adaptive_app.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 class CupertinoAppBuilder extends AdaptiveWidgetBuilder<AdaptiveApp> {
   @override

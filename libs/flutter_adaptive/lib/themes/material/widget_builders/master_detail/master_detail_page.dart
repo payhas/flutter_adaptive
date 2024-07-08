@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart' hide PageController;
-import '../../../../flutter_adaptive.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 import 'landscape_layout.dart';
 import 'portrait_layout.dart';

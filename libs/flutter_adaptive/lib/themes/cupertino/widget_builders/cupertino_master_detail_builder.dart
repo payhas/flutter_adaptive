@@ -1,4 +1,4 @@
-import '../../../flutter_adaptive.dart' hide CupertinoTheme, CupertinoIcons;
+import 'package:flutter_adaptive/flutter_adaptive.dart' hide CupertinoTheme, CupertinoIcons;
 import 'package:flutter/cupertino.dart' hide PageController;
 import 'master_detail/master_detail_library.dart';
 

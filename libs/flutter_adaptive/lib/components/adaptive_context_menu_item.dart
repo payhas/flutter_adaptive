@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import '../base/adaptive_widget.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 class AdaptiveContextMenuItem extends AdaptiveWidget {
   const AdaptiveContextMenuItem({

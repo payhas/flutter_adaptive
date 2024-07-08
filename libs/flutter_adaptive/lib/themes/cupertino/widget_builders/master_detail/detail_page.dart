@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import '../../../../layouts/adaptive_master_detail.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart' hide CupertinoIcons;
 
 const _kDetailPageHeroTag = '<DetailPage hero tag>';
 

@@ -1,4 +1,4 @@
-import '../../../flutter_adaptive.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 import 'package:flutter/cupertino.dart';
 
 class CupertinoCheckboxBuilder extends AdaptiveWidgetBuilder<AdaptiveCheckbox> {

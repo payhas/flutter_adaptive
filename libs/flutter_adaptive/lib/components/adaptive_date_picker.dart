@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import '../base/adaptive_widget.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 class AdaptiveDatePicker extends AdaptiveWidget {
   const AdaptiveDatePicker({

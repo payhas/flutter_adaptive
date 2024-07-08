@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../../flutter_adaptive.dart' hide CupertinoTheme, CupertinoIcons;
+import 'package:flutter_adaptive/flutter_adaptive.dart' hide CupertinoTheme, CupertinoIcons;
 
 class CupertinoNavigationBuilder
     extends AdaptiveWidgetBuilder<AdaptiveNavigation> {

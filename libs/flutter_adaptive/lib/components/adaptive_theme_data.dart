@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../base/adaptive_component.dart';
+import 'package:flutter_adaptive/flutter_adaptive.dart';
 
 class AdaptiveThemeData with AdaptiveComponent {
   const AdaptiveThemeData({this.brightness});

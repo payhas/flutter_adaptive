@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import '../../../flutter_adaptive.dart' hide CupertinoIcons;
+import 'package:flutter_adaptive/flutter_adaptive.dart' hide CupertinoIcons;
 import 'master_detail/landscape_layout.dart';
 import 'master_detail/portrait_layout.dart';
 
