@@ -32,7 +32,16 @@ dependencies:
     sdk: flutter
 
   flutter_adaptive:
-    path: ../
+    path: ../libs/flutter_adaptive
+
+  flutter_adaptive_fluent_ui:
+    path: ../libs/flutter_adaptive_fluent_ui
+
+  flutter_adaptive_macos_ui:
+    path: ../libs/flutter_adaptive_macos_ui
+
+  flutter_adaptive_yaru:
+    path: ../libs/flutter_adaptive_yaru
 
 
   # The following adds the Cupertino Icons font to your application.

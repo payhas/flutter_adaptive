@@ -129,7 +129,28 @@ packages:
   flutter_adaptive:
     dependency: "direct main"
     description:
-      path: ".."
+      path: "../libs/flutter_adaptive"
+      relative: true
+    source: path
+    version: "0.0.1"
+  flutter_adaptive_fluent_ui:
+    dependency: "direct main"
+    description:
+      path: "../libs/flutter_adaptive_fluent_ui"
+      relative: true
+    source: path
+    version: "0.0.1"
+  flutter_adaptive_macos_ui:
+    dependency: "direct main"
+    description:
+      path: "../libs/flutter_adaptive_macos_ui"
+      relative: true
+    source: path
+    version: "0.0.1"
+  flutter_adaptive_yaru:
+    dependency: "direct main"
+    description:
+      path: "../libs/flutter_adaptive_yaru"
       relative: true
     source: path
     version: "0.0.1"
@@ -490,5 +511,5 @@ packages:
     source: hosted
     version: "0.0.3"
 sdks:
-  dart: ">=3.3.3 <4.0.0"
+  dart: ">=3.4.0 <4.0.0"
   flutter: ">=3.18.0-18.0.pre.54"
