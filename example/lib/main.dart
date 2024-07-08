@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_adaptive/flutter_adaptive.dart';
 import 'package:provider/provider.dart';
 
-void main() async {
+void main() {
   runApp(const MyApp());
 }
 
@@ -383,10 +383,9 @@ class _MyHomePageState extends State<MyHomePage> {
         ExampleWidget(
             name: "Adaptive Text Input",
             child: Expanded(
-              child: AdaptiveTextInput(
-                placeholder: "Placeholder",
-              ),
-            )),
+                child: AdaptiveTextInput(
+              placeholder: "Border",
+            ))),
         const SizedBox(height: 10.0),
         // ExampleWidget(
         //     name: "Adaptive App Bar",
