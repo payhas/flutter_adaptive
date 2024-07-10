@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:math';
 import 'package:example/adaptive_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_adaptive/flutter_adaptive.dart';
+import 'package:flutter_adaptive_core/flutter_adaptive_core.dart';
 import 'package:provider/provider.dart';
 
 void main() {

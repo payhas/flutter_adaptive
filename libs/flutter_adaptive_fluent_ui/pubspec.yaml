@@ -11,8 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_adaptive:
-    path: ../flutter_adaptive
+  flutter_adaptive_core:
+    path: ../flutter_adaptive_core
 
   fluent_ui: ^4.8.7
   yaru: ^4.1.0

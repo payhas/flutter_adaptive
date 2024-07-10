@@ -1,5 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart';
+import 'package:flutter_adaptive_core/layouts/adaptive_master_detail.dart';
 import 'package:flutter/material.dart' show BackButton, Theme;
 
 import 'constants.dart';

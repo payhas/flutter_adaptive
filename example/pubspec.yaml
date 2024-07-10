@@ -31,8 +31,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_adaptive:
-    path: ../libs/flutter_adaptive
+  flutter_adaptive_core:
+    path: ../libs/flutter_adaptive_core
 
   flutter_adaptive_fluent_ui:
     path: ../libs/flutter_adaptive_fluent_ui

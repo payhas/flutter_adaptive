@@ -1,6 +1,6 @@
 import 'package:macos_ui/macos_ui.dart';
 import 'package:flutter/cupertino.dart' hide PageController;
-import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart'
+import 'package:flutter_adaptive_core/layouts/adaptive_master_detail.dart'
     hide MasterTileBuilder;
 
 import 'master_detail_page.dart';

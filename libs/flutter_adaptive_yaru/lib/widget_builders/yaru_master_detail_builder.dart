@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_adaptive/flutter_adaptive.dart';
+import 'package:flutter_adaptive_core/flutter_adaptive_core.dart';
 import 'master_detail/master_detail_library.dart';
 
 class YaruMasterDetailBuilder

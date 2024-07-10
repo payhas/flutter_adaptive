@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:yaru/yaru.dart' hide YaruMasterTileBuilder;
-import 'package:flutter_adaptive/flutter_adaptive.dart'
+import 'package:flutter_adaptive_core/flutter_adaptive_core.dart'
     hide MasterTileBuilder, MaterialPage;
 
 import 'yaru_master_list_view.dart';

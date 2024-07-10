@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_adaptive/flutter_adaptive.dart';
+import 'package:flutter_adaptive_core/flutter_adaptive_core.dart';
 
 class MacosUITextBuilder extends AdaptiveWidgetBuilder<AdaptiveText> {
   @override

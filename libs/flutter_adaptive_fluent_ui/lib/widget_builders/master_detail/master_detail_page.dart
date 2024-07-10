@@ -1,5 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart' hide PageController;
-import 'package:flutter_adaptive/flutter_adaptive.dart';
+import 'package:flutter_adaptive_core/flutter_adaptive_core.dart';
 
 import 'landscape_layout.dart';
 import 'portrait_layout.dart';

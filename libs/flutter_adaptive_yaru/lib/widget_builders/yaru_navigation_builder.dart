@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yaru/yaru.dart';
-import 'package:flutter_adaptive/flutter_adaptive.dart';
+import 'package:flutter_adaptive_core/flutter_adaptive_core.dart';
 
 class YaruNavigationBuilder extends AdaptiveWidgetBuilder<AdaptiveNavigation> {
   @override

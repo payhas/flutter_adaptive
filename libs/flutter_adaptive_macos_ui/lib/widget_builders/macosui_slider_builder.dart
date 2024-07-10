@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:macos_ui/macos_ui.dart';
-import 'package:flutter_adaptive/flutter_adaptive.dart';
+import 'package:flutter_adaptive_core/flutter_adaptive_core.dart';
 
 class MacosUISliderBuilder extends AdaptiveWidgetBuilder<AdaptiveSlider> {
   @override

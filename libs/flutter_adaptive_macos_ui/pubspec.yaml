@@ -11,8 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_adaptive:
-    path: ../flutter_adaptive
+  flutter_adaptive_core:
+    path: ../flutter_adaptive_core
 
   macos_ui: ^2.0.7
 

@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart' show Material;
 import 'package:macos_ui/macos_ui.dart';
 import 'package:flutter/cupertino.dart' hide PageController;
-import 'package:flutter_adaptive/flutter_adaptive.dart'
+import 'package:flutter_adaptive_core/flutter_adaptive_core.dart'
     hide MasterTileBuilder, CupertinoIcons, CupertinoPage;
 
 import 'master_list_view.dart';

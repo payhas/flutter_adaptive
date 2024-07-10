@@ -1,6 +1,7 @@
 import 'package:macos_ui/macos_ui.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_adaptive/flutter_adaptive.dart' hide CupertinoIcons;
+import 'package:flutter_adaptive_core/flutter_adaptive_core.dart'
+    hide CupertinoIcons;
 
 const _kDetailPageHeroTag = '<DetailPage hero tag>';
 

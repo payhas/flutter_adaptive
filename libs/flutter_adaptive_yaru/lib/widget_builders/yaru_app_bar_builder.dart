@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_adaptive/flutter_adaptive.dart';
+import 'package:flutter_adaptive_core/flutter_adaptive_core.dart';
 import 'package:yaru/yaru.dart';
 import 'package:flutter_adaptive_yaru/flutter_adaptive_yaru.dart'
     hide YaruIcons;

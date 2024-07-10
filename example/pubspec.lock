@@ -126,34 +126,34 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_adaptive:
+  flutter_adaptive_core:
     dependency: "direct main"
     description:
-      path: "../libs/flutter_adaptive"
+      path: "../libs/flutter_adaptive_core"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "1.0.0-preview001"
   flutter_adaptive_fluent_ui:
     dependency: "direct main"
     description:
       path: "../libs/flutter_adaptive_fluent_ui"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "1.0.0-preview001"
   flutter_adaptive_macos_ui:
     dependency: "direct main"
     description:
       path: "../libs/flutter_adaptive_macos_ui"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "1.0.0-preview001"
   flutter_adaptive_yaru:
     dependency: "direct main"
     description:
       path: "../libs/flutter_adaptive_yaru"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "1.0.0-preview001"
   flutter_lints:
     dependency: "direct dev"
     description:

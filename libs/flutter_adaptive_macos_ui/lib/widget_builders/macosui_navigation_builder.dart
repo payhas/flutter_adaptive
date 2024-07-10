@@ -1,4 +1,5 @@
-import 'package:flutter_adaptive/flutter_adaptive.dart' hide CupertinoIcons;
+import 'package:flutter_adaptive_core/flutter_adaptive_core.dart'
+    hide CupertinoIcons;
 import 'package:macos_ui/macos_ui.dart';
 import 'package:macos_ui/src/library.dart';
 

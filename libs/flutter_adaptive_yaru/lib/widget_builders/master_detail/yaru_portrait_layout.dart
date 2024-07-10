@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:yaru/widgets.dart'
     show YaruTitleBarTheme, YaruTitleBarThemeData, YaruTitleBarStyle;
-import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart'
+import 'package:flutter_adaptive_core/layouts/adaptive_master_detail.dart'
     hide MasterTileBuilder;
 
 import 'yaru_master_detail_page.dart';

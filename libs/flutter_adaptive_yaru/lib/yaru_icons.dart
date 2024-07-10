@@ -1,6 +1,6 @@
 import 'package:flutter_adaptive_yaru/flutter_adaptive_yaru.dart';
 import 'package:yaru/yaru.dart' as yaru;
-import 'package:flutter_adaptive/flutter_adaptive.dart';
+import 'package:flutter_adaptive_core/flutter_adaptive_core.dart';
 
 class YaruIcons extends AdaptiveBundle {
   YaruIcons()

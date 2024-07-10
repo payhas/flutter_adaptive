@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_adaptive/flutter_adaptive.dart' hide CupertinoTheme;
+import 'package:flutter_adaptive_core/flutter_adaptive_core.dart'
+    hide CupertinoTheme;
 
 class MacosUIContextMenuBuilder
     extends AdaptiveWidgetBuilder<AdaptiveContextMenu> {

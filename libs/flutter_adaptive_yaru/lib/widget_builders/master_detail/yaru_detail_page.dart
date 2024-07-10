@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_adaptive/layouts/adaptive_master_detail.dart';
+import 'package:flutter_adaptive_core/layouts/adaptive_master_detail.dart';
 
 const _kYaruDetailPageHeroTag = '<YaruDetailPage hero tag>';
 

@@ -4,7 +4,7 @@ import 'package:fluent_ui/fluent_ui.dart' hide PageController;
 import 'package:flutter/material.dart'
     hide PageController
     show MaterialPage, Material, Theme;
-import 'package:flutter_adaptive/flutter_adaptive.dart'
+import 'package:flutter_adaptive_core/flutter_adaptive_core.dart'
     hide MasterTileBuilder, MaterialPage;
 
 import 'master_list_view.dart';
