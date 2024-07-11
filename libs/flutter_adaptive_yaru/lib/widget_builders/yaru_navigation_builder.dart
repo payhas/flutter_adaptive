@@ -81,16 +81,16 @@ class LinuxNavigationDrawerMenuState extends State<LinuxNavigationDrawerMenu> {
     });
   }
 
-  @override
-  void initState() {
-    super.initState();
+  // @override
+  // void initState() {
+  //   super.initState();
 
-    window();
-  }
+  //   window();
+  // }
 
-  Future<void> window() async {
-    await YaruWindowTitleBar.ensureInitialized();
-  }
+  // Future<void> window() async {
+  //   await YaruWindowTitleBar.ensureInitialized();
+  // }
 
   @override
   Widget build(BuildContext context) {

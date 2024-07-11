@@ -37,7 +37,7 @@ class YaruAppBarBuilder extends AdaptiveWidgetBuilder<AdaptiveAppBar> {
     }
 
     return YaruWindowTitleBar(
-      platform: YaruWindowControlPlatform.yaru,
+      style: YaruTitleBarStyle.undecorated,
       buttonPadding: const EdgeInsets.all(10.0),
       buttonSpacing: 10.0,
       border: BorderSide.none,
