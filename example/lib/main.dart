@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'dart:math';
-import 'package:example/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_adaptive_core/flutter_adaptive_core.dart';
+import 'package:flutter_adaptive_fluent_ui/flutter_adaptive_fluent_ui.dart';
+import 'package:flutter_adaptive_macos_ui/flutter_adaptive_macos_ui.dart';
+import 'package:flutter_adaptive_yaru/flutter_adaptive_yaru.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -38,6 +40,9 @@ class MyApp extends StatelessWidget {
     return Adaptive(
       bundles: {
         AdaptiveTheme(defaultTheme: detectPlatform()),
+        FluentUITheme(),
+        MacosUITheme(),
+        YaruTheme(),
       },
       builder: (context) => ChangeNotifierProvider(
         create: (_) => ThemeNotifier(),

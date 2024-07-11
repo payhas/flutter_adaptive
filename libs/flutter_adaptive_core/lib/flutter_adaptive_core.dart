@@ -11,9 +11,6 @@ export 'base/adaptive_widget_builder.dart';
 export 'base/adaptive_function.dart';
 export 'base/adaptive_function_builder.dart';
 
-export 'themes/cupertino/widget_builders/cupertino_navigation_builder.dart';
-export 'themes/material/widget_builders/material_navigation_builder.dart';
-
 export 'components/adaptive_app.dart';
 export 'components/adaptive_theme_data.dart';
 export 'components/adaptive_app_bar.dart';
@@ -47,6 +44,7 @@ export 'layouts/adaptive_master_tile.dart';
 
 export 'themes/themed_appearance_manager.dart';
 export 'themes/themed_component_builder_selector.dart';
+export 'themes/adaptive_theme.dart';
 
 export 'themes/material/material_theme.dart';
 export 'themes/material/material_icons.dart';
@@ -74,6 +72,7 @@ export 'themes/material/widget_builders/material_master_detail_builder.dart';
 export 'themes/material/widget_builders/material_detail_page_builder.dart';
 export 'themes/material/widget_builders/material_master_tile_builder.dart';
 export 'themes/material/widget_builders/material_list_tile_builder.dart';
+export 'themes/material/widget_builders/material_navigation_builder.dart';
 
 export 'themes/cupertino/cupertino_theme.dart';
 export 'themes/cupertino/cupertino_icons.dart';
@@ -101,3 +100,4 @@ export 'themes/cupertino/widget_builders/cupertino_master_detail_builder.dart';
 export 'themes/cupertino/widget_builders/cupertino_detail_page_builder.dart';
 export 'themes/cupertino/widget_builders/cupertino_master_tile_builder.dart';
 export 'themes/cupertino/widget_builders/cupertino_list_tile_builder.dart';
+export 'themes/cupertino/widget_builders/cupertino_navigation_builder.dart';
