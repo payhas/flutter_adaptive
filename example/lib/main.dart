@@ -39,10 +39,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Adaptive(
       bundles: {
-        AdaptiveTheme(defaultTheme: detectPlatform()),
         FluentUITheme(),
-        MacosUITheme(),
         YaruTheme(),
+        MacosUITheme(),
+        AdaptiveTheme(defaultTheme: detectPlatform()),
       },
       builder: (context) => ChangeNotifierProvider(
         create: (_) => ThemeNotifier(),
