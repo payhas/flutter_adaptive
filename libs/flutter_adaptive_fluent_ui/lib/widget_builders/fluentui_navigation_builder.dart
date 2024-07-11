@@ -1,6 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_adaptive_core/flutter_adaptive_core.dart';
-import 'package:yaru/widgets.dart';
 
 class FluentUINavigationBuilder
     extends AdaptiveWidgetBuilder<AdaptiveNavigation> {
@@ -54,16 +53,16 @@ class FluentNavigationState extends State<FluentNavigation> {
     });
   }
 
-  @override
-  void initState() {
-    super.initState();
+  // @override
+  // void initState() {
+  //   super.initState();
 
-    window();
-  }
+  //   window();
+  // }
 
-  Future<void> window() async {
-    await YaruWindowTitleBar.ensureInitialized();
-  }
+  // Future<void> window() async {
+  //   await YaruWindowTitleBar.ensureInitialized();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -132,18 +131,18 @@ class FluentNavigationState extends State<FluentNavigation> {
       appBar: NavigationAppBar(
         leading: leading(),
         title: Text(allDestinations[_selectedIndex].label),
-        actions: Row(
-          children: [
-            SizedBox(width: menuWidth),
-            const Expanded(
-              child: YaruWindowTitleBar(
-                title: SizedBox.shrink(),
-                border: BorderSide.none,
-                backgroundColor: Colors.transparent,
-              ),
-            ),
-          ],
-        ),
+        // actions: Row(
+        //   children: [
+        //     SizedBox(width: menuWidth),
+        //     const Expanded(
+        //       child: YaruWindowTitleBar(
+        //         title: SizedBox.shrink(),
+        //         border: BorderSide.none,
+        //         backgroundColor: Colors.transparent,
+        //       ),
+        //     ),
+        //   ],
+        // ),
       ),
       pane: NavigationPane(
         selected: _selectedIndex,
