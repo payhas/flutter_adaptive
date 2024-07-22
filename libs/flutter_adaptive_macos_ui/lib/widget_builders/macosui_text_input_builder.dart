@@ -4,9 +4,11 @@ import 'package:macos_ui/macos_ui.dart';
 
 class MacosUITextInputBuilder extends AdaptiveWidgetBuilder<AdaptiveTextInput> {
   @override
-  Widget build(BuildContext context, AdaptiveTextInput widget) {
+  Widget build(BuildContext context, AdaptiveTextInput component) {
     return MacosTextField(
-      placeholder: widget.placeholder,
+      placeholder: component.placeholder,
+      controller: component.controller,
+      onChanged: component.onChanged,
     );
   }
 }
