@@ -9,6 +9,9 @@ class AdaptiveListTile extends AdaptiveWidget {
     this.subtitle,
     this.trailing,
     this.onTap,
+    this.selected = false,
+    this.selectedColor,
+    this.selectedTileColor,
   });
 
   /// A widget to display before the title.
@@ -60,4 +63,12 @@ class AdaptiveListTile extends AdaptiveWidget {
   ///
   /// Inoperative if [enabled] is false.
   final GestureTapCallback? onTap;
+
+  final bool selected;
+
+  /// Defines the color used for icons and text when the list tile is selected.
+  final Color? selectedColor;
+
+  /// Defines the background color of `ListTile` when [selected] is true.
+  final Color? selectedTileColor;
 }

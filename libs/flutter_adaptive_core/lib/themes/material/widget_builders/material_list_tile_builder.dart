@@ -10,6 +10,9 @@ class MaterialListTileBuilder extends AdaptiveWidgetBuilder<AdaptiveListTile> {
       subtitle: component.subtitle,
       trailing: component.trailing,
       onTap: component.onTap,
+      selected: component.selected,
+      selectedColor: component.selectedColor,
+      selectedTileColor: component.selectedTileColor,
     );
   }
 }
