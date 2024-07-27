@@ -17,9 +17,10 @@ function Publish-Library {
 
     Write-Host "Publishing $LibraryName" -foregroundcolor green
 
-    cd ".\libs\$LibraryName"
+    Set-Location ".\libs\$LibraryName"
+    flutter pub get
     flutter pub publish -f
-    cd "..\..\"
+    Set-Location "..\..\"
 }
 
 function Publish-SubLibrary {
@@ -57,8 +58,8 @@ Write-Host "Using version tag: $tag for version $version" -foregroundcolor green
 
 Publish-Library -LibraryName "flutter_adaptive_core"
 
-Write-Host "Waiting 5 seconds for core package to be available..." -foregroundcolor yellow
-Start-Sleep -Seconds 5
+Write-Host "Waiting 10 seconds for core package to be available..." -foregroundcolor yellow
+Start-Sleep -Seconds 10
 
 Publish-SubLibrary -LibraryName "flutter_adaptive_fluent_ui"
 Publish-SubLibrary -LibraryName "flutter_adaptive_macos_ui"

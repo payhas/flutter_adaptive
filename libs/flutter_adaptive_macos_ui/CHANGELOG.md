@@ -9,3 +9,7 @@
 ## 1.0.0-preview003
 
 * Adding selection to AdaptiveListTile
+
+## 1.0.0-preview004
+
+* Adding common fields to AdativeApp widget
