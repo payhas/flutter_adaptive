@@ -1,6 +1,6 @@
 name: flutter_adaptive_macos_ui
 description: "Adaptive widgets for flutter."
-version: 1.0.0-preview003
+version: 1.0.0-preview004
 repository: https://github.com/payhas/flutter_adaptive
 
 environment:
