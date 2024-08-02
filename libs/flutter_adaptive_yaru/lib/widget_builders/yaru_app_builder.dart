@@ -6,6 +6,12 @@ import 'package:yaru/yaru.dart';
 class YaruAdaptiveAppBuilder extends AdaptiveWidgetBuilder<AdaptiveApp> {
   @override
   Widget build(BuildContext context, AdaptiveApp component) {
+    // ToDo - If new fields added to AdaptiveThemeData, add new fields to here (copyWith)
+    ThemeData? data = (component.darkTheme == null)
+        ? null
+        : ThemeData.dark()
+            .copyWith(brightness: component.darkTheme?.brightness);
+
     return YaruTheme(
       builder: (context, yaru, child) {
         YaruThemeDataBuilder.yaruThemeData = yaru;
@@ -39,7 +45,7 @@ class YaruAdaptiveAppBuilder extends AdaptiveWidgetBuilder<AdaptiveApp> {
           actions: component.actions,
           restorationScopeId: component.restorationScopeId,
           scrollBehavior: component.scrollBehavior,
-          darkTheme: component.darkTheme,
+          darkTheme: data,
           themeMode: component.themeMode,
         );
       },

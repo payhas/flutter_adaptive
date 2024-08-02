@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart' show ThemeMode;
 import 'package:flutter_adaptive_core/flutter_adaptive_core.dart';
 
 class AdaptiveApp extends AdaptiveWidget {
@@ -88,7 +89,7 @@ class AdaptiveApp extends AdaptiveWidget {
 
   final ScrollBehavior? scrollBehavior;
 
-  final ThemeData? darkTheme;
+  final AdaptiveThemeData? darkTheme;
 
   final ThemeMode? themeMode;
 }
