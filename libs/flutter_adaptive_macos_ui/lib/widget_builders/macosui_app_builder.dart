@@ -5,8 +5,11 @@ import 'package:flutter_adaptive_core/flutter_adaptive_core.dart';
 class MacosUIAdaptiveAppBuilder extends AdaptiveWidgetBuilder<AdaptiveApp> {
   @override
   Widget build(BuildContext context, AdaptiveApp component) {
-    MacosThemeData data = MacosTheme.of(context)
-        .copyWith(brightness: component.darkTheme?.brightness);
+    // ToDo - If new fields added to AdaptiveThemeData, add new fields to here (copyWith)
+    MacosThemeData? data = (component.darkTheme == null)
+        ? null
+        : MacosThemeData.dark()
+            .copyWith(brightness: component.darkTheme?.brightness);
 
     var shortCuts = (component.shortcuts is Map<LogicalKeySet, Intent>)
         ? component.shortcuts as Map<LogicalKeySet, Intent>
