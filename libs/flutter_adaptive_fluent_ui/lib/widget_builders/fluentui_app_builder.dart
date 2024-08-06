@@ -4,8 +4,11 @@ import 'package:flutter_adaptive_core/flutter_adaptive_core.dart';
 class FluentUIAppBuilder extends AdaptiveWidgetBuilder<AdaptiveApp> {
   @override
   Widget build(BuildContext context, AdaptiveApp component) {
-    FluentThemeData data = FluentTheme.of(context)
-        .copyWith(brightness: component.darkTheme?.brightness);
+    // ToDo - If new fields added to AdaptiveThemeData, add new fields to here (copyWith)
+    FluentThemeData? data = (component.darkTheme == null)
+        ? null
+        : FluentThemeData.dark()
+            .copyWith(brightness: component.darkTheme?.brightness);
 
     return FluentApp(
       theme: component.theme?.build(context),
