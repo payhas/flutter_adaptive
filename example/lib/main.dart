@@ -477,22 +477,26 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         const SizedBox(height: 10),
         ExampleWidget(
-            name: "Adaptive Modal Dialog",
-            child: AdaptiveElevatedButton(
-                onPressed: () {
-                  showAdaptiveModalDialog<String>(
-                    context: context,
-                    title: const Text("Simple Dialog"),
-                    content: const Text("Adaptive Modal Dialog content"),
-                    primaryButton: AdaptiveModalDialogAction(
-                        onPressed: () => Navigator.pop(context, 'OK'),
-                        child: const Text('OK')),
-                    secondaryButton: AdaptiveModalDialogAction(
-                        onPressed: () => Navigator.pop(context, 'Cancel'),
-                        child: const Text('Cancel')),
-                  );
-                },
-                child: const Text("Simple Dialog"))),
+          name: "Adaptive Modal Dialog",
+          child: AdaptiveElevatedButton(
+            onPressed: () {
+              showAdaptiveModalDialog<String>(
+                context: context,
+                title: const Text("Simple Dialog"),
+                content: const Text("Adaptive Modal Dialog content"),
+                primaryButton: AdaptiveModalDialogAction(
+                    onPressed: () =>
+                        Navigator.of(context, rootNavigator: true).pop('OK'),
+                    child: const Text('OK')),
+                secondaryButton: AdaptiveModalDialogAction(
+                    onPressed: () => Navigator.of(context, rootNavigator: true)
+                        .pop('Cancel'),
+                    child: const Text('Cancel')),
+              );
+            },
+            child: const Text("Simple Dialog"),
+          ),
+        ),
         const SizedBox(height: 10.0),
         ExampleWidget(
             name: "Adaptive Modal Bottom Sheet",
