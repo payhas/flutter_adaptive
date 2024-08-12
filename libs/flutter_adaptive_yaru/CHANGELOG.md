@@ -17,3 +17,8 @@
 ## 1.0.0-preview005
 
 * Edited AdaptiveApp and its builders
+
+## 1.0.0-preview006
+
+* Fixed MacosUI theme changes
+* Fixed Cupertino context problem when using dialogs
