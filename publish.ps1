@@ -19,6 +19,7 @@ function Publish-Library {
 
     Set-Location ".\libs\$LibraryName"
     flutter pub get
+    Start-Sleep -Seconds 1
     flutter pub publish -f
     Set-Location "..\..\"
 }
