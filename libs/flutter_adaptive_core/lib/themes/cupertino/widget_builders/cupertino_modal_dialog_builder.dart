@@ -9,11 +9,11 @@ class CupertinoModalDialogBuilder<T>
       context: context,
       builder: (context) {
         return cupertinoDialog(
-          context,
-          component.title,
-          component.content,
-          component.primaryButton,
-          component.secondaryButton,
+          context: context,
+          title: component.title,
+          content: component.content,
+          primaryButton: component.primaryButton,
+          secondaryButton: component.secondaryButton,
         );
       },
       barrierDismissible: component.barrierDismissible,
@@ -24,13 +24,13 @@ class CupertinoModalDialogBuilder<T>
   }
 }
 
-Widget cupertinoDialog(
-  BuildContext context,
-  Widget title,
-  Widget content,
-  AdaptiveModalDialogAction primaryButton,
+Widget cupertinoDialog({
+  required BuildContext context,
+  required Widget title,
+  required Widget content,
+  required AdaptiveModalDialogAction primaryButton,
   AdaptiveModalDialogAction? secondaryButton,
-) {
+}) {
   return CupertinoAlertDialog(
     title: title,
     content: content,

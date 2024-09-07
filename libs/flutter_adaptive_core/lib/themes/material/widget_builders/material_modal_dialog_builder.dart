@@ -9,11 +9,11 @@ class MaterialModalDialogBuilder<T>
       context: context,
       builder: (context) {
         return materialDialog(
-          context,
-          component.title,
-          component.content,
-          component.primaryButton,
-          component.secondaryButton,
+          context: context,
+          title: component.title,
+          content: component.content,
+          primaryButton: component.primaryButton,
+          secondaryButton: component.secondaryButton,
         );
       },
       barrierDismissible: component.barrierDismissible,
@@ -24,13 +24,13 @@ class MaterialModalDialogBuilder<T>
   }
 }
 
-Widget materialDialog(
-  BuildContext context,
-  Widget title,
-  Widget content,
-  AdaptiveModalDialogAction primaryButton,
+Widget materialDialog({
+  required BuildContext context,
+  required Widget title,
+  required Widget content,
+  required AdaptiveModalDialogAction primaryButton,
   AdaptiveModalDialogAction? secondaryButton,
-) {
+}) {
   return AlertDialog(
     title: title,
     content: content,

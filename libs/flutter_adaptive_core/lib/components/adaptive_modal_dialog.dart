@@ -11,6 +11,8 @@ Future<T?> showAdaptiveModalDialog<T>({
   bool useRootNavigator = true,
   RouteSettings? routeSettings,
   String? barrierLabel,
+  double? width,
+  double? height,
 }) {
   return AdaptiveModalDialog<T>(
     title: title,
@@ -21,6 +23,8 @@ Future<T?> showAdaptiveModalDialog<T>({
     useRootNavigator: useRootNavigator,
     routeSettings: routeSettings,
     barrierLabel: barrierLabel,
+    width: width,
+    height: height,
   ).build(context);
 }
 
@@ -34,6 +38,8 @@ class AdaptiveModalDialog<T> extends AdaptiveFunction<T> {
     this.useRootNavigator = true,
     this.routeSettings,
     this.barrierLabel,
+    this.width,
+    this.height,
   });
 
   final Widget title;
@@ -44,6 +50,8 @@ class AdaptiveModalDialog<T> extends AdaptiveFunction<T> {
   final bool useRootNavigator;
   final RouteSettings? routeSettings;
   final String? barrierLabel;
+  final double? width;
+  final double? height;
 }
 
 class AdaptiveModalDialogAction extends AdaptiveWidget {

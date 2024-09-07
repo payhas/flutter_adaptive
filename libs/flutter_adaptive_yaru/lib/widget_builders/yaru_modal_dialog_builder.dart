@@ -9,11 +9,13 @@ class YaruModalDialogBuilder<T>
       context: context,
       builder: (context) {
         return yaruDialog(
-          context,
-          component.title,
-          component.content,
-          component.primaryButton,
-          component.secondaryButton,
+          context: context,
+          title: component.title,
+          content: component.content,
+          primaryButton: component.primaryButton,
+          secondaryButton: component.secondaryButton,
+          width: component.width,
+          height: component.height,
         );
       },
       barrierDismissible: component.barrierDismissible,
@@ -24,26 +26,48 @@ class YaruModalDialogBuilder<T>
   }
 }
 
-Widget yaruDialog(
-  BuildContext context,
-  Widget title,
-  Widget content,
-  AdaptiveModalDialogAction primaryButton,
+Widget yaruDialog({
+  required BuildContext context,
+  required Widget title,
+  required Widget content,
+  required AdaptiveModalDialogAction primaryButton,
   AdaptiveModalDialogAction? secondaryButton,
-) {
-  return AlertDialog(
-    title: title,
-    content: content,
-    actions: <Widget>[
-      if (secondaryButton != null)
-        TextButton(
-          onPressed: secondaryButton.onPressed,
-          child: secondaryButton.child,
-        ),
-      TextButton(
-        onPressed: primaryButton.onPressed,
-        child: primaryButton.child,
-      ),
-    ],
-  );
+  double? width,
+  double? height,
+}) {
+  return ((width != null && width > 0) || (height != null && height > 0))
+      ? AlertDialog(
+          title: title,
+          content: SizedBox(
+            width: width,
+            height: height,
+            child: content,
+          ),
+          actions: <Widget>[
+            if (secondaryButton != null)
+              TextButton(
+                onPressed: secondaryButton.onPressed,
+                child: secondaryButton.child,
+              ),
+            TextButton(
+              onPressed: primaryButton.onPressed,
+              child: primaryButton.child,
+            ),
+          ],
+        )
+      : AlertDialog(
+          title: title,
+          content: content,
+          actions: <Widget>[
+            if (secondaryButton != null)
+              TextButton(
+                onPressed: secondaryButton.onPressed,
+                child: secondaryButton.child,
+              ),
+            TextButton(
+              onPressed: primaryButton.onPressed,
+              child: primaryButton.child,
+            ),
+          ],
+        );
 }
