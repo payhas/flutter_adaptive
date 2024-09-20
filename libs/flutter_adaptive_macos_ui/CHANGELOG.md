@@ -22,3 +22,7 @@
 
 * Fixed MacosUI theme changes
 * Fixed Cupertino context problem when using dialogs
+
+## 1.0.0-preview007
+
+* Added common fields to AdaptiveTextInput
