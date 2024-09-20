@@ -1,6 +1,6 @@
 name: flutter_adaptive_fluent_ui
 description: "Adaptive widgets for flutter."
-version: 1.0.0-preview006
+version: 1.0.0-preview007
 repository: https://github.com/payhas/flutter_adaptive
 
 environment:
